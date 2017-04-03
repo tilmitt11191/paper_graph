@@ -9,7 +9,7 @@
 #	print("len(args)[" + str(len(args)) + "] < **")
 #	sys.exit()
 #if args[1]:
-#	num = 10
+num = 10
 
 import sys,os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
@@ -20,4 +20,6 @@ log.info("number["+str(num)+"]")
 
 from IEEEXplore import IEEEXplore as X
 xplore = X()
+
+xplore.get_papers_of_new_conferences(num)
 

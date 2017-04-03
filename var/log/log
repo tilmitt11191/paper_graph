@@ -182,3 +182,31 @@ Conf_test setUpClass finished.
  rotate_log_size[268435456]
  id[140103208325976]
 2017-04-03 18:38:38,005 - DEBUG - class IEEEXplore created.
+2017-04-03 19:11:09,892 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139824814642064]
+2017-04-03 19:11:09,894 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 19:11:51,548 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140038992741264]
+2017-04-03 19:11:51,549 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 19:11:51,550 - INFO - number[10]
+2017-04-03 19:11:51,733 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140038992741264]
+2017-04-03 19:11:51,735 - DEBUG - class IEEEXplore created.
+2017-04-03 19:12:10,381 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140558333125408]
+2017-04-03 19:12:10,383 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 19:12:10,384 - INFO - number[10]
+2017-04-03 19:12:10,468 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140558333125408]
+2017-04-03 19:12:10,469 - DEBUG - class IEEEXplore created.
+2017-04-03 19:12:10,470 - INFO - get_papers_of_new_conferences(conference_num=10) start.

@@ -9,5 +9,6 @@ class IEEEXplore:
 		self.log = l.getLogger()
 		self.log.debug("class IEEEXplore created.")
 	
-	
+	def get_papers_of_new_conferences(self, conference_num):
+		self.log.info("get_papers_of_new_conferences(conference_num=" + str(conference_num) + ") start.")
 	
