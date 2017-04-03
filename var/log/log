@@ -1,0 +1,184 @@
+2017-04-03 17:38:25,530 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140701701160184]
+2017-04-03 17:38:25,532 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:38:44,713 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140211894975736]
+2017-04-03 17:38:44,714 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:39:04,138 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140335744367864]
+2017-04-03 17:39:04,139 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:39:21,060 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140167659773176]
+2017-04-03 17:39:21,063 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:40:02,254 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140709789895928]
+2017-04-03 17:40:02,256 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:40:26,449 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140156315700472]
+2017-04-03 17:40:26,450 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:40:40,938 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139676431748344]
+2017-04-03 17:40:40,938 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:54:23,738 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140029713964280]
+2017-04-03 17:54:23,739 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:54:48,124 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139636699229432]
+2017-04-03 17:54:48,125 - INFO - 
+
+Conf_test setUpClass finished.
+---------- start ---------
+2017-04-03 17:55:18,038 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139781338530480]
+2017-04-03 17:55:18,039 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 17:56:00,385 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139705134154304]
+2017-04-03 17:56:00,398 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 17:56:16,953 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140173552489080]
+2017-04-03 17:56:16,954 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 17:56:39,347 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140567275508288]
+2017-04-03 17:56:39,348 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 17:56:39,458 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140567275508288]
+2017-04-03 17:56:39,460 - DEBUG - class IEEEXplore created.
+2017-04-03 18:05:39,718 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140623349924752]
+2017-04-03 18:05:39,720 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:06:29,979 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139972867900192]
+2017-04-03 18:06:29,980 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:06:39,861 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139841359893336]
+2017-04-03 18:06:39,862 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:06:51,055 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139658500825944]
+2017-04-03 18:06:51,056 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:06:51,056 - INFO - number[10]
+2017-04-03 18:06:59,710 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139633864082264]
+2017-04-03 18:06:59,711 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:06:59,712 - INFO - number[10]
+2017-04-03 18:06:59,818 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139633864082264]
+2017-04-03 18:06:59,820 - DEBUG - class IEEEXplore created.
+2017-04-03 18:07:46,419 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140367453692760]
+2017-04-03 18:07:46,420 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:07:46,421 - INFO - number[10]
+2017-04-03 18:07:46,505 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140367453692760]
+2017-04-03 18:07:46,505 - DEBUG - class IEEEXplore created.
+2017-04-03 18:09:57,277 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139803374043992]
+2017-04-03 18:09:57,279 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:09:57,280 - INFO - number[1]
+2017-04-03 18:09:57,389 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139803374043992]
+2017-04-03 18:09:57,391 - DEBUG - class IEEEXplore created.
+2017-04-03 18:10:04,935 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140492356711256]
+2017-04-03 18:10:04,936 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:10:04,938 - INFO - number[1]
+2017-04-03 18:10:05,019 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140492356711256]
+2017-04-03 18:10:05,020 - DEBUG - class IEEEXplore created.
+2017-04-03 18:16:48,089 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140312285795104]
+2017-04-03 18:16:48,091 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:16:48,092 - INFO - number[11]
+2017-04-03 18:16:48,149 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140312285795104]
+2017-04-03 18:16:48,150 - DEBUG - class IEEEXplore created.
+2017-04-03 18:38:37,897 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140103208325976]
+2017-04-03 18:38:37,898 - INFO - get_papers_from_IEEE.py start.
+2017-04-03 18:38:37,899 - INFO - number[10]
+2017-04-03 18:38:37,979 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140103208325976]
+2017-04-03 18:38:38,005 - DEBUG - class IEEEXplore created.
