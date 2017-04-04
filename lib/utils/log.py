@@ -1,49 +1,22 @@
-#!/usr/bin/python
+
 # -*- coding: utf-8 -*-
+"""
+import logging
+class myLogger(logging):
+	def __init__(self):
+		super()
+"""
 
 class Log:
-	"""
-	log = ""
-	def __init__(self):
-		from file_manager import File_manager as f
-		f.getconf("loglevel", conffile=conffile)
-		if(logfile==""):
-			logfile = f.getconf("logdir", conffile=conffile) + f.getconf("logfile", conffile=conffile)
-		loglevel = f.getconf("loglevel", conffile=conffile)
-		rotate_log_size = f.getconf("rotate_log_size")
 
-		import logging, logging.handlers
-		
-		formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-		rfh = logging.handlers.RotatingFileHandler(
-			filename=logfile,
-			maxBytes=rotate_log_size, 
-			backupCount=f.getconf("backup_log_count")
-		)
-		rfh.setFormatter(formatter)
-		
-		self.log = logging.getLogger(__name__)
-		id_ = id(logger)
-		self.log.setLevel(eval("logging."+loglevel))
-		self.log.addHandler(rfh)
-		self.log.info("return logger\n logfile[{logfile}]\n rotate_log_size[{rotate_log_size}]\n id[{id_}]".format(**locals()))
-	
-	def getLogger(self):
-		return self.log
-	"""
-	
-
-	def __init__(self):
-		pass
-	
 	@classmethod
 	def getLogger(cls, logfile="", conffile=""):
-		from file_manager import File_manager as f
-		f.getconf("loglevel", conffile=conffile)
+		from conf import Conf
+
 		if(logfile==""):
-			logfile = f.getconf("logdir", conffile=conffile) + f.getconf("logfile", conffile=conffile)
-		loglevel = f.getconf("loglevel", conffile=conffile)
-		rotate_log_size = f.getconf("rotate_log_size")
+			logfile = Conf.getconf("logdir", conffile=conffile) + Conf.getconf("logfile", conffile=conffile)
+		loglevel = Conf.getconf("loglevel", conffile=conffile)
+		rotate_log_size = Conf.getconf("rotate_log_size")
 
 		import logging, logging.handlers
 		logger = logging.getLogger()
@@ -54,7 +27,7 @@ class Log:
 			rfh = logging.handlers.RotatingFileHandler(
 				filename=logfile,
 				maxBytes=rotate_log_size, 
-				backupCount=f.getconf("backup_log_count")
+				backupCount=Conf.getconf("backup_log_count")
 			)
 			formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 			rfh.setFormatter(formatter)
@@ -66,10 +39,6 @@ class Log:
 		logger.setLevel(eval("logging."+loglevel))
 		logger.info("return logger\n logfile[{logfile}]\n rotate_log_size[{rotate_log_size}]\n id[{id_}]".format(**locals()))
 		return logger
-
-
-
-
 
 
 
