@@ -1,0 +1,303 @@
+2017-04-04 19:19:16,812 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140513842588976]
+2017-04-04 19:19:16,815 - INFO - 
+
+IEEEXplore_test.setUpClass finished.
+---------- start ---------
+2017-04-04 19:19:16,993 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140513842588976]
+2017-04-04 19:19:17,110 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140513842588976]
+2017-04-04 19:19:17,111 - DEBUG - class Search_options created.
+2017-04-04 19:19:17,112 - DEBUG - class IEEEXplore created.
+2017-04-04 19:19:17,113 - INFO - IEEEXplore_test.test_download_papers start
+2017-04-04 19:19:17,114 - DEBUG - IEEEXplore.create_driver start
+2017-04-04 19:19:24,147 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session {"requiredCapabilities": {}, "desiredCapabilities": {"version": "", "browserName": "phantomjs", "javascriptEnabled": true, "platform": "ANY"}}
+2017-04-04 19:19:24,237 - DEBUG - Finished Request
+2017-04-04 19:19:24,241 - DEBUG - driver.get(http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic)
+2017-04-04 19:19:24,243 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/url {"url": "http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:36,693 - DEBUG - Finished Request
+2017-04-04 19:19:36,695 - DEBUG - IEEEXplore.create_driver finished. return driver
+2017-04-04 19:19:36,700 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/elements {"value": "pure-u-22-24", "using": "class name", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:36,877 - DEBUG - Finished Request
+2017-04-04 19:19:36,880 - DEBUG - len(links)[10]
+2017-04-04 19:19:36,883 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176861/text {"id": ":wdc:1491301176861", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:37,436 - DEBUG - Finished Request
+2017-04-04 19:19:37,440 - DEBUG - txt:LSTM network: a deep learning approach for short-term traffic forecast
+Zheng Zhao; Weihai Chen; Xingming Wu; Peter C. Y. Chen; Jingmeng Liu
+IET Intelligent Transport Systems
+Year: 2017, Volume: 11, Issue: 2
+Pages: 68 - 75, DOI: 10.1049/iet-its.2016.0208
+IET Journals & Magazines
+Abstract
+(5652 Kb)
+2017-04-04 19:19:37,445 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176861/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176861", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:37,542 - DEBUG - Finished Request
+2017-04-04 19:19:37,544 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176871/text {"id": ":wdc:1491301176871", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:37,637 - DEBUG - Finished Request
+2017-04-04 19:19:37,639 - DEBUG - pdf_title:LSTM network: a deep learning approach for short-term traffic forecast
+2017-04-04 19:19:37,642 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176871/attribute/href {"id": ":wdc:1491301176871", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:37,693 - DEBUG - Finished Request
+2017-04-04 19:19:37,694 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7874313/]
+2017-04-04 19:19:37,695 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
+2017-04-04 19:19:37,696 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
+2017-04-04 19:19:37,697 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176861/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176861", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:37,758 - DEBUG - Finished Request
+2017-04-04 19:19:37,763 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176861/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176861", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:37,848 - DEBUG - Finished Request
+2017-04-04 19:19:37,850 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176872/text {"id": ":wdc:1491301176872", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:38,017 - DEBUG - Finished Request
+2017-04-04 19:19:38,020 - DEBUG - pdf_author:['Zheng Zhao', 'Weihai Chen', 'Xingming Wu', 'Peter C. Y. Chen', 'Jingmeng Liu']
+2017-04-04 19:19:38,022 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176862/text {"id": ":wdc:1491301176862", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:38,396 - DEBUG - Finished Request
+2017-04-04 19:19:38,398 - DEBUG - txt:Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks
+Laisen Nie; Dingde Jiang; Lei Guo; Shui Yu; Houbing Song
+2016 IEEE Globecom Workshops (GC Wkshps)
+Year: 2016
+Pages: 1 - 6, DOI: 10.1109/GLOCOMW.2016.7849067
+IEEE Conference Publications
+Abstract
+(317 Kb)
+2017-04-04 19:19:38,399 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176862/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176862", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:38,456 - DEBUG - Finished Request
+2017-04-04 19:19:38,461 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176873/text {"id": ":wdc:1491301176873", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:38,524 - DEBUG - Finished Request
+2017-04-04 19:19:38,525 - DEBUG - pdf_title:Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks
+2017-04-04 19:19:38,526 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176873/attribute/href {"id": ":wdc:1491301176873", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:38,558 - DEBUG - Finished Request
+2017-04-04 19:19:38,559 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7849067/]
+2017-04-04 19:19:38,561 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7849067
+2017-04-04 19:19:38,562 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7849067
+2017-04-04 19:19:38,563 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176862/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176862", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:38,596 - DEBUG - Finished Request
+2017-04-04 19:19:38,598 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176862/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176862", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:38,631 - DEBUG - Finished Request
+2017-04-04 19:19:38,632 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176874/text {"id": ":wdc:1491301176874", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:38,793 - DEBUG - Finished Request
+2017-04-04 19:19:38,794 - DEBUG - pdf_author:['Laisen Nie', 'Dingde Jiang', 'Lei Guo', 'Shui Yu', 'Houbing Song']
+2017-04-04 19:19:38,796 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176863/text {"id": ":wdc:1491301176863", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:39,331 - DEBUG - Finished Request
+2017-04-04 19:19:39,332 - DEBUG - txt:Traffic Speed Prediction and Congestion Source Exploration: A Deep Learning Method
+Jingyuan Wang; Qian Gu; Junjie Wu; Guannan Liu; Zhang Xiong
+2016 IEEE 16th International Conference on Data Mining (ICDM)
+Year: 2016
+Pages: 499 - 508, DOI: 10.1109/ICDM.2016.0061
+IEEE Conference Publications
+Abstract
+(466 Kb)
+2017-04-04 19:19:39,333 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176863/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176863", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:39,430 - DEBUG - Finished Request
+2017-04-04 19:19:39,433 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176875/text {"id": ":wdc:1491301176875", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:39,498 - DEBUG - Finished Request
+2017-04-04 19:19:39,500 - DEBUG - pdf_title:Traffic Speed Prediction and Congestion Source Exploration: A Deep Learning Method
+2017-04-04 19:19:39,501 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176875/attribute/href {"id": ":wdc:1491301176875", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:39,527 - DEBUG - Finished Request
+2017-04-04 19:19:39,527 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7837874/]
+2017-04-04 19:19:39,528 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7837874
+2017-04-04 19:19:39,530 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7837874
+2017-04-04 19:19:39,530 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176863/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176863", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:39,569 - DEBUG - Finished Request
+2017-04-04 19:19:39,571 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176863/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176863", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:39,622 - DEBUG - Finished Request
+2017-04-04 19:19:39,624 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176876/text {"id": ":wdc:1491301176876", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:39,755 - DEBUG - Finished Request
+2017-04-04 19:19:39,757 - DEBUG - pdf_author:['Jingyuan Wang', 'Qian Gu', 'Junjie Wu', 'Guannan Liu', 'Zhang Xiong']
+2017-04-04 19:19:39,758 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176864/text {"id": ":wdc:1491301176864", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:39,986 - DEBUG - Finished Request
+2017-04-04 19:19:39,986 - DEBUG - txt:Traffic speed prediction using deep learning method
+Yuhan Jia; Jianping Wu; Yiman Du
+2016 IEEE 19th International Conference on Intelligent Transportation Systems (ITSC)
+Year: 2016
+Pages: 1217 - 1222, DOI: 10.1109/ITSC.2016.7795712
+IEEE Conference Publications
+Abstract
+(750 Kb)
+2017-04-04 19:19:39,987 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176864/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176864", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,026 - DEBUG - Finished Request
+2017-04-04 19:19:40,028 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176877/text {"id": ":wdc:1491301176877", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,077 - DEBUG - Finished Request
+2017-04-04 19:19:40,078 - DEBUG - pdf_title:Traffic speed prediction using deep learning method
+2017-04-04 19:19:40,078 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176877/attribute/href {"id": ":wdc:1491301176877", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,120 - DEBUG - Finished Request
+2017-04-04 19:19:40,121 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7795712/]
+2017-04-04 19:19:40,123 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7795712
+2017-04-04 19:19:40,123 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7795712
+2017-04-04 19:19:40,132 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176864/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176864", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,185 - DEBUG - Finished Request
+2017-04-04 19:19:40,187 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176864/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176864", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,269 - DEBUG - Finished Request
+2017-04-04 19:19:40,270 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176878/text {"id": ":wdc:1491301176878", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,359 - DEBUG - Finished Request
+2017-04-04 19:19:40,360 - DEBUG - pdf_author:['Yuhan Jia', 'Jianping Wu', 'Yiman Du']
+2017-04-04 19:19:40,361 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176865/text {"id": ":wdc:1491301176865", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,570 - DEBUG - Finished Request
+2017-04-04 19:19:40,571 - DEBUG - txt:The Deep Learning Vision for Heterogeneous Network Traffic Control: Proposal, Challenges, and Future Perspective
+Nei Kato; Zubair Md. Fadlullah; Bomin Mao; Fengxiao Tang; Osamu Akashi; Takeru Inoue; Kimihiro Mizutani
+IEEE Wireless Communications
+Year: 2017, Volume: PP, Issue: 99
+Pages: 2 - 9, DOI: 10.1109/MWC.2016.1600317WC
+IEEE Early Access Articles
+Abstract
+(957 Kb)
+2017-04-04 19:19:40,572 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176865/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176865", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,620 - DEBUG - Finished Request
+2017-04-04 19:19:40,621 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176879/text {"id": ":wdc:1491301176879", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,710 - DEBUG - Finished Request
+2017-04-04 19:19:40,711 - DEBUG - pdf_title:The Deep Learning Vision for Heterogeneous Network Traffic Control: Proposal, Challenges, and Future Perspective
+2017-04-04 19:19:40,711 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176879/attribute/href {"id": ":wdc:1491301176879", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,735 - DEBUG - Finished Request
+2017-04-04 19:19:40,736 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7792369/]
+2017-04-04 19:19:40,737 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7792369
+2017-04-04 19:19:40,737 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7792369
+2017-04-04 19:19:40,738 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176865/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176865", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,769 - DEBUG - Finished Request
+2017-04-04 19:19:40,770 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176865/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176865", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,800 - DEBUG - Finished Request
+2017-04-04 19:19:40,801 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176880/text {"id": ":wdc:1491301176880", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:40,874 - DEBUG - Finished Request
+2017-04-04 19:19:40,875 - DEBUG - pdf_author:['Nei Kato', 'Zubair Md. Fadlullah', 'Bomin Mao', 'Fengxiao Tang', 'Osamu Akashi', 'Takeru Inoue', 'Kimihiro Mizutani']
+2017-04-04 19:19:40,876 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176866/text {"id": ":wdc:1491301176866", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,121 - DEBUG - Finished Request
+2017-04-04 19:19:41,129 - DEBUG - txt:Improving Traffic Flow Prediction With Weather Information in Connected Cars: A Deep Learning Approach
+Arief Koesdwiady; Ridha Soua; Fakhreddine Karray
+IEEE Transactions on Vehicular Technology
+Year: 2016, Volume: 65, Issue: 12
+Pages: 9508 - 9517, DOI: 10.1109/TVT.2016.2585575
+IEEE Journals & Magazines
+Abstract
+(1184 Kb)
+2017-04-04 19:19:41,131 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176866/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176866", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,205 - DEBUG - Finished Request
+2017-04-04 19:19:41,206 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176881/text {"id": ":wdc:1491301176881", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,295 - DEBUG - Finished Request
+2017-04-04 19:19:41,297 - DEBUG - pdf_title:Improving Traffic Flow Prediction With Weather Information in Connected Cars: A Deep Learning Approach
+2017-04-04 19:19:41,299 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176881/attribute/href {"id": ":wdc:1491301176881", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,336 - DEBUG - Finished Request
+2017-04-04 19:19:41,336 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7501574/]
+2017-04-04 19:19:41,337 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7501574
+2017-04-04 19:19:41,340 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7501574
+2017-04-04 19:19:41,341 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176866/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176866", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,372 - DEBUG - Finished Request
+2017-04-04 19:19:41,373 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176866/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176866", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,412 - DEBUG - Finished Request
+2017-04-04 19:19:41,414 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176882/text {"id": ":wdc:1491301176882", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,505 - DEBUG - Finished Request
+2017-04-04 19:19:41,541 - DEBUG - pdf_author:['Arief Koesdwiady', 'Ridha Soua', 'Fakhreddine Karray']
+2017-04-04 19:19:41,542 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176867/text {"id": ":wdc:1491301176867", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,627 - DEBUG - Finished Request
+2017-04-04 19:19:41,628 - DEBUG - txt:The research on traffic sign recognition based on deep learning
+Chen Li; Cheng Yang
+2016 16th International Symposium on Communications and Information Technologies (ISCIT)
+Year: 2016
+Pages: 156 - 161, DOI: 10.1109/ISCIT.2016.7751612
+IEEE Conference Publications
+Abstract
+(313 Kb)
+2017-04-04 19:19:41,629 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176867/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176867", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,658 - DEBUG - Finished Request
+2017-04-04 19:19:41,659 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176883/text {"id": ":wdc:1491301176883", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,711 - DEBUG - Finished Request
+2017-04-04 19:19:41,712 - DEBUG - pdf_title:The research on traffic sign recognition based on deep learning
+2017-04-04 19:19:41,712 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176883/attribute/href {"id": ":wdc:1491301176883", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,738 - DEBUG - Finished Request
+2017-04-04 19:19:41,739 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7751612/]
+2017-04-04 19:19:41,743 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7751612
+2017-04-04 19:19:41,744 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7751612
+2017-04-04 19:19:41,744 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176867/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176867", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,779 - DEBUG - Finished Request
+2017-04-04 19:19:41,780 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176867/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176867", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,806 - DEBUG - Finished Request
+2017-04-04 19:19:41,812 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176884/text {"id": ":wdc:1491301176884", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:41,857 - DEBUG - Finished Request
+2017-04-04 19:19:41,859 - DEBUG - pdf_author:['Chen Li', 'Cheng Yang']
+2017-04-04 19:19:41,860 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176868/text {"id": ":wdc:1491301176868", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,265 - DEBUG - Finished Request
+2017-04-04 19:19:42,265 - DEBUG - txt:Traffic Sign Recognition Using Kernel Extreme Learning Machines With Deep Perceptual Features
+Yujun Zeng; Xin Xu; Dayong Shen; Yuqiang Fang; Zhipeng Xiao
+IEEE Transactions on Intelligent Transportation Systems
+Year: 2016, Volume: PP, Issue: 99
+Pages: 1 - 7, DOI: 10.1109/TITS.2016.2614916
+IEEE Early Access Articles
+Abstract
+(991 Kb)
+2017-04-04 19:19:42,266 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176868/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176868", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,284 - DEBUG - Finished Request
+2017-04-04 19:19:42,285 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176885/text {"id": ":wdc:1491301176885", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,317 - DEBUG - Finished Request
+2017-04-04 19:19:42,319 - DEBUG - pdf_title:Traffic Sign Recognition Using Kernel Extreme Learning Machines With Deep Perceptual Features
+2017-04-04 19:19:42,320 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176885/attribute/href {"id": ":wdc:1491301176885", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,340 - DEBUG - Finished Request
+2017-04-04 19:19:42,342 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7742353/]
+2017-04-04 19:19:42,342 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7742353
+2017-04-04 19:19:42,343 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7742353
+2017-04-04 19:19:42,343 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176868/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176868", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,366 - DEBUG - Finished Request
+2017-04-04 19:19:42,367 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176868/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176868", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,389 - DEBUG - Finished Request
+2017-04-04 19:19:42,390 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176886/text {"id": ":wdc:1491301176886", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,450 - DEBUG - Finished Request
+2017-04-04 19:19:42,451 - DEBUG - pdf_author:['Yujun Zeng', 'Xin Xu', 'Dayong Shen', 'Yuqiang Fang', 'Zhipeng Xiao']
+2017-04-04 19:19:42,451 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176869/text {"id": ":wdc:1491301176869", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,519 - DEBUG - Finished Request
+2017-04-04 19:19:42,520 - DEBUG - txt:Big-data-generated traffic flow prediction using deep learning and dempster-shafer theory
+Ridha Soua; Arief Koesdwiady; Fakhri Karray
+2016 International Joint Conference on Neural Networks (IJCNN)
+Year: 2016
+Pages: 3195 - 3202, DOI: 10.1109/IJCNN.2016.7727607
+IEEE Conference Publications
+Abstract
+(452 Kb)
+2017-04-04 19:19:42,521 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176869/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176869", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,544 - DEBUG - Finished Request
+2017-04-04 19:19:42,545 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176887/text {"id": ":wdc:1491301176887", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,591 - DEBUG - Finished Request
+2017-04-04 19:19:42,592 - DEBUG - pdf_title:Big-data-generated traffic flow prediction using deep learning and dempster-shafer theory
+2017-04-04 19:19:42,592 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176887/attribute/href {"id": ":wdc:1491301176887", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,625 - DEBUG - Finished Request
+2017-04-04 19:19:42,626 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7727607/]
+2017-04-04 19:19:42,626 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7727607
+2017-04-04 19:19:42,627 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7727607
+2017-04-04 19:19:42,627 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176869/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176869", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,653 - DEBUG - Finished Request
+2017-04-04 19:19:42,654 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176869/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176869", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,681 - DEBUG - Finished Request
+2017-04-04 19:19:42,682 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176888/text {"id": ":wdc:1491301176888", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,738 - DEBUG - Finished Request
+2017-04-04 19:19:42,739 - DEBUG - pdf_author:['Ridha Soua', 'Arief Koesdwiady', 'Fakhri Karray']
+2017-04-04 19:19:42,743 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176870/text {"id": ":wdc:1491301176870", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,873 - DEBUG - Finished Request
+2017-04-04 19:19:42,874 - DEBUG - txt:Performance evaluation of the deep learning approach for traffic flow prediction at different times
+Yanjie Duan; Yisheng Lv; Fei-Yue Wang
+2016 IEEE International Conference on Service Operations and Logistics, and Informatics (SOLI)
+Year: 2016
+Pages: 223 - 227, DOI: 10.1109/SOLI.2016.7551691
+IEEE Conference Publications
+Abstract
+(154 Kb)
+2017-04-04 19:19:42,874 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176870/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176870", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,895 - DEBUG - Finished Request
+2017-04-04 19:19:42,895 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176889/text {"id": ":wdc:1491301176889", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:42,986 - DEBUG - Finished Request
+2017-04-04 19:19:42,986 - DEBUG - pdf_title:Performance evaluation of the deep learning approach for traffic flow prediction at different times
+2017-04-04 19:19:42,987 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176889/attribute/href {"id": ":wdc:1491301176889", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:43,011 - DEBUG - Finished Request
+2017-04-04 19:19:43,012 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7551691/]
+2017-04-04 19:19:43,013 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7551691
+2017-04-04 19:19:43,015 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7551691
+2017-04-04 19:19:43,015 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176870/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176870", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:43,044 - DEBUG - Finished Request
+2017-04-04 19:19:43,045 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176870/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176870", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:43,072 - DEBUG - Finished Request
+2017-04-04 19:19:43,074 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176890/text {"id": ":wdc:1491301176890", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:43,153 - DEBUG - Finished Request
+2017-04-04 19:19:43,153 - DEBUG - pdf_author:['Yanjie Duan', 'Yisheng Lv', 'Fei-Yue Wang']
+2017-04-04 19:19:43,154 - DEBUG - len(link)<25.IEEEXplore.download_papers finished.
+2017-04-04 19:19:43,155 - DEBUG - DELETE http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/window {"sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
+2017-04-04 19:19:43,165 - DEBUG - Finished Request
+2017-04-04 19:19:43,167 - INFO - IEEEXplore_test.test_download_papers finished
