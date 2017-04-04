@@ -10,3 +10,4 @@ backup_log_count: 10
 
 IEEE_top_page: "http://ieeexplore.ieee.org/Xplore/home.jsp"
 phantomJS_pass: "/usr/local/bin/phantomjs"
+myslq_url: "mysql+pymysql://alladmin:admin@localhost/paper_graph?charset=utf8"

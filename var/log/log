@@ -301,3 +301,728 @@ Abstract
 2017-04-04 19:19:43,155 - DEBUG - DELETE http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/window {"sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
 2017-04-04 19:19:43,165 - DEBUG - Finished Request
 2017-04-04 19:19:43,167 - INFO - IEEEXplore_test.test_download_papers finished
+2017-04-04 22:17:14,030 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140250102760168]
+2017-04-04 22:17:14,030 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:17:14,222 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:17:14,222 - INFO - MySQL_test.test_init_mysql_operator finished
+2017-04-04 22:18:21,864 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140456380162848]
+2017-04-04 22:18:21,865 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:18:22,029 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:18:22,057 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140456380162848]
+2017-04-04 22:18:22,057 - DEBUG - class Mysql_operator created.
+2017-04-04 22:18:22,058 - INFO - MySQL_test.test_init_mysql_operator finished
+2017-04-04 22:20:33,537 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139955136418592]
+2017-04-04 22:20:33,537 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:20:33,729 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:21:15,670 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139833302786904]
+2017-04-04 22:21:15,670 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:21:16,000 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:21:16,037 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139833302786904]
+2017-04-04 22:21:16,037 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:21:16,037 - DEBUG - Mysql_operator.establish_session finished
+2017-04-04 22:21:16,037 - DEBUG - class Mysql_operator created.
+2017-04-04 22:21:16,038 - INFO - MySQL_test.test_init_mysql_operator finished
+2017-04-04 22:23:19,551 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140067479823136]
+2017-04-04 22:23:19,551 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:23:19,719 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:23:30,012 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139663231963992]
+2017-04-04 22:23:30,012 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:23:30,262 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:23:30,308 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139663231963992]
+2017-04-04 22:23:30,310 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:24:05,571 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139966439224096]
+2017-04-04 22:24:05,571 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:24:05,741 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:24:05,772 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139966439224096]
+2017-04-04 22:24:05,772 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:24:16,639 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140603783770912]
+2017-04-04 22:24:16,639 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:24:16,906 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:24:16,934 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140603783770912]
+2017-04-04 22:24:16,935 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:24:34,006 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140402988651296]
+2017-04-04 22:24:34,007 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:24:34,209 - INFO - MySQL_test.test_init_mysql_operator start
+2017-04-04 22:24:34,252 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140402988651296]
+2017-04-04 22:24:34,253 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:24:34,258 - DEBUG - class Mysql_operator created.
+2017-04-04 22:24:34,259 - INFO - MySQL_test.test_init_mysql_operator finished
+2017-04-04 22:31:34,294 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139864279597856]
+2017-04-04 22:31:34,326 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139864279597856]
+2017-04-04 22:31:34,326 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:31:34,648 - DEBUG - class Mysql_operator created.
+2017-04-04 22:31:54,917 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140515796742944]
+2017-04-04 22:31:54,943 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140515796742944]
+2017-04-04 22:31:54,944 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:31:55,269 - DEBUG - class Mysql_operator created.
+2017-04-04 22:31:55,269 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:31:55,269 - INFO - MySQL_test.test_insert_a_title start
+2017-04-04 22:31:55,343 - INFO - MySQL_test.test_insert_a_title finished
+2017-04-04 22:35:36,617 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140190824342248]
+2017-04-04 22:35:36,656 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140190824342248]
+2017-04-04 22:35:36,656 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:35:37,060 - DEBUG - class Mysql_operator created.
+2017-04-04 22:35:37,060 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:35:37,060 - INFO - MySQL_test.test_insert_a_title2 start
+2017-04-04 22:35:37,097 - INFO - MySQL_test.test_insert_a_title2 finished
+2017-04-04 22:44:01,856 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140020536177552]
+2017-04-04 22:44:01,887 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140020536177552]
+2017-04-04 22:44:01,887 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:44:02,168 - DEBUG - class Mysql_operator created.
+2017-04-04 22:44:02,168 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:44:02,169 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:44:02,179 - DEBUG - Mysql_operator.delete start
+2017-04-04 22:44:02,191 - INFO - MySQL_test.test_insert_a_title2 start
+2017-04-04 22:44:02,210 - DEBUG - Mysql_operator.insert start
+2017-04-04 22:44:02,216 - DEBUG - Mysql_operator.insert finished
+2017-04-04 22:44:02,232 - INFO - MySQL_test.test_insert_a_title2 finished
+2017-04-04 22:44:20,553 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140281289499536]
+2017-04-04 22:44:20,598 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140281289499536]
+2017-04-04 22:44:20,598 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:44:20,819 - DEBUG - class Mysql_operator created.
+2017-04-04 22:44:20,820 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:44:20,820 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:44:20,836 - DEBUG - Mysql_operator.delete start
+2017-04-04 22:44:20,837 - DEBUG - target table is papers
+2017-04-04 22:44:20,837 - DEBUG - Mysql_operator.delete finished
+2017-04-04 22:44:20,837 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 22:44:20,837 - INFO - MySQL_test.test_insert_a_title2 start
+2017-04-04 22:44:20,850 - DEBUG - Mysql_operator.insert start
+2017-04-04 22:44:20,855 - DEBUG - Mysql_operator.insert finished
+2017-04-04 22:44:20,858 - INFO - MySQL_test.test_insert_a_title2 finished
+2017-04-04 22:54:26,802 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140648066438032]
+2017-04-04 22:54:26,846 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140648066438032]
+2017-04-04 22:54:26,846 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:54:27,130 - DEBUG - class Mysql_operator created.
+2017-04-04 22:54:27,130 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:54:27,131 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:54:27,145 - DEBUG - Mysql_operator.delete start
+2017-04-04 22:54:27,146 - DEBUG - Mysql_operator.delete finished
+2017-04-04 22:54:27,146 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 22:54:27,147 - INFO - MySQL_test.test_insert_a_title2 start
+2017-04-04 22:54:27,165 - DEBUG - Mysql_operator.insert start
+2017-04-04 22:54:27,188 - DEBUG - Mysql_operator.insert finished
+2017-04-04 22:54:27,205 - INFO - MySQL_test.test_insert_a_title2 finished
+2017-04-04 22:55:06,910 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140136731902864]
+2017-04-04 22:55:06,933 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140136731902864]
+2017-04-04 22:55:06,934 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:55:07,117 - DEBUG - class Mysql_operator created.
+2017-04-04 22:55:07,117 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:55:07,117 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:55:07,132 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 22:55:07,137 - INFO - MySQL_test.test_insert_a_title2 start
+2017-04-04 22:55:07,164 - DEBUG - Mysql_operator.insert start
+2017-04-04 22:55:07,168 - DEBUG - Mysql_operator.insert finished
+2017-04-04 22:55:07,176 - INFO - MySQL_test.test_insert_a_title2 finished
+2017-04-04 22:55:26,792 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140690431685520]
+2017-04-04 22:55:26,823 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140690431685520]
+2017-04-04 22:55:26,824 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:55:27,016 - DEBUG - class Mysql_operator created.
+2017-04-04 22:55:27,017 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:55:27,017 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:55:27,041 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 22:55:27,047 - INFO - MySQL_test.test_insert_a_title2 start
+2017-04-04 22:55:27,062 - DEBUG - Mysql_operator.insert start
+2017-04-04 22:55:27,068 - DEBUG - Mysql_operator.insert finished
+2017-04-04 22:55:27,071 - INFO - MySQL_test.test_insert_a_title2 finished
+2017-04-04 22:55:36,775 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140404099593104]
+2017-04-04 22:55:36,812 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140404099593104]
+2017-04-04 22:55:36,812 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:55:36,974 - DEBUG - class Mysql_operator created.
+2017-04-04 22:55:36,974 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:55:36,975 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:55:36,987 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 22:55:37,005 - INFO - MySQL_test.test_insert_a_title2 start
+2017-04-04 22:55:37,008 - DEBUG - Mysql_operator.insert start
+2017-04-04 22:55:37,028 - DEBUG - Mysql_operator.insert finished
+2017-04-04 22:55:37,030 - INFO - MySQL_test.test_insert_a_title2 finished
+2017-04-04 22:55:47,437 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140359329743760]
+2017-04-04 22:55:47,472 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140359329743760]
+2017-04-04 22:55:47,472 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:55:47,806 - DEBUG - class Mysql_operator created.
+2017-04-04 22:55:47,807 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:55:47,807 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:55:47,824 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 22:55:47,846 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 22:55:47,847 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 22:55:47,847 - INFO - MySQL_test.test_insert_a_title2 start
+2017-04-04 22:55:47,865 - DEBUG - Mysql_operator.insert start
+2017-04-04 22:55:47,908 - DEBUG - Mysql_operator.insert finished
+2017-04-04 22:55:47,916 - INFO - MySQL_test.test_insert_a_title2 finished
+2017-04-04 22:58:54,434 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140413015106224]
+2017-04-04 22:58:54,458 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140413015106224]
+2017-04-04 22:58:54,458 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:58:54,659 - DEBUG - class Mysql_operator created.
+2017-04-04 22:58:54,659 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:58:54,659 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:58:54,685 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 22:58:54,712 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 22:58:54,715 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 22:59:54,720 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140218135241392]
+2017-04-04 22:59:54,748 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140218135241392]
+2017-04-04 22:59:54,749 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 22:59:54,943 - DEBUG - class Mysql_operator created.
+2017-04-04 22:59:54,944 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 22:59:54,944 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 22:59:54,970 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 22:59:54,991 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 22:59:54,992 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:00:25,071 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140659513676408]
+2017-04-04 23:00:25,091 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140659513676408]
+2017-04-04 23:00:25,092 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:00:25,313 - DEBUG - class Mysql_operator created.
+2017-04-04 23:00:25,314 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:00:25,314 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:00:46,122 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140689788232312]
+2017-04-04 23:00:46,144 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140689788232312]
+2017-04-04 23:00:46,144 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:00:46,324 - DEBUG - class Mysql_operator created.
+2017-04-04 23:00:46,324 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:00:46,325 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:00:46,343 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:00:46,363 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:00:46,363 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:00:46,364 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:00:46,364 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:00:46,369 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 23:00:46,370 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:01:12,182 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139661627019896]
+2017-04-04 23:01:12,206 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139661627019896]
+2017-04-04 23:01:12,207 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:01:12,489 - DEBUG - class Mysql_operator created.
+2017-04-04 23:01:12,493 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:01:12,496 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:01:12,524 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:01:12,594 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:01:12,595 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:01:12,596 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:01:12,598 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:01:31,220 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140008047223416]
+2017-04-04 23:01:31,241 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140008047223416]
+2017-04-04 23:01:31,241 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:01:31,455 - DEBUG - class Mysql_operator created.
+2017-04-04 23:01:31,455 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:01:31,456 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:01:31,487 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:01:31,517 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:01:31,519 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:01:31,525 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:01:31,526 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:01:42,656 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140470978605688]
+2017-04-04 23:01:42,675 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140470978605688]
+2017-04-04 23:01:42,675 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:01:43,039 - DEBUG - class Mysql_operator created.
+2017-04-04 23:01:43,039 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:01:43,040 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:01:43,054 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:01:43,073 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:01:43,074 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:01:43,080 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:01:43,080 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:01:43,086 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 23:01:43,086 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:02:36,352 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140711606805112]
+2017-04-04 23:02:36,380 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140711606805112]
+2017-04-04 23:02:36,381 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:02:36,567 - DEBUG - class Mysql_operator created.
+2017-04-04 23:02:36,568 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:02:36,568 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:02:36,587 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:02:36,603 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:02:36,603 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:02:36,608 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:02:36,608 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:04:00,903 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140294921626232]
+2017-04-04 23:04:00,932 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140294921626232]
+2017-04-04 23:04:00,932 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:04:01,125 - DEBUG - class Mysql_operator created.
+2017-04-04 23:04:01,126 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:04:01,126 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:04:01,192 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:04:01,225 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:04:01,225 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:04:01,231 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:04:01,231 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:04:11,650 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140295311946360]
+2017-04-04 23:04:11,691 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140295311946360]
+2017-04-04 23:04:11,692 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:04:12,028 - DEBUG - class Mysql_operator created.
+2017-04-04 23:04:12,029 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:04:12,029 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:04:12,050 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:04:12,069 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:04:12,070 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:04:12,078 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:04:12,078 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:04:12,083 - DEBUG - delete targets length[1]
+2017-04-04 23:07:05,288 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140239801270904]
+2017-04-04 23:07:05,316 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140239801270904]
+2017-04-04 23:07:05,317 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:07:05,538 - DEBUG - class Mysql_operator created.
+2017-04-04 23:07:05,538 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:07:05,539 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:07:05,552 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:07:05,569 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:07:05,569 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:07:05,573 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:07:05,574 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:08:26,137 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140242746950264]
+2017-04-04 23:08:40,363 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140495279002288]
+2017-04-04 23:08:40,398 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140495279002288]
+2017-04-04 23:08:40,398 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:08:40,750 - DEBUG - class Mysql_operator created.
+2017-04-04 23:08:40,751 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:08:40,752 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:08:40,769 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:08:40,795 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:08:40,796 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:08:40,799 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:08:40,799 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:08:40,803 - DEBUG - delete targets length[1]
+2017-04-04 23:09:14,740 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139795529179824]
+2017-04-04 23:09:14,771 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139795529179824]
+2017-04-04 23:09:14,772 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:09:15,024 - DEBUG - class Mysql_operator created.
+2017-04-04 23:09:15,024 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:09:15,025 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:09:15,054 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:09:15,093 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:09:15,094 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:09:15,100 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:09:15,102 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:09:34,406 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140280297955960]
+2017-04-04 23:09:34,444 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140280297955960]
+2017-04-04 23:09:34,446 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:09:34,915 - DEBUG - class Mysql_operator created.
+2017-04-04 23:09:34,916 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:09:34,916 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:09:34,937 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:09:34,964 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:09:34,965 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:09:34,971 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:09:34,971 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:09:34,983 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 23:09:34,984 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:10:09,975 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140583112737400]
+2017-04-04 23:10:10,026 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140583112737400]
+2017-04-04 23:10:10,026 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:10:10,525 - DEBUG - class Mysql_operator created.
+2017-04-04 23:10:10,526 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:10:10,526 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:10:10,539 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:10:10,569 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:10:10,569 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:10:10,574 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:10:10,574 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:10:16,414 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140643567592112]
+2017-04-04 23:10:16,453 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140643567592112]
+2017-04-04 23:10:16,454 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:10:16,872 - DEBUG - class Mysql_operator created.
+2017-04-04 23:10:16,873 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:10:16,873 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:10:16,890 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:10:16,920 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:10:16,921 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:10:16,924 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:10:16,924 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:10:16,929 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 23:10:16,930 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:10:45,905 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139844082373240]
+2017-04-04 23:10:45,930 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139844082373240]
+2017-04-04 23:10:45,930 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:10:46,201 - DEBUG - class Mysql_operator created.
+2017-04-04 23:10:46,201 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:10:46,202 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:10:46,219 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:11:17,863 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140043319480952]
+2017-04-04 23:11:17,893 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140043319480952]
+2017-04-04 23:11:17,893 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:11:18,215 - DEBUG - class Mysql_operator created.
+2017-04-04 23:11:18,215 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:11:18,216 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:11:18,239 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:11:18,266 - DEBUG - delete target
+2017-04-04 23:12:17,904 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140452791812728]
+2017-04-04 23:12:17,943 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140452791812728]
+2017-04-04 23:12:17,943 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:12:18,292 - DEBUG - class Mysql_operator created.
+2017-04-04 23:12:18,293 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:12:18,296 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:12:18,355 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:12:18,392 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 23:12:18,395 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:12:28,326 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140309530755704]
+2017-04-04 23:12:28,351 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140309530755704]
+2017-04-04 23:12:28,352 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:12:28,664 - DEBUG - class Mysql_operator created.
+2017-04-04 23:12:28,665 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:12:28,665 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:12:28,677 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:12:28,708 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:12:28,708 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:12:28,710 - DEBUG - delete target
+2017-04-04 23:12:28,738 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 23:12:28,739 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-04 23:12:59,244 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139824343556728]
+2017-04-04 23:12:59,305 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139824343556728]
+2017-04-04 23:12:59,319 - DEBUG - Mysql_operator.establish_session start
+2017-04-04 23:12:59,778 - DEBUG - class Mysql_operator created.
+2017-04-04 23:12:59,778 - INFO - 
+
+MySQL_test.setUpClass finished.
+---------- start ---------
+2017-04-04 23:12:59,780 - INFO - MySQL_test.test_delete_a_title start
+2017-04-04 23:12:59,795 - DEBUG - Mysql_operator.insert start
+2017-04-04 23:12:59,812 - DEBUG - Mysql_operator.insert finished
+2017-04-04 23:12:59,813 - DEBUG - Mysql_operator.delete_by_id_from_papers start
+2017-04-04 23:12:59,815 - DEBUG - delete id[1]
+2017-04-04 23:12:59,848 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
+2017-04-04 23:12:59,849 - INFO - MySQL_test.test_delete_a_title finished
