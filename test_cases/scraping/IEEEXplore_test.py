@@ -32,29 +32,30 @@ class IEEEXplore_test(unittest.TestCase):
 		num_of_papers = 1
 		self.xplore.get_papers_by_keywords(keywords, num_of_papers)
 	"""
-
+	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://google.co.jp/"
 		#driver = self.xplore.create_driver("http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313")
 		driver = self.xplore.create_driver(url)
-		import urllib
-		urllib.urlretrieve(url, 'test.pdf')
+		#import urllib
+		#urllib.urlretrieve(url, 'test.pdf')
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		
+	"""	
 		
 			
-	"""
 	def test_download_papers(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		driver = self.xplore.create_driver("http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic")
-		self.xplore.download_papers(driver, "../../tmp/output", 1)
+		self.xplore.download_papers(driver, "../../tmp/output", 25)
 		driver.close()
 		#http://ieeexplore.ieee.org/document/7874313/
 		#http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+
+
+
 	"""
 	def test_convert_path_to_url(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

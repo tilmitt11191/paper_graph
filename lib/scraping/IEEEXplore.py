@@ -81,13 +81,16 @@ class IEEEXplore:
 			element = link.find_element_by_css_selector("h2 > a")
 			pdf_title = element.text
 			self.log.debug("pdf_title:"+pdf_title)
-			pdf_path = self.convert_path_to_url(element.get_attribute("href"))
-			self.log.debug("pdf_dir:"+pdf_path)
+			pdf_url = self.convert_path_to_url(element.get_attribute("href"))
+			self.log.debug("pdf_dir:"+pdf_url)
 			
 			element = link.find_element_by_css_selector("p")
 			pdf_authors = link.find_element_by_css_selector("p").text.split("; ")
 			self.log.debug("pdf_author:" + str(pdf_authors))
 			
+			print("pdf_title:"+pdf_title)
+			print("pdf_dir:"+pdf_url)
+			print("pdf_author:" + str(pdf_authors))
 			
 			i+=1
 			if i >= download_num:

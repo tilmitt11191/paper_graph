@@ -1,0 +1,30 @@
+pdf_title:LSTM network: a deep learning approach for short-term traffic forecast
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
+pdf_author:['Zheng Zhao', 'Weihai Chen', 'Xingming Wu', 'Peter C. Y. Chen', 'Jingmeng Liu']
+pdf_title:Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7849067
+pdf_author:['Laisen Nie', 'Dingde Jiang', 'Lei Guo', 'Shui Yu', 'Houbing Song']
+pdf_title:Traffic Speed Prediction and Congestion Source Exploration: A Deep Learning Method
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7837874
+pdf_author:['Jingyuan Wang', 'Qian Gu', 'Junjie Wu', 'Guannan Liu', 'Zhang Xiong']
+pdf_title:Traffic speed prediction using deep learning method
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7795712
+pdf_author:['Yuhan Jia', 'Jianping Wu', 'Yiman Du']
+pdf_title:The Deep Learning Vision for Heterogeneous Network Traffic Control: Proposal, Challenges, and Future Perspective
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7792369
+pdf_author:['Nei Kato', 'Zubair Md. Fadlullah', 'Bomin Mao', 'Fengxiao Tang', 'Osamu Akashi', 'Takeru Inoue', 'Kimihiro Mizutani']
+pdf_title:Improving Traffic Flow Prediction With Weather Information in Connected Cars: A Deep Learning Approach
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7501574
+pdf_author:['Arief Koesdwiady', 'Ridha Soua', 'Fakhreddine Karray']
+pdf_title:The research on traffic sign recognition based on deep learning
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7751612
+pdf_author:['Chen Li', 'Cheng Yang']
+pdf_title:Traffic Sign Recognition Using Kernel Extreme Learning Machines With Deep Perceptual Features
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7742353
+pdf_author:['Yujun Zeng', 'Xin Xu', 'Dayong Shen', 'Yuqiang Fang', 'Zhipeng Xiao']
+pdf_title:Big-data-generated traffic flow prediction using deep learning and dempster-shafer theory
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7727607
+pdf_author:['Ridha Soua', 'Arief Koesdwiady', 'Fakhri Karray']
+pdf_title:Performance evaluation of the deep learning approach for traffic flow prediction at different times
+pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7551691
+pdf_author:['Yanjie Duan', 'Yisheng Lv', 'Fei-Yue Wang']
