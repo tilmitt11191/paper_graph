@@ -27,7 +27,10 @@ class Table_papers(Base):
 		self.keywords = keywords
 		self.cites = cites
 		self.path = path
-		self.timestamp = timestamp
+		if timestamp == "":
+			self.timestamp = None
+		else:
+			self.timestamp = timestamp
 
 	def __repr__(self):
 		return 'Table_papers'
