@@ -1,6 +1,48 @@
 PhantomJS is launching GhostDriver...
-[INFO  - 2017-04-04T10:19:23.534Z] GhostDriver - Main - running on port 49405
-[INFO  - 2017-04-04T10:19:24.230Z] Session [2cf39be0-1920-11e7-aeaf-ad62f6576783] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34","webSecurityEnabled":true}
-[INFO  - 2017-04-04T10:19:24.231Z] Session [2cf39be0-1920-11e7-aeaf-ad62f6576783] - page.customHeaders:  - {}
-[INFO  - 2017-04-04T10:19:24.232Z] Session [2cf39be0-1920-11e7-aeaf-ad62f6576783] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"1.9.8","driverName":"ghostdriver","driverVersion":"1.1.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2017-04-04T10:19:24.233Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 2cf39be0-1920-11e7-aeaf-ad62f6576783
+[INFO  - 2017-04-05T09:12:44.309Z] GhostDriver - Main - running on port 52745
+[INFO  - 2017-04-05T09:12:44.580Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34","webSecurityEnabled":true}
+[INFO  - 2017-04-05T09:12:44.581Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.customHeaders:  - {}
+[INFO  - 2017-04-05T09:12:44.582Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"1.9.8","driverName":"ghostdriver","driverVersion":"1.1.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2017-04-05T09:12:44.582Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 0765a4c0-19e0-11e7-8882-293aa027d988
+[ERROR - 2017-04-05T09:12:45.693Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - msg: ReferenceError: Can't find variable: coremetrics
+[ERROR - 2017-04-05T09:12:45.693Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - stack:
+  (anonymous function) (http://libs.coremetrics.com/configs/52820000.js:1)
+[ERROR - 2017-04-05T09:12:45.696Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - msg: ReferenceError: Can't find variable: CM_DDX
+[ERROR - 2017-04-05T09:12:45.696Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - stack:
+  (anonymous function) (http://tmscdn.coremetrics.com/tms/dispatcher-v3.js:1)
+  (anonymous function) (http://tmscdn.coremetrics.com/tms/dispatcher-v3.js:3)
+[ERROR - 2017-04-05T09:12:45.725Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - msg: ReferenceError: Can't find variable: MathJax
+[ERROR - 2017-04-05T09:12:45.726Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - stack:
+  (anonymous function) (http://staticieeexplore.ieee.org/xploreAssets/MathJax-2.6.1/jax/output/HTML-CSS/jax.js?rev=2.6.1:19)
+[ERROR - 2017-04-05T09:12:45.728Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - msg: ReferenceError: Can't find variable: MathJax
+[ERROR - 2017-04-05T09:12:45.728Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - stack:
+  (anonymous function) (http://staticieeexplore.ieee.org/xploreAssets/MathJax-2.6.1/extensions/MathEvents.js?rev=2.6.1:19)
+[ERROR - 2017-04-05T09:12:48.005Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - msg: TypeError: 'null' is not an object (evaluating 'm[2]')
+[ERROR - 2017-04-05T09:12:48.006Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - stack:
+  getLocation (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:17)
+  prepareTransportStack (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:17)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:17)
+  initEasyXdm (http://staticieeexplore.ieee.org/assets/dist/js/master.js?cv=20170228_000000:1)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/master.js?cv=20170228_000000:1)
+[ERROR - 2017-04-05T09:12:49.005Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - msg: TypeError: 'undefined' is not an object (evaluating 'url.replace')
+[ERROR - 2017-04-05T09:12:49.011Z] Session [0765a4c0-19e0-11e7-8882-293aa027d988] - page.onError - stack:
+  trimEmptyHash (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:29)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:29)
+  invoke (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  getService (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  invoke (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  getService (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  invoke (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  forEach (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:25)
+  createInjector (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  bootstrap (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  angularInit (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:26)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:34)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:5)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:5)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:4)
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:4)

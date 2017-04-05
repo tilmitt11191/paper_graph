@@ -18,6 +18,7 @@ class Table_papers(Base):
 	cites = Column("cites", TINYTEXT)
 	path = Column("path", TINYTEXT)
 	timestamp = Column("timestamp", DATETIME)
+	
 
 	def __init__(self, id="", title="", authors="", keywords="", cites="", path="", timestamp=""):
 		self.id = id
@@ -30,8 +31,7 @@ class Table_papers(Base):
 
 	def __repr__(self):
 		return 'Table_papers'
-	# __init__ や __repr__ を定義すると便利だが、省略
-	
+
 	
 	def get_vars(self):
 		return("{"+

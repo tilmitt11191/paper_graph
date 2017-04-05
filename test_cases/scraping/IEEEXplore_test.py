@@ -44,17 +44,36 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""	
 		
-			
+	"""
 	def test_download_papers(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		driver = self.xplore.create_driver("http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic")
-		self.xplore.download_papers(driver, "../../tmp/output", 25)
+		self.xplore.download_papers(driver, "../../tmp/output", 1)
 		driver.close()
 		#http://ieeexplore.ieee.org/document/7874313/
 		#http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
-
+	"""
+	
+	"""
+	def test_get_urls_of_papers(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		driver = self.xplore.create_driver("http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic")
+		urls = self.xplore.get_urls_of_papers(driver, 1)
+		print(str(urls))
+		driver.close()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	
+	def test_get_attributes_and_download_pdf(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		#driver = self.xplore.create_driver("http://ieeexplore.ieee.org/document/7849067/")
+		driver = self.xplore.create_driver("./samples/paper_page.html")
+		self.xplore.get_attributes_and_download_pdf(driver)
+		
+		driver.close()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	
 
 	"""
 	def test_convert_path_to_url(self):

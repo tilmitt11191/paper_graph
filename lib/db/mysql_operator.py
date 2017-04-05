@@ -13,6 +13,7 @@ class Mysql_operator:
 		
 		self.log.debug("class " + __class__.__name__ + " created.")
 	
+
 	def establish_session(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		import sqlalchemy
@@ -23,6 +24,7 @@ class Mysql_operator:
 		return Session()
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
 
 	def insert(self, query):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")		

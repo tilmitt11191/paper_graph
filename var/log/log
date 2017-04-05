@@ -1,1028 +1,133 @@
-2017-04-04 19:19:16,812 - INFO - return logger
+2017-04-05 18:12:42,379 - INFO - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140513842588976]
-2017-04-04 19:19:16,815 - INFO - 
+ id[139668440943920]
+2017-04-05 18:12:42,381 - INFO - 
 
 IEEEXplore_test.setUpClass finished.
 ---------- start ---------
-2017-04-04 19:19:16,993 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140513842588976]
-2017-04-04 19:19:17,110 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140513842588976]
-2017-04-04 19:19:17,111 - DEBUG - class Search_options created.
-2017-04-04 19:19:17,112 - DEBUG - class IEEEXplore created.
-2017-04-04 19:19:17,113 - INFO - IEEEXplore_test.test_download_papers start
-2017-04-04 19:19:17,114 - DEBUG - IEEEXplore.create_driver start
-2017-04-04 19:19:24,147 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session {"requiredCapabilities": {}, "desiredCapabilities": {"version": "", "browserName": "phantomjs", "javascriptEnabled": true, "platform": "ANY"}}
-2017-04-04 19:19:24,237 - DEBUG - Finished Request
-2017-04-04 19:19:24,241 - DEBUG - driver.get(http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic)
-2017-04-04 19:19:24,243 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/url {"url": "http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:36,693 - DEBUG - Finished Request
-2017-04-04 19:19:36,695 - DEBUG - IEEEXplore.create_driver finished. return driver
-2017-04-04 19:19:36,700 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/elements {"value": "pure-u-22-24", "using": "class name", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:36,877 - DEBUG - Finished Request
-2017-04-04 19:19:36,880 - DEBUG - len(links)[10]
-2017-04-04 19:19:36,883 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176861/text {"id": ":wdc:1491301176861", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:37,436 - DEBUG - Finished Request
-2017-04-04 19:19:37,440 - DEBUG - txt:LSTM network: a deep learning approach for short-term traffic forecast
-Zheng Zhao; Weihai Chen; Xingming Wu; Peter C. Y. Chen; Jingmeng Liu
-IET Intelligent Transport Systems
-Year: 2017, Volume: 11, Issue: 2
-Pages: 68 - 75, DOI: 10.1049/iet-its.2016.0208
-IET Journals & Magazines
-Abstract
-(5652 Kb)
-2017-04-04 19:19:37,445 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176861/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176861", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:37,542 - DEBUG - Finished Request
-2017-04-04 19:19:37,544 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176871/text {"id": ":wdc:1491301176871", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:37,637 - DEBUG - Finished Request
-2017-04-04 19:19:37,639 - DEBUG - pdf_title:LSTM network: a deep learning approach for short-term traffic forecast
-2017-04-04 19:19:37,642 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176871/attribute/href {"id": ":wdc:1491301176871", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:37,693 - DEBUG - Finished Request
-2017-04-04 19:19:37,694 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7874313/]
-2017-04-04 19:19:37,695 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
-2017-04-04 19:19:37,696 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
-2017-04-04 19:19:37,697 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176861/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176861", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:37,758 - DEBUG - Finished Request
-2017-04-04 19:19:37,763 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176861/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176861", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:37,848 - DEBUG - Finished Request
-2017-04-04 19:19:37,850 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176872/text {"id": ":wdc:1491301176872", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:38,017 - DEBUG - Finished Request
-2017-04-04 19:19:38,020 - DEBUG - pdf_author:['Zheng Zhao', 'Weihai Chen', 'Xingming Wu', 'Peter C. Y. Chen', 'Jingmeng Liu']
-2017-04-04 19:19:38,022 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176862/text {"id": ":wdc:1491301176862", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:38,396 - DEBUG - Finished Request
-2017-04-04 19:19:38,398 - DEBUG - txt:Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks
-Laisen Nie; Dingde Jiang; Lei Guo; Shui Yu; Houbing Song
-2016 IEEE Globecom Workshops (GC Wkshps)
-Year: 2016
-Pages: 1 - 6, DOI: 10.1109/GLOCOMW.2016.7849067
-IEEE Conference Publications
-Abstract
-(317 Kb)
-2017-04-04 19:19:38,399 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176862/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176862", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:38,456 - DEBUG - Finished Request
-2017-04-04 19:19:38,461 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176873/text {"id": ":wdc:1491301176873", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:38,524 - DEBUG - Finished Request
-2017-04-04 19:19:38,525 - DEBUG - pdf_title:Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks
-2017-04-04 19:19:38,526 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176873/attribute/href {"id": ":wdc:1491301176873", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:38,558 - DEBUG - Finished Request
-2017-04-04 19:19:38,559 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7849067/]
-2017-04-04 19:19:38,561 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7849067
-2017-04-04 19:19:38,562 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7849067
-2017-04-04 19:19:38,563 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176862/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176862", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:38,596 - DEBUG - Finished Request
-2017-04-04 19:19:38,598 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176862/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176862", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:38,631 - DEBUG - Finished Request
-2017-04-04 19:19:38,632 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176874/text {"id": ":wdc:1491301176874", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:38,793 - DEBUG - Finished Request
-2017-04-04 19:19:38,794 - DEBUG - pdf_author:['Laisen Nie', 'Dingde Jiang', 'Lei Guo', 'Shui Yu', 'Houbing Song']
-2017-04-04 19:19:38,796 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176863/text {"id": ":wdc:1491301176863", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:39,331 - DEBUG - Finished Request
-2017-04-04 19:19:39,332 - DEBUG - txt:Traffic Speed Prediction and Congestion Source Exploration: A Deep Learning Method
-Jingyuan Wang; Qian Gu; Junjie Wu; Guannan Liu; Zhang Xiong
-2016 IEEE 16th International Conference on Data Mining (ICDM)
-Year: 2016
-Pages: 499 - 508, DOI: 10.1109/ICDM.2016.0061
-IEEE Conference Publications
-Abstract
-(466 Kb)
-2017-04-04 19:19:39,333 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176863/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176863", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:39,430 - DEBUG - Finished Request
-2017-04-04 19:19:39,433 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176875/text {"id": ":wdc:1491301176875", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:39,498 - DEBUG - Finished Request
-2017-04-04 19:19:39,500 - DEBUG - pdf_title:Traffic Speed Prediction and Congestion Source Exploration: A Deep Learning Method
-2017-04-04 19:19:39,501 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176875/attribute/href {"id": ":wdc:1491301176875", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:39,527 - DEBUG - Finished Request
-2017-04-04 19:19:39,527 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7837874/]
-2017-04-04 19:19:39,528 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7837874
-2017-04-04 19:19:39,530 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7837874
-2017-04-04 19:19:39,530 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176863/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176863", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:39,569 - DEBUG - Finished Request
-2017-04-04 19:19:39,571 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176863/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176863", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:39,622 - DEBUG - Finished Request
-2017-04-04 19:19:39,624 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176876/text {"id": ":wdc:1491301176876", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:39,755 - DEBUG - Finished Request
-2017-04-04 19:19:39,757 - DEBUG - pdf_author:['Jingyuan Wang', 'Qian Gu', 'Junjie Wu', 'Guannan Liu', 'Zhang Xiong']
-2017-04-04 19:19:39,758 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176864/text {"id": ":wdc:1491301176864", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:39,986 - DEBUG - Finished Request
-2017-04-04 19:19:39,986 - DEBUG - txt:Traffic speed prediction using deep learning method
-Yuhan Jia; Jianping Wu; Yiman Du
-2016 IEEE 19th International Conference on Intelligent Transportation Systems (ITSC)
-Year: 2016
-Pages: 1217 - 1222, DOI: 10.1109/ITSC.2016.7795712
-IEEE Conference Publications
-Abstract
-(750 Kb)
-2017-04-04 19:19:39,987 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176864/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176864", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,026 - DEBUG - Finished Request
-2017-04-04 19:19:40,028 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176877/text {"id": ":wdc:1491301176877", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,077 - DEBUG - Finished Request
-2017-04-04 19:19:40,078 - DEBUG - pdf_title:Traffic speed prediction using deep learning method
-2017-04-04 19:19:40,078 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176877/attribute/href {"id": ":wdc:1491301176877", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,120 - DEBUG - Finished Request
-2017-04-04 19:19:40,121 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7795712/]
-2017-04-04 19:19:40,123 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7795712
-2017-04-04 19:19:40,123 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7795712
-2017-04-04 19:19:40,132 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176864/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176864", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,185 - DEBUG - Finished Request
-2017-04-04 19:19:40,187 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176864/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176864", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,269 - DEBUG - Finished Request
-2017-04-04 19:19:40,270 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176878/text {"id": ":wdc:1491301176878", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,359 - DEBUG - Finished Request
-2017-04-04 19:19:40,360 - DEBUG - pdf_author:['Yuhan Jia', 'Jianping Wu', 'Yiman Du']
-2017-04-04 19:19:40,361 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176865/text {"id": ":wdc:1491301176865", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,570 - DEBUG - Finished Request
-2017-04-04 19:19:40,571 - DEBUG - txt:The Deep Learning Vision for Heterogeneous Network Traffic Control: Proposal, Challenges, and Future Perspective
-Nei Kato; Zubair Md. Fadlullah; Bomin Mao; Fengxiao Tang; Osamu Akashi; Takeru Inoue; Kimihiro Mizutani
-IEEE Wireless Communications
-Year: 2017, Volume: PP, Issue: 99
-Pages: 2 - 9, DOI: 10.1109/MWC.2016.1600317WC
-IEEE Early Access Articles
-Abstract
-(957 Kb)
-2017-04-04 19:19:40,572 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176865/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176865", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,620 - DEBUG - Finished Request
-2017-04-04 19:19:40,621 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176879/text {"id": ":wdc:1491301176879", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,710 - DEBUG - Finished Request
-2017-04-04 19:19:40,711 - DEBUG - pdf_title:The Deep Learning Vision for Heterogeneous Network Traffic Control: Proposal, Challenges, and Future Perspective
-2017-04-04 19:19:40,711 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176879/attribute/href {"id": ":wdc:1491301176879", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,735 - DEBUG - Finished Request
-2017-04-04 19:19:40,736 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7792369/]
-2017-04-04 19:19:40,737 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7792369
-2017-04-04 19:19:40,737 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7792369
-2017-04-04 19:19:40,738 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176865/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176865", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,769 - DEBUG - Finished Request
-2017-04-04 19:19:40,770 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176865/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176865", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,800 - DEBUG - Finished Request
-2017-04-04 19:19:40,801 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176880/text {"id": ":wdc:1491301176880", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:40,874 - DEBUG - Finished Request
-2017-04-04 19:19:40,875 - DEBUG - pdf_author:['Nei Kato', 'Zubair Md. Fadlullah', 'Bomin Mao', 'Fengxiao Tang', 'Osamu Akashi', 'Takeru Inoue', 'Kimihiro Mizutani']
-2017-04-04 19:19:40,876 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176866/text {"id": ":wdc:1491301176866", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,121 - DEBUG - Finished Request
-2017-04-04 19:19:41,129 - DEBUG - txt:Improving Traffic Flow Prediction With Weather Information in Connected Cars: A Deep Learning Approach
-Arief Koesdwiady; Ridha Soua; Fakhreddine Karray
-IEEE Transactions on Vehicular Technology
-Year: 2016, Volume: 65, Issue: 12
-Pages: 9508 - 9517, DOI: 10.1109/TVT.2016.2585575
-IEEE Journals & Magazines
-Abstract
-(1184 Kb)
-2017-04-04 19:19:41,131 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176866/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176866", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,205 - DEBUG - Finished Request
-2017-04-04 19:19:41,206 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176881/text {"id": ":wdc:1491301176881", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,295 - DEBUG - Finished Request
-2017-04-04 19:19:41,297 - DEBUG - pdf_title:Improving Traffic Flow Prediction With Weather Information in Connected Cars: A Deep Learning Approach
-2017-04-04 19:19:41,299 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176881/attribute/href {"id": ":wdc:1491301176881", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,336 - DEBUG - Finished Request
-2017-04-04 19:19:41,336 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7501574/]
-2017-04-04 19:19:41,337 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7501574
-2017-04-04 19:19:41,340 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7501574
-2017-04-04 19:19:41,341 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176866/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176866", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,372 - DEBUG - Finished Request
-2017-04-04 19:19:41,373 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176866/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176866", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,412 - DEBUG - Finished Request
-2017-04-04 19:19:41,414 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176882/text {"id": ":wdc:1491301176882", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,505 - DEBUG - Finished Request
-2017-04-04 19:19:41,541 - DEBUG - pdf_author:['Arief Koesdwiady', 'Ridha Soua', 'Fakhreddine Karray']
-2017-04-04 19:19:41,542 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176867/text {"id": ":wdc:1491301176867", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,627 - DEBUG - Finished Request
-2017-04-04 19:19:41,628 - DEBUG - txt:The research on traffic sign recognition based on deep learning
-Chen Li; Cheng Yang
-2016 16th International Symposium on Communications and Information Technologies (ISCIT)
-Year: 2016
-Pages: 156 - 161, DOI: 10.1109/ISCIT.2016.7751612
-IEEE Conference Publications
-Abstract
-(313 Kb)
-2017-04-04 19:19:41,629 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176867/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176867", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,658 - DEBUG - Finished Request
-2017-04-04 19:19:41,659 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176883/text {"id": ":wdc:1491301176883", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,711 - DEBUG - Finished Request
-2017-04-04 19:19:41,712 - DEBUG - pdf_title:The research on traffic sign recognition based on deep learning
-2017-04-04 19:19:41,712 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176883/attribute/href {"id": ":wdc:1491301176883", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,738 - DEBUG - Finished Request
-2017-04-04 19:19:41,739 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7751612/]
-2017-04-04 19:19:41,743 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7751612
-2017-04-04 19:19:41,744 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7751612
-2017-04-04 19:19:41,744 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176867/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176867", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,779 - DEBUG - Finished Request
-2017-04-04 19:19:41,780 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176867/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176867", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,806 - DEBUG - Finished Request
-2017-04-04 19:19:41,812 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176884/text {"id": ":wdc:1491301176884", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:41,857 - DEBUG - Finished Request
-2017-04-04 19:19:41,859 - DEBUG - pdf_author:['Chen Li', 'Cheng Yang']
-2017-04-04 19:19:41,860 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176868/text {"id": ":wdc:1491301176868", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,265 - DEBUG - Finished Request
-2017-04-04 19:19:42,265 - DEBUG - txt:Traffic Sign Recognition Using Kernel Extreme Learning Machines With Deep Perceptual Features
-Yujun Zeng; Xin Xu; Dayong Shen; Yuqiang Fang; Zhipeng Xiao
-IEEE Transactions on Intelligent Transportation Systems
-Year: 2016, Volume: PP, Issue: 99
-Pages: 1 - 7, DOI: 10.1109/TITS.2016.2614916
-IEEE Early Access Articles
-Abstract
-(991 Kb)
-2017-04-04 19:19:42,266 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176868/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176868", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,284 - DEBUG - Finished Request
-2017-04-04 19:19:42,285 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176885/text {"id": ":wdc:1491301176885", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,317 - DEBUG - Finished Request
-2017-04-04 19:19:42,319 - DEBUG - pdf_title:Traffic Sign Recognition Using Kernel Extreme Learning Machines With Deep Perceptual Features
-2017-04-04 19:19:42,320 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176885/attribute/href {"id": ":wdc:1491301176885", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,340 - DEBUG - Finished Request
-2017-04-04 19:19:42,342 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7742353/]
-2017-04-04 19:19:42,342 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7742353
-2017-04-04 19:19:42,343 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7742353
-2017-04-04 19:19:42,343 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176868/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176868", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,366 - DEBUG - Finished Request
-2017-04-04 19:19:42,367 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176868/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176868", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,389 - DEBUG - Finished Request
-2017-04-04 19:19:42,390 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176886/text {"id": ":wdc:1491301176886", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,450 - DEBUG - Finished Request
-2017-04-04 19:19:42,451 - DEBUG - pdf_author:['Yujun Zeng', 'Xin Xu', 'Dayong Shen', 'Yuqiang Fang', 'Zhipeng Xiao']
-2017-04-04 19:19:42,451 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176869/text {"id": ":wdc:1491301176869", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,519 - DEBUG - Finished Request
-2017-04-04 19:19:42,520 - DEBUG - txt:Big-data-generated traffic flow prediction using deep learning and dempster-shafer theory
-Ridha Soua; Arief Koesdwiady; Fakhri Karray
-2016 International Joint Conference on Neural Networks (IJCNN)
-Year: 2016
-Pages: 3195 - 3202, DOI: 10.1109/IJCNN.2016.7727607
-IEEE Conference Publications
-Abstract
-(452 Kb)
-2017-04-04 19:19:42,521 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176869/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176869", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,544 - DEBUG - Finished Request
-2017-04-04 19:19:42,545 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176887/text {"id": ":wdc:1491301176887", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,591 - DEBUG - Finished Request
-2017-04-04 19:19:42,592 - DEBUG - pdf_title:Big-data-generated traffic flow prediction using deep learning and dempster-shafer theory
-2017-04-04 19:19:42,592 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176887/attribute/href {"id": ":wdc:1491301176887", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,625 - DEBUG - Finished Request
-2017-04-04 19:19:42,626 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7727607/]
-2017-04-04 19:19:42,626 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7727607
-2017-04-04 19:19:42,627 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7727607
-2017-04-04 19:19:42,627 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176869/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176869", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,653 - DEBUG - Finished Request
-2017-04-04 19:19:42,654 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176869/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176869", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,681 - DEBUG - Finished Request
-2017-04-04 19:19:42,682 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176888/text {"id": ":wdc:1491301176888", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,738 - DEBUG - Finished Request
-2017-04-04 19:19:42,739 - DEBUG - pdf_author:['Ridha Soua', 'Arief Koesdwiady', 'Fakhri Karray']
-2017-04-04 19:19:42,743 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176870/text {"id": ":wdc:1491301176870", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,873 - DEBUG - Finished Request
-2017-04-04 19:19:42,874 - DEBUG - txt:Performance evaluation of the deep learning approach for traffic flow prediction at different times
-Yanjie Duan; Yisheng Lv; Fei-Yue Wang
-2016 IEEE International Conference on Service Operations and Logistics, and Informatics (SOLI)
-Year: 2016
-Pages: 223 - 227, DOI: 10.1109/SOLI.2016.7551691
-IEEE Conference Publications
-Abstract
-(154 Kb)
-2017-04-04 19:19:42,874 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176870/element {"value": "h2 > a", "using": "css selector", "id": ":wdc:1491301176870", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,895 - DEBUG - Finished Request
-2017-04-04 19:19:42,895 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176889/text {"id": ":wdc:1491301176889", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:42,986 - DEBUG - Finished Request
-2017-04-04 19:19:42,986 - DEBUG - pdf_title:Performance evaluation of the deep learning approach for traffic flow prediction at different times
-2017-04-04 19:19:42,987 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176889/attribute/href {"id": ":wdc:1491301176889", "name": "href", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:43,011 - DEBUG - Finished Request
-2017-04-04 19:19:43,012 - DEBUG - IEEEXplore.convert_path_to_url start. path[http://ieeexplore.ieee.org/document/7551691/]
-2017-04-04 19:19:43,013 - DEBUG - IEEEXplore.convert_path_to_url finished. return http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7551691
-2017-04-04 19:19:43,015 - DEBUG - pdf_dir:http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7551691
-2017-04-04 19:19:43,015 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176870/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176870", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:43,044 - DEBUG - Finished Request
-2017-04-04 19:19:43,045 - DEBUG - POST http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176870/element {"value": "p", "using": "css selector", "id": ":wdc:1491301176870", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:43,072 - DEBUG - Finished Request
-2017-04-04 19:19:43,074 - DEBUG - GET http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/element/:wdc:1491301176890/text {"id": ":wdc:1491301176890", "sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:43,153 - DEBUG - Finished Request
-2017-04-04 19:19:43,153 - DEBUG - pdf_author:['Yanjie Duan', 'Yisheng Lv', 'Fei-Yue Wang']
-2017-04-04 19:19:43,154 - DEBUG - len(link)<25.IEEEXplore.download_papers finished.
-2017-04-04 19:19:43,155 - DEBUG - DELETE http://127.0.0.1:49405/wd/hub/session/2cf39be0-1920-11e7-aeaf-ad62f6576783/window {"sessionId": "2cf39be0-1920-11e7-aeaf-ad62f6576783"}
-2017-04-04 19:19:43,165 - DEBUG - Finished Request
-2017-04-04 19:19:43,167 - INFO - IEEEXplore_test.test_download_papers finished
-2017-04-04 22:17:14,030 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140250102760168]
-2017-04-04 22:17:14,030 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:17:14,222 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:17:14,222 - INFO - MySQL_test.test_init_mysql_operator finished
-2017-04-04 22:18:21,864 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140456380162848]
-2017-04-04 22:18:21,865 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:18:22,029 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:18:22,057 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140456380162848]
-2017-04-04 22:18:22,057 - DEBUG - class Mysql_operator created.
-2017-04-04 22:18:22,058 - INFO - MySQL_test.test_init_mysql_operator finished
-2017-04-04 22:20:33,537 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139955136418592]
-2017-04-04 22:20:33,537 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:20:33,729 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:21:15,670 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139833302786904]
-2017-04-04 22:21:15,670 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:21:16,000 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:21:16,037 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139833302786904]
-2017-04-04 22:21:16,037 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:21:16,037 - DEBUG - Mysql_operator.establish_session finished
-2017-04-04 22:21:16,037 - DEBUG - class Mysql_operator created.
-2017-04-04 22:21:16,038 - INFO - MySQL_test.test_init_mysql_operator finished
-2017-04-04 22:23:19,551 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140067479823136]
-2017-04-04 22:23:19,551 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:23:19,719 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:23:30,012 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139663231963992]
-2017-04-04 22:23:30,012 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:23:30,262 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:23:30,308 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139663231963992]
-2017-04-04 22:23:30,310 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:24:05,571 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139966439224096]
-2017-04-04 22:24:05,571 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:24:05,741 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:24:05,772 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139966439224096]
-2017-04-04 22:24:05,772 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:24:16,639 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140603783770912]
-2017-04-04 22:24:16,639 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:24:16,906 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:24:16,934 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140603783770912]
-2017-04-04 22:24:16,935 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:24:34,006 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140402988651296]
-2017-04-04 22:24:34,007 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:24:34,209 - INFO - MySQL_test.test_init_mysql_operator start
-2017-04-04 22:24:34,252 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140402988651296]
-2017-04-04 22:24:34,253 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:24:34,258 - DEBUG - class Mysql_operator created.
-2017-04-04 22:24:34,259 - INFO - MySQL_test.test_init_mysql_operator finished
-2017-04-04 22:31:34,294 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139864279597856]
-2017-04-04 22:31:34,326 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139864279597856]
-2017-04-04 22:31:34,326 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:31:34,648 - DEBUG - class Mysql_operator created.
-2017-04-04 22:31:54,917 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140515796742944]
-2017-04-04 22:31:54,943 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140515796742944]
-2017-04-04 22:31:54,944 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:31:55,269 - DEBUG - class Mysql_operator created.
-2017-04-04 22:31:55,269 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:31:55,269 - INFO - MySQL_test.test_insert_a_title start
-2017-04-04 22:31:55,343 - INFO - MySQL_test.test_insert_a_title finished
-2017-04-04 22:35:36,617 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140190824342248]
-2017-04-04 22:35:36,656 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140190824342248]
-2017-04-04 22:35:36,656 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:35:37,060 - DEBUG - class Mysql_operator created.
-2017-04-04 22:35:37,060 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:35:37,060 - INFO - MySQL_test.test_insert_a_title2 start
-2017-04-04 22:35:37,097 - INFO - MySQL_test.test_insert_a_title2 finished
-2017-04-04 22:44:01,856 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140020536177552]
-2017-04-04 22:44:01,887 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140020536177552]
-2017-04-04 22:44:01,887 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:44:02,168 - DEBUG - class Mysql_operator created.
-2017-04-04 22:44:02,168 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:44:02,169 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:44:02,179 - DEBUG - Mysql_operator.delete start
-2017-04-04 22:44:02,191 - INFO - MySQL_test.test_insert_a_title2 start
-2017-04-04 22:44:02,210 - DEBUG - Mysql_operator.insert start
-2017-04-04 22:44:02,216 - DEBUG - Mysql_operator.insert finished
-2017-04-04 22:44:02,232 - INFO - MySQL_test.test_insert_a_title2 finished
-2017-04-04 22:44:20,553 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140281289499536]
-2017-04-04 22:44:20,598 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140281289499536]
-2017-04-04 22:44:20,598 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:44:20,819 - DEBUG - class Mysql_operator created.
-2017-04-04 22:44:20,820 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:44:20,820 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:44:20,836 - DEBUG - Mysql_operator.delete start
-2017-04-04 22:44:20,837 - DEBUG - target table is papers
-2017-04-04 22:44:20,837 - DEBUG - Mysql_operator.delete finished
-2017-04-04 22:44:20,837 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 22:44:20,837 - INFO - MySQL_test.test_insert_a_title2 start
-2017-04-04 22:44:20,850 - DEBUG - Mysql_operator.insert start
-2017-04-04 22:44:20,855 - DEBUG - Mysql_operator.insert finished
-2017-04-04 22:44:20,858 - INFO - MySQL_test.test_insert_a_title2 finished
-2017-04-04 22:54:26,802 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140648066438032]
-2017-04-04 22:54:26,846 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140648066438032]
-2017-04-04 22:54:26,846 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:54:27,130 - DEBUG - class Mysql_operator created.
-2017-04-04 22:54:27,130 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:54:27,131 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:54:27,145 - DEBUG - Mysql_operator.delete start
-2017-04-04 22:54:27,146 - DEBUG - Mysql_operator.delete finished
-2017-04-04 22:54:27,146 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 22:54:27,147 - INFO - MySQL_test.test_insert_a_title2 start
-2017-04-04 22:54:27,165 - DEBUG - Mysql_operator.insert start
-2017-04-04 22:54:27,188 - DEBUG - Mysql_operator.insert finished
-2017-04-04 22:54:27,205 - INFO - MySQL_test.test_insert_a_title2 finished
-2017-04-04 22:55:06,910 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140136731902864]
-2017-04-04 22:55:06,933 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140136731902864]
-2017-04-04 22:55:06,934 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:55:07,117 - DEBUG - class Mysql_operator created.
-2017-04-04 22:55:07,117 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:55:07,117 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:55:07,132 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 22:55:07,137 - INFO - MySQL_test.test_insert_a_title2 start
-2017-04-04 22:55:07,164 - DEBUG - Mysql_operator.insert start
-2017-04-04 22:55:07,168 - DEBUG - Mysql_operator.insert finished
-2017-04-04 22:55:07,176 - INFO - MySQL_test.test_insert_a_title2 finished
-2017-04-04 22:55:26,792 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140690431685520]
-2017-04-04 22:55:26,823 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140690431685520]
-2017-04-04 22:55:26,824 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:55:27,016 - DEBUG - class Mysql_operator created.
-2017-04-04 22:55:27,017 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:55:27,017 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:55:27,041 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 22:55:27,047 - INFO - MySQL_test.test_insert_a_title2 start
-2017-04-04 22:55:27,062 - DEBUG - Mysql_operator.insert start
-2017-04-04 22:55:27,068 - DEBUG - Mysql_operator.insert finished
-2017-04-04 22:55:27,071 - INFO - MySQL_test.test_insert_a_title2 finished
-2017-04-04 22:55:36,775 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140404099593104]
-2017-04-04 22:55:36,812 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140404099593104]
-2017-04-04 22:55:36,812 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:55:36,974 - DEBUG - class Mysql_operator created.
-2017-04-04 22:55:36,974 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:55:36,975 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:55:36,987 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 22:55:37,005 - INFO - MySQL_test.test_insert_a_title2 start
-2017-04-04 22:55:37,008 - DEBUG - Mysql_operator.insert start
-2017-04-04 22:55:37,028 - DEBUG - Mysql_operator.insert finished
-2017-04-04 22:55:37,030 - INFO - MySQL_test.test_insert_a_title2 finished
-2017-04-04 22:55:47,437 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140359329743760]
-2017-04-04 22:55:47,472 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140359329743760]
-2017-04-04 22:55:47,472 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:55:47,806 - DEBUG - class Mysql_operator created.
-2017-04-04 22:55:47,807 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:55:47,807 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:55:47,824 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 22:55:47,846 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 22:55:47,847 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 22:55:47,847 - INFO - MySQL_test.test_insert_a_title2 start
-2017-04-04 22:55:47,865 - DEBUG - Mysql_operator.insert start
-2017-04-04 22:55:47,908 - DEBUG - Mysql_operator.insert finished
-2017-04-04 22:55:47,916 - INFO - MySQL_test.test_insert_a_title2 finished
-2017-04-04 22:58:54,434 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140413015106224]
-2017-04-04 22:58:54,458 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140413015106224]
-2017-04-04 22:58:54,458 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:58:54,659 - DEBUG - class Mysql_operator created.
-2017-04-04 22:58:54,659 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:58:54,659 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:58:54,685 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 22:58:54,712 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 22:58:54,715 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 22:59:54,720 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140218135241392]
-2017-04-04 22:59:54,748 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140218135241392]
-2017-04-04 22:59:54,749 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 22:59:54,943 - DEBUG - class Mysql_operator created.
-2017-04-04 22:59:54,944 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 22:59:54,944 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 22:59:54,970 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 22:59:54,991 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 22:59:54,992 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:00:25,071 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140659513676408]
-2017-04-04 23:00:25,091 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140659513676408]
-2017-04-04 23:00:25,092 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:00:25,313 - DEBUG - class Mysql_operator created.
-2017-04-04 23:00:25,314 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:00:25,314 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:00:46,122 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140689788232312]
-2017-04-04 23:00:46,144 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140689788232312]
-2017-04-04 23:00:46,144 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:00:46,324 - DEBUG - class Mysql_operator created.
-2017-04-04 23:00:46,324 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:00:46,325 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:00:46,343 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:00:46,363 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:00:46,363 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:00:46,364 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:00:46,364 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:00:46,369 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 23:00:46,370 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:01:12,182 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139661627019896]
-2017-04-04 23:01:12,206 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139661627019896]
-2017-04-04 23:01:12,207 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:01:12,489 - DEBUG - class Mysql_operator created.
-2017-04-04 23:01:12,493 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:01:12,496 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:01:12,524 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:01:12,594 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:01:12,595 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:01:12,596 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:01:12,598 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:01:31,220 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140008047223416]
-2017-04-04 23:01:31,241 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140008047223416]
-2017-04-04 23:01:31,241 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:01:31,455 - DEBUG - class Mysql_operator created.
-2017-04-04 23:01:31,455 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:01:31,456 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:01:31,487 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:01:31,517 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:01:31,519 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:01:31,525 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:01:31,526 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:01:42,656 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140470978605688]
-2017-04-04 23:01:42,675 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140470978605688]
-2017-04-04 23:01:42,675 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:01:43,039 - DEBUG - class Mysql_operator created.
-2017-04-04 23:01:43,039 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:01:43,040 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:01:43,054 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:01:43,073 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:01:43,074 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:01:43,080 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:01:43,080 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:01:43,086 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 23:01:43,086 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:02:36,352 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140711606805112]
-2017-04-04 23:02:36,380 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140711606805112]
-2017-04-04 23:02:36,381 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:02:36,567 - DEBUG - class Mysql_operator created.
-2017-04-04 23:02:36,568 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:02:36,568 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:02:36,587 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:02:36,603 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:02:36,603 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:02:36,608 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:02:36,608 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:04:00,903 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140294921626232]
-2017-04-04 23:04:00,932 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140294921626232]
-2017-04-04 23:04:00,932 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:04:01,125 - DEBUG - class Mysql_operator created.
-2017-04-04 23:04:01,126 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:04:01,126 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:04:01,192 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:04:01,225 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:04:01,225 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:04:01,231 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:04:01,231 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:04:11,650 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140295311946360]
-2017-04-04 23:04:11,691 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140295311946360]
-2017-04-04 23:04:11,692 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:04:12,028 - DEBUG - class Mysql_operator created.
-2017-04-04 23:04:12,029 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:04:12,029 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:04:12,050 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:04:12,069 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:04:12,070 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:04:12,078 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:04:12,078 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:04:12,083 - DEBUG - delete targets length[1]
-2017-04-04 23:07:05,288 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140239801270904]
-2017-04-04 23:07:05,316 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140239801270904]
-2017-04-04 23:07:05,317 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:07:05,538 - DEBUG - class Mysql_operator created.
-2017-04-04 23:07:05,538 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:07:05,539 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:07:05,552 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:07:05,569 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:07:05,569 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:07:05,573 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:07:05,574 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:08:26,137 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140242746950264]
-2017-04-04 23:08:40,363 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140495279002288]
-2017-04-04 23:08:40,398 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140495279002288]
-2017-04-04 23:08:40,398 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:08:40,750 - DEBUG - class Mysql_operator created.
-2017-04-04 23:08:40,751 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:08:40,752 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:08:40,769 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:08:40,795 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:08:40,796 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:08:40,799 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:08:40,799 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:08:40,803 - DEBUG - delete targets length[1]
-2017-04-04 23:09:14,740 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139795529179824]
-2017-04-04 23:09:14,771 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139795529179824]
-2017-04-04 23:09:14,772 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:09:15,024 - DEBUG - class Mysql_operator created.
-2017-04-04 23:09:15,024 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:09:15,025 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:09:15,054 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:09:15,093 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:09:15,094 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:09:15,100 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:09:15,102 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:09:34,406 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140280297955960]
-2017-04-04 23:09:34,444 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140280297955960]
-2017-04-04 23:09:34,446 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:09:34,915 - DEBUG - class Mysql_operator created.
-2017-04-04 23:09:34,916 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:09:34,916 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:09:34,937 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:09:34,964 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:09:34,965 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:09:34,971 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:09:34,971 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:09:34,983 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 23:09:34,984 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:10:09,975 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140583112737400]
-2017-04-04 23:10:10,026 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140583112737400]
-2017-04-04 23:10:10,026 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:10:10,525 - DEBUG - class Mysql_operator created.
-2017-04-04 23:10:10,526 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:10:10,526 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:10:10,539 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:10:10,569 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:10:10,569 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:10:10,574 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:10:10,574 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:10:16,414 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140643567592112]
-2017-04-04 23:10:16,453 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140643567592112]
-2017-04-04 23:10:16,454 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:10:16,872 - DEBUG - class Mysql_operator created.
-2017-04-04 23:10:16,873 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:10:16,873 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:10:16,890 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:10:16,920 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:10:16,921 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:10:16,924 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:10:16,924 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:10:16,929 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 23:10:16,930 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:10:45,905 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139844082373240]
-2017-04-04 23:10:45,930 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139844082373240]
-2017-04-04 23:10:45,930 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:10:46,201 - DEBUG - class Mysql_operator created.
-2017-04-04 23:10:46,201 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:10:46,202 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:10:46,219 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:11:17,863 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140043319480952]
-2017-04-04 23:11:17,893 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140043319480952]
-2017-04-04 23:11:17,893 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:11:18,215 - DEBUG - class Mysql_operator created.
-2017-04-04 23:11:18,215 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:11:18,216 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:11:18,239 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:11:18,266 - DEBUG - delete target
-2017-04-04 23:12:17,904 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140452791812728]
-2017-04-04 23:12:17,943 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140452791812728]
-2017-04-04 23:12:17,943 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:12:18,292 - DEBUG - class Mysql_operator created.
-2017-04-04 23:12:18,293 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:12:18,296 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:12:18,355 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:12:18,392 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 23:12:18,395 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:12:28,326 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140309530755704]
-2017-04-04 23:12:28,351 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140309530755704]
-2017-04-04 23:12:28,352 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:12:28,664 - DEBUG - class Mysql_operator created.
-2017-04-04 23:12:28,665 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:12:28,665 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:12:28,677 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:12:28,708 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:12:28,708 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:12:28,710 - DEBUG - delete target
-2017-04-04 23:12:28,738 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 23:12:28,739 - INFO - MySQL_test.test_delete_a_title finished
-2017-04-04 23:12:59,244 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139824343556728]
-2017-04-04 23:12:59,305 - INFO - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[139824343556728]
-2017-04-04 23:12:59,319 - DEBUG - Mysql_operator.establish_session start
-2017-04-04 23:12:59,778 - DEBUG - class Mysql_operator created.
-2017-04-04 23:12:59,778 - INFO - 
-
-MySQL_test.setUpClass finished.
----------- start ---------
-2017-04-04 23:12:59,780 - INFO - MySQL_test.test_delete_a_title start
-2017-04-04 23:12:59,795 - DEBUG - Mysql_operator.insert start
-2017-04-04 23:12:59,812 - DEBUG - Mysql_operator.insert finished
-2017-04-04 23:12:59,813 - DEBUG - Mysql_operator.delete_by_id_from_papers start
-2017-04-04 23:12:59,815 - DEBUG - delete id[1]
-2017-04-04 23:12:59,848 - DEBUG - Mysql_operator.delete_by_id_from_papers finished
-2017-04-04 23:12:59,849 - INFO - MySQL_test.test_delete_a_title finished
+2017-04-05 18:12:42,693 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139668440943920]
+2017-04-05 18:12:42,816 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[139668440943920]
+2017-04-05 18:12:42,820 - DEBUG - class Search_options created.
+2017-04-05 18:12:42,821 - DEBUG - class IEEEXplore created.
+2017-04-05 18:12:42,822 - INFO - IEEEXplore_test.test_get_attributes_and_download_pdf start
+2017-04-05 18:12:42,823 - DEBUG - IEEEXplore.create_driver start
+2017-04-05 18:12:44,515 - DEBUG - POST http://127.0.0.1:52745/wd/hub/session {"desiredCapabilities": {"browserName": "phantomjs", "javascriptEnabled": true, "version": "", "platform": "ANY"}, "requiredCapabilities": {}}
+2017-04-05 18:12:44,589 - DEBUG - Finished Request
+2017-04-05 18:12:44,592 - DEBUG - driver.get(./samples/paper_page.html)
+2017-04-05 18:12:44,600 - DEBUG - POST http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/url {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "url": "./samples/paper_page.html"}
+2017-04-05 18:12:49,915 - DEBUG - Finished Request
+2017-04-05 18:12:49,924 - DEBUG - IEEEXplore.create_driver finished. return driver
+2017-04-05 18:12:49,927 - DEBUG - IEEEXplore.get_attributes_and_download_pdf start
+2017-04-05 18:12:52,054 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/title {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988"}
+2017-04-05 18:13:01,380 - DEBUG - Finished Request
+2017-04-05 18:13:01,383 - DEBUG - POST http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/elements {"using": "xpath", "sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "value": "//span[@ng-bind-html=\"::author.name\"]"}
+2017-04-05 18:13:01,517 - DEBUG - Finished Request
+2017-04-05 18:13:01,518 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581515/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581515"}
+2017-04-05 18:13:01,598 - DEBUG - Finished Request
+2017-04-05 18:13:01,603 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581516/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581516"}
+2017-04-05 18:13:01,939 - DEBUG - Finished Request
+2017-04-05 18:13:01,940 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581517/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581517"}
+2017-04-05 18:13:02,110 - DEBUG - Finished Request
+2017-04-05 18:13:02,111 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581518/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581518"}
+2017-04-05 18:13:02,156 - DEBUG - Finished Request
+2017-04-05 18:13:02,157 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581519/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581519"}
+2017-04-05 18:13:02,243 - DEBUG - Finished Request
+2017-04-05 18:13:02,243 - DEBUG - POST http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/elements {"using": "xpath", "sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "value": "//a[@ng-bind-html=\"::term\"]"}
+2017-04-05 18:13:02,279 - DEBUG - Finished Request
+2017-04-05 18:13:02,283 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581520/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581520"}
+2017-04-05 18:13:02,433 - DEBUG - Finished Request
+2017-04-05 18:13:02,434 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581520/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581520"}
+2017-04-05 18:13:02,521 - DEBUG - Finished Request
+2017-04-05 18:13:02,522 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581521/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581521"}
+2017-04-05 18:13:02,682 - DEBUG - Finished Request
+2017-04-05 18:13:02,683 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581521/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581521"}
+2017-04-05 18:13:03,092 - DEBUG - Finished Request
+2017-04-05 18:13:03,094 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581522/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581522"}
+2017-04-05 18:13:03,436 - DEBUG - Finished Request
+2017-04-05 18:13:03,440 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581522/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581522"}
+2017-04-05 18:13:03,704 - DEBUG - Finished Request
+2017-04-05 18:13:03,705 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581523/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581523"}
+2017-04-05 18:13:04,000 - DEBUG - Finished Request
+2017-04-05 18:13:04,001 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581523/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581523"}
+2017-04-05 18:13:05,866 - DEBUG - Finished Request
+2017-04-05 18:13:05,870 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581524/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581524"}
+2017-04-05 18:13:05,964 - DEBUG - Finished Request
+2017-04-05 18:13:05,978 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581524/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581524"}
+2017-04-05 18:13:06,074 - DEBUG - Finished Request
+2017-04-05 18:13:06,076 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581525/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581525"}
+2017-04-05 18:13:06,198 - DEBUG - Finished Request
+2017-04-05 18:13:06,200 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581525/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581525"}
+2017-04-05 18:13:06,365 - DEBUG - Finished Request
+2017-04-05 18:13:06,368 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581526/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581526"}
+2017-04-05 18:13:06,575 - DEBUG - Finished Request
+2017-04-05 18:13:06,576 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581526/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581526"}
+2017-04-05 18:13:07,276 - DEBUG - Finished Request
+2017-04-05 18:13:07,278 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581527/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581527"}
+2017-04-05 18:13:07,378 - DEBUG - Finished Request
+2017-04-05 18:13:07,380 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581527/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581527"}
+2017-04-05 18:13:07,460 - DEBUG - Finished Request
+2017-04-05 18:13:07,462 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581528/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581528"}
+2017-04-05 18:13:07,526 - DEBUG - Finished Request
+2017-04-05 18:13:07,527 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581528/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581528"}
+2017-04-05 18:13:07,568 - DEBUG - Finished Request
+2017-04-05 18:13:07,569 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581529/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581529"}
+2017-04-05 18:13:07,608 - DEBUG - Finished Request
+2017-04-05 18:13:07,609 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581529/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581529"}
+2017-04-05 18:13:07,645 - DEBUG - Finished Request
+2017-04-05 18:13:07,646 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581530/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581530"}
+2017-04-05 18:13:07,683 - DEBUG - Finished Request
+2017-04-05 18:13:07,684 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581530/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581530"}
+2017-04-05 18:13:07,731 - DEBUG - Finished Request
+2017-04-05 18:13:07,732 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581531/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581531"}
+2017-04-05 18:13:07,769 - DEBUG - Finished Request
+2017-04-05 18:13:07,770 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581531/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581531"}
+2017-04-05 18:13:07,899 - DEBUG - Finished Request
+2017-04-05 18:13:07,900 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581532/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581532"}
+2017-04-05 18:13:07,938 - DEBUG - Finished Request
+2017-04-05 18:13:07,940 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581532/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581532"}
+2017-04-05 18:13:07,973 - DEBUG - Finished Request
+2017-04-05 18:13:07,974 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581533/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581533"}
+2017-04-05 18:13:08,009 - DEBUG - Finished Request
+2017-04-05 18:13:08,011 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581533/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581533"}
+2017-04-05 18:13:08,062 - DEBUG - Finished Request
+2017-04-05 18:13:08,063 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581534/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581534"}
+2017-04-05 18:13:08,107 - DEBUG - Finished Request
+2017-04-05 18:13:08,110 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581534/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581534"}
+2017-04-05 18:13:08,158 - DEBUG - Finished Request
+2017-04-05 18:13:08,159 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581535/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581535"}
+2017-04-05 18:13:08,203 - DEBUG - Finished Request
+2017-04-05 18:13:08,204 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581535/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581535"}
+2017-04-05 18:13:08,240 - DEBUG - Finished Request
+2017-04-05 18:13:08,241 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581536/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581536"}
+2017-04-05 18:13:08,324 - DEBUG - Finished Request
+2017-04-05 18:13:08,325 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581536/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581536"}
+2017-04-05 18:13:08,405 - DEBUG - Finished Request
+2017-04-05 18:13:08,406 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581537/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581537"}
+2017-04-05 18:13:09,646 - DEBUG - Finished Request
+2017-04-05 18:13:09,647 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581537/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581537"}
+2017-04-05 18:13:09,752 - DEBUG - Finished Request
+2017-04-05 18:13:09,752 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581538/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581538"}
+2017-04-05 18:13:10,932 - DEBUG - Finished Request
+2017-04-05 18:13:10,933 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581538/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581538"}
+2017-04-05 18:13:10,968 - DEBUG - Finished Request
+2017-04-05 18:13:10,969 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581539/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581539"}
+2017-04-05 18:13:11,009 - DEBUG - Finished Request
+2017-04-05 18:13:11,010 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581539/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581539"}
+2017-04-05 18:13:11,053 - DEBUG - Finished Request
+2017-04-05 18:13:11,055 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581540/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581540"}
+2017-04-05 18:13:11,098 - DEBUG - Finished Request
+2017-04-05 18:13:11,099 - DEBUG - GET http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/element/:wdc:1491383581540/text {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "id": ":wdc:1491383581540"}
+2017-04-05 18:13:11,136 - DEBUG - Finished Request
+2017-04-05 18:13:11,137 - DEBUG - POST http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/elements {"using": "xpath", "sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988", "value": "//h2[@class=\"document-ft-section-header\"]"}
+2017-04-05 18:13:11,163 - DEBUG - Finished Request
+2017-04-05 18:13:11,164 - DEBUG - IEEEXplore.get_attributes_and_download_pdf finished
+2017-04-05 18:13:11,165 - DEBUG - DELETE http://127.0.0.1:52745/wd/hub/session/0765a4c0-19e0-11e7-8882-293aa027d988/window {"sessionId": "0765a4c0-19e0-11e7-8882-293aa027d988"}
+2017-04-05 18:13:11,173 - DEBUG - Finished Request
+2017-04-05 18:13:11,175 - INFO - IEEEXplore_test.test_get_attributes_and_download_pdf finished
