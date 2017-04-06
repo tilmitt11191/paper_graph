@@ -1,0 +1,328 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Stitch\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-28 20:31-0500\n"
+"PO-Revision-Date: 2012-12-28 20:31-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__;esc_attr_e;_x\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../404.php:16
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: ../404.php:20
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr ""
+
+#: ../404.php:27
+msgid "Most Used Categories"
+msgstr ""
+
+#: ../404.php:35
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: ../archive.php:22
+#, php-format
+msgid "Category Archives: %s"
+msgstr ""
+
+#: ../archive.php:25
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: ../archive.php:32
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: ../archive.php:40
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: ../archive.php:43
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: ../archive.php:46
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: ../archive.php:49
+msgid "Archives"
+msgstr ""
+
+#: ../author.php:19
+msgid "Author Archives"
+msgstr ""
+
+#: ../author.php:28
+#: ../author.php:29
+#: ../author.php:30
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: ../comments.php:39
+#: ../comments.php:59
+msgid "Comment navigation"
+msgstr ""
+
+#: ../comments.php:40
+#: ../comments.php:60
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: ../comments.php:41
+#: ../comments.php:61
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: ../comments.php:71
+msgid "Comments are closed."
+msgstr ""
+
+#: ../content-page.php:13
+#: ../content-single.php:11
+#: ../content.php:11
+#: ../image.php:20
+msgid "Edit"
+msgstr ""
+
+#: ../content-page.php:18
+#: ../content-single.php:16
+#: ../content.php:21
+#: ../image.php:66
+msgid "Pages:"
+msgstr ""
+
+#: ../content-single.php:24
+#: ../content-single.php:27
+#: ../content.php:31
+#: ../content.php:41
+msgid ", "
+msgstr ""
+
+#: ../content-single.php:32
+#, php-format
+msgid "Tagged %2$s<span class=\"sep\"></span><a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Permalink</a>"
+msgstr ""
+
+#: ../content-single.php:34
+#, php-format
+msgid "<a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Permalink</a>"
+msgstr ""
+
+#: ../content-single.php:40
+#, php-format
+msgid "Posted in %1$s<span class=\"sep\"></span>Tagged %2$s<span class=\"sep\"></span><a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Permalink</a>"
+msgstr ""
+
+#: ../content-single.php:42
+#, php-format
+msgid "Posted in %1$s<span class=\"sep\"></span><a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">Permalink</a>"
+msgstr ""
+
+#: ../content.php:10
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: ../content.php:20
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../content.php:35
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: ../content.php:46
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: ../content.php:53
+msgid "Leave a comment"
+msgstr ""
+
+#: ../content.php:53
+msgid "1 Comment"
+msgstr ""
+
+#: ../content.php:53
+msgid "% Comments"
+msgstr ""
+
+#: ../footer.php:17
+msgid "A Semantic Personal Publishing Platform"
+msgstr ""
+
+#: ../footer.php:17
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#: ../footer.php:19
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: ../functions.php:70
+msgid "Primary Menu"
+msgstr ""
+
+#: ../functions.php:88
+msgid "Sidebar"
+msgstr ""
+
+#: ../functions.php:150
+#: ../functions.php:159
+#: ../functions.php:168
+msgid "on"
+msgstr ""
+
+#: ../header.php:49
+msgid "Menu"
+msgstr ""
+
+#: ../header.php:50
+msgid "Skip to content"
+msgstr ""
+
+#: ../image.php:71
+msgid "&larr; Previous"
+msgstr ""
+
+#: ../image.php:72
+msgid "Next &rarr;"
+msgstr ""
+
+#: ../image.php:78
+#, php-format
+msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
+msgstr ""
+
+#: ../image.php:90
+#, php-format
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+
+#: ../image.php:92
+#, php-format
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+
+#: ../image.php:94
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+
+#: ../image.php:96
+msgid "Both comments and trackbacks are currently closed."
+msgstr ""
+
+#: ../no-results.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: ../no-results.php:20
+#, php-format
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: ../no-results.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: ../no-results.php:29
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: ../search.php:17
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: ../searchform.php:10
+#: ../searchform.php:12
+msgid "Search"
+msgstr ""
+
+#: ../inc/customizer.php:19
+msgid "Theme Options"
+msgstr ""
+
+#: ../inc/customizer.php:31
+msgid "Fixed Header Position (works best with a short menu and sidebar)"
+msgstr ""
+
+#: ../inc/extras.php:75
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ../inc/template-tags.php:39
+msgid "Post navigation"
+msgstr ""
+
+#: ../inc/template-tags.php:43
+msgid "&larr;"
+msgstr ""
+
+#: ../inc/template-tags.php:44
+msgid "&rarr;"
+msgstr ""
+
+#: ../inc/template-tags.php:49
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: ../inc/template-tags.php:53
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: ../inc/template-tags.php:78
+msgid "Pingback:"
+msgstr ""
+
+#: ../inc/template-tags.php:78
+#: ../inc/template-tags.php:101
+msgid "(Edit)"
+msgstr ""
+
+#: ../inc/template-tags.php:88
+#, php-format
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#: ../inc/template-tags.php:91
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: ../inc/template-tags.php:99
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: ../inc/template-tags.php:126
+#, php-format
+msgid "<a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%3$s\" pubdate>%4$s</time></a><span class=\"byline\"> by <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author\">%7$s</a></span></span>"
+msgstr ""
+
+#: ../inc/template-tags.php:132
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+

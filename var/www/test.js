@@ -1,3 +1,4 @@
-window.onload = function() {
-	alert("こんにちは");
+function koshin(){
+  var hiduke=document.lastModified;
+  document.write(hiduke);
 }

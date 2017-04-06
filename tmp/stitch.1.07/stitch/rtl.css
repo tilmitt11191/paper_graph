@@ -1,0 +1,309 @@
+/* =Reset
+-------------------------------------------------------------- */
+
+caption, th, td {
+	text-align: right;
+}
+
+/* =Global
+----------------------------------------------- */
+
+/* Text elements */
+
+ul, ol {
+	margin: 0 3em 1.8em 0;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+	margin-right: 1.8em;
+	margin-left: auto;
+}
+
+blockquote:before {
+	right: -.52em;
+	left: auto;
+}
+
+textarea {
+	padding-right: 5px;
+	padding-left: 0;
+}
+
+/* Alignment */
+.alignright {
+	float: right;
+	margin-left: 1.8em;
+	margin-right: auto;
+}
+
+.alignleft {
+	float: left;
+	margin-right: 1.8em;
+	margin-left: auto;
+}
+
+/* =Layout
+----------------------------------------------- */
+
+#primary {
+	float: left;
+	margin: 0 -42% 0 0;
+}
+
+#content {
+	margin: 3.6em 42% 0 0;
+}
+
+#secondary {
+	clear: right;
+	float: right;
+}
+
+#tertiary {
+	clear: right;
+}
+
+.site-footer {
+	margin: 1.8em 42% 1.8em 0;
+}
+
+/* =Header
+----------------------------------------------- */
+
+#masthead:before {
+	right: 0;
+	left: auto;
+}
+
+#masthead {
+	float: right;
+	padding: .9em 1.8em 0 1.2em;
+}
+
+#masthead:after {
+	border-left: 1px dashed rgba(255,255,255,.2);
+	right: 0;
+	left: auto;
+	border-right: none;
+}
+
+/* =Menu
+----------------------------------------------- */
+
+.main-navigation {
+	float: right;
+}
+
+.main-navigation ul {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.main-navigation a {
+	text-align: right;
+}
+
+.main-navigation ul ul {
+	float: left;
+	right: 100%;
+	left: auto;
+}
+
+.main-navigation ul ul li:before {
+	right: 3%;
+	left: auto;
+}
+
+.main-navigation ul ul ul {
+	right: 100%;
+	left: auto;
+}
+
+
+/* =Content
+----------------------------------------------- */
+
+.entry-content > p:first-of-type:first-letter {
+	float: right;
+	margin: 0 0 -5px 5px;
+}
+
+.entry-content ul li {
+	margin: 0 -1.3em 0 0;
+}
+
+.entry-content ul ul {
+	margin: 0 3.1em 0 0;
+}
+
+.entry-content ul ul ul {
+	margin: 0 1.8em 0 0;
+}
+
+.entry-content ul li:before {
+	margin: 0 0 0 .75em;
+}
+
+.edit-link a {
+	left: 0;
+	right: auto;
+}
+
+.author-info {
+	float: left;
+}
+
+.author-archives-img {
+	float: right;
+}
+
+
+/* =Navigation
+----------------------------------------------- */
+
+.site-content .nav-previous {
+	float: right;
+}
+
+.site-content .nav-next {
+	float: left;
+	text-align: left;
+}
+
+/* =Comments
+----------------------------------------------- */
+
+.commentlist ul.children {
+	margin: 0 3.6em 0 0;
+}
+
+.comment-author .avatar {
+	float: right;
+	margin: 0 0 0 1em;
+}
+
+.comment-content {
+	margin: 1.8em 67px 0 0;
+}
+
+.reply {
+	margin: 0 67px 0 0;
+}
+
+#cancel-comment-reply-link {
+	float: left;
+}
+
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input {
+	float: left;
+}
+
+.post-password-required .entry-content input[type="password"],
+.entry-content #searchform input {
+	float: left;
+}
+
+.comment-content ul li {
+	margin: 0 -1.3em 0 0;
+}
+
+.comment-content ul ul {
+	margin: 0 3.1em 0 0;
+}
+
+.comment-content ul ul ul {
+	margin: 0 1.8em 0 0;
+}
+
+.comment-content ul li:before {
+	margin: 0 0 0 .75em;
+}
+
+/* =Widgets
+----------------------------------------------- */
+
+/* Calendar */
+
+td#prev {
+	text-align: right;
+}
+
+td#next {
+	text-align: left;
+}
+
+/* =Responsive Media Queries
+----------------------------------------------- */
+
+@media screen and ( max-width: 1000px ) {
+
+	#page {
+		width: 800px;
+	}
+	#masthead,
+	#masthead:before {
+		width: 240px;
+	}
+	#masthead:after {
+		width: 290px;
+	}
+
+}
+
+@media screen and ( max-width: 800px ) {
+
+	#page {
+		width: 100%;
+	}
+	#content,
+	#secondary,
+	.site-footer {
+		box-shadow: none;
+		clear: both;
+		float: none;
+		margin: 0 auto;
+		padding: 0;
+		position: relative;
+			top: auto;
+			left: auto;
+		width: 88%;
+		height: auto;
+	}
+	#content {
+		margin: 1.8em auto 0;
+	}
+	#secondary {
+		color: #3d200e;
+	}
+	.site-footer {
+		text-align: center;
+	}
+	#masthead,
+	#masthead:before,
+	#masthead:after {
+		border: 0;
+		width: 100%;
+		height: auto;
+		padding: 0;
+	}
+	#masthead:after {
+		border-bottom: 1px dashed rgba(255,255,255,.2);
+		position: absolute;
+			bottom: 10px;
+		z-index: -1;
+	}
+	#masthead hgroup {
+		margin: 0 auto;
+		width: 88%;
+	}
+	#masthead {
+		background: url('images/background.jpg');
+		background-size: 400px auto;
+	}
+	.entry-title {
+		word-wrap: break-word;
+	}
+
+}

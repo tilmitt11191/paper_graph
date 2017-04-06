@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>simple graph</title>
+</head>
+<frameset cols="30%,*">
+  <frame src="" name="frame1">
+  <frameset rows="80%,*">
+  <--  <frame src="graph.html" name="frame2"> --/>
+    <frame src="" name="frame3">
+  </frameset>
+  <noframes>
+  このページはフレーム対応のブラウザでご覧ください。
+  </noframes>
+</frameset>
+</html>
