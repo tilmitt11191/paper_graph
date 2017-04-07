@@ -4,9 +4,9 @@
 USER="alladmin"
 
 
-#sudo mysql -p -e "\
-#create user 'alladmin'@'localhost' identified by 'admin';\
-#flush privileges;"
+sudo mysql -p -e "\
+create user 'alladmin'@'localhost' identified by 'admin';\
+flush privileges;"
 
 
 sudo mysql -p -e "\

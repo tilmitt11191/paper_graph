@@ -37,16 +37,16 @@ done
 
 log_info "install wordpress"
 log_debug "wget"
-wget http://ja.wordpress.org/wordpress-4.7.3-ja.tar.gz -P ../../tmp/
+#wget http://ja.wordpress.org/wordpress-4.7.3-ja.tar.gz -P ../../tmp/
 log_debug "tar zxvf"
-tar zxvf "../../tmp/wordpress-4.7.3-ja.tar.gz" -C ../../tmp/
+#tar zxvf "../../tmp/wordpress-4.7.3-ja.tar.gz" -C ../../tmp/
 log_debug "rm"
-rm ../../tmp/wordpress-4.7.3-ja.tar.gz
+#rm ../../tmp/wordpress-4.7.3-ja.tar.gz
 log_debug "sudo mv"
-sudo mv ../../tmp/wordpress /var/www/html/paper_graph
+#sudo mv ../../tmp/wordpress /var/www/html/paper_graph
 log_debug "sudo chmod"
-sudo chown -R www-data:www-data /var/www/html/paper_graph
-sudo chmod -R 755 /var/www/html/paper_graph
+#sudo chown -R www-data:www-data /var/www/html/paper_graph
+#sudo chmod -R 755 /var/www/html/paper_graph
 
 log_info "replace apache2.conf"
 if [ -e "/etc/apache2/apache2.conf" ]; then
@@ -58,14 +58,9 @@ log_info "restart apache2"
 sudo service apache2 restart
 
 log_info "mysql setting"
-
-##mysql -u root -p
-##or
-##sudo mysql
-##create database paper_graph;
-sudo mysql -p -e "\
-create user paper_graph identified by 'pg';\
-grant all privileges on paper_graph.* to paper_graph@localhost identified by 'pg';"
+#sudo mysql -p -e "\
+#create user paper_graph identified by 'pg';\
+#grant all privileges on paper_graph.* to paper_graph@localhost identified by 'pg';"
 
 
 ##access by browser to http://localhost:50080/paper_graph/
