@@ -1,5 +1,7 @@
 
+var getconf = require("getconf.js");
 
-function getconf(){
-  document.write("this is getconf");
+exports.getconf = function(conf, conffile="../../etc/config.yml"){
+	fs.statSync(conffile);
+	consol.log("this is getconf" + conf);
 }

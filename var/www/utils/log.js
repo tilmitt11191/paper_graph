@@ -1,9 +1,10 @@
 
-document.write('<script type="text/javascript" src="utils/getconf.js"></script>');
+var getconf = require("getconf.js");
 
-function getLogger() {
- var log = Logger.getLogger();
- return log;
+exports.getLogger = function() {
+	var loglevel = getconf("loglevel");
+	var log = Logger.getLogger();
+	return log;
 }
 
 

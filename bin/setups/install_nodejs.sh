@@ -1,6 +1,6 @@
 
-sudo dpkg-divert --local --rename --add /sbin/initctl
-sudo ln -s /bin/true /sbin/initctl
+#sudo dpkg-divert --local --rename --add /sbin/initctl
+#sudo ln -s /bin/true /sbin/initctl
 
 sudo apt-get install -y nodejs
 sudo apt-get install -y npm
@@ -10,7 +10,7 @@ sudo n stable
 sudo ln -sf /usr/local/bin/node /usr/bin/node
 node -v
 
-sudo apt-get purge -y nodejs npm
+#sudo apt-get purge -y nodejs npm
 
 sudo npm update -g npm
 
@@ -23,3 +23,6 @@ sudo npm update -g npm
 #sudo apt-get install -y mongodb-org
 
 
+npm install express --save --no-bin-links
+npm install log4js --save --no-bin-links
+sudo npm install -g node-dev --no-bin-links #-g needs sudo
