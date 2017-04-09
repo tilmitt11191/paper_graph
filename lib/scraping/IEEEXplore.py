@@ -87,18 +87,21 @@ class IEEEXplore:
 		return urls
 	
 	
-	def get_attributes_and_download_pdf(self, driver):
+	def get_attributes_and_download_pdf(self, url, driver):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 		import table_papers
 		paper = table_papers.Table_papers()
-
+		
+		##title
 		#element = driver.find_element_by_tag_name("title")
 		#element = driver.find_element_by_id("title")
 		#element = driver.find_element_by_css_selector("html > title")
 		#element = driver.find_element_by_class_name("title")
 		paper.title = driver.title
 		
+		
+		##authors
 		#<span ng-bind-html="::author.name" class="ng-binding">
 		#elements = driver.find_elements_by_class_name("authors-container")
 		#print(str(len(elements)))
@@ -108,19 +111,21 @@ class IEEEXplore:
 			paper.authors += ","+el.text
 		paper.authors = paper.authors[1:]
 		
+		
+		##keywords
 		elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
-		print(str(len(elements))) #21
+		#print(str(len(elements))) #21
 		for el in elements:
 			keyword = el.text
 			if keyword in paper.keywords:
-				print("keyword[" + keyword + "] is deplicated. not add.")
+				self.log.debug("keyword[" + keyword + "] is deplicated. not add.")
 			else:
 				paper.keywords += ","+el.text
 		paper.keywords = paper.keywords[1:]
 		
 		
-		#citings
-		#citing_urls
+		##citing_papers
+		##citing_urls
 		"""
 					<a ng-href="/document/4116687" title="Usilng Machine Learning Technliques to Identify Botnet Traffic" target="_self" href="/document/4116687">
 				<span ng-bind-html="::(vm.contextData.isStandard ? article.standardNumber + ' - ' + article.title : article.title) | charlimitHtml:185" mathjax-bind="" class="ng-binding">Usilng Machine Learning Technliques to Identify Botnet Traffic</span>
@@ -128,24 +133,96 @@ class IEEEXplore:
 			<div class="ng-binding">Carl Livadas; Robert Walsh; David Lapsley; W. Timothy Strayer</div>
 		</div><!-- end ngRepeat: article in vm.contextData.similar --><div class="doc-all-related-articles-list-item ng-scope" ng-repeat="article in vm.contextData.similar"> 
 		"""
-		elements = driver.find_elements_by_xpath('//h2[@class="document-ft-section-header"]')
-		print(str(len(elements)))
+		citing_papers = []
+		citing_urls = []
+		#elements = driver.find_elements_by_xpath('//h2[@class="document-ft-section-header"]/a')
+		elements = driver.find_element_by_xpath('//div[@class="stats-document-relatedArticles ng-scope"]')\
+							.find_elements_by_tag_name('a')
+		#print(element.text)
+		#elements = element.find_elements_by_xpath('/a')
+		#print(str(len(elements))) #10
+		for el in elements:
+			citing_url = el.get_attribute("href")
+			citing_paper = table_papers.Table_papers(title=el.get_attribute("title"), url=citing_url)
+			citing_paper.insert()
+			paper.citings += "," + str(citing_paper.id)
+			citing_papers.append(citing_paper)
+			citing_urls.append(citing_url)
+			citing_paper.insert()
+		paper.citings = paper.citings[1:]
+
+
+		##conference
+		conference = driver.find_element_by_xpath('//div[@class="u-pb-1 stats-document-abstract-doi ng-scope"]')\
+							.find_element_by_tag_name('a').text
+
+		paper.conference = conference
 		
-		#timestamp
+		#Date of Publication: 06 January 200 or Date of Conference 14-16 Nov. 2006
+		date = driver.find_element_by_xpath('//div[@ng-if="::vm.details.isConference == true"]').text
+		paper.published = self.convert_to_datetime(date)
 		
-		#cited_urls
+		##url
+		paper.url = url
 		
-		#Date of Publication: 06 January 200
+		##timestamp
+		import time
+		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+
+		##path
+
+		##cited_papers
+		##cited_urls
+		#href="/document/4116687/citations?tabFilter=papers"
+		#http://ieeexplore.ieee.org/document/4116687/citations?anchor=anchor-paper-citations-ieee&ctx=citations
 		
+		"""
+		try:
+			driver.find_element_by_name('queryText').send_keys(keywords)
+			driver.find_element_by_class_name('Search-submit').click()
+		except(Exception) as e:
+			self.log.exception('[[EXCEPTON OCCURED]]: %s', e)
+			sys.exit("[[EXCEPTON OCCURED]]please check logfile.")
+			
+		document-banner-metric ng-scope
+		ui-sref="document.full({tab:'citations', q:null, ctx:null, section:null, part:null, anchor:null, tabFilter: 'papers'})"
+		#self.save_current_page(driver, "./samples/sample_page2.html")
+		self.save_current_page(driver, "./samples/sample_page2.png")
+	<button class="load-more-button" type="button" ng-click="vm.loadMoreCitations('patent')" ng-disabled="vm.loading" tabindex="0" aria-disabled="false">
+				<span ng-show="!vm.loading" aria-hidden="false" class="">View More</span>
+				<i class="fa fa-spinner fa-spin ng-hide" ng-show="vm.loading" aria-hidden="true"></i>
+		"""
+
+		cited_papers = []
+		cited_urls = []
+		driver.get(self.convert_paper_url_to_cited_url(url))
+		#self.save_current_page(driver, "./samples/sample_page2.html")
+		#self.save_current_page(driver, "./samples/sample_page2_cited.png")
+		driver.find_element_by_class_name('load-more-button').click()
+		from selenium.webdriver.support.ui import WebDriverWait
+		self.log.debug("wait 100 sec")
+		WebDriverWait(driver, 100)
+		
+		self.save_current_page(driver, "./samples/sample_page2_cited_view_more.html")
+		self.save_current_page(driver, "./samples/sample_page2_cited_view_more.png")
+		
+
+		paper.insert()
 		print(paper.get_vars())
+		
+		import table_citations
+		
+		for citing_paper in citing_papers:
+			citations = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
+			citations.insert()
 		
 		
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		return "", "", ""
+		return paper, citing_urls, cited_urls
 	
 
 	
-	def download_papers(self, driver, path, download_num=25):
+	def download_papers_by_keywords(self, driver, path, download_num=25):
 		# 0:デスクトップ、1:システム規定のフォルファ、2:ユーザ定義フォルダ
 		#driver.setPreference("browser.download.folderList",2)
 		# 上記で2を選択したのでファイルのダウンロード場所を指定
@@ -178,16 +255,36 @@ class IEEEXplore:
 		self.log.debug("len(link)<"+str(download_num)+"."+__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
 		return 0
 		
-	
-	def convert_path_to_url(self, path):
-		self.log.warn(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start. path[" + path + "]")
-		self.log.warn("Don't use this method.")
-		elements = path.split("/")
-		number = elements[len(elements)-2]
-		url = "http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=" + str(number)
-		self.log.warn(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return " + url)
-		return url
+	"""	
+	def get_papers_with_breadth_first_search(self, root_url_of_paper):
 		
+		import math
+		math.breadth_first_search(root_url_of_paper, get_citing_papers() )
+
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.debug("root_url_of_paper["+root_url_of_paper+"]")
+		
+		citing_urls, cited_urls = ***
+		
+		for url in citing_urls:
+			self.get_papers_with_breadth_first_search(url)
+
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	
+	def convert_to_datetime(self, str):
+		self.log.warn("!!!incomplete method!!!")
+		import time
+		timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+		return timestamp
+	
+	def convert_paper_url_to_cited_url(self, url):
+		#from
+		#http://ieeexplore.ieee.org/document/4116687/
+		#to
+		#http://ieeexplore.ieee.org/document/4116687/citations?anchor=anchor-paper-citations-ieee&ctx=citations
+		return url + "citations?anchor=anchor-paper-citations-ieee&ctx=citations"
+	
 	
 	## for debug
 	def print_h2_attributes(self, driver):

@@ -45,10 +45,10 @@ class IEEEXplore_test(unittest.TestCase):
 	"""	
 		
 	"""
-	def test_download_papers(self):
+	def test_download_papers_by_keywords(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		driver = self.xplore.create_driver("http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic")
-		self.xplore.download_papers(driver, "../../tmp/output", 1)
+		self.xplore.download_papers_by_keywords(driver, "../../tmp/output", 1)
 		driver.close()
 		#http://ieeexplore.ieee.org/document/7874313/
 		#http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
@@ -67,9 +67,11 @@ class IEEEXplore_test(unittest.TestCase):
 	
 	def test_get_attributes_and_download_pdf(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		#driver = self.xplore.create_driver("http://ieeexplore.ieee.org/document/7849067/")
-		driver = self.xplore.create_driver("./samples/paper_page.html")
-		self.xplore.get_attributes_and_download_pdf(driver)
+		#url = "http://ieeexplore.ieee.org/document/7849067/"
+		url = "http://ieeexplore.ieee.org/document/4116687/"
+		driver = self.xplore.create_driver(url)
+		#driver = self.xplore.create_driver("./samples/paper_page.html")
+		self.xplore.get_attributes_and_download_pdf(url, driver)
 		
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
@@ -87,6 +89,15 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info("test_get_papers_of_new_conferences start")
 		self.xplore.get_papers_of_new_conferences(10)
 	"""
+	"""
+	def test_get_papers_with_breadth_first_search(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		root_url_of_paper = "http://ieeexplore.ieee.org/document/7874313/"
+		self.xplore.get_papers_with_breadth_first_search(root_url_of_paper)
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	
+	
 if __name__ == '__main__':
 	unittest.main()
 

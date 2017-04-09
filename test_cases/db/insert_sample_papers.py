@@ -31,7 +31,7 @@ f.close()
 #print(str(len(authors))+ ", "+str(authors))
 
 for i in range(10):
-	paper = table_papers.Table_papers(id=i-1, title=titles[i], authors=authors[i])
+	paper = table_papers.Table_papers(id=i+1, title=titles[i], authors=authors[i])
 	db.insert(paper)
 	i+=1
 

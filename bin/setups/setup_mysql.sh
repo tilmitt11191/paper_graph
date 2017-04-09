@@ -1,12 +1,12 @@
 
 # -*- coding: utf-8 -*-
 
-USER="alladmin"
 
+#sudo apt-get -y install mysql-server
 
-sudo mysql -p -e "\
-create user 'alladmin'@'localhost' identified by 'admin';\
-flush privileges;"
+#sudo mysql -p -e "\
+#create user 'alladmin'@'localhost' identified by 'admin';\
+#flush privileges;"
 
 
 sudo mysql -p -e "\
@@ -15,18 +15,29 @@ flush privileges;"
 
 sudo mysql -p -e "\
 create database paper_graph;\
-grant ALL on paper_graph.* to '$USER'@'localhost';\
+grant ALL on paper_graph.* to 'alladmin'@'localhost';\
 create table paper_graph.papers (\
 id int, \
 title text, \
 authors tinytext, \
-keywords tinytext, \
-cites tinytext, \
-path tinytext, \
+keywords text, \
+citings tinytext, \
+citeds tinytext, \
 conference tinytext, \
 published DATETIME, \
+url tinytext, \
 timestamp DATETIME, \
-is_cached boolean);\
+path tinytext);\
+flush privileges;"
+
+sudo mysql -p -e "\
+create table paper_graph.citations (\
+id int, \
+start int, \
+end int);\
+flush privileges;"
+
+sudo mysql -p -e "\
 create table paper_graph.edges (\
 id int, \
 start int, \

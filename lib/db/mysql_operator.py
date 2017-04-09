@@ -21,9 +21,10 @@ class Mysql_operator:
 		engine = sqlalchemy.create_engine(Conf.getconf("myslq_url"), echo=False)
 		from sqlalchemy.orm import sessionmaker
 		Session = sessionmaker(bind=engine)
-		return Session()
-
+		session = Session()
+		session.expire_on_commit = False
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		return session
 
 
 	def insert(self, query):
@@ -56,8 +57,16 @@ class Mysql_operator:
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	
 	
-	
-	
+	def get_available_id(self, table):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")		
+		previous_id = 0
+		for q in self.session.query(table).order_by(table.id):
+			if q.id - previous_id >= 2:
+				self.log.debug("id[" + str(q.id) + "] - previous_id[" + str(previous_id) + "] > 2. return " + str(previous_id + 1))
+				return previous_id + 1
+			previous_id = q.id
+		self.log.debug("for loop ended. return " + str(previous_id + 1))
+		return previous_id + 1
 	
 	
 	

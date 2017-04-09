@@ -10,8 +10,6 @@ sudo n stable
 sudo ln -sf /usr/local/bin/node /usr/bin/node
 node -v
 
-#sudo apt-get purge -y nodejs npm
-
 sudo npm update -g npm
 
 ##sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6#echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
@@ -25,4 +23,6 @@ sudo npm update -g npm
 
 npm install express --save --no-bin-links
 npm install log4js --save --no-bin-links
-sudo npm install -g node-dev --no-bin-links #-g needs sudo
+sudo npm install -g node-dev --save #-g needs sudo
+npm install react-social-sharebuttons --save --no-bin-links
+npm install pug-cli --save --no-bin-links
