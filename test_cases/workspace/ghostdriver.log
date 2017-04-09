@@ -1,5 +1,33 @@
-[INFO  - 2017-04-09T09:55:26.932Z] GhostDriver - Main - running on port 54896
-[INFO  - 2017-04-09T09:55:27.900Z] Session [a8eafb60-1d0a-11e7-9526-efd6062e0843] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2017-04-09T09:55:27.900Z] Session [a8eafb60-1d0a-11e7-9526-efd6062e0843] - page.customHeaders:  - {}
-[INFO  - 2017-04-09T09:55:27.900Z] Session [a8eafb60-1d0a-11e7-9526-efd6062e0843] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2017-04-09T09:55:27.901Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: a8eafb60-1d0a-11e7-9526-efd6062e0843
+[INFO  - 2017-04-09T22:01:01.266Z] GhostDriver - Main - running on port 37369
+[INFO  - 2017-04-09T22:01:02.234Z] Session [0567a270-1d70-11e7-abd5-8d82849da13b] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2017-04-09T22:01:02.234Z] Session [0567a270-1d70-11e7-abd5-8d82849da13b] - page.customHeaders:  - {}
+[INFO  - 2017-04-09T22:01:02.234Z] Session [0567a270-1d70-11e7-abd5-8d82849da13b] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2017-04-09T22:01:02.234Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 0567a270-1d70-11e7-abd5-8d82849da13b
+[ERROR - 2017-04-09T22:01:08.744Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1491775268726
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-04-09T22:01:10.729Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1491775270697
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-04-09T22:01:11.387Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1491775271367
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-04-09T22:01:11.808Z] Session [0567a270-1d70-11e7-abd5-8d82849da13b] - page.onError - msg: Error: [$sanitize:badparse] The sanitizer was unable to parse the following block of html: <x'>), where the group order (P(sub)p) depends on the password. The client (110) uses its knowledge of the password to generate a root extraction problem instance (z) in the group and to generate data (y) allowing the server to construct a discrete logarithm problem instance (y') in the subgroup. The server uses its knowledge of the group order to solve the root extraction problem, and solves the discrete logarithm problem efficiently by leveraging the smoothness of the subgroup. A shared key (sk) can be computed as a function of the solutions to the discrete logarithm and root extraction problem instances. In some embodiments, in an oblivious transfer protocol, the server queries the client (at 230) for data whose position in a database (210) is defined by the password. The client provides (240) such data without knowing the data position associated with the server's query. The client obtains the data position independently from the password. The data positions and/or the respective data are used for authentication and shared secret key generation. Other embodiments are also provided.
+http://errors.angularjs.org/1.4.0/$sanitize/badparse?p0=%3Cx'%3E)%2C%20where%20the%20group%20order%20(P(sub)p)%20depends%20on%20the%20password.%20The%20client%20(110)%20uses%20its%20knowledge%20of%20the%20password%20to%20generate%20a%20root%20extraction%20problem%20instance%20(z)%20in%20the%20group%20and%20to%20generate%20data%20(y)%20allowing%20the%20server%20to%20construct%20a%20discrete%20logarithm%20problem%20instance%20(y')%20in%20the%20subgroup.%20The%20server%20uses%20its%20knowledge%20of%20the%20group%20order%20to%20solve%20the%20root%20extraction%20problem%2C%20and%20solves%20the%20discrete%20logarithm%20problem%20efficiently%20by%20leveraging%20the%20smoothness%20of%20the%20subgroup.%20A%20shared%20key%20(sk)%20can%20be%20computed%20as%20a%20function%20of%20the%20solutions%20to%20the%20discrete%20logarithm%20and%20root%20extraction%20problem%20instances.%20In%20some%20embodiments%2C%20in%20an%20oblivious%20transfer%20protocol%2C%20the%20server%20queries%20the%20client%20(at%20230)%20for%20data%20whose%20position%20in%20a%20database%20(210)%20is%20defined%20by%20the%20password.%20The%20client%20provides%20(240)%20such%20data%20without%20knowing%20the%20data%20position%20associated%20with%20the%20server's%20query.%20The%20client%20obtains%20the%20data%20position%20independently%20from%20the%20password.%20The%20data%20positions%20and%2For%20the%20respective%20data%20are%20used%20for%20authentication%20and%20shared%20secret%20key%20generation.%20Other%20embodiments%20are%20also%20provided.
+htmlParser@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:34:30105
+http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:34:13741
+getTrusted@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:30:8528
+http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:30:11278
+http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:33:3455
+http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:29:18325
+$digest@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:29:32437
+$apply@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:30:1942
+done@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:28:21932
+completeRequest@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:28:25462
+onload@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:28:26391
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-04-09T22:01:11.809Z] Session [0567a270-1d70-11e7-abd5-8d82849da13b] - page.onError - stack:
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:29)
+
+  phantomjs://platform/console++.js:263 in error

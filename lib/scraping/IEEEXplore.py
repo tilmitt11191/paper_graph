@@ -2,6 +2,12 @@
 # -*- coding: utf-8 -*-
 import sys, os
 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
+
+
 class IEEEXplore:
 	def __init__(self):
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../lib/utils")
@@ -159,7 +165,11 @@ class IEEEXplore:
 		paper.conference = conference
 		
 		#Date of Publication: 06 January 200 or Date of Conference 14-16 Nov. 2006
-		date = driver.find_element_by_xpath('//div[@ng-if="::vm.details.isConference == true"]').text
+		try:
+			date = driver.find_element_by_xpath('//div[@ng-if="::vm.details.isConference == true"]').text
+		except NoSuchElementException:
+			self.log.debug("catch NoSuchElementException. date = ''") ##todo paper
+			date = ""
 		paper.published = self.convert_to_datetime(date)
 		
 		##url
@@ -196,25 +206,56 @@ class IEEEXplore:
 		cited_papers = []
 		cited_urls = []
 		driver.get(self.convert_paper_url_to_cited_url(url))
-		#self.save_current_page(driver, "./samples/sample_page2.html")
-		#self.save_current_page(driver, "./samples/sample_page2_cited.png")
-		driver.find_element_by_class_name('load-more-button').click()
-		from selenium.webdriver.support.ui import WebDriverWait
-		self.log.debug("wait 100 sec")
-		WebDriverWait(driver, 100)
+		self.log.debug("WebDriverWait")
+		timeout = 10
+		try:
+			element_present = EC.presence_of_element_located(driver.find_element_by_xpath('//b[@class="ng-binding"]'))
+			WebDriverWait(driver, timeout).until(element_present)
+		except TimeoutException:
+			print("Timed out waiting for page to load")
+		except NoSuchElementException:
+			self.log.debug("catch NoSuchElementException. EC.presence_of_element_located")
 		
-		self.save_current_page(driver, "./samples/sample_page2_cited_view_more.html")
-		self.save_current_page(driver, "./samples/sample_page2_cited_view_more.png")
+		self.save_current_page(driver, "./samples/sample_page1055638_cited.html")
+		self.save_current_page(driver, "./samples/sample_page1055638_cited.png")
+
+		##if not cited, load-more-button does not exist.
+		##but if cited, load-more-button always exists nevertheless no more paper,
+		##and the buttons are hidden.
+		try:
+			load_more_button = driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
+		except NoSuchElementException:
+			self.log.debug("catch NoSuchElementException. load_more_button = None")
+			load_more_button = None
+
+		if load_more_button:
+			load_more_button.click()
+			self.log.debug("wait 10 sec")
+			import time
+			time.sleep(10)
+		#from selenium.webdriver.support.ui import WebDriverWait
+		#WebDriverWait(driver, 100)
+		#driver.find_element_by_class_name('load-more-button').click()
+		"""
+				<div class="load-more-container ng-hide" ng-show="vm.contextData.paperCitations.ieee.length &lt; +vm.contextData.ieeeCitationCount" aria-hidden="true" style="">
+			<button class="load-more-button" type="button" ng-click="vm.loadMoreCitations('ieee')" ng-disabled="vm.loading" tabindex="0" aria-disabled="false">
+				<span ng-show="!vm.loading" aria-hidden="false" class="" style="">View More</span>
+				<i class="fa fa-spinner fa-spin ng-hide" ng-show="vm.loading" aria-hidden="true" style=""></i>
+			</button>
+		</div>
+		"""
+		self.save_current_page(driver, "./samples/sample_page1055638_cited_view_more.html")
+		self.save_current_page(driver, "./samples/sample_page1055638_cited_view_more.png")
 		
 
-		paper.insert()
-		print(paper.get_vars())
+		#paper.insert()
+		#print(paper.get_vars())
 		
 		import table_citations
 		
 		for citing_paper in citing_papers:
 			citations = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
-			citations.insert()
+			#citations.insert()
 		
 		
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
@@ -273,7 +314,7 @@ class IEEEXplore:
 	"""
 	
 	def convert_to_datetime(self, str):
-		self.log.warn("!!!incomplete method!!!")
+		self.log.warning("!!!incomplete method[" + __class__.__name__ + "." + sys._getframe().f_code.co_name + "]!!!")
 		import time
 		timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		return timestamp
