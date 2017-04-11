@@ -95,41 +95,76 @@ class IEEEXplore:
 	
 	def get_attributes_and_download_pdf(self, url, driver):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 		import table_papers
 		paper = table_papers.Table_papers()
+		timeout = 10
+		driver.get(url)
 		
-		##title
+		self.log.debug("get attributes of this paper")
+		#paper.title = self.get_title(driver)
+		#paper.authors = self.get_authors(driver)
+		#paper.keywords = self.get_keywords(driver)
+		#paper.citings, citing_papers, citing_urls = self.get_citing_papers(driver)
+		paper.citeds, cited_papers, cited_urls = self.get_cited_papers(driver, timeout)
+		#paper.conference = self.get_conference(driver)
+		#paper.published = self.get_date_of_publication(driver)
+		#paper.url = url
+		import time
+		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+		##path
+
+		#paper.insert()
+		print(paper.get_vars())
+		
+		self.log.debug("insert citations of this paper to db")
+		import table_citations
+		
+		for citing_paper in citing_papers:
+			citation = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
+			#citation.insert()
+		
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		return paper, citing_urls, cited_urls
+	
+	
+	
+	def get_title(self, driver):
 		#element = driver.find_element_by_tag_name("title")
 		#element = driver.find_element_by_id("title")
 		#element = driver.find_element_by_css_selector("html > title")
 		#element = driver.find_element_by_class_name("title")
-		paper.title = driver.title
+		return driver.title
 		
-		
+	
+	def get_authors(self, driver):
 		##authors
 		#<span ng-bind-html="::author.name" class="ng-binding">
 		#elements = driver.find_elements_by_class_name("authors-container")
 		#print(str(len(elements)))
+		authors_str = ""
 		elements = driver.find_elements_by_xpath('//span[@ng-bind-html="::author.name"]')
 		#print(str(len(elements))) #5
 		for el in elements:
-			paper.authors += ","+el.text
-		paper.authors = paper.authors[1:]
-		
-		
+			authors_str += ","+el.text
+		return authors_str[1:]
+	
+	def get_keywords(self, driver):
 		##keywords
+		keywords_str = ""
 		elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
 		#print(str(len(elements))) #21
 		for el in elements:
 			keyword = el.text
-			if keyword in paper.keywords:
+			if keyword in keywords_str:
+				##todo internet concludes int
 				self.log.debug("keyword[" + keyword + "] is deplicated. not add.")
 			else:
-				paper.keywords += ","+el.text
-		paper.keywords = paper.keywords[1:]
-		
-		
+				keywords_str += ","+el.text
+		return keywords_str
+	
+	def get_citing_papers(self, driver):
 		##citing_papers
 		##citing_urls
 		"""
@@ -139,6 +174,9 @@ class IEEEXplore:
 			<div class="ng-binding">Carl Livadas; Robert Walsh; David Lapsley; W. Timothy Strayer</div>
 		</div><!-- end ngRepeat: article in vm.contextData.similar --><div class="doc-all-related-articles-list-item ng-scope" ng-repeat="article in vm.contextData.similar"> 
 		"""
+		import table_papers
+		
+		citings_str = ""
 		citing_papers = []
 		citing_urls = []
 		#elements = driver.find_elements_by_xpath('//h2[@class="document-ft-section-header"]/a')
@@ -151,40 +189,37 @@ class IEEEXplore:
 			citing_url = el.get_attribute("href")
 			citing_paper = table_papers.Table_papers(title=el.get_attribute("title"), url=citing_url)
 			citing_paper.insert()
-			paper.citings += "," + str(citing_paper.id)
+			citings_str += "," + str(citing_paper.id)
 			citing_papers.append(citing_paper)
 			citing_urls.append(citing_url)
-			citing_paper.insert()
-		paper.citings = paper.citings[1:]
 
+		return citings_str, citing_papers, citing_urls
+	
+	
+	def get_cited_papers(self, driver, timeout=10):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
-		##conference
-		conference = driver.find_element_by_xpath('//div[@class="u-pb-1 stats-document-abstract-doi ng-scope"]')\
-							.find_element_by_tag_name('a').text
-
-		paper.conference = conference
+		import table_papers
 		
-		#Date of Publication: 06 January 200 or Date of Conference 14-16 Nov. 2006
-		try:
-			date = driver.find_element_by_xpath('//div[@ng-if="::vm.details.isConference == true"]').text
-		except NoSuchElementException:
-			self.log.debug("catch NoSuchElementException. date = ''") ##todo paper
-			date = ""
-		paper.published = self.convert_to_datetime(date)
-		
-		##url
-		paper.url = url
-		
-		##timestamp
-		import time
-		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+		citeds_str = ""
+		cited_papers = []
+		cited_urls = []
 
-		##path
-
-		##cited_papers
-		##cited_urls
 		#href="/document/4116687/citations?tabFilter=papers"
 		#http://ieeexplore.ieee.org/document/4116687/citations?anchor=anchor-paper-citations-ieee&ctx=citations
+		initial_url = driver.current_url
+		driver.get(self.convert_paper_url_to_cited_url(initial_url))
+		#self.save_current_page(driver, "./samples/sample_page_7849067_start.html")
+		#self.save_current_page(driver, "./samples/sample_page_7849067_start.png")
+		
+		"""
+		<div ng-if="!vm.loading &amp;&amp; !vm.details.paperCitations.ieee &amp;&amp; !vm.details.paperCitations.nonIeee &amp;&amp; !vm.details.patentCitations" class="ng-scope" style="">
+		Citations are not available for this document.
+	</div>
+		"""
+		#el = driver.find_element_by_xpath('//div[@ng-if="!vm.loading &amp;&amp; !vm.details.paperCitations.ieee &amp;&amp; !vm.details.paperCitations.nonIeee &amp;&amp; !vm.details.patentCitations"')
+		el = driver.find_element_by_xpath('//div[@class="ng-scope" and @style=""]') #ok. got els
+		print(el.text)
 		
 		"""
 		try:
@@ -202,22 +237,29 @@ class IEEEXplore:
 				<span ng-show="!vm.loading" aria-hidden="false" class="">View More</span>
 				<i class="fa fa-spinner fa-spin ng-hide" ng-show="vm.loading" aria-hidden="true"></i>
 		"""
+		self.log.debug("WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//b[@class=ng-binding]' start")
 
-		cited_papers = []
-		cited_urls = []
-		driver.get(self.convert_paper_url_to_cited_url(url))
-		self.log.debug("WebDriverWait")
-		timeout = 10
 		try:
-			element_present = EC.presence_of_element_located(driver.find_element_by_xpath('//b[@class="ng-binding"]'))
-			WebDriverWait(driver, timeout).until(element_present)
+			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//b[@class="ng-binding"]'))
 		except TimeoutException:
-			print("Timed out waiting for page to load")
+			m = "caught TimeoutException at load the first cited page."
+			print(m)
+			self.log.warning(m)
+			#driver.get(initial_url)
+			#return citeds_str, cited_papers, cited_urls
 		except NoSuchElementException:
-			self.log.debug("catch NoSuchElementException. EC.presence_of_element_located")
+			m = "caught NoSuchElementException at load the first cited page."
+			print(m)
+			self.log.warning(m)
+			#driver.get(initial_url)
+			#return citeds_str, cited_papers, cited_urls
+			
+		self.log.debug("Wait Finished.")
 		
-		self.save_current_page(driver, "./samples/sample_page1055638_cited.html")
-		self.save_current_page(driver, "./samples/sample_page1055638_cited.png")
+		self.save_current_page(driver, "./samples/sample_page_7849067_cited.html")
+		self.save_current_page(driver, "./samples/sample_page_7849067_cited.png")
+		driver.get(initial_url)
+		return citeds_str, cited_papers, cited_urls
 
 		##if not cited, load-more-button does not exist.
 		##but if cited, load-more-button always exists nevertheless no more paper,
@@ -231,8 +273,8 @@ class IEEEXplore:
 		if load_more_button:
 			load_more_button.click()
 			self.log.debug("wait 10 sec")
-			import time
-			time.sleep(10)
+			#import time
+			#time.sleep(10)
 		#from selenium.webdriver.support.ui import WebDriverWait
 		#WebDriverWait(driver, 100)
 		#driver.find_element_by_class_name('load-more-button').click()
@@ -244,22 +286,28 @@ class IEEEXplore:
 			</button>
 		</div>
 		"""
-		self.save_current_page(driver, "./samples/sample_page1055638_cited_view_more.html")
-		self.save_current_page(driver, "./samples/sample_page1055638_cited_view_more.png")
-		
-
-		#paper.insert()
-		#print(paper.get_vars())
-		
-		import table_citations
-		
-		for citing_paper in citing_papers:
-			citations = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
-			#citations.insert()
-		
-		
+		self.save_current_page(driver, "./samples/sample_page_7849067_cited_view_more.html")
+		self.save_current_page(driver, "./samples/sample_page_7849067_cited_view_more.png")
+			
+		driver.get(initial_url)
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		return paper, citing_urls, cited_urls
+		return citeds_str, cited_papers, cited_urls
+	
+	def get_conference(self, driver):
+		conference = driver.find_element_by_xpath('//div[@class="u-pb-1 stats-document-abstract-doi ng-scope"]')\
+							.find_element_by_tag_name('a').text
+
+		return conference
+	
+	def get_date_of_publication(self, driver):
+			#Date of Publication: 06 January 200 or Date of Conference 14-16 Nov. 2006
+		try:
+			date = driver.find_element_by_xpath('//div[@ng-if="::vm.details.isConference == true"]').text
+		except NoSuchElementException:
+			self.log.debug("catch NoSuchElementException. date = ''") ##todo paper
+			date = ""
+		return self.convert_to_datetime(date)
+	
 	
 
 	
@@ -321,10 +369,10 @@ class IEEEXplore:
 	
 	def convert_paper_url_to_cited_url(self, url):
 		#from
-		#http://ieeexplore.ieee.org/document/4116687/
+		#http://ieeexplore.ieee.org/document/4116687/?reload=true
 		#to
 		#http://ieeexplore.ieee.org/document/4116687/citations?anchor=anchor-paper-citations-ieee&ctx=citations
-		return url + "citations?anchor=anchor-paper-citations-ieee&ctx=citations"
+		return url.split("?")[0] + "citations?anchor=anchor-paper-citations-ieee&ctx=citations"
 	
 	
 	## for debug
