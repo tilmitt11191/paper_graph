@@ -67,7 +67,7 @@ class IEEEXplore_test(unittest.TestCase):
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	
+	"""
 	def test_get_attributes_and_download_pdf_which_not_cited(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7849067/"
@@ -77,11 +77,11 @@ class IEEEXplore_test(unittest.TestCase):
 		
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 	
 	"""
 	def test_get_attributes_and_download_pdf_which_cited(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		#url = "http://ieeexplore.ieee.org/document/7849067/"
 		url = "http://ieeexplore.ieee.org/document/4116687/"
 		driver = self.xplore.create_driver(url)
 		#driver = self.xplore.create_driver("./samples/paper_page.html")
@@ -90,6 +90,7 @@ class IEEEXplore_test(unittest.TestCase):
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	
 	"""
 	def test_get_attributes_and_download_pdf_which_cited_many(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -101,6 +102,7 @@ class IEEEXplore_test(unittest.TestCase):
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+
 	"""
 	def test_convert_path_to_url(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -108,6 +110,19 @@ class IEEEXplore_test(unittest.TestCase):
 		self.assertEqual("http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313", url)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	
+	def test_parse_citing(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		str = "Daniel Garant, Wei Lu, \"Mining Botnet Behaviors on the Large-Scale Web Application Community\", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013."
+		authors, cited_title, cited_conference, cited_date = self.xplore.parse_citing(str)
+		print(authors)
+		print(cited_title)
+		print(cited_conference)
+		print(cited_date)
+		
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	
+	
 	"""
 	def test_get_papers_of_new_conferences(self):
 		self.log.info("test_get_papers_of_new_conferences start")

@@ -93,14 +93,14 @@ class IEEEXplore:
 		return urls
 	
 	
-	def get_attributes_and_download_pdf(self, url, driver):
+	def get_attributes_and_download_pdf(self, target_paper_url, driver):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 		import table_papers
 		paper = table_papers.Table_papers()
-		timeout = 10
-		driver.get(url)
+		timeout = 30
+		driver.get(target_paper_url)
 		
 		self.log.debug("get attributes of this paper")
 		#paper.title = self.get_title(driver)
@@ -110,7 +110,7 @@ class IEEEXplore:
 		paper.citeds, cited_papers, cited_urls = self.get_cited_papers(driver, timeout)
 		#paper.conference = self.get_conference(driver)
 		#paper.published = self.get_date_of_publication(driver)
-		#paper.url = url
+		#paper.url = target_paper_url
 		import time
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		##path
@@ -121,10 +121,10 @@ class IEEEXplore:
 		self.log.debug("insert citations of this paper to db")
 		import table_citations
 		
-		for citing_paper in citing_papers:
-			citation = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
+		#for citing_paper in citing_papers:
+		#	citation = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
 			#citation.insert()
-		
+		citing_urls = []
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return paper, citing_urls, cited_urls
 	
@@ -196,7 +196,7 @@ class IEEEXplore:
 		return citings_str, citing_papers, citing_urls
 	
 	
-	def get_cited_papers(self, driver, timeout=10):
+	def get_cited_papers(self, driver, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		import table_papers
@@ -209,8 +209,8 @@ class IEEEXplore:
 		#http://ieeexplore.ieee.org/document/4116687/citations?anchor=anchor-paper-citations-ieee&ctx=citations
 		initial_url = driver.current_url
 		driver.get(self.convert_paper_url_to_cited_url(initial_url))
-		#self.save_current_page(driver, "./samples/sample_page_7849067_start.html")
-		#self.save_current_page(driver, "./samples/sample_page_7849067_start.png")
+		self.save_current_page(driver, "./samples/sample_page_1055638_start.html")
+		self.save_current_page(driver, "./samples/sample_page_1055638_start.png")
 		
 		"""
 		<div ng-if="!vm.loading &amp;&amp; !vm.details.paperCitations.ieee &amp;&amp; !vm.details.paperCitations.nonIeee &amp;&amp; !vm.details.patentCitations" class="ng-scope" style="">
@@ -218,9 +218,19 @@ class IEEEXplore:
 	</div>
 		"""
 		#el = driver.find_element_by_xpath('//div[@ng-if="!vm.loading &amp;&amp; !vm.details.paperCitations.ieee &amp;&amp; !vm.details.paperCitations.nonIeee &amp;&amp; !vm.details.patentCitations"')
-		el = driver.find_element_by_xpath('//div[@class="ng-scope" and @style=""]') #ok. got els
-		print(el.text)
-		
+		#els = driver.find_elements_by_xpath('//div[@class="ng-scope" and @style=""]') #ok. got els
+		#els = driver.find_elements_by_xpath('//div[@ng-if="::!vm.contextData.paperCitations.ieee &amp;&amp; !vm.contextData.paperCitations.nonIeee &amp;&amp; !vm.contextData.patentCitations"]') #0
+                                             #><div ng-if="::!vm.contextData.paperCitations.ieee &amp;&amp; !vm.contextData.paperCitations.nonIeee &amp;&amp; !vm.contextData.patentCitations" class="ng-scope">
+		#els = driver.find_elements_by_xpath('//div[@ng-if="::!vm.contextData.paperCitations.ieee"]') #0
+		try:
+			div = driver.find_element_by_css_selector('div > section[class="document-all-references ng-scope"] > div[class="ng-scope"] > div[class="strong"]').text
+			if div == "Citations not available for this document.":
+				self.log.debug("this paper not cited. return []")
+				return citeds_str, cited_papers, cited_urls
+			self.log.debug("div="+div+", this paper is cited")
+		except NoSuchElementException:
+			self.log.debug("this paper is cited")
+
 		"""
 		try:
 			driver.find_element_by_name('queryText').send_keys(keywords)
@@ -256,14 +266,49 @@ class IEEEXplore:
 			
 		self.log.debug("Wait Finished.")
 		
-		self.save_current_page(driver, "./samples/sample_page_7849067_cited.html")
-		self.save_current_page(driver, "./samples/sample_page_7849067_cited.png")
-		driver.get(initial_url)
-		return citeds_str, cited_papers, cited_urls
+		#self.save_current_page(driver, "./samples/sample_page_1055638_cited.html")
+		#self.save_current_page(driver, "./samples/sample_page_1055638_cited.png")
 
+		elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+		num_of_viewing = len(elements)
+		from conf import Conf
+		limit_of_view = Conf.getconf("IEEE_citation_num_at_first_page")
+		print("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+
+		print("continue pushing more view button")
 		##if not cited, load-more-button does not exist.
 		##but if cited, load-more-button always exists nevertheless no more paper,
 		##and the buttons are hidden.
+		while num_of_viewing > limit_of_view - 10:
+			limit_of_view += Conf.getconf("IEEE_citation_num_per_more_view")
+			load_more_button = driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
+			load_more_button.click()
+			try:
+				WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')" and @aria-disabled="false"]'))
+			except TimeoutException:
+				m = "caught TimeoutException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]."
+				print(m)
+				self.log.warning(m)
+			except NoSuchElementException:
+				m = "caught NoSuchElementException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]."
+				print(m)
+				self.log.warning(m)
+			#elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div > div > b[class="ng-binding"]')
+			elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+			#self.save_current_page(driver, "./samples/sample_page_1055638_cited_"+str(limit_of_view)+".html")
+			#self.save_current_page(driver, "./samples/sample_page_1055638_cited_"+str(limit_of_view)+".png")
+			num_of_viewing = len(elements)
+			print("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+		
+		print("cited loop finished. num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+		
+		print("create arrays of paper and url")
+		
+		for el in elements:
+			cited_urls.append(el.find_element_by_css_selector('div[class="ref-links-container stats-citations-links-container"] > span > a').get_attribute("ng-href"))
+			authors, cited_title, cited_conference, cited_date = self.parse_citing(el.find_element_by_css_selector('div[ng-bind-html="::item.displayText"]').text)
+		
+		"""
 		try:
 			load_more_button = driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
 		except NoSuchElementException:
@@ -279,6 +324,7 @@ class IEEEXplore:
 		#WebDriverWait(driver, 100)
 		#driver.find_element_by_class_name('load-more-button').click()
 		"""
+		"""
 				<div class="load-more-container ng-hide" ng-show="vm.contextData.paperCitations.ieee.length &lt; +vm.contextData.ieeeCitationCount" aria-hidden="true" style="">
 			<button class="load-more-button" type="button" ng-click="vm.loadMoreCitations('ieee')" ng-disabled="vm.loading" tabindex="0" aria-disabled="false">
 				<span ng-show="!vm.loading" aria-hidden="false" class="" style="">View More</span>
@@ -286,8 +332,8 @@ class IEEEXplore:
 			</button>
 		</div>
 		"""
-		self.save_current_page(driver, "./samples/sample_page_7849067_cited_view_more.html")
-		self.save_current_page(driver, "./samples/sample_page_7849067_cited_view_more.png")
+		#self.save_current_page(driver, "./samples/sample_page_1055638_cited_view_more.html")
+		#self.save_current_page(driver, "./samples/sample_page_1055638_cited_view_more.png")
 			
 		driver.get(initial_url)
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
@@ -374,7 +420,20 @@ class IEEEXplore:
 		#http://ieeexplore.ieee.org/document/4116687/citations?anchor=anchor-paper-citations-ieee&ctx=citations
 		return url.split("?")[0] + "citations?anchor=anchor-paper-citations-ieee&ctx=citations"
 	
-	
+	def parse_citing(self, str):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		#from
+		#Daniel Garant, Wei Lu, "Mining Botnet Behaviors on the Large-Scale Web Application Community", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013.
+		#to
+		#Daniel Garant, Wei Lu, 
+		#Mining Botnet Behaviors on the Large-Scale Web Application Community
+		#Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on
+		#pp. 185-190, 2013
+		
+		
+		return "", "", "", ""
+		
+		
 	## for debug
 	def print_h2_attributes(self, driver):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
