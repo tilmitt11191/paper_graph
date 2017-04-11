@@ -93,15 +93,20 @@ class IEEEXplore:
 		return urls
 	
 	
-	def get_attributes_and_download_pdf(self, target_paper_url, driver):
+	def get_attributes_and_download_pdf(self, search, driver):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
+		timeout = 30
+		target_paper_url = search.node
+		
+		self.log.info("url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]")
+		#if this paper already downloaded, thid paper visited and skip. 
+
+		driver.get(target_paper_url)		
 		import table_papers
 		paper = table_papers.Table_papers()
-		timeout = 30
-		driver.get(target_paper_url)
-		
+
 		self.log.debug("get attributes of this paper")
 		#paper.title = self.get_title(driver)
 		#paper.authors = self.get_authors(driver)

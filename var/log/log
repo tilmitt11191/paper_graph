@@ -1,21 +1,413 @@
-2017-04-11 22:53:30,326 - INFO - return logger
+2017-04-12 07:45:57,151 - INFO - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140539460263384]
-2017-04-11 22:53:30,327 - INFO - 
+ id[140030059319080]
+2017-04-12 07:45:57,152 - INFO - 
 
 IEEEXplore_test.setUpClass finished.
 ---------- start ---------
-2017-04-11 22:53:30,809 - INFO - return logger
+2017-04-12 07:45:57,439 - INFO - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140539460263384]
-2017-04-11 22:53:30,863 - INFO - return logger
+ id[140030059319080]
+2017-04-12 07:45:57,469 - INFO - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140539460263384]
-2017-04-11 22:53:30,864 - DEBUG - class Search_options created.
-2017-04-11 22:53:30,865 - DEBUG - class IEEEXplore created.
-2017-04-11 22:53:30,865 - INFO - IEEEXplore_test.test_parse_citing start
-2017-04-11 22:53:30,865 - DEBUG - IEEEXplore.parse_citing start
-2017-04-11 22:53:30,866 - INFO - IEEEXplore_test.test_parse_citing finished
+ id[140030059319080]
+2017-04-12 07:45:57,469 - DEBUG - class Search_options created.
+2017-04-12 07:45:57,469 - DEBUG - class IEEEXplore created.
+2017-04-12 07:45:57,485 - INFO - IEEEXplore_test.test_get_attributes_and_download_pdf_which_cited start
+2017-04-12 07:45:57,485 - DEBUG - IEEEXplore.create_driver start
+2017-04-12 07:45:58,559 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session {"desiredCapabilities": {"browserName": "phantomjs", "platform": "ANY", "javascriptEnabled": true, "version": ""}, "capabilities": {"firstMatch": [], "javascriptEnabled": true, "browserName": "phantomjs", "alwaysMatch": {}, "platform": "ANY", "version": ""}}
+2017-04-12 07:45:58,584 - DEBUG - Finished Request
+2017-04-12 07:45:58,585 - DEBUG - driver.get(http://ieeexplore.ieee.org/document/4116687/)
+2017-04-12 07:45:58,585 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/url {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "url": "http://ieeexplore.ieee.org/document/4116687/"}
+2017-04-12 07:46:04,103 - DEBUG - Finished Request
+2017-04-12 07:46:04,104 - DEBUG - IEEEXplore.create_driver finished. return driver
+2017-04-12 07:46:04,104 - DEBUG - IEEEXplore.get_attributes_and_download_pdf start
+2017-04-12 07:46:04,104 - INFO - url[http://ieeexplore.ieee.org/document/4116687/], times[0], limit[0]
+2017-04-12 07:46:04,104 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/url {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "url": "http://ieeexplore.ieee.org/document/4116687/"}
+2017-04-12 07:46:06,295 - DEBUG - Finished Request
+2017-04-12 07:46:06,751 - INFO - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140030059319080]
+2017-04-12 07:46:06,752 - DEBUG - Mysql_operator.establish_session start
+2017-04-12 07:46:06,800 - DEBUG - Mysql_operator.establish_session finished
+2017-04-12 07:46:06,801 - DEBUG - class Mysql_operator created.
+2017-04-12 07:46:06,802 - DEBUG - get attributes of this paper
+2017-04-12 07:46:06,803 - DEBUG - IEEEXplore.get_cited_papers start
+2017-04-12 07:46:06,803 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/url {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba"}
+2017-04-12 07:46:06,814 - DEBUG - Finished Request
+2017-04-12 07:46:06,815 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/url {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "url": "http://ieeexplore.ieee.org/document/4116687/citations?anchor=anchor-paper-citations-ieee&ctx=citations"}
+2017-04-12 07:46:09,070 - DEBUG - Finished Request
+2017-04-12 07:46:09,070 - DEBUG - IEEEXplore.save_current_page start
+2017-04-12 07:46:09,070 - DEBUG - path[./samples/sample_page_1055638_start], suffix[.html]
+2017-04-12 07:46:09,078 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/source {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba"}
+2017-04-12 07:46:09,827 - DEBUG - Finished Request
+2017-04-12 07:46:09,832 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-12 07:46:09,834 - DEBUG - IEEEXplore.save_current_page start
+2017-04-12 07:46:09,835 - DEBUG - path[./samples/sample_page_1055638_start], suffix[.png]
+2017-04-12 07:46:09,835 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/screenshot {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba"}
+2017-04-12 07:46:11,225 - DEBUG - Finished Request
+2017-04-12 07:46:11,263 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-12 07:46:11,264 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div > section[class=\"document-all-references ng-scope\"] > div[class=\"ng-scope\"] > div[class=\"strong\"]", "using": "css selector"}
+2017-04-12 07:46:12,896 - DEBUG - Finished Request
+2017-04-12 07:46:12,903 - DEBUG - this paper is cited
+2017-04-12 07:46:12,904 - DEBUG - WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//b[@class=ng-binding]' start
+2017-04-12 07:46:12,905 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "//b[@class=\"ng-binding\"]", "using": "xpath"}
+2017-04-12 07:46:12,928 - DEBUG - Finished Request
+2017-04-12 07:46:12,929 - DEBUG - Wait Finished.
+2017-04-12 07:46:12,930 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/elements {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-repeat=\"item in vm.contextData.paperCitations.ieee\"] > div[class=\"pure-g pushTop10\"] > div[class=\"pure-u-23-24\"]", "using": "css selector"}
+2017-04-12 07:46:12,948 - DEBUG - Finished Request
+2017-04-12 07:46:12,963 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "//button[@class=\"load-more-button\" and @ng-click=\"vm.loadMoreCitations('ieee')\"]", "using": "xpath"}
+2017-04-12 07:46:12,997 - DEBUG - Finished Request
+2017-04-12 07:46:12,998 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772956/click {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772956"}
+2017-04-12 07:46:13,238 - DEBUG - Finished Request
+2017-04-12 07:46:13,239 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "//button[@class=\"load-more-button\" and @ng-click=\"vm.loadMoreCitations('ieee')\" and @aria-disabled=\"false\"]", "using": "xpath"}
+2017-04-12 07:46:14,840 - DEBUG - Finished Request
+2017-04-12 07:46:15,349 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "//button[@class=\"load-more-button\" and @ng-click=\"vm.loadMoreCitations('ieee')\" and @aria-disabled=\"false\"]", "using": "xpath"}
+2017-04-12 07:46:15,362 - DEBUG - Finished Request
+2017-04-12 07:46:15,364 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/elements {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-repeat=\"item in vm.contextData.paperCitations.ieee\"] > div[class=\"pure-g pushTop10\"] > div[class=\"pure-u-23-24\"]", "using": "css selector"}
+2017-04-12 07:46:15,379 - DEBUG - Finished Request
+2017-04-12 07:46:15,381 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772926/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772926", "using": "css selector"}
+2017-04-12 07:46:15,402 - DEBUG - Finished Request
+2017-04-12 07:46:15,404 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772964/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772964"}
+2017-04-12 07:46:15,418 - DEBUG - Finished Request
+2017-04-12 07:46:15,420 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772926/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772926", "using": "css selector"}
+2017-04-12 07:46:15,439 - DEBUG - Finished Request
+2017-04-12 07:46:15,441 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772965/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772965"}
+2017-04-12 07:46:15,472 - DEBUG - Finished Request
+2017-04-12 07:46:15,473 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:15,474 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772927/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772927", "using": "css selector"}
+2017-04-12 07:46:15,491 - DEBUG - Finished Request
+2017-04-12 07:46:15,492 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772966/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772966"}
+2017-04-12 07:46:15,518 - DEBUG - Finished Request
+2017-04-12 07:46:15,519 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772927/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772927", "using": "css selector"}
+2017-04-12 07:46:15,545 - DEBUG - Finished Request
+2017-04-12 07:46:15,545 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772967/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772967"}
+2017-04-12 07:46:15,578 - DEBUG - Finished Request
+2017-04-12 07:46:15,579 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:15,580 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772928/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772928", "using": "css selector"}
+2017-04-12 07:46:15,597 - DEBUG - Finished Request
+2017-04-12 07:46:15,598 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772968/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772968"}
+2017-04-12 07:46:15,616 - DEBUG - Finished Request
+2017-04-12 07:46:15,617 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772928/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772928", "using": "css selector"}
+2017-04-12 07:46:15,634 - DEBUG - Finished Request
+2017-04-12 07:46:15,636 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772969/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772969"}
+2017-04-12 07:46:15,659 - DEBUG - Finished Request
+2017-04-12 07:46:15,659 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:15,660 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772929/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772929", "using": "css selector"}
+2017-04-12 07:46:15,709 - DEBUG - Finished Request
+2017-04-12 07:46:15,709 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772970/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772970"}
+2017-04-12 07:46:15,724 - DEBUG - Finished Request
+2017-04-12 07:46:15,725 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772929/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772929", "using": "css selector"}
+2017-04-12 07:46:15,743 - DEBUG - Finished Request
+2017-04-12 07:46:15,743 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772971/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772971"}
+2017-04-12 07:46:15,800 - DEBUG - Finished Request
+2017-04-12 07:46:15,801 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:15,801 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772930/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772930", "using": "css selector"}
+2017-04-12 07:46:15,827 - DEBUG - Finished Request
+2017-04-12 07:46:15,828 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772972/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772972"}
+2017-04-12 07:46:15,848 - DEBUG - Finished Request
+2017-04-12 07:46:15,850 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772930/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772930", "using": "css selector"}
+2017-04-12 07:46:15,904 - DEBUG - Finished Request
+2017-04-12 07:46:15,905 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772973/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772973"}
+2017-04-12 07:46:15,948 - DEBUG - Finished Request
+2017-04-12 07:46:15,948 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:15,949 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772931/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772931", "using": "css selector"}
+2017-04-12 07:46:15,987 - DEBUG - Finished Request
+2017-04-12 07:46:15,988 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772974/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772974"}
+2017-04-12 07:46:16,012 - DEBUG - Finished Request
+2017-04-12 07:46:16,014 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772931/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772931", "using": "css selector"}
+2017-04-12 07:46:16,048 - DEBUG - Finished Request
+2017-04-12 07:46:16,049 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772975/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772975"}
+2017-04-12 07:46:16,075 - DEBUG - Finished Request
+2017-04-12 07:46:16,076 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,076 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772932/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772932", "using": "css selector"}
+2017-04-12 07:46:16,096 - DEBUG - Finished Request
+2017-04-12 07:46:16,097 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772976/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772976"}
+2017-04-12 07:46:16,112 - DEBUG - Finished Request
+2017-04-12 07:46:16,113 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772932/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772932", "using": "css selector"}
+2017-04-12 07:46:16,127 - DEBUG - Finished Request
+2017-04-12 07:46:16,128 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772977/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772977"}
+2017-04-12 07:46:16,147 - DEBUG - Finished Request
+2017-04-12 07:46:16,148 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,149 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772933/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772933", "using": "css selector"}
+2017-04-12 07:46:16,162 - DEBUG - Finished Request
+2017-04-12 07:46:16,163 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772978/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772978"}
+2017-04-12 07:46:16,182 - DEBUG - Finished Request
+2017-04-12 07:46:16,183 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772933/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772933", "using": "css selector"}
+2017-04-12 07:46:16,202 - DEBUG - Finished Request
+2017-04-12 07:46:16,204 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772979/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772979"}
+2017-04-12 07:46:16,233 - DEBUG - Finished Request
+2017-04-12 07:46:16,234 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,234 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772934/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772934", "using": "css selector"}
+2017-04-12 07:46:16,258 - DEBUG - Finished Request
+2017-04-12 07:46:16,260 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772980/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772980"}
+2017-04-12 07:46:16,278 - DEBUG - Finished Request
+2017-04-12 07:46:16,279 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772934/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772934", "using": "css selector"}
+2017-04-12 07:46:16,300 - DEBUG - Finished Request
+2017-04-12 07:46:16,301 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772981/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772981"}
+2017-04-12 07:46:16,327 - DEBUG - Finished Request
+2017-04-12 07:46:16,328 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,329 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772935/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772935", "using": "css selector"}
+2017-04-12 07:46:16,367 - DEBUG - Finished Request
+2017-04-12 07:46:16,369 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772982/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772982"}
+2017-04-12 07:46:16,481 - DEBUG - Finished Request
+2017-04-12 07:46:16,481 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772935/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772935", "using": "css selector"}
+2017-04-12 07:46:16,499 - DEBUG - Finished Request
+2017-04-12 07:46:16,500 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772983/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772983"}
+2017-04-12 07:46:16,528 - DEBUG - Finished Request
+2017-04-12 07:46:16,529 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,530 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772936/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772936", "using": "css selector"}
+2017-04-12 07:46:16,553 - DEBUG - Finished Request
+2017-04-12 07:46:16,553 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772984/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772984"}
+2017-04-12 07:46:16,566 - DEBUG - Finished Request
+2017-04-12 07:46:16,567 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772936/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772936", "using": "css selector"}
+2017-04-12 07:46:16,587 - DEBUG - Finished Request
+2017-04-12 07:46:16,588 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772985/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772985"}
+2017-04-12 07:46:16,616 - DEBUG - Finished Request
+2017-04-12 07:46:16,617 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,617 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772937/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772937", "using": "css selector"}
+2017-04-12 07:46:16,631 - DEBUG - Finished Request
+2017-04-12 07:46:16,632 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772986/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772986"}
+2017-04-12 07:46:16,647 - DEBUG - Finished Request
+2017-04-12 07:46:16,648 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772937/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772937", "using": "css selector"}
+2017-04-12 07:46:16,667 - DEBUG - Finished Request
+2017-04-12 07:46:16,668 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772987/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772987"}
+2017-04-12 07:46:16,693 - DEBUG - Finished Request
+2017-04-12 07:46:16,693 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,694 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772938/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772938", "using": "css selector"}
+2017-04-12 07:46:16,716 - DEBUG - Finished Request
+2017-04-12 07:46:16,718 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772988/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772988"}
+2017-04-12 07:46:16,740 - DEBUG - Finished Request
+2017-04-12 07:46:16,741 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772938/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772938", "using": "css selector"}
+2017-04-12 07:46:16,756 - DEBUG - Finished Request
+2017-04-12 07:46:16,757 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772989/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772989"}
+2017-04-12 07:46:16,819 - DEBUG - Finished Request
+2017-04-12 07:46:16,820 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,821 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772939/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772939", "using": "css selector"}
+2017-04-12 07:46:16,840 - DEBUG - Finished Request
+2017-04-12 07:46:16,842 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772990/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772990"}
+2017-04-12 07:46:16,866 - DEBUG - Finished Request
+2017-04-12 07:46:16,868 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772939/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772939", "using": "css selector"}
+2017-04-12 07:46:16,900 - DEBUG - Finished Request
+2017-04-12 07:46:16,908 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772991/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772991"}
+2017-04-12 07:46:16,962 - DEBUG - Finished Request
+2017-04-12 07:46:16,981 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:16,982 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772940/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772940", "using": "css selector"}
+2017-04-12 07:46:17,011 - DEBUG - Finished Request
+2017-04-12 07:46:17,012 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772992/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772992"}
+2017-04-12 07:46:17,033 - DEBUG - Finished Request
+2017-04-12 07:46:17,036 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772940/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772940", "using": "css selector"}
+2017-04-12 07:46:17,054 - DEBUG - Finished Request
+2017-04-12 07:46:17,056 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772993/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772993"}
+2017-04-12 07:46:17,095 - DEBUG - Finished Request
+2017-04-12 07:46:17,096 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,097 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772941/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772941", "using": "css selector"}
+2017-04-12 07:46:17,115 - DEBUG - Finished Request
+2017-04-12 07:46:17,116 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772994/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772994"}
+2017-04-12 07:46:17,140 - DEBUG - Finished Request
+2017-04-12 07:46:17,141 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772941/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772941", "using": "css selector"}
+2017-04-12 07:46:17,161 - DEBUG - Finished Request
+2017-04-12 07:46:17,162 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772995/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772995"}
+2017-04-12 07:46:17,203 - DEBUG - Finished Request
+2017-04-12 07:46:17,209 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,211 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772942/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772942", "using": "css selector"}
+2017-04-12 07:46:17,234 - DEBUG - Finished Request
+2017-04-12 07:46:17,235 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772996/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772996"}
+2017-04-12 07:46:17,257 - DEBUG - Finished Request
+2017-04-12 07:46:17,258 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772942/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772942", "using": "css selector"}
+2017-04-12 07:46:17,279 - DEBUG - Finished Request
+2017-04-12 07:46:17,280 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772997/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772997"}
+2017-04-12 07:46:17,308 - DEBUG - Finished Request
+2017-04-12 07:46:17,309 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,309 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772943/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772943", "using": "css selector"}
+2017-04-12 07:46:17,327 - DEBUG - Finished Request
+2017-04-12 07:46:17,329 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772998/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950772998"}
+2017-04-12 07:46:17,348 - DEBUG - Finished Request
+2017-04-12 07:46:17,349 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772943/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772943", "using": "css selector"}
+2017-04-12 07:46:17,383 - DEBUG - Finished Request
+2017-04-12 07:46:17,384 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772999/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950772999"}
+2017-04-12 07:46:17,402 - DEBUG - Finished Request
+2017-04-12 07:46:17,403 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,403 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772944/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772944", "using": "css selector"}
+2017-04-12 07:46:17,418 - DEBUG - Finished Request
+2017-04-12 07:46:17,419 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773000/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773000"}
+2017-04-12 07:46:17,441 - DEBUG - Finished Request
+2017-04-12 07:46:17,442 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772944/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772944", "using": "css selector"}
+2017-04-12 07:46:17,453 - DEBUG - Finished Request
+2017-04-12 07:46:17,454 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773001/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773001"}
+2017-04-12 07:46:17,498 - DEBUG - Finished Request
+2017-04-12 07:46:17,500 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,500 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772945/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772945", "using": "css selector"}
+2017-04-12 07:46:17,516 - DEBUG - Finished Request
+2017-04-12 07:46:17,517 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773002/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773002"}
+2017-04-12 07:46:17,536 - DEBUG - Finished Request
+2017-04-12 07:46:17,537 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772945/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772945", "using": "css selector"}
+2017-04-12 07:46:17,557 - DEBUG - Finished Request
+2017-04-12 07:46:17,559 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773003/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773003"}
+2017-04-12 07:46:17,586 - DEBUG - Finished Request
+2017-04-12 07:46:17,586 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,587 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772946/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772946", "using": "css selector"}
+2017-04-12 07:46:17,599 - DEBUG - Finished Request
+2017-04-12 07:46:17,600 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773004/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773004"}
+2017-04-12 07:46:17,617 - DEBUG - Finished Request
+2017-04-12 07:46:17,619 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772946/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772946", "using": "css selector"}
+2017-04-12 07:46:17,633 - DEBUG - Finished Request
+2017-04-12 07:46:17,634 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773005/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773005"}
+2017-04-12 07:46:17,662 - DEBUG - Finished Request
+2017-04-12 07:46:17,663 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,663 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772947/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772947", "using": "css selector"}
+2017-04-12 07:46:17,681 - DEBUG - Finished Request
+2017-04-12 07:46:17,681 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773006/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773006"}
+2017-04-12 07:46:17,694 - DEBUG - Finished Request
+2017-04-12 07:46:17,695 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772947/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772947", "using": "css selector"}
+2017-04-12 07:46:17,711 - DEBUG - Finished Request
+2017-04-12 07:46:17,712 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773007/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773007"}
+2017-04-12 07:46:17,735 - DEBUG - Finished Request
+2017-04-12 07:46:17,736 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,736 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772948/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772948", "using": "css selector"}
+2017-04-12 07:46:17,747 - DEBUG - Finished Request
+2017-04-12 07:46:17,748 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773008/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773008"}
+2017-04-12 07:46:17,757 - DEBUG - Finished Request
+2017-04-12 07:46:17,758 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772948/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772948", "using": "css selector"}
+2017-04-12 07:46:17,775 - DEBUG - Finished Request
+2017-04-12 07:46:17,776 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773009/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773009"}
+2017-04-12 07:46:17,996 - DEBUG - Finished Request
+2017-04-12 07:46:17,997 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:17,998 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772949/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772949", "using": "css selector"}
+2017-04-12 07:46:18,027 - DEBUG - Finished Request
+2017-04-12 07:46:18,028 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773010/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773010"}
+2017-04-12 07:46:18,053 - DEBUG - Finished Request
+2017-04-12 07:46:18,055 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772949/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772949", "using": "css selector"}
+2017-04-12 07:46:18,080 - DEBUG - Finished Request
+2017-04-12 07:46:18,081 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773011/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773011"}
+2017-04-12 07:46:18,121 - DEBUG - Finished Request
+2017-04-12 07:46:18,122 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,123 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772950/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772950", "using": "css selector"}
+2017-04-12 07:46:18,136 - DEBUG - Finished Request
+2017-04-12 07:46:18,137 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773012/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773012"}
+2017-04-12 07:46:18,157 - DEBUG - Finished Request
+2017-04-12 07:46:18,158 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772950/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772950", "using": "css selector"}
+2017-04-12 07:46:18,184 - DEBUG - Finished Request
+2017-04-12 07:46:18,185 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773013/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773013"}
+2017-04-12 07:46:18,207 - DEBUG - Finished Request
+2017-04-12 07:46:18,208 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,209 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772951/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772951", "using": "css selector"}
+2017-04-12 07:46:18,230 - DEBUG - Finished Request
+2017-04-12 07:46:18,231 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773014/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773014"}
+2017-04-12 07:46:18,245 - DEBUG - Finished Request
+2017-04-12 07:46:18,247 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772951/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772951", "using": "css selector"}
+2017-04-12 07:46:18,270 - DEBUG - Finished Request
+2017-04-12 07:46:18,271 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773015/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773015"}
+2017-04-12 07:46:18,305 - DEBUG - Finished Request
+2017-04-12 07:46:18,306 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,307 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772952/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772952", "using": "css selector"}
+2017-04-12 07:46:18,330 - DEBUG - Finished Request
+2017-04-12 07:46:18,331 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773016/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773016"}
+2017-04-12 07:46:18,347 - DEBUG - Finished Request
+2017-04-12 07:46:18,348 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772952/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772952", "using": "css selector"}
+2017-04-12 07:46:18,363 - DEBUG - Finished Request
+2017-04-12 07:46:18,364 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773017/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773017"}
+2017-04-12 07:46:18,388 - DEBUG - Finished Request
+2017-04-12 07:46:18,390 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,391 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772953/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772953", "using": "css selector"}
+2017-04-12 07:46:18,421 - DEBUG - Finished Request
+2017-04-12 07:46:18,422 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773018/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773018"}
+2017-04-12 07:46:18,444 - DEBUG - Finished Request
+2017-04-12 07:46:18,445 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772953/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772953", "using": "css selector"}
+2017-04-12 07:46:18,469 - DEBUG - Finished Request
+2017-04-12 07:46:18,470 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773019/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773019"}
+2017-04-12 07:46:18,498 - DEBUG - Finished Request
+2017-04-12 07:46:18,499 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,499 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772954/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772954", "using": "css selector"}
+2017-04-12 07:46:18,521 - DEBUG - Finished Request
+2017-04-12 07:46:18,522 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773020/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773020"}
+2017-04-12 07:46:18,540 - DEBUG - Finished Request
+2017-04-12 07:46:18,542 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772954/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772954", "using": "css selector"}
+2017-04-12 07:46:18,570 - DEBUG - Finished Request
+2017-04-12 07:46:18,571 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773021/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773021"}
+2017-04-12 07:46:18,601 - DEBUG - Finished Request
+2017-04-12 07:46:18,602 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,602 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772955/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772955", "using": "css selector"}
+2017-04-12 07:46:18,614 - DEBUG - Finished Request
+2017-04-12 07:46:18,615 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773022/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773022"}
+2017-04-12 07:46:18,639 - DEBUG - Finished Request
+2017-04-12 07:46:18,639 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772955/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772955", "using": "css selector"}
+2017-04-12 07:46:18,658 - DEBUG - Finished Request
+2017-04-12 07:46:18,659 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773023/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773023"}
+2017-04-12 07:46:18,690 - DEBUG - Finished Request
+2017-04-12 07:46:18,692 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,693 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772957/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772957", "using": "css selector"}
+2017-04-12 07:46:18,713 - DEBUG - Finished Request
+2017-04-12 07:46:18,714 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773024/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773024"}
+2017-04-12 07:46:18,734 - DEBUG - Finished Request
+2017-04-12 07:46:18,736 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772957/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772957", "using": "css selector"}
+2017-04-12 07:46:18,762 - DEBUG - Finished Request
+2017-04-12 07:46:18,763 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773025/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773025"}
+2017-04-12 07:46:18,794 - DEBUG - Finished Request
+2017-04-12 07:46:18,795 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,797 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772958/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772958", "using": "css selector"}
+2017-04-12 07:46:18,815 - DEBUG - Finished Request
+2017-04-12 07:46:18,817 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773026/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773026"}
+2017-04-12 07:46:18,840 - DEBUG - Finished Request
+2017-04-12 07:46:18,841 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772958/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772958", "using": "css selector"}
+2017-04-12 07:46:18,867 - DEBUG - Finished Request
+2017-04-12 07:46:18,869 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773027/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773027"}
+2017-04-12 07:46:18,906 - DEBUG - Finished Request
+2017-04-12 07:46:18,939 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:18,940 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772959/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772959", "using": "css selector"}
+2017-04-12 07:46:18,956 - DEBUG - Finished Request
+2017-04-12 07:46:18,956 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773028/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773028"}
+2017-04-12 07:46:19,026 - DEBUG - Finished Request
+2017-04-12 07:46:19,026 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772959/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772959", "using": "css selector"}
+2017-04-12 07:46:19,048 - DEBUG - Finished Request
+2017-04-12 07:46:19,049 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773029/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773029"}
+2017-04-12 07:46:19,082 - DEBUG - Finished Request
+2017-04-12 07:46:19,083 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:19,084 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772960/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772960", "using": "css selector"}
+2017-04-12 07:46:19,113 - DEBUG - Finished Request
+2017-04-12 07:46:19,113 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773030/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773030"}
+2017-04-12 07:46:19,130 - DEBUG - Finished Request
+2017-04-12 07:46:19,135 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772960/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772960", "using": "css selector"}
+2017-04-12 07:46:19,157 - DEBUG - Finished Request
+2017-04-12 07:46:19,158 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773031/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773031"}
+2017-04-12 07:46:19,190 - DEBUG - Finished Request
+2017-04-12 07:46:19,192 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:19,193 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772961/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772961", "using": "css selector"}
+2017-04-12 07:46:19,214 - DEBUG - Finished Request
+2017-04-12 07:46:19,216 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773032/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773032"}
+2017-04-12 07:46:19,237 - DEBUG - Finished Request
+2017-04-12 07:46:19,238 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772961/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772961", "using": "css selector"}
+2017-04-12 07:46:19,258 - DEBUG - Finished Request
+2017-04-12 07:46:19,260 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773033/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773033"}
+2017-04-12 07:46:19,284 - DEBUG - Finished Request
+2017-04-12 07:46:19,285 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:19,286 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772962/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772962", "using": "css selector"}
+2017-04-12 07:46:19,306 - DEBUG - Finished Request
+2017-04-12 07:46:19,307 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773034/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773034"}
+2017-04-12 07:46:19,323 - DEBUG - Finished Request
+2017-04-12 07:46:19,324 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772962/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772962", "using": "css selector"}
+2017-04-12 07:46:19,342 - DEBUG - Finished Request
+2017-04-12 07:46:19,343 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773035/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773035"}
+2017-04-12 07:46:19,364 - DEBUG - Finished Request
+2017-04-12 07:46:19,365 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:19,365 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772963/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[class=\"ref-links-container stats-citations-links-container\"] > span > a", "id": ":wdc:1491950772963", "using": "css selector"}
+2017-04-12 07:46:19,385 - DEBUG - Finished Request
+2017-04-12 07:46:19,387 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773036/attribute/ng-href {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "name": "ng-href", "id": ":wdc:1491950773036"}
+2017-04-12 07:46:19,405 - DEBUG - Finished Request
+2017-04-12 07:46:19,406 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950772963/element {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "value": "div[ng-bind-html=\"::item.displayText\"]", "id": ":wdc:1491950772963", "using": "css selector"}
+2017-04-12 07:46:19,425 - DEBUG - Finished Request
+2017-04-12 07:46:19,426 - DEBUG - GET http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/element/:wdc:1491950773037/text {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "id": ":wdc:1491950773037"}
+2017-04-12 07:46:19,449 - DEBUG - Finished Request
+2017-04-12 07:46:19,449 - DEBUG - IEEEXplore.parse_citing start
+2017-04-12 07:46:19,450 - DEBUG - POST http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/url {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba", "url": "http://ieeexplore.ieee.org/document/4116687/"}
+2017-04-12 07:46:21,904 - DEBUG - Finished Request
+2017-04-12 07:46:21,905 - DEBUG - IEEEXplore.get_cited_papers finished
+2017-04-12 07:46:21,906 - DEBUG - insert citations of this paper to db
+2017-04-12 07:46:21,922 - DEBUG - IEEEXplore.get_attributes_and_download_pdf finished
+2017-04-12 07:46:21,924 - DEBUG - DELETE http://127.0.0.1:37296/wd/hub/session/a1601ec0-1f08-11e7-b82f-338517afdbba/window {"sessionId": "a1601ec0-1f08-11e7-b82f-338517afdbba"}
+2017-04-12 07:46:21,935 - DEBUG - Finished Request
+2017-04-12 07:46:21,936 - INFO - IEEEXplore_test.test_get_attributes_and_download_pdf_which_cited finished

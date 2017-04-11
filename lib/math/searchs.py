@@ -9,6 +9,7 @@ class Searchs():
 		self.node = initial_node
 		self.limit = limit
 		self.times = 0
+		self.visited = []
 
 
 	@classmethod

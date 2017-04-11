@@ -59,6 +59,15 @@ class Table_papers(Base):
 		db.session.expunge(self)
 		db.session.close()
 	
+	def is_visited(self):
+		import mysql_operator
+		db = mysql_operator.Mysql_operator()
+	
+	def renew(self):
+		pass
+		#check duplication and insert
+		
+	
 	def get_vars(self):
 		return("{"+
 			"id: " + str(self.id) + ", " + 

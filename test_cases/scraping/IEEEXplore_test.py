@@ -21,6 +21,11 @@ class IEEEXplore_test(unittest.TestCase):
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
 		from IEEEXplore import IEEEXplore as X
 		self.xplore = X()
+		
+		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
+		from searchs import Searchs as s
+		self.search = s()
+		
 
 	"""
 	def test_show_options(self):
@@ -79,17 +84,18 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	
-	"""
+	
 	def test_get_attributes_and_download_pdf_which_cited(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/4116687/"
 		driver = self.xplore.create_driver(url)
 		#driver = self.xplore.create_driver("./samples/paper_page.html")
-		self.xplore.get_attributes_and_download_pdf(url, driver)
+		self.search.node = url
+		self.xplore.get_attributes_and_download_pdf(self.search, driver)
 		
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+	
 	
 	"""
 	def test_get_attributes_and_download_pdf_which_cited_many(self):
@@ -110,7 +116,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.assertEqual("http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313", url)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	
+	"""
 	def test_parse_citing(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		str = "Daniel Garant, Wei Lu, \"Mining Botnet Behaviors on the Large-Scale Web Application Community\", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013."
@@ -121,7 +127,7 @@ class IEEEXplore_test(unittest.TestCase):
 		print(cited_date)
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	
+	"""
 	
 	"""
 	def test_get_papers_of_new_conferences(self):
