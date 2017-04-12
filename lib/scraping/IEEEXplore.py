@@ -382,8 +382,10 @@ class IEEEXplore:
 	def download_a_paper(self, driver, path="../../data/tmp/"):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		initial_url = driver.current_url
-		button = driver.find_elements_by_css_selector()
-		
+		button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf]')
+		button.click()
+		self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.html")
+		self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.png")
 		driver.get(initial_url)
 		
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
