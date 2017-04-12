@@ -18,6 +18,13 @@ class Conf_test(unittest.TestCase):
 		from conf import Conf
 		print("loglevel["+Conf.getconf("loglevel")+"]")
 
+	def test_var(self):
+		from conf import Conf
+		print("IEEE_website["+Conf.getconf("IEEE_website")+"]")
+		print("IEEE_top_page["+Conf.getconf("IEEE_top_page")+"]")
+		paper_url = Conf.getconf("IEEE_website") + "/document/6550394"
+		print("paper_url[" + paper_url + "]")
+
 if __name__ == '__main__':
 	unittest.main()
 

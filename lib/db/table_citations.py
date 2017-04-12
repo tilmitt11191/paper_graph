@@ -31,6 +31,16 @@ class Table_citations(Base):
 		db.insert(self)
 		db.session.expunge(self)
 		db.session.close()
+
+	def renewal_insert(self):
+		#check duplication and insert
+		import mysql_operator
+		db = mysql_operator.Mysql_operator()
+		if self.id == "":
+			self.id = db.get_available_id(__class__)
+		#db.insert(self)
+		#db.session.expunge(self)
+		db.session.close()
 	
 	def get_vars(self):
 		return("{"+

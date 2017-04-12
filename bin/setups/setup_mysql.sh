@@ -4,10 +4,13 @@
 
 #sudo apt-get -y install mysql-server
 
-#sudo mysql -p -e "\
-#create user 'alladmin'@'localhost' identified by 'admin';\
-#flush privileges;"
+sudo mysql -p -e "\
+drop user 'alladmin'@'localhost';\
+flush privileges;"
 
+sudo mysql -p -e "\
+create user 'alladmin'@'localhost' identified by 'admin';\
+flush privileges;"
 
 sudo mysql -p -e "\
 drop database paper_graph;\
