@@ -18,12 +18,12 @@ class MySQL_test(unittest.TestCase):
 		cls.log.info("\n\nMySQL_test.setUpClass finished.\n---------- start ---------")
 	
 	def setUp(self):
+		pass
 		#import sqlalchemy
 		#self.engine = sqlalchemy.create_engine("mysql+pymysql://alladmin:admin@localhost/paper_graph?charset=utf8", echo=False)
 		#from sqlalchemy.orm import sessionmaker
 		#Session = sessionmaker(bind=self.engine)
 		#self.db.session = Session()
-		pass
 	"""
 	def get_titles_authors_from_deeplearningtraffic(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -44,7 +44,7 @@ class MySQL_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return titles, authors
 		
-	"""
+
 	def test_insert_a_title(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		title = "Behind the Game: Exploring the Twitch Streaming Platform"
@@ -67,7 +67,6 @@ class MySQL_test(unittest.TestCase):
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
-	"""
 	def test_insert_a_title2(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		title = "Behind the Game: Exploring the Twitch Streaming Platform"
@@ -134,7 +133,13 @@ class MySQL_test(unittest.TestCase):
 		print("available_id[" + str(id) + "]")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	
+	def test_renewal_insert(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		from table_papers import Table_papers
+		paper = Table_papers(title="Usilng Machine Learning Technliques to Identify Botnet Traffic - IEEE Xplore Document")
+		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
+		paper.renewal_insert()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	
 	
 if __name__ == '__main__':

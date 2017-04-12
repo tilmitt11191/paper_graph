@@ -196,23 +196,39 @@ class IEEEXplore:
 		</div><!-- end ngRepeat: article in vm.contextData.similar --><div class="doc-all-related-articles-list-item ng-scope" ng-repeat="article in vm.contextData.similar"> 
 		"""
 		import table_papers
-		
 		citings_str = ""
 		citing_papers = []
 		citing_urls = []
-		#elements = driver.find_element_by_xpath('//div[@class="stats-document-relatedArticles ng-scope"]')\
-							#.find_elements_by_tag_name('a')
-		elements = driver.find_elements_by_css_selector('div[ng-repeat="article in vm.contextData.similar"] > a')
 
+		self.log.debug("WebDriverWait(driver, timeout).until(lambda driver: driver.find_elements_by_css_selector('div[ng-repeat=\"article in vm.contextData.similar\"] > a')) start")
+
+		try:
+			WebDriverWait(driver, timeout).until(lambda driver: driver.find_elements_by_css_selector('div[ng-repeat="article in vm.contextData.similar"] > a'))
+		except TimeoutException:
+			m = "caught TimeoutException at load the paper top page."
+			print(m)
+			self.log.warning(m)
+			return citings_str, citing_papers, citing_urls
+		except NoSuchElementException:
+			m = "caught NoSuchElementException at load the paper top page."
+			print(m)
+			self.log.warning(m)
+			return citings_str, citing_papers, citing_urls
+			
+		self.log.debug("Wait Finished.")
+
+		elements = driver.find_elements_by_css_selector('div[ng-repeat="article in vm.contextData.similar"]')
+		
 		print(str(len(elements)))
+		self.save_current_page(driver, "./samples/sample_page_4116687_start.html")
+		self.save_current_page(driver, "./samples/sample_page_4116687_start.png")
 		print("create arrays of paper and url")
-
 
 		for el in elements:
 			citing_paper = table_papers.Table_papers()
-			citing_paper.url = self.conf.getconf("IEEE_website") + el.get_attribute("ng-href")
-			citing_paper.title = el.get_attribute("title")
-			citing_paper.authors = el.find_element_by_class_name("ng-binding").text
+			citing_paper.url = self.conf.getconf("IEEE_website") + el.find_element_by_css_selector('a').get_attribute("ng-href")
+			citing_paper.title = el.find_element_by_css_selector('a').get_attribute("title")
+			citing_paper.authors = el.find_element_by_css_selector('div[class="ng-binding"]').text.replace(";", ",")
 			import time
 			timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 			print("citing_url[" + citing_paper.url + "]")
@@ -224,18 +240,6 @@ class IEEEXplore:
 			citing_papers.append(citing_paper)
 			citing_urls.append(citing_paper.url)
 			
-		#print(element.text)
-		#elements = element.find_elements_by_xpath('/a')
-		#print(str(len(elements))) #10
-		"""
-		for el in elements:
-			citing_url = el.get_attribute("href")
-			citing_paper = table_papers.Table_papers(title=el.get_attribute("title"), url=citing_url)
-			citing_paper.renewal_insert()
-			citings_str += "," + str(citing_paper.id)
-			citing_papers.append(citing_paper)
-			citing_urls.append(citing_url)
-		"""
 		return citings_str, citing_papers, citing_urls
 	
 	
@@ -298,14 +302,14 @@ class IEEEXplore:
 			m = "caught TimeoutException at load the first cited page."
 			print(m)
 			self.log.warning(m)
-			#driver.get(initial_url)
-			#return citeds_str, cited_papers, cited_urls
+			driver.get(initial_url)
+			return citeds_str, cited_papers, cited_urls
 		except NoSuchElementException:
 			m = "caught NoSuchElementException at load the first cited page."
 			print(m)
 			self.log.warning(m)
-			#driver.get(initial_url)
-			#return citeds_str, cited_papers, cited_urls
+			driver.get(initial_url)
+			return citeds_str, cited_papers, cited_urls
 			
 		self.log.debug("Wait Finished.")
 		

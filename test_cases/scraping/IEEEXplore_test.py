@@ -1,8 +1,6 @@
 
 # -*- coding: utf-8 -*-
 
-##http://ieeexplore.ieee.org/document/1055638/
-##New directions in cryptography
 
 import unittest
 import sys,os
@@ -85,7 +83,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	
-	"""
+	
 	def test_get_attributes_and_download_pdf_which_cited(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/4116687/"
@@ -96,12 +94,14 @@ class IEEEXplore_test(unittest.TestCase):
 		
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+	
 	
 	"""
 	def test_get_attributes_and_download_pdf_which_cited_many(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		##New directions in cryptography
 		url = "http://ieeexplore.ieee.org/document/1055638/"
+		
 		driver = self.xplore.create_driver(url)
 		self.search.node = url
 
@@ -110,7 +110,7 @@ class IEEEXplore_test(unittest.TestCase):
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	
+	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7849067/"
@@ -120,6 +120,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.download_a_paper(driver, path="../../data/tmp/")
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 
 	"""
 	def test_convert_path_to_url(self):
