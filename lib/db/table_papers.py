@@ -79,33 +79,57 @@ class Table_papers(Base):
 		id_list = []
 		for record in records:
 			id_list.append(record.id)
-			tmp_timestamp = self.timestamp
-			print("id[" + str(record.id) + "]")
-			print("title[" + record.title + "]")
-			print("authors[" + record.authors + "]")
-			print("keywords[" + record.keywords + "]")
-			print("citings[" + record.citings + "]")
-			print("citeds[" + record.citeds + "]")
-			print("conference[" + record.conference + "]")
-			print("published[" + str(record.published) + "]")
-			print("url[" + record.url + "]")
-			print("timestamp[" + str(record.timestamp) + "]")
-			print("path[" + record.path + "]")
-			vars = ["authors"]
-			if record.authors == "":
-				print("records.authors == None")
-			elif self.authors == "":
-				print("self..authors == None")
-				self.authors = record.authors
-				tmp_timestamp = record.timestamp
-			else:
-				print("not none. compare timestamps")
-				if tmp_timestamp == None or record.timestamp == None or tmp_timestamp < record.timestamp:
-					self.authors = record.authors
+			
+		vars = ["authors", "keywords", "citings", "citeds", "conference", "published", "url", "path"]
+		for var in vars:
+			for record in records:
+				print("record.id[" + str(record.id) + "]")
+				print("var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
+				tmp_timestamp = self.timestamp
+				#print("id[" + str(record.id) + "]")
+				#print("title[" + record.title + "]")
+				#print("authors[" + record.authors + "]")
+				#print("keywords[" + record.keywords + "]")
+				#print("citings[" + record.citings + "]")
+				#print("citeds[" + record.citeds + "]")
+				#print("conference[" + record.conference + "]")
+				#print("published[" + str(record.published) + "]")
+				#print("url[" + record.url + "]")
+				#print("timestamp[" + str(record.timestamp) + "]")
+				#print("path[" + record.path + "]")
+
+				if eval("record." + var) == None or eval("record." + var) == "":
+					print("records." + var + " == None")
+				elif eval("self." + var) == None or eval("self." + var) == "":
+					print("self." + var + " == None")
+					#tmp = eval("self." + var)
+					#tmp = eval("record." + var)
+					exec("self." + var + " = record." + var)
+					print("->var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
 					tmp_timestamp = record.timestamp
+				else:
+					print(var + " is not none. compare timestamps")
+					if tmp_timestamp == None or record.timestamp == None or tmp_timestamp < record.timestamp:
+						##if record.timestamp is newer
+						#tmp = eval("self." + var)
+						#tmp = eval("record." + var)
+						exec("self." + var + " = record." + var)
+						print("->var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
+						#eval("self." + var) = eval("record." + var)
+						tmp_timestamp = record.timestamp
+		import time
+		self.id = self.get_id()
+		self.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+		
+		##merge citations
+		print("merge[" + str(id_list) + "] to self.id[" + str(self.id) + "]")
+		for merge_id in id_list:
+			from table_citations import Table_citations
+			records = self.db.session.query(Table_citations).filter(Table_citations.start==merge_id or Table_citations.end==merge_id).all()
+			print("records[" + str(len(records)) + "]")
 		
 		
-		#self.db.insert(self)
+ 		#self.db.insert(self)
 		#self.db.session.expunge(self)
 		self.db.session.close()
 		

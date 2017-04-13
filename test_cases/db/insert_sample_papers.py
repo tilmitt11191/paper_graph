@@ -21,9 +21,9 @@ f = open(sample, "r")
 line = f.readline()
 while line:
 	if "pdf_title" in line:
-		titles.append(line.split(":")[1])
+		titles.append(line.split(":")[1].strip())
 	elif "pdf_author" in line:
-		authors.append(line.split(":")[1])
+		authors.append(line.split(":")[1].strip())
 	line = f.readline()
 f.close()
 
@@ -31,7 +31,6 @@ f.close()
 #print(str(len(authors))+ ", "+str(authors))
 
 for i in range(10):
-	paper = table_papers.Table_papers(id=i+1, title=titles[i], authors=authors[i])
-	db.insert(paper)
-	i+=1
+	paper = table_papers.Table_papers(title=titles[i], authors=authors[i])
+	paper.insert()
 

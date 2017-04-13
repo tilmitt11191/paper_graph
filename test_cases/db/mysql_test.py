@@ -133,10 +133,19 @@ class MySQL_test(unittest.TestCase):
 		print("available_id[" + str(id) + "]")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	def test_renewal_insert(self):
+	"""
+	def test_renewal_insert1(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		from table_papers import Table_papers
 		paper = Table_papers(title="Usilng Machine Learning Technliques to Identify Botnet Traffic - IEEE Xplore Document")
+		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
+		paper.renewal_insert()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	def test_renewal_insert2(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		from table_papers import Table_papers
+		paper = Table_papers(title="Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks")
 		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
 		paper.renewal_insert()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
