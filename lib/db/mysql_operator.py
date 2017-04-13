@@ -18,13 +18,18 @@ class Mysql_operator:
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		import sqlalchemy
 		from conf import Conf
-		engine = sqlalchemy.create_engine(Conf.getconf("myslq_url"), echo=False)
+		self.engine = sqlalchemy.create_engine(Conf.getconf("myslq_url"), echo=False)
 		from sqlalchemy.orm import sessionmaker
-		Session = sessionmaker(bind=engine)
+		Session = sessionmaker(bind=self.engine)
 		session = Session()
 		session.expire_on_commit = False
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return session
+
+	def close(self):
+		self.session.close
+		self.engine.dispose()
+		return 0
 
 
 	def insert(self, query):
@@ -41,8 +46,8 @@ class Mysql_operator:
 
 		# 指定したデータを削除
 		#session.delete(found_student)
-		if(query.__tablename__) == "papers":
-			self.session.commit()
+		self.session.delete(query)
+		self.session.commit()
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	
 	def delete_by_id_from_papers(self, id):

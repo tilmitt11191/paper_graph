@@ -142,12 +142,29 @@ class MySQL_test(unittest.TestCase):
 		paper.renewal_insert()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	"""
 	def test_renewal_insert2(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		from table_papers import Table_papers
 		paper = Table_papers(title="Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks")
 		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
 		paper.renewal_insert()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	def test_renewal_insert3(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		import subprocess
+		from subprocess import Popen, PIPE
+		subprocess.Popen(["python3", "../../lib/db/delete_all.py"], stdout=PIPE)
+		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_papers.py"])
+		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_papers.py"])
+		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_citations.py"])
+		from table_papers import Table_papers
+		paper = Table_papers(title="Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks")
+		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
+		paper.renewal_insert()
+		
+	
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	
 	

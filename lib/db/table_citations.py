@@ -41,19 +41,20 @@ class Table_citations(Base):
 
 	def renewal_insert(self):
 		#check duplication and insert
-		records = self.db.session.query(__class__).filter(__class__.start==self.start and __class__.end==end).all()
+		from sqlalchemy import and_
+		records = self.db.session.query(__class__).filter(and_(__class__.start==self.start, __class__.end==self.end)).all()
+		print("records = self.db.session.query(__class__).filter(__class__.start==" + str(self.start) + " and __class__.end==" + str(self.end) + ").all()")
+		print("len(records)[" + str(len(records)) + "]")
 		if len(records) == 0: #new record
 			print("new citation")
-			self.db.get_available_id(self)
+			self.id = self.db.get_available_id(__class__)
 			self.insert()
-			return 0
 		elif len(records) == 1:
 			print("already registed")
-			return 0
 		else:
 			print("duplicated")
-		#for record in records:
-			
+		
+		self.db.close()
 	
 	def get_vars(self):
 		return("{"+

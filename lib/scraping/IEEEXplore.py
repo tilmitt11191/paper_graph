@@ -30,19 +30,20 @@ class IEEEXplore:
 
 		driver = self.create_driver()
 		self.search_by_keywords(driver, keywords)
-		urls = self.get_urls_of_papers(driver, num_of_papers)
+		urls = self.get_urls_of_papers_in_keywords_page(driver, num_of_papers)
+		all_papers = []
+		all_citing_urls = []
+		all_cited_urls = []
+		"""
 		for url in urls:
 			driver.get(url)
-			paper_attributes, citing_urls, cited_urls = self.get_attributes_and_download_pdf(driver)
-		
-		
-		#self.print_h2_attributes(driver)
-		#self.save_current_page(driver, filename="../../tmp/output/output.png")
-		#self.save_current_page(driver, filename="../../tmp/output/output.html")
-		
-		
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		
+			paper, citing_urls, cited_urls = self.get_attributes_and_download_pdf(driver)
+			all_papers.append(paper)
+			all_citing_urls.append(citing_urls)
+			all_cited_urls = (cited_urls)
+			self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		"""
+		return all_papers, all_cited_urls, all_citing_urls
 
 	def get_papers_of_target_conference(self, conference_name):
 		pass
@@ -79,7 +80,7 @@ class IEEEXplore:
 		
 		
 	
-	def get_urls_of_papers(self, driver, num_of_papers):
+	def get_urls_of_papers_in_keywords_page(self, driver, num_of_papers):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		urls = []
 		links = driver.find_elements_by_class_name("pure-u-22-24")

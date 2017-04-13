@@ -56,13 +56,11 @@ class Table_papers(Base):
 	
 	
 	def insert(self):
-		import mysql_operator
-		db = mysql_operator.Mysql_operator()
 		if self.id == "":
 			self.id = self._get_available_id()
-		db.insert(self)
-		db.session.expunge(self)
-		db.session.close()
+		self.db.insert(self)
+		self.db.session.expunge(self)
+		self.db.close()
 	
 	def is_visited(self):
 		import mysql_operator
@@ -86,17 +84,6 @@ class Table_papers(Base):
 				print("record.id[" + str(record.id) + "]")
 				print("var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
 				tmp_timestamp = self.timestamp
-				#print("id[" + str(record.id) + "]")
-				#print("title[" + record.title + "]")
-				#print("authors[" + record.authors + "]")
-				#print("keywords[" + record.keywords + "]")
-				#print("citings[" + record.citings + "]")
-				#print("citeds[" + record.citeds + "]")
-				#print("conference[" + record.conference + "]")
-				#print("published[" + str(record.published) + "]")
-				#print("url[" + record.url + "]")
-				#print("timestamp[" + str(record.timestamp) + "]")
-				#print("path[" + record.path + "]")
 
 				if eval("record." + var) == None or eval("record." + var) == "":
 					print("records." + var + " == None")
@@ -117,22 +104,44 @@ class Table_papers(Base):
 						print("->var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
 						#eval("self." + var) = eval("record." + var)
 						tmp_timestamp = record.timestamp
+		
+		for record in records:
+			self.db.delete(record)
+		
 		import time
 		self.id = self.get_id()
 		self.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+		self.db.insert(self)
+		self.db.session.expunge(self)
 		
 		##merge citations
 		print("merge[" + str(id_list) + "] to self.id[" + str(self.id) + "]")
 		for merge_id in id_list:
 			from table_citations import Table_citations
-			records = self.db.session.query(Table_citations).filter(Table_citations.start==merge_id or Table_citations.end==merge_id).all()
-			print("records[" + str(len(records)) + "]")
+			from sqlalchemy import and_, or_
+			merge_records = self.db.session.query(Table_citations).filter(or_(Table_citations.start==merge_id, Table_citations.end==merge_id)).all()
+			print("id[" + str(merge_id) + "].records[" + str(len(merge_records)) + "]")
+			for merge_record in merge_records:
+				self.merge_citations(merge_record, survival_id=self.id, delete_id=merge_id)
+				
+		self.db.close()
 		
-		
- 		#self.db.insert(self)
-		#self.db.session.expunge(self)
-		self.db.session.close()
-		
+	def merge_citations(self, merge_record, survival_id, delete_id):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		print("from[" + str(merge_record.start) + "]to[" + str(merge_record.end) + "]")
+		print("survival_id[" + str(survival_id) + "], delete_id[" + str(delete_id) + "]")
+		from table_citations import Table_citations
+
+		##is delete_id start or end?
+		if merge_record.start == delete_id and merge_record.end != survival_id:
+			print("start[" + str(delete_id) + "] is delete_id. end[" + str(merge_record.end) + "]")
+			citation = Table_citations(start=survival_id, end=merge_record.end)
+			citation.renewal_insert()
+		elif merge_record.end == delete_id and merge_record.start != survival_id:
+			print("end[" + str(merge_record.end) + "] is delete_id. start[" + str(merge_record.start) + "]")
+			citation = Table_citations(start=merge_record.end, end=survival_id)
+			citation.renewal_insert()
+		self.db.delete(merge_record)
 	
 	def get_id(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")		
