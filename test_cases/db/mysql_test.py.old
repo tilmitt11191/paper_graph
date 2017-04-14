@@ -155,20 +155,13 @@ class MySQL_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		import subprocess
 		from subprocess import Popen, PIPE
-		#p = Popen(["python3", "../../lib/db/delete_all.py"], stdout=PIPE)
-		#while 1:
-		#	c = p.stdout.read(1)
-		#	if not c:
-		#		break
-		#	print(c)
-		#p.wait()
+		subprocess.Popen(["python3", "../../lib/db/delete_all.py"], stdout=PIPE)
 		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_papers.py"])
 		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_papers.py"])
 		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_citations.py"])
 		from table_papers import Table_papers
 		paper = Table_papers(title="Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks")
-		self.log.debug("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
-		self.log.debug("paper.renewal_insert()")
+		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
 		paper.renewal_insert()
 		
 	

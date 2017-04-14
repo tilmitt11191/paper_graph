@@ -74,34 +74,34 @@ class Table_papers(Base):
 			self.insert()
 			return 0
 		
-		merge_id_list = []
+		id_list = []
 		for record in records:
-			merge_id_list.append(record.id)
+			id_list.append(record.id)
 			
 		vars = ["authors", "keywords", "citings", "citeds", "conference", "published", "url", "path"]
 		for var in vars:
 			for record in records:
-				self.log.debug("record.id[" + str(record.id) + "]")
-				self.log.debug("var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
+				print("record.id[" + str(record.id) + "]")
+				print("var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
 				tmp_timestamp = self.timestamp
 
 				if eval("record." + var) == None or eval("record." + var) == "":
-					self.log.debug("records." + var + " == None")
+					print("records." + var + " == None")
 				elif eval("self." + var) == None or eval("self." + var) == "":
-					self.log.debug("self." + var + " == None")
+					print("self." + var + " == None")
 					#tmp = eval("self." + var)
 					#tmp = eval("record." + var)
 					exec("self." + var + " = record." + var)
-					self.log.debug("->var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
+					print("->var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
 					tmp_timestamp = record.timestamp
 				else:
-					self.log.debug(var + " is not none. compare timestamps")
+					print(var + " is not none. compare timestamps")
 					if tmp_timestamp == None or record.timestamp == None or tmp_timestamp < record.timestamp:
 						##if record.timestamp is newer
 						#tmp = eval("self." + var)
 						#tmp = eval("record." + var)
 						exec("self." + var + " = record." + var)
-						self.log.debug("->var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
+						print("->var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
 						#eval("self." + var) = eval("record." + var)
 						tmp_timestamp = record.timestamp
 		
@@ -115,47 +115,33 @@ class Table_papers(Base):
 		self.db.session.expunge(self)
 		
 		##merge citations
-		self.log.debug("merge[" + str(merge_id_list) + "] to self.id[" + str(self.id) + "]")
-		for merge_id in merge_id_list:
+		print("merge[" + str(id_list) + "] to self.id[" + str(self.id) + "]")
+		for merge_id in id_list:
 			from table_citations import Table_citations
 			from sqlalchemy import and_, or_
 			merge_records = self.db.session.query(Table_citations).filter(or_(Table_citations.start==merge_id, Table_citations.end==merge_id)).all()
-			self.log.debug("id[" + str(merge_id) + "].records[" + str(len(merge_records)) + "]")
+			print("id[" + str(merge_id) + "].records[" + str(len(merge_records)) + "]")
 			for merge_record in merge_records:
-				self.merge_citations(merge_record, merge_id_list, survival_id=self.id, delete_id=merge_id)
+				self.merge_citations(merge_record, survival_id=self.id, delete_id=merge_id)
 				
 		self.db.close()
 		
-	def merge_citations(self, merge_record, merge_id_list, survival_id, delete_id):
+	def merge_citations(self, merge_record, survival_id, delete_id):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.log.debug("from[" + str(merge_record.start) + "]to[" + str(merge_record.end) + "]")
-		self.log.debug("survival_id[" + str(survival_id) + "], delete_id[" + str(delete_id) + "]")
+		print("from[" + str(merge_record.start) + "]to[" + str(merge_record.end) + "]")
+		print("survival_id[" + str(survival_id) + "], delete_id[" + str(delete_id) + "]")
 		from table_citations import Table_citations
-		
 
 		##is delete_id start or end?
-		if merge_record.start in merge_id_list and merge_record.end in merge_id_list:
-			self.log.debug("start[" + str(merge_record.start) + "] and end[" + str(merge_record.end) + "] are merge_id. delete.")
-			self.log.debug("delete(merge_record)")
-			self.db.delete(merge_record)
-			
-		#elif merge_record.start == delete_id and not merge_record.end in merge_id_list:
-		elif merge_record.start == delete_id:
-			self.log.debug("start[" + str(delete_id) + "] is delete_id. end[" + str(merge_record.end) + "]")
-			self.log.debug("delete(merge_record)")
-			self.db.delete(merge_record)
+		if merge_record.start == delete_id and merge_record.end != survival_id:
+			print("start[" + str(delete_id) + "] is delete_id. end[" + str(merge_record.end) + "]")
 			citation = Table_citations(start=survival_id, end=merge_record.end)
 			citation.renewal_insert()
-			citation.close()
-		#elif merge_record.end == delete_id and not merge_record.end in merge_id_list:
-		elif merge_record.end == delete_id:
-			self.log.debug("end[" + str(merge_record.end) + "] is delete_id. start[" + str(merge_record.start) + "]")
-			citation = Table_citations(start=merge_record.start, end=survival_id)
-			self.log.debug("delete(merge_record)")
-			self.db.delete(merge_record)
+		elif merge_record.end == delete_id and merge_record.start != survival_id:
+			print("end[" + str(merge_record.end) + "] is delete_id. start[" + str(merge_record.start) + "]")
+			citation = Table_citations(start=merge_record.end, end=survival_id)
 			citation.renewal_insert()
-			citation.close()
-			
+		self.db.delete(merge_record)
 	
 	def get_id(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")		
@@ -173,7 +159,6 @@ class Table_papers(Base):
 		return id
 	
 	def _get_available_id(self):
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		previous_id = 0
 		for q in self.db.session.query(__class__).order_by(__class__.id):
 			if q.id - previous_id >= 2:

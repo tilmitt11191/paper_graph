@@ -1,0 +1,21 @@
+// 秀丸マクロ用、強調表示定義ファイル（番頭++さんからもらった物）
+21,^(endmacro|endmacroall|return)\>.*;
+21,^[a-zA-Z0-9_]+:
+33,break
+33,call
+33,continue
+33,disablebreak
+33,disabledraw
+33,disableerrormsg
+33,disableinvert
+33,else
+33,enabledraw
+33,enableerrormsg
+33,enableinvert
+33,endmacro
+33,endmacroall
+33,execmacro
+33,goto
+33,if
+33,return
+33,while

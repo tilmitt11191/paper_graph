@@ -37,7 +37,7 @@ class Log:
 
 		id_ = id(logger)
 		logger.setLevel(eval("logging."+loglevel))
-		logger.info("return logger\n logfile[{logfile}]\n rotate_log_size[{rotate_log_size}]\n id[{id_}]".format(**locals()))
+		logger.debug("return logger\n logfile[{logfile}]\n rotate_log_size[{rotate_log_size}]\n id[{id_}]".format(**locals()))
 		return logger
 
 

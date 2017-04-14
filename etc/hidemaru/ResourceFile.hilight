@@ -1,0 +1,5 @@
+// リソースファイル（.rcファイル）を閲覧するのに便利な
+// 強調表示定義ファイルです。
+//
+21,^[A-Z_0-9]+ +(ACCELERATORS|DIALOG|MENU|ICON|BITMAP|CURSOR)
+21,^STRINGTABLE

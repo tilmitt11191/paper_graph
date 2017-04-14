@@ -24,34 +24,13 @@ class IEEEXplore:
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + "(conference_num=" + str(conference_num) + ") start.")
 		
 		
-	def get_papers_by_keywords(self, keywords, num_of_papers, timeout=30):
+	def get_papers_by_keywords(self, keywords, num_of_papers):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info("keywords[" + keywords + "], num_of_papers[" + str(num_of_papers) +"]")
 
 		driver = self.create_driver()
 		self.search_by_keywords(driver, keywords)
-		self.log.debug("Wait start.")
-		#import time
-		#time.sleep(10)
-
-		try:
-			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//input[@type="checkbox" and @class="search-results-group"]'))
-		except TimeoutException:
-			m = "caught TimeoutException at load the keywords results page."
-			print(m)
-			self.log.warning(m)
-		except NoSuchElementException:
-			m = "caught NoSuchElementException at load the keywords results page."
-			print(m)
-			self.log.warning(m)
-
-		self.log.debug("Wait Finished.")
-		
-		self.save_current_page(driver, "./samples/keyword_edgecomputing_results.png")
-		self.save_current_page(driver, "./samples/keyword_edgecomputing_results.html")
-		
 		urls = self.get_urls_of_papers_in_keywords_page(driver, num_of_papers)
-		print("urls.size[" + str(len(urls)) + "]")
 		all_papers = []
 		all_citing_urls = []
 		all_cited_urls = []
@@ -158,9 +137,9 @@ class IEEEXplore:
 		import time
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		##path
-		paper.id = paper.get_id()
+
 		#paper.renewal_insert()
-		self.log.debug(paper.get_vars())
+		print(paper.get_vars())
 		
 		self.log.debug("insert citations of this paper to db")
 		import table_citations
@@ -241,10 +220,10 @@ class IEEEXplore:
 
 		elements = driver.find_elements_by_css_selector('div[ng-repeat="article in vm.contextData.similar"]')
 		
-		self.log.debug(str(len(elements)))
+		print(str(len(elements)))
 		self.save_current_page(driver, "./samples/sample_page_4116687_start.html")
 		self.save_current_page(driver, "./samples/sample_page_4116687_start.png")
-		self.log.debug("create arrays of paper and url")
+		print("create arrays of paper and url")
 
 		for el in elements:
 			citing_paper = table_papers.Table_papers()
@@ -253,10 +232,10 @@ class IEEEXplore:
 			citing_paper.authors = el.find_element_by_css_selector('div[class="ng-binding"]').text.replace(";", ",")
 			import time
 			timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-			self.log.debug("citing_url[" + citing_paper.url + "]")
-			self.log.debug("citing_title[" + citing_paper.title + "]")
-			self.log.debug("citing_authors[" + citing_paper.authors + "]")
-			self.log.debug(citing_paper.get_vars())
+			print("citing_url[" + citing_paper.url + "]")
+			print("citing_title[" + citing_paper.title + "]")
+			print("citing_authors[" + citing_paper.authors + "]")
+			print(citing_paper.get_vars())
 
 			citing_paper.renewal_insert()
 			citing_papers.append(citing_paper)
@@ -341,9 +320,9 @@ class IEEEXplore:
 		elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
 		num_of_viewing = len(elements)
 		limit_of_view = self.conf.getconf("IEEE_citation_num_at_first_page")
-		self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+		print("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
 
-		self.log.debug("continue pushing more view button")
+		print("continue pushing more view button")
 		##if not cited, load-more-button does not exist.
 		##but if cited, load-more-button always exists nevertheless no more paper,
 		##and the buttons are hidden.
@@ -366,11 +345,11 @@ class IEEEXplore:
 			#self.save_current_page(driver, "./samples/sample_page_1055638_cited_"+str(limit_of_view)+".html")
 			#self.save_current_page(driver, "./samples/sample_page_1055638_cited_"+str(limit_of_view)+".png")
 			num_of_viewing = len(elements)
-			self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+			print("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
 		
-		self.log.debug("cited loop finished. num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+		print("cited loop finished. num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
 		
-		self.log.debug("create arrays of paper and url")
+		print("create arrays of paper and url")
 		
 		for el in elements:
 			cited_url = self.conf.getconf("IEEE_website") + el.find_element_by_css_selector('div[class="ref-links-container stats-citations-links-container"] > span > a').get_attribute("ng-href")
@@ -379,7 +358,7 @@ class IEEEXplore:
 			import time
 			timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 			cited_paper = table_papers.Table_papers(title=cited_title, authors=cited_authors, conference=cited_conference, published=cited_date, url=cited_url, timestamp=timestamp)
-			self.log.debug(cited_paper.get_vars())
+			print(cited_paper.get_vars())
 			cited_paper.renewal_insert()
 			
 		#self.save_current_page(driver, "./samples/sample_page_1055638_cited_view_more.html")
@@ -439,9 +418,9 @@ class IEEEXplore:
 			pdf_authors = link.find_element_by_css_selector("p").text.split("; ")
 			self.log.debug("pdf_author:" + str(pdf_authors))
 			
-			self.log.debug("pdf_title:"+pdf_title)
-			self.log.debug("pdf_dir:"+pdf_url)
-			self.log.debug("pdf_author:" + str(pdf_authors))
+			print("pdf_title:"+pdf_title)
+			print("pdf_dir:"+pdf_url)
+			print("pdf_author:" + str(pdf_authors))
 			
 			i+=1
 			if i >= download_num:
@@ -501,7 +480,7 @@ class IEEEXplore:
 		authors = array[0]
 		title = array[1]
 		new_array = array[2][1:].split(",")
-		self.log.debug(len(new_array))
+		print(len(new_array))
 		if len(new_array) < 3:
 			self.log.warning(__class__.__name__ + "." + sys._getframe().f_code.co_name + " warning")
 			self.log.warning("str[" + str + "]")

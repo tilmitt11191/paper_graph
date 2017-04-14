@@ -1,0 +1,36 @@
+// Ｃ言語の各種キーワードを強調して、さらに関数を「行の強調1」にする
+// 強調表示定義ファイル。
+// 関数の部分をうまく正規表現で拾おうとしてますけど、完全ではないです。
+97,#define
+97,#elif
+97,#else
+97,#endif
+97,#error
+97,#if
+97,#ifdef
+97,#ifndef
+97,#import
+97,#include
+97,#line
+97,#pragma
+97,#undef
+21,^[_a-zA-Z][^\(=;:]*[ \t]+[_a-zA-Z][_a-zA-Z0-9]*\([^;]*$
+21,^[_a-zA-Z][^\(=;:]*[ \t]+operator[^\(;]+\([^;]*$
+21,^[_a-zA-Z][^\(=;:]*::[^\(;]+\([^;]*$
+21,^[_a-zA-Z][_a-zA-Z0-9]*[a-z]+[_a-zA-Z0-9]*[ \t]*\([^;]*$
+33,break
+33,case
+33,catch
+33,continue
+33,default
+33,delete
+33,do
+33,else
+33,for
+33,goto
+33,if
+33,new
+33,return
+33,switch
+33,try
+33,while

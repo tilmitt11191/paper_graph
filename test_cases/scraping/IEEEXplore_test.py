@@ -31,13 +31,16 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.show_options()
 	"""
 	
-	"""
+	
 	def test_get_papers_by_keywords(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		keywords = "deep learning traffic"
+		keywords = "\"edge computing\""
 		num_of_papers = 1
-		self.xplore.get_papers_by_keywords(keywords, num_of_papers)
-	"""
+		all_papers, all_cited_urls, all_citing_urls = self.xplore.get_papers_by_keywords(keywords, num_of_papers, timeout=30)
+		print("all_papers[" + str(len(all_papers)) + "]")
+		print("all_cited_urls[" + str(len(all_cited_urls)) + "]")
+		print("all_citing_urls[" + str(len(all_citing_urls)) + "]")
+	
 	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -83,7 +86,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	
-	
+	"""
 	def test_get_attributes_and_download_pdf_which_cited(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/4116687/"
@@ -94,7 +97,7 @@ class IEEEXplore_test(unittest.TestCase):
 		
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	
+	"""
 	
 	"""
 	def test_get_attributes_and_download_pdf_which_cited_many(self):
