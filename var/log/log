@@ -1,99 +1,1367 @@
-2017-04-14 14:53:34,255 - DEBUG - return logger
+2017-04-14 17:08:41,783 - DEBUG - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140270600796592]
-2017-04-14 14:53:34,255 - INFO - 
+ id[140626804517016]
+2017-04-14 17:08:41,784 - INFO - 
 
 IEEEXplore_test.setUpClass finished.
 ---------- start ---------
-2017-04-14 14:53:34,374 - DEBUG - return logger
+2017-04-14 17:08:41,972 - DEBUG - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140270600796592]
-2017-04-14 14:53:34,390 - DEBUG - return logger
+ id[140626804517016]
+2017-04-14 17:08:41,990 - DEBUG - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140270600796592]
-2017-04-14 14:53:34,390 - DEBUG - class Search_options created.
-2017-04-14 14:53:34,390 - DEBUG - class IEEEXplore created.
-2017-04-14 14:53:34,402 - INFO - IEEEXplore_test.test_get_papers_by_keywords start
-2017-04-14 14:53:34,402 - INFO - IEEEXplore.get_papers_by_keywords start
-2017-04-14 14:53:34,402 - INFO - keywords["edge computing"], num_of_papers[1]
-2017-04-14 14:53:34,402 - DEBUG - IEEEXplore.create_driver start
-2017-04-14 14:53:35,422 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session {"capabilities": {"firstMatch": [], "alwaysMatch": {}, "browserName": "phantomjs", "version": "", "platform": "ANY", "javascriptEnabled": true}, "desiredCapabilities": {"browserName": "phantomjs", "version": "", "platform": "ANY", "javascriptEnabled": true}}
-2017-04-14 14:53:35,431 - DEBUG - Finished Request
-2017-04-14 14:53:35,431 - DEBUG - driver.get(http://ieeexplore.ieee.org/Xplore/home.jsp)
-2017-04-14 14:53:35,431 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/url {"url": "http://ieeexplore.ieee.org/Xplore/home.jsp", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:42,799 - DEBUG - Finished Request
-2017-04-14 14:53:42,800 - DEBUG - IEEEXplore.create_driver finished. return driver
-2017-04-14 14:53:42,800 - DEBUG - IEEEXplore.search_by_keywords start
-2017-04-14 14:53:42,800 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element {"using": "name", "value": "queryText", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:42,809 - DEBUG - Finished Request
-2017-04-14 14:53:42,809 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149222808/value {"text": "\"edge computing\"", "value": ["\"", "e", "d", "g", "e", " ", "c", "o", "m", "p", "u", "t", "i", "n", "g", "\""], "id": ":wdc:1492149222808", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:42,844 - DEBUG - Finished Request
-2017-04-14 14:53:42,844 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element {"using": "class name", "value": "Search-submit", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:42,850 - DEBUG - Finished Request
-2017-04-14 14:53:42,851 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149222809/click {"id": ":wdc:1492149222809", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:45,492 - DEBUG - Finished Request
-2017-04-14 14:53:45,492 - DEBUG - IEEEXplore.search_by_keywords finished
-2017-04-14 14:53:45,493 - DEBUG - Wait start.
-2017-04-14 14:53:45,493 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element {"using": "xpath", "value": "//input[@type=\"checkbox\" and @class=\"search-results-group\"]", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:45,919 - DEBUG - Finished Request
-2017-04-14 14:53:46,420 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element {"using": "xpath", "value": "//input[@type=\"checkbox\" and @class=\"search-results-group\"]", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:46,734 - DEBUG - Finished Request
-2017-04-14 14:53:46,734 - DEBUG - Wait Finished.
-2017-04-14 14:53:46,735 - DEBUG - IEEEXplore.save_current_page start
-2017-04-14 14:53:46,735 - DEBUG - path[./samples/keyword_edgecomputing_results], suffix[.png]
-2017-04-14 14:53:46,735 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/screenshot {"sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,434 - DEBUG - Finished Request
-2017-04-14 14:53:47,442 - DEBUG - IEEEXplore.save_current_page finished
-2017-04-14 14:53:47,442 - DEBUG - IEEEXplore.save_current_page start
-2017-04-14 14:53:47,443 - DEBUG - path[./samples/keyword_edgecomputing_results], suffix[.html]
-2017-04-14 14:53:47,444 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/source {"sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,505 - DEBUG - Finished Request
-2017-04-14 14:53:47,670 - DEBUG - IEEEXplore.save_current_page finished
-2017-04-14 14:53:47,671 - DEBUG - IEEEXplore.get_urls_of_papers_in_keywords_page start
-2017-04-14 14:53:47,671 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/elements {"using": "class name", "value": "pure-u-22-24", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,684 - DEBUG - Finished Request
-2017-04-14 14:53:47,684 - DEBUG - len(links)[10]
-2017-04-14 14:53:47,685 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226734/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226734", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,696 - DEBUG - Finished Request
-2017-04-14 14:53:47,696 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226744/attribute/href {"name": "href", "id": ":wdc:1492149226744", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,706 - DEBUG - Finished Request
-2017-04-14 14:53:47,706 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226735/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226735", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,717 - DEBUG - Finished Request
-2017-04-14 14:53:47,717 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226745/attribute/href {"name": "href", "id": ":wdc:1492149226745", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,727 - DEBUG - Finished Request
-2017-04-14 14:53:47,728 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226736/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226736", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,739 - DEBUG - Finished Request
-2017-04-14 14:53:47,740 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226746/attribute/href {"name": "href", "id": ":wdc:1492149226746", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,749 - DEBUG - Finished Request
-2017-04-14 14:53:47,750 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226737/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226737", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,760 - DEBUG - Finished Request
-2017-04-14 14:53:47,760 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226747/attribute/href {"name": "href", "id": ":wdc:1492149226747", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,771 - DEBUG - Finished Request
-2017-04-14 14:53:47,772 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226738/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226738", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,782 - DEBUG - Finished Request
-2017-04-14 14:53:47,783 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226748/attribute/href {"name": "href", "id": ":wdc:1492149226748", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,793 - DEBUG - Finished Request
-2017-04-14 14:53:47,793 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226739/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226739", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,804 - DEBUG - Finished Request
-2017-04-14 14:53:47,804 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226749/attribute/href {"name": "href", "id": ":wdc:1492149226749", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,813 - DEBUG - Finished Request
-2017-04-14 14:53:47,814 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226740/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226740", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,825 - DEBUG - Finished Request
-2017-04-14 14:53:47,825 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226750/attribute/href {"name": "href", "id": ":wdc:1492149226750", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,835 - DEBUG - Finished Request
-2017-04-14 14:53:47,835 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226741/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226741", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,846 - DEBUG - Finished Request
-2017-04-14 14:53:47,846 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226751/attribute/href {"name": "href", "id": ":wdc:1492149226751", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,857 - DEBUG - Finished Request
-2017-04-14 14:53:47,857 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226742/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226742", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,868 - DEBUG - Finished Request
-2017-04-14 14:53:47,868 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226752/attribute/href {"name": "href", "id": ":wdc:1492149226752", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,878 - DEBUG - Finished Request
-2017-04-14 14:53:47,878 - DEBUG - POST http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226743/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492149226743", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,889 - DEBUG - Finished Request
-2017-04-14 14:53:47,889 - DEBUG - GET http://127.0.0.1:34027/wd/hub/session/b2e10130-20d6-11e7-9940-df5c02e120d4/element/:wdc:1492149226753/attribute/href {"name": "href", "id": ":wdc:1492149226753", "sessionId": "b2e10130-20d6-11e7-9940-df5c02e120d4"}
-2017-04-14 14:53:47,899 - DEBUG - Finished Request
-2017-04-14 14:53:47,899 - DEBUG - IEEEXplore.get_urls_of_papers_in_keywords_page finished. return ['http://ieeexplore.ieee.org/document/7894538/', 'http://ieeexplore.ieee.org/document/7898372/', 'http://ieeexplore.ieee.org/document/7888772/', 'http://ieeexplore.ieee.org/document/7883946/', 'http://ieeexplore.ieee.org/document/7881332/', 'http://ieeexplore.ieee.org/document/7877534/', 'http://ieeexplore.ieee.org/document/7847322/', 'http://ieeexplore.ieee.org/document/7879258/', 'http://ieeexplore.ieee.org/document/7876263/', 'http://ieeexplore.ieee.org/document/7876955/']
+ id[140626804517016]
+2017-04-14 17:08:41,990 - DEBUG - class Search_options created.
+2017-04-14 17:08:41,990 - DEBUG - class IEEEXplore created.
+2017-04-14 17:08:42,008 - INFO - IEEEXplore_test.test_get_papers_by_keywords start
+2017-04-14 17:08:42,008 - INFO - IEEEXplore.get_papers_by_keywords start
+2017-04-14 17:08:42,008 - INFO - keywords["edge computing"], num_of_papers[1]
+2017-04-14 17:08:42,008 - DEBUG - IEEEXplore.create_driver start
+2017-04-14 17:08:43,036 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session {"capabilities": {"firstMatch": [], "alwaysMatch": {}, "browserName": "phantomjs", "version": "", "platform": "ANY", "javascriptEnabled": true}, "desiredCapabilities": {"browserName": "phantomjs", "version": "", "platform": "ANY", "javascriptEnabled": true}}
+2017-04-14 17:08:43,048 - DEBUG - Finished Request
+2017-04-14 17:08:43,049 - DEBUG - driver.get(http://ieeexplore.ieee.org/Xplore/home.jsp)
+2017-04-14 17:08:43,049 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/url {"url": "http://ieeexplore.ieee.org/Xplore/home.jsp", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:50,983 - DEBUG - Finished Request
+2017-04-14 17:08:50,983 - DEBUG - IEEEXplore.create_driver finished. return driver
+2017-04-14 17:08:50,983 - DEBUG - IEEEXplore.search_by_keywords start
+2017-04-14 17:08:50,984 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element {"using": "name", "value": "queryText", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:51,005 - DEBUG - Finished Request
+2017-04-14 17:08:51,006 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157331004/value {"text": "\"edge computing\"", "value": ["\"", "e", "d", "g", "e", " ", "c", "o", "m", "p", "u", "t", "i", "n", "g", "\""], "id": ":wdc:1492157331004", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:51,072 - DEBUG - Finished Request
+2017-04-14 17:08:51,072 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element {"using": "class name", "value": "Search-submit", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:51,081 - DEBUG - Finished Request
+2017-04-14 17:08:51,082 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157331005/click {"id": ":wdc:1492157331005", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:54,377 - DEBUG - Finished Request
+2017-04-14 17:08:54,377 - DEBUG - IEEEXplore.search_by_keywords finished
+2017-04-14 17:08:54,377 - DEBUG - Wait start.
+2017-04-14 17:08:54,377 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element {"using": "xpath", "value": "//input[@type=\"checkbox\" and @class=\"search-results-group\"]", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:54,388 - DEBUG - Finished Request
+2017-04-14 17:08:54,388 - DEBUG - Wait Finished.
+2017-04-14 17:08:54,388 - DEBUG - IEEEXplore.save_current_page start
+2017-04-14 17:08:54,389 - DEBUG - path[./samples/keyword_edgecomputing_results], suffix[.png]
+2017-04-14 17:08:54,389 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/screenshot {"sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:54,825 - DEBUG - Finished Request
+2017-04-14 17:08:54,834 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-14 17:08:54,834 - DEBUG - IEEEXplore.save_current_page start
+2017-04-14 17:08:54,834 - DEBUG - path[./samples/keyword_edgecomputing_results], suffix[.html]
+2017-04-14 17:08:54,836 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/source {"sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:54,854 - DEBUG - Finished Request
+2017-04-14 17:08:55,077 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-14 17:08:55,082 - DEBUG - IEEEXplore.get_urls_of_papers_in_keywords_page start
+2017-04-14 17:08:55,082 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/elements {"using": "class name", "value": "pure-u-22-24", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,103 - DEBUG - Finished Request
+2017-04-14 17:08:55,103 - DEBUG - len(links)[10]
+2017-04-14 17:08:55,103 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334388/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334388", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,114 - DEBUG - Finished Request
+2017-04-14 17:08:55,115 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334398/attribute/href {"name": "href", "id": ":wdc:1492157334398", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,127 - DEBUG - Finished Request
+2017-04-14 17:08:55,127 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334389/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334389", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,140 - DEBUG - Finished Request
+2017-04-14 17:08:55,141 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334399/attribute/href {"name": "href", "id": ":wdc:1492157334399", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,149 - DEBUG - Finished Request
+2017-04-14 17:08:55,150 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334390/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334390", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,160 - DEBUG - Finished Request
+2017-04-14 17:08:55,160 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334400/attribute/href {"name": "href", "id": ":wdc:1492157334400", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,169 - DEBUG - Finished Request
+2017-04-14 17:08:55,169 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334391/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334391", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,178 - DEBUG - Finished Request
+2017-04-14 17:08:55,179 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334401/attribute/href {"name": "href", "id": ":wdc:1492157334401", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,190 - DEBUG - Finished Request
+2017-04-14 17:08:55,190 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334392/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334392", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,200 - DEBUG - Finished Request
+2017-04-14 17:08:55,201 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334402/attribute/href {"name": "href", "id": ":wdc:1492157334402", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,224 - DEBUG - Finished Request
+2017-04-14 17:08:55,225 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334393/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334393", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,234 - DEBUG - Finished Request
+2017-04-14 17:08:55,234 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334403/attribute/href {"name": "href", "id": ":wdc:1492157334403", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,242 - DEBUG - Finished Request
+2017-04-14 17:08:55,242 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334394/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334394", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,256 - DEBUG - Finished Request
+2017-04-14 17:08:55,256 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334404/attribute/href {"name": "href", "id": ":wdc:1492157334404", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,264 - DEBUG - Finished Request
+2017-04-14 17:08:55,265 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334395/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334395", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,274 - DEBUG - Finished Request
+2017-04-14 17:08:55,274 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334405/attribute/href {"name": "href", "id": ":wdc:1492157334405", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,282 - DEBUG - Finished Request
+2017-04-14 17:08:55,283 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334396/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334396", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,291 - DEBUG - Finished Request
+2017-04-14 17:08:55,292 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334406/attribute/href {"name": "href", "id": ":wdc:1492157334406", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,300 - DEBUG - Finished Request
+2017-04-14 17:08:55,301 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334397/element {"using": "css selector", "value": "h2 > a", "id": ":wdc:1492157334397", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,309 - DEBUG - Finished Request
+2017-04-14 17:08:55,310 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157334407/attribute/href {"name": "href", "id": ":wdc:1492157334407", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:55,319 - DEBUG - Finished Request
+2017-04-14 17:08:55,319 - DEBUG - IEEEXplore.get_urls_of_papers_in_keywords_page finished. return ['http://ieeexplore.ieee.org/document/7894538/', 'http://ieeexplore.ieee.org/document/7898372/', 'http://ieeexplore.ieee.org/document/7888772/', 'http://ieeexplore.ieee.org/document/7883946/', 'http://ieeexplore.ieee.org/document/7881332/', 'http://ieeexplore.ieee.org/document/7877534/', 'http://ieeexplore.ieee.org/document/7847322/', 'http://ieeexplore.ieee.org/document/7879258/', 'http://ieeexplore.ieee.org/document/7876263/', 'http://ieeexplore.ieee.org/document/7876955/']
+2017-04-14 17:08:55,319 - DEBUG - IEEEXplore.get_attributes_and_download_pdf start
+2017-04-14 17:08:55,320 - INFO - url[http://ieeexplore.ieee.org/document/7894538/], times[0], limit[-9]
+2017-04-14 17:08:55,320 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/url {"url": "http://ieeexplore.ieee.org/document/7894538/", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,510 - DEBUG - Finished Request
+2017-04-14 17:08:58,513 - DEBUG - WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//div[@ng-repeat="article in vm.contextData.similar"]'))
+2017-04-14 17:08:58,517 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element {"using": "xpath", "value": "//div[@ng-repeat=\"article in vm.contextData.similar\"]", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,528 - DEBUG - Finished Request
+2017-04-14 17:08:58,528 - DEBUG - Wait Finished.
+2017-04-14 17:08:58,742 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:08:58,767 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:08:58,767 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:08:58,787 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:08:58,787 - DEBUG - class Mysql_operator created.
+2017-04-14 17:08:58,788 - DEBUG - get attributes of this paper
+2017-04-14 17:08:58,788 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/title {"sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,791 - DEBUG - Finished Request
+2017-04-14 17:08:58,792 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/elements {"using": "xpath", "value": "//span[@ng-bind-html=\"::author.name\"]", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,804 - DEBUG - Finished Request
+2017-04-14 17:08:58,804 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338528/text {"id": ":wdc:1492157338528", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,820 - DEBUG - Finished Request
+2017-04-14 17:08:58,821 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338529/text {"id": ":wdc:1492157338529", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,836 - DEBUG - Finished Request
+2017-04-14 17:08:58,837 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/elements {"using": "xpath", "value": "//a[@ng-bind-html=\"::term\"]", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,849 - DEBUG - Finished Request
+2017-04-14 17:08:58,850 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338530/text {"id": ":wdc:1492157338530", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,867 - DEBUG - Finished Request
+2017-04-14 17:08:58,868 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338530/text {"id": ":wdc:1492157338530", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,877 - DEBUG - Finished Request
+2017-04-14 17:08:58,877 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338531/text {"id": ":wdc:1492157338531", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,890 - DEBUG - Finished Request
+2017-04-14 17:08:58,891 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338531/text {"id": ":wdc:1492157338531", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,900 - DEBUG - Finished Request
+2017-04-14 17:08:58,900 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338532/text {"id": ":wdc:1492157338532", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,916 - DEBUG - Finished Request
+2017-04-14 17:08:58,917 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338532/text {"id": ":wdc:1492157338532", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,926 - DEBUG - Finished Request
+2017-04-14 17:08:58,926 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338533/text {"id": ":wdc:1492157338533", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,947 - DEBUG - Finished Request
+2017-04-14 17:08:58,948 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338533/text {"id": ":wdc:1492157338533", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,956 - DEBUG - Finished Request
+2017-04-14 17:08:58,956 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338534/text {"id": ":wdc:1492157338534", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,976 - DEBUG - Finished Request
+2017-04-14 17:08:58,976 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338534/text {"id": ":wdc:1492157338534", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,984 - DEBUG - Finished Request
+2017-04-14 17:08:58,984 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338535/text {"id": ":wdc:1492157338535", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:58,997 - DEBUG - Finished Request
+2017-04-14 17:08:58,997 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338535/text {"id": ":wdc:1492157338535", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,005 - DEBUG - Finished Request
+2017-04-14 17:08:59,006 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338536/text {"id": ":wdc:1492157338536", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,019 - DEBUG - Finished Request
+2017-04-14 17:08:59,020 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338536/text {"id": ":wdc:1492157338536", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,028 - DEBUG - Finished Request
+2017-04-14 17:08:59,029 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338537/text {"id": ":wdc:1492157338537", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,042 - DEBUG - Finished Request
+2017-04-14 17:08:59,043 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338537/text {"id": ":wdc:1492157338537", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,051 - DEBUG - Finished Request
+2017-04-14 17:08:59,052 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338538/text {"id": ":wdc:1492157338538", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,067 - DEBUG - Finished Request
+2017-04-14 17:08:59,067 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338538/text {"id": ":wdc:1492157338538", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,075 - DEBUG - Finished Request
+2017-04-14 17:08:59,076 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338539/text {"id": ":wdc:1492157338539", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,089 - DEBUG - Finished Request
+2017-04-14 17:08:59,090 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338539/text {"id": ":wdc:1492157338539", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,098 - DEBUG - Finished Request
+2017-04-14 17:08:59,101 - DEBUG - WebDriverWait(driver, timeout).until(lambda driver: driver.find_elements_by_css_selector('div[ng-repeat="article in vm.contextData.similar"] > a')) start
+2017-04-14 17:08:59,105 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/elements {"using": "css selector", "value": "div[ng-repeat=\"article in vm.contextData.similar\"] > a", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,128 - DEBUG - Finished Request
+2017-04-14 17:08:59,136 - DEBUG - Wait Finished.
+2017-04-14 17:08:59,137 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/elements {"using": "css selector", "value": "div[ng-repeat=\"article in vm.contextData.similar\"]", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,149 - DEBUG - Finished Request
+2017-04-14 17:08:59,150 - DEBUG - 10
+2017-04-14 17:08:59,150 - DEBUG - IEEEXplore.save_current_page start
+2017-04-14 17:08:59,150 - DEBUG - path[./samples/sample_page_4116687_start], suffix[.html]
+2017-04-14 17:08:59,152 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/source {"sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,165 - DEBUG - Finished Request
+2017-04-14 17:08:59,328 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-14 17:08:59,329 - DEBUG - IEEEXplore.save_current_page start
+2017-04-14 17:08:59,329 - DEBUG - path[./samples/sample_page_4116687_start], suffix[.png]
+2017-04-14 17:08:59,329 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/screenshot {"sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,719 - DEBUG - Finished Request
+2017-04-14 17:08:59,728 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-14 17:08:59,728 - DEBUG - create arrays of paper and url
+2017-04-14 17:08:59,742 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:08:59,758 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:08:59,758 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:08:59,763 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:08:59,764 - DEBUG - class Mysql_operator created.
+2017-04-14 17:08:59,768 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338527/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338527", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,779 - DEBUG - Finished Request
+2017-04-14 17:08:59,780 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338540/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338540", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,790 - DEBUG - Finished Request
+2017-04-14 17:08:59,790 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338527/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338527", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,801 - DEBUG - Finished Request
+2017-04-14 17:08:59,801 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338540/attribute/title {"name": "title", "id": ":wdc:1492157338540", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,811 - DEBUG - Finished Request
+2017-04-14 17:08:59,812 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338527/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338527", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,823 - DEBUG - Finished Request
+2017-04-14 17:08:59,823 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338559/text {"id": ":wdc:1492157338559", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:08:59,839 - DEBUG - Finished Request
+2017-04-14 17:08:59,839 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/6461705]
+2017-04-14 17:08:59,839 - DEBUG - citing_title[Cloud computing for Internet of Things &amp; sensing based applications]
+2017-04-14 17:08:59,840 - DEBUG - citing_authors[B. B Prahlada Rao, Paval Saluia, Neetu Sharma, Ankit Mittal, Shivay Veer Sharma]
+2017-04-14 17:08:59,840 - DEBUG - {id: , title: Cloud computing for Internet of Things &amp; sensing based applications, authors: B. B Prahlada Rao, Paval Saluia, Neetu Sharma, Ankit Mittal, Shivay Veer Sharma, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/6461705, timestamp: None, path: , }
+2017-04-14 17:08:59,855 - DEBUG - record.id[30]
+2017-04-14 17:08:59,856 - DEBUG - var[authors], self[B. B Prahlada Rao, Paval Saluia, Neetu Sharma, Ankit Mittal, Shivay Veer Sharma], record[B. B Prahlada Rao, Paval Saluia, Neetu Sharma, Ankit Mittal, Shivay Veer Sharma]
+2017-04-14 17:08:59,856 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:08:59,857 - DEBUG - ->var[authors], self[B. B Prahlada Rao, Paval Saluia, Neetu Sharma, Ankit Mittal, Shivay Veer Sharma], record[B. B Prahlada Rao, Paval Saluia, Neetu Sharma, Ankit Mittal, Shivay Veer Sharma]
+2017-04-14 17:08:59,857 - DEBUG - record.id[30]
+2017-04-14 17:08:59,858 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:08:59,858 - DEBUG - records.keywords == None
+2017-04-14 17:08:59,858 - DEBUG - record.id[30]
+2017-04-14 17:08:59,858 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:08:59,859 - DEBUG - records.citings == None
+2017-04-14 17:08:59,859 - DEBUG - record.id[30]
+2017-04-14 17:08:59,859 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:08:59,859 - DEBUG - records.citeds == None
+2017-04-14 17:08:59,860 - DEBUG - record.id[30]
+2017-04-14 17:08:59,860 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:08:59,860 - DEBUG - records.conference == None
+2017-04-14 17:08:59,860 - DEBUG - record.id[30]
+2017-04-14 17:08:59,861 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:08:59,861 - DEBUG - records.published == None
+2017-04-14 17:08:59,861 - DEBUG - record.id[30]
+2017-04-14 17:08:59,861 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/6461705], record[http://ieeexplore.ieee.org/document/6461705]
+2017-04-14 17:08:59,862 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:08:59,862 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/6461705], record[http://ieeexplore.ieee.org/document/6461705]
+2017-04-14 17:08:59,862 - DEBUG - record.id[30]
+2017-04-14 17:08:59,862 - DEBUG - var[path], self[], record[]
+2017-04-14 17:08:59,862 - DEBUG - records.path == None
+2017-04-14 17:08:59,863 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:08:59,925 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:08:59,926 - DEBUG - Table_papers.get_id start
+2017-04-14 17:08:59,929 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:08:59,936 - DEBUG - id[31] - previous_id[29] > 2. return 30
+2017-04-14 17:08:59,937 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:08:59,942 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:08:59,942 - DEBUG - merge[[30]] to self.id[30]
+2017-04-14 17:08:59,955 - DEBUG - id[30].records[11]
+2017-04-14 17:08:59,955 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:08:59,955 - DEBUG - from[30]to[12]
+2017-04-14 17:08:59,956 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:08:59,956 - DEBUG - start[30] is delete_id. end[12]
+2017-04-14 17:08:59,956 - DEBUG - delete(merge_record)
+2017-04-14 17:08:59,956 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:08:59,960 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:08:59,976 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:08:59,991 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:08:59,992 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:08:59,997 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:08:59,997 - DEBUG - class Mysql_operator created.
+2017-04-14 17:08:59,997 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:08:59,998 - DEBUG - 30 to 12
+2017-04-14 17:09:00,010 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==12).all()
+2017-04-14 17:09:00,010 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,011 - DEBUG - new citation
+2017-04-14 17:09:00,011 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,023 - DEBUG - id[12] - previous_id[10] > 2. return 11
+2017-04-14 17:09:00,025 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,045 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,046 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,047 - DEBUG - from[30]to[21]
+2017-04-14 17:09:00,047 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,047 - DEBUG - start[30] is delete_id. end[21]
+2017-04-14 17:09:00,047 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,047 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,051 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,067 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,083 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,084 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,092 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,092 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,093 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,093 - DEBUG - 30 to 21
+2017-04-14 17:09:00,102 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==21).all()
+2017-04-14 17:09:00,103 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,106 - DEBUG - new citation
+2017-04-14 17:09:00,111 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,148 - DEBUG - id[50] - previous_id[48] > 2. return 49
+2017-04-14 17:09:00,149 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,155 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,156 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,156 - DEBUG - from[30]to[22]
+2017-04-14 17:09:00,156 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,157 - DEBUG - start[30] is delete_id. end[22]
+2017-04-14 17:09:00,157 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,157 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,162 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,177 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,193 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,194 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,199 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,200 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,200 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,200 - DEBUG - 30 to 22
+2017-04-14 17:09:00,208 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==22).all()
+2017-04-14 17:09:00,208 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,209 - DEBUG - new citation
+2017-04-14 17:09:00,209 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,221 - DEBUG - id[69] - previous_id[67] > 2. return 68
+2017-04-14 17:09:00,222 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,227 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,228 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,228 - DEBUG - from[30]to[23]
+2017-04-14 17:09:00,228 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,228 - DEBUG - start[30] is delete_id. end[23]
+2017-04-14 17:09:00,228 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,228 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,232 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,252 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,268 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,268 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,274 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,274 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,274 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,274 - DEBUG - 30 to 23
+2017-04-14 17:09:00,285 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==23).all()
+2017-04-14 17:09:00,285 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,285 - DEBUG - new citation
+2017-04-14 17:09:00,285 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,296 - DEBUG - id[88] - previous_id[86] > 2. return 87
+2017-04-14 17:09:00,297 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,301 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,301 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,301 - DEBUG - from[30]to[24]
+2017-04-14 17:09:00,302 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,302 - DEBUG - start[30] is delete_id. end[24]
+2017-04-14 17:09:00,302 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,302 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,305 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,319 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,333 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,333 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,338 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,338 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,338 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,338 - DEBUG - 30 to 24
+2017-04-14 17:09:00,347 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==24).all()
+2017-04-14 17:09:00,347 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,347 - DEBUG - new citation
+2017-04-14 17:09:00,347 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,357 - DEBUG - id[107] - previous_id[105] > 2. return 106
+2017-04-14 17:09:00,358 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,363 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,364 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,364 - DEBUG - from[30]to[25]
+2017-04-14 17:09:00,364 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,364 - DEBUG - start[30] is delete_id. end[25]
+2017-04-14 17:09:00,364 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,364 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,367 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,382 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,396 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,396 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,401 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,401 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,402 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,402 - DEBUG - 30 to 25
+2017-04-14 17:09:00,409 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==25).all()
+2017-04-14 17:09:00,410 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,410 - DEBUG - new citation
+2017-04-14 17:09:00,410 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,421 - DEBUG - id[126] - previous_id[124] > 2. return 125
+2017-04-14 17:09:00,422 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,427 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,428 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,428 - DEBUG - from[30]to[26]
+2017-04-14 17:09:00,429 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,429 - DEBUG - start[30] is delete_id. end[26]
+2017-04-14 17:09:00,429 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,429 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,432 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,449 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,465 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,465 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,470 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,471 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,471 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,471 - DEBUG - 30 to 26
+2017-04-14 17:09:00,481 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==26).all()
+2017-04-14 17:09:00,481 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,481 - DEBUG - new citation
+2017-04-14 17:09:00,482 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,492 - DEBUG - id[145] - previous_id[143] > 2. return 144
+2017-04-14 17:09:00,494 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,497 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,498 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,498 - DEBUG - from[30]to[27]
+2017-04-14 17:09:00,499 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,499 - DEBUG - start[30] is delete_id. end[27]
+2017-04-14 17:09:00,499 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,499 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,503 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,520 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,536 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,537 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,542 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,542 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,542 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,542 - DEBUG - 30 to 27
+2017-04-14 17:09:00,551 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==27).all()
+2017-04-14 17:09:00,551 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,552 - DEBUG - new citation
+2017-04-14 17:09:00,552 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,562 - DEBUG - id[164] - previous_id[162] > 2. return 163
+2017-04-14 17:09:00,563 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,567 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,568 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,568 - DEBUG - from[30]to[28]
+2017-04-14 17:09:00,569 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,569 - DEBUG - start[30] is delete_id. end[28]
+2017-04-14 17:09:00,569 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,569 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,572 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,587 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,602 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,602 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,607 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,607 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,607 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,608 - DEBUG - 30 to 28
+2017-04-14 17:09:00,615 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==28).all()
+2017-04-14 17:09:00,616 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,616 - DEBUG - new citation
+2017-04-14 17:09:00,616 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,626 - DEBUG - id[183] - previous_id[181] > 2. return 182
+2017-04-14 17:09:00,627 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,631 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,632 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,632 - DEBUG - from[30]to[29]
+2017-04-14 17:09:00,632 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,632 - DEBUG - start[30] is delete_id. end[29]
+2017-04-14 17:09:00,633 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,633 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,637 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,651 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,666 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,667 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,671 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,672 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,672 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,672 - DEBUG - 30 to 29
+2017-04-14 17:09:00,680 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==30 and __class__.end==29).all()
+2017-04-14 17:09:00,680 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,680 - DEBUG - new citation
+2017-04-14 17:09:00,680 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,691 - DEBUG - id[202] - previous_id[200] > 2. return 201
+2017-04-14 17:09:00,692 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,696 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,697 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,697 - DEBUG - from[40]to[30]
+2017-04-14 17:09:00,697 - DEBUG - survival_id[30], delete_id[30]
+2017-04-14 17:09:00,697 - DEBUG - end[30] is delete_id. start[40]
+2017-04-14 17:09:00,715 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,730 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,731 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,735 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,735 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,736 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,736 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,740 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,740 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,740 - DEBUG - 40 to 30
+2017-04-14 17:09:00,748 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==30).all()
+2017-04-14 17:09:00,749 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,749 - DEBUG - new citation
+2017-04-14 17:09:00,749 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,762 - DEBUG - id[211] - previous_id[209] > 2. return 210
+2017-04-14 17:09:00,763 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,768 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,785 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,800 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,800 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,805 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,805 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,809 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338550/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338550", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:00,819 - DEBUG - Finished Request
+2017-04-14 17:09:00,820 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338541/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338541", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:00,829 - DEBUG - Finished Request
+2017-04-14 17:09:00,829 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338550/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338550", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:00,834 - DEBUG - Finished Request
+2017-04-14 17:09:00,835 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338541/attribute/title {"name": "title", "id": ":wdc:1492157338541", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:00,843 - DEBUG - Finished Request
+2017-04-14 17:09:00,844 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338550/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338550", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:00,853 - DEBUG - Finished Request
+2017-04-14 17:09:00,854 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338560/text {"id": ":wdc:1492157338560", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:00,867 - DEBUG - Finished Request
+2017-04-14 17:09:00,867 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/6117445]
+2017-04-14 17:09:00,867 - DEBUG - citing_title[Integrating Wireless Sensor Networks with Cloud Computing]
+2017-04-14 17:09:00,867 - DEBUG - citing_authors[Khandakar Ahmed, Mark Gregory]
+2017-04-14 17:09:00,867 - DEBUG - {id: , title: Integrating Wireless Sensor Networks with Cloud Computing, authors: Khandakar Ahmed, Mark Gregory, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/6117445, timestamp: None, path: , }
+2017-04-14 17:09:00,877 - DEBUG - record.id[31]
+2017-04-14 17:09:00,878 - DEBUG - var[authors], self[Khandakar Ahmed, Mark Gregory], record[Khandakar Ahmed, Mark Gregory]
+2017-04-14 17:09:00,878 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:00,879 - DEBUG - ->var[authors], self[Khandakar Ahmed, Mark Gregory], record[Khandakar Ahmed, Mark Gregory]
+2017-04-14 17:09:00,879 - DEBUG - record.id[31]
+2017-04-14 17:09:00,879 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:00,879 - DEBUG - records.keywords == None
+2017-04-14 17:09:00,879 - DEBUG - record.id[31]
+2017-04-14 17:09:00,880 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:00,880 - DEBUG - records.citings == None
+2017-04-14 17:09:00,880 - DEBUG - record.id[31]
+2017-04-14 17:09:00,880 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:00,880 - DEBUG - records.citeds == None
+2017-04-14 17:09:00,881 - DEBUG - record.id[31]
+2017-04-14 17:09:00,881 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:00,881 - DEBUG - records.conference == None
+2017-04-14 17:09:00,881 - DEBUG - record.id[31]
+2017-04-14 17:09:00,881 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:00,881 - DEBUG - records.published == None
+2017-04-14 17:09:00,881 - DEBUG - record.id[31]
+2017-04-14 17:09:00,882 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/6117445], record[http://ieeexplore.ieee.org/document/6117445]
+2017-04-14 17:09:00,882 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:00,882 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/6117445], record[http://ieeexplore.ieee.org/document/6117445]
+2017-04-14 17:09:00,882 - DEBUG - record.id[31]
+2017-04-14 17:09:00,882 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:00,883 - DEBUG - records.path == None
+2017-04-14 17:09:00,883 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,887 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,887 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:00,889 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:00,895 - DEBUG - id[32] - previous_id[30] > 2. return 31
+2017-04-14 17:09:00,896 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,900 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,900 - DEBUG - merge[[31]] to self.id[31]
+2017-04-14 17:09:00,903 - DEBUG - id[31].records[1]
+2017-04-14 17:09:00,903 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:00,903 - DEBUG - from[40]to[31]
+2017-04-14 17:09:00,903 - DEBUG - survival_id[31], delete_id[31]
+2017-04-14 17:09:00,904 - DEBUG - end[31] is delete_id. start[40]
+2017-04-14 17:09:00,919 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,933 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,934 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:00,938 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:00,938 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:00,939 - DEBUG - delete(merge_record)
+2017-04-14 17:09:00,939 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:00,942 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:00,943 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:00,943 - DEBUG - 40 to 31
+2017-04-14 17:09:00,950 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==31).all()
+2017-04-14 17:09:00,950 - DEBUG - len(records)[0]
+2017-04-14 17:09:00,950 - DEBUG - new citation
+2017-04-14 17:09:00,950 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:00,961 - DEBUG - id[213] - previous_id[211] > 2. return 212
+2017-04-14 17:09:00,962 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:00,965 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:00,982 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,996 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:00,996 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,000 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,001 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,005 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338551/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338551", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,016 - DEBUG - Finished Request
+2017-04-14 17:09:01,016 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338542/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338542", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,025 - DEBUG - Finished Request
+2017-04-14 17:09:01,025 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338551/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338551", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,030 - DEBUG - Finished Request
+2017-04-14 17:09:01,030 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338542/attribute/title {"name": "title", "id": ":wdc:1492157338542", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,038 - DEBUG - Finished Request
+2017-04-14 17:09:01,039 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338551/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338551", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,047 - DEBUG - Finished Request
+2017-04-14 17:09:01,048 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338561/text {"id": ":wdc:1492157338561", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,060 - DEBUG - Finished Request
+2017-04-14 17:09:01,060 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/1462006]
+2017-04-14 17:09:01,060 - DEBUG - citing_title[Flexible hardware abstraction for wireless sensor networks]
+2017-04-14 17:09:01,060 - DEBUG - citing_authors[V. Handziski, J. Polastre, J.-H. Hauer, C. Sharp, A. Wolisz, D. Culler]
+2017-04-14 17:09:01,061 - DEBUG - {id: , title: Flexible hardware abstraction for wireless sensor networks, authors: V. Handziski, J. Polastre, J.-H. Hauer, C. Sharp, A. Wolisz, D. Culler, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/1462006, timestamp: None, path: , }
+2017-04-14 17:09:01,068 - DEBUG - record.id[32]
+2017-04-14 17:09:01,069 - DEBUG - var[authors], self[V. Handziski, J. Polastre, J.-H. Hauer, C. Sharp, A. Wolisz, D. Culler], record[V. Handziski, J. Polastre, J.-H. Hauer, C. Sharp, A. Wolisz, D. Culler]
+2017-04-14 17:09:01,069 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:01,069 - DEBUG - ->var[authors], self[V. Handziski, J. Polastre, J.-H. Hauer, C. Sharp, A. Wolisz, D. Culler], record[V. Handziski, J. Polastre, J.-H. Hauer, C. Sharp, A. Wolisz, D. Culler]
+2017-04-14 17:09:01,069 - DEBUG - record.id[32]
+2017-04-14 17:09:01,069 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:01,069 - DEBUG - records.keywords == None
+2017-04-14 17:09:01,070 - DEBUG - record.id[32]
+2017-04-14 17:09:01,070 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:01,070 - DEBUG - records.citings == None
+2017-04-14 17:09:01,070 - DEBUG - record.id[32]
+2017-04-14 17:09:01,070 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:01,071 - DEBUG - records.citeds == None
+2017-04-14 17:09:01,071 - DEBUG - record.id[32]
+2017-04-14 17:09:01,071 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:01,071 - DEBUG - records.conference == None
+2017-04-14 17:09:01,071 - DEBUG - record.id[32]
+2017-04-14 17:09:01,071 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:01,071 - DEBUG - records.published == None
+2017-04-14 17:09:01,072 - DEBUG - record.id[32]
+2017-04-14 17:09:01,072 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/1462006], record[http://ieeexplore.ieee.org/document/1462006]
+2017-04-14 17:09:01,072 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:01,072 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/1462006], record[http://ieeexplore.ieee.org/document/1462006]
+2017-04-14 17:09:01,072 - DEBUG - record.id[32]
+2017-04-14 17:09:01,072 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:01,073 - DEBUG - records.path == None
+2017-04-14 17:09:01,073 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:01,078 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:01,078 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:01,080 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:01,086 - DEBUG - id[33] - previous_id[31] > 2. return 32
+2017-04-14 17:09:01,086 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:01,089 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:01,090 - DEBUG - merge[[32]] to self.id[32]
+2017-04-14 17:09:01,092 - DEBUG - id[32].records[1]
+2017-04-14 17:09:01,092 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:01,092 - DEBUG - from[40]to[32]
+2017-04-14 17:09:01,092 - DEBUG - survival_id[32], delete_id[32]
+2017-04-14 17:09:01,092 - DEBUG - end[32] is delete_id. start[40]
+2017-04-14 17:09:01,106 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,122 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,128 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,137 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,137 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,138 - DEBUG - delete(merge_record)
+2017-04-14 17:09:01,138 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:01,143 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:01,144 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:01,146 - DEBUG - 40 to 32
+2017-04-14 17:09:01,155 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==32).all()
+2017-04-14 17:09:01,156 - DEBUG - len(records)[0]
+2017-04-14 17:09:01,156 - DEBUG - new citation
+2017-04-14 17:09:01,156 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:01,168 - DEBUG - id[214] - previous_id[212] > 2. return 213
+2017-04-14 17:09:01,170 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:01,174 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:01,189 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,204 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,204 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,209 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,209 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,213 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338552/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338552", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,220 - DEBUG - Finished Request
+2017-04-14 17:09:01,220 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338543/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338543", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,230 - DEBUG - Finished Request
+2017-04-14 17:09:01,230 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338552/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338552", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,235 - DEBUG - Finished Request
+2017-04-14 17:09:01,235 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338543/attribute/title {"name": "title", "id": ":wdc:1492157338543", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,244 - DEBUG - Finished Request
+2017-04-14 17:09:01,244 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338552/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338552", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,253 - DEBUG - Finished Request
+2017-04-14 17:09:01,253 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338562/text {"id": ":wdc:1492157338562", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,265 - DEBUG - Finished Request
+2017-04-14 17:09:01,265 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/5678063]
+2017-04-14 17:09:01,265 - DEBUG - citing_title[Extending sensor networks into the Cloud using Amazon Web Services]
+2017-04-14 17:09:01,265 - DEBUG - citing_authors[Kevin Lee, David Murray, Danny Hughes, Wouter Joosen]
+2017-04-14 17:09:01,266 - DEBUG - {id: , title: Extending sensor networks into the Cloud using Amazon Web Services, authors: Kevin Lee, David Murray, Danny Hughes, Wouter Joosen, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/5678063, timestamp: None, path: , }
+2017-04-14 17:09:01,275 - DEBUG - record.id[33]
+2017-04-14 17:09:01,277 - DEBUG - var[authors], self[Kevin Lee, David Murray, Danny Hughes, Wouter Joosen], record[Kevin Lee, David Murray, Danny Hughes, Wouter Joosen]
+2017-04-14 17:09:01,277 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:01,277 - DEBUG - ->var[authors], self[Kevin Lee, David Murray, Danny Hughes, Wouter Joosen], record[Kevin Lee, David Murray, Danny Hughes, Wouter Joosen]
+2017-04-14 17:09:01,277 - DEBUG - record.id[33]
+2017-04-14 17:09:01,278 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:01,278 - DEBUG - records.keywords == None
+2017-04-14 17:09:01,278 - DEBUG - record.id[33]
+2017-04-14 17:09:01,278 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:01,278 - DEBUG - records.citings == None
+2017-04-14 17:09:01,279 - DEBUG - record.id[33]
+2017-04-14 17:09:01,279 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:01,279 - DEBUG - records.citeds == None
+2017-04-14 17:09:01,279 - DEBUG - record.id[33]
+2017-04-14 17:09:01,279 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:01,280 - DEBUG - records.conference == None
+2017-04-14 17:09:01,280 - DEBUG - record.id[33]
+2017-04-14 17:09:01,280 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:01,280 - DEBUG - records.published == None
+2017-04-14 17:09:01,280 - DEBUG - record.id[33]
+2017-04-14 17:09:01,282 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/5678063], record[http://ieeexplore.ieee.org/document/5678063]
+2017-04-14 17:09:01,282 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:01,282 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/5678063], record[http://ieeexplore.ieee.org/document/5678063]
+2017-04-14 17:09:01,283 - DEBUG - record.id[33]
+2017-04-14 17:09:01,283 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:01,283 - DEBUG - records.path == None
+2017-04-14 17:09:01,283 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:01,288 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:01,289 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:01,293 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:01,301 - DEBUG - id[34] - previous_id[32] > 2. return 33
+2017-04-14 17:09:01,302 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:01,307 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:01,308 - DEBUG - merge[[33]] to self.id[33]
+2017-04-14 17:09:01,310 - DEBUG - id[33].records[1]
+2017-04-14 17:09:01,311 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:01,312 - DEBUG - from[40]to[33]
+2017-04-14 17:09:01,312 - DEBUG - survival_id[33], delete_id[33]
+2017-04-14 17:09:01,313 - DEBUG - end[33] is delete_id. start[40]
+2017-04-14 17:09:01,338 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,371 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,371 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,379 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,379 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,379 - DEBUG - delete(merge_record)
+2017-04-14 17:09:01,379 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:01,384 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:01,384 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:01,384 - DEBUG - 40 to 33
+2017-04-14 17:09:01,399 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==33).all()
+2017-04-14 17:09:01,400 - DEBUG - len(records)[0]
+2017-04-14 17:09:01,400 - DEBUG - new citation
+2017-04-14 17:09:01,400 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:01,416 - DEBUG - id[215] - previous_id[213] > 2. return 214
+2017-04-14 17:09:01,418 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:01,424 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:01,441 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,458 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,458 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,464 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,465 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,470 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338553/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338553", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,482 - DEBUG - Finished Request
+2017-04-14 17:09:01,482 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338544/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338544", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,492 - DEBUG - Finished Request
+2017-04-14 17:09:01,493 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338553/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338553", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,499 - DEBUG - Finished Request
+2017-04-14 17:09:01,499 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338544/attribute/title {"name": "title", "id": ":wdc:1492157338544", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,508 - DEBUG - Finished Request
+2017-04-14 17:09:01,508 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338553/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338553", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,519 - DEBUG - Finished Request
+2017-04-14 17:09:01,519 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338563/text {"id": ":wdc:1492157338563", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,534 - DEBUG - Finished Request
+2017-04-14 17:09:01,534 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/6061155]
+2017-04-14 17:09:01,535 - DEBUG - citing_title[Heterogeneous Cloud Computing]
+2017-04-14 17:09:01,535 - DEBUG - citing_authors[Steve Crago, Kyle Dunn, Patrick Eads, Lorin Hochstein, Dong-In Kang, Mikyung Kang, Devendra Modium, Karandeep Singh, Jinwoo Suh, John Paul Walters]
+2017-04-14 17:09:01,535 - DEBUG - {id: , title: Heterogeneous Cloud Computing, authors: Steve Crago, Kyle Dunn, Patrick Eads, Lorin Hochstein, Dong-In Kang, Mikyung Kang, Devendra Modium, Karandeep Singh, Jinwoo Suh, John Paul Walters, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/6061155, timestamp: None, path: , }
+2017-04-14 17:09:01,547 - DEBUG - record.id[34]
+2017-04-14 17:09:01,547 - DEBUG - var[authors], self[Steve Crago, Kyle Dunn, Patrick Eads, Lorin Hochstein, Dong-In Kang, Mikyung Kang, Devendra Modium, Karandeep Singh, Jinwoo Suh, John Paul Walters], record[Steve Crago, Kyle Dunn, Patrick Eads, Lorin Hochstein, Dong-In Kang, Mikyung Kang, Devendra Modium, Karandeep Singh, Jinwoo Suh, John Paul Walters]
+2017-04-14 17:09:01,547 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:01,547 - DEBUG - ->var[authors], self[Steve Crago, Kyle Dunn, Patrick Eads, Lorin Hochstein, Dong-In Kang, Mikyung Kang, Devendra Modium, Karandeep Singh, Jinwoo Suh, John Paul Walters], record[Steve Crago, Kyle Dunn, Patrick Eads, Lorin Hochstein, Dong-In Kang, Mikyung Kang, Devendra Modium, Karandeep Singh, Jinwoo Suh, John Paul Walters]
+2017-04-14 17:09:01,547 - DEBUG - record.id[34]
+2017-04-14 17:09:01,548 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:01,548 - DEBUG - records.keywords == None
+2017-04-14 17:09:01,548 - DEBUG - record.id[34]
+2017-04-14 17:09:01,548 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:01,548 - DEBUG - records.citings == None
+2017-04-14 17:09:01,549 - DEBUG - record.id[34]
+2017-04-14 17:09:01,549 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:01,549 - DEBUG - records.citeds == None
+2017-04-14 17:09:01,549 - DEBUG - record.id[34]
+2017-04-14 17:09:01,549 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:01,549 - DEBUG - records.conference == None
+2017-04-14 17:09:01,549 - DEBUG - record.id[34]
+2017-04-14 17:09:01,550 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:01,550 - DEBUG - records.published == None
+2017-04-14 17:09:01,550 - DEBUG - record.id[34]
+2017-04-14 17:09:01,550 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/6061155], record[http://ieeexplore.ieee.org/document/6061155]
+2017-04-14 17:09:01,550 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:01,550 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/6061155], record[http://ieeexplore.ieee.org/document/6061155]
+2017-04-14 17:09:01,550 - DEBUG - record.id[34]
+2017-04-14 17:09:01,551 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:01,551 - DEBUG - records.path == None
+2017-04-14 17:09:01,551 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:01,556 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:01,556 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:01,558 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:01,565 - DEBUG - id[35] - previous_id[33] > 2. return 34
+2017-04-14 17:09:01,566 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:01,571 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:01,571 - DEBUG - merge[[34]] to self.id[34]
+2017-04-14 17:09:01,574 - DEBUG - id[34].records[1]
+2017-04-14 17:09:01,575 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:01,575 - DEBUG - from[40]to[34]
+2017-04-14 17:09:01,576 - DEBUG - survival_id[34], delete_id[34]
+2017-04-14 17:09:01,576 - DEBUG - end[34] is delete_id. start[40]
+2017-04-14 17:09:01,593 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,611 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,611 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,616 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,616 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,617 - DEBUG - delete(merge_record)
+2017-04-14 17:09:01,617 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:01,621 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:01,621 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:01,622 - DEBUG - 40 to 34
+2017-04-14 17:09:01,642 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==34).all()
+2017-04-14 17:09:01,642 - DEBUG - len(records)[0]
+2017-04-14 17:09:01,642 - DEBUG - new citation
+2017-04-14 17:09:01,642 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:01,653 - DEBUG - id[216] - previous_id[214] > 2. return 215
+2017-04-14 17:09:01,655 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:01,659 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:01,678 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,695 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,695 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,700 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,700 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,704 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338554/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338554", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,718 - DEBUG - Finished Request
+2017-04-14 17:09:01,719 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338545/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338545", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,728 - DEBUG - Finished Request
+2017-04-14 17:09:01,728 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338554/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338554", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,735 - DEBUG - Finished Request
+2017-04-14 17:09:01,736 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338545/attribute/title {"name": "title", "id": ":wdc:1492157338545", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,745 - DEBUG - Finished Request
+2017-04-14 17:09:01,746 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338554/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338554", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,758 - DEBUG - Finished Request
+2017-04-14 17:09:01,758 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338564/text {"id": ":wdc:1492157338564", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,775 - DEBUG - Finished Request
+2017-04-14 17:09:01,775 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/6392021]
+2017-04-14 17:09:01,776 - DEBUG - citing_title[M2M Communications for Smart City: An Event-Based Architecture]
+2017-04-14 17:09:01,776 - DEBUG - citing_authors[Jiafu Wan, Di Li, Caifeng Zou, Keliang Zhou]
+2017-04-14 17:09:01,776 - DEBUG - {id: , title: M2M Communications for Smart City: An Event-Based Architecture, authors: Jiafu Wan, Di Li, Caifeng Zou, Keliang Zhou, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/6392021, timestamp: None, path: , }
+2017-04-14 17:09:01,785 - DEBUG - record.id[35]
+2017-04-14 17:09:01,786 - DEBUG - var[authors], self[Jiafu Wan, Di Li, Caifeng Zou, Keliang Zhou], record[Jiafu Wan, Di Li, Caifeng Zou, Keliang Zhou]
+2017-04-14 17:09:01,786 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:01,786 - DEBUG - ->var[authors], self[Jiafu Wan, Di Li, Caifeng Zou, Keliang Zhou], record[Jiafu Wan, Di Li, Caifeng Zou, Keliang Zhou]
+2017-04-14 17:09:01,786 - DEBUG - record.id[35]
+2017-04-14 17:09:01,786 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:01,787 - DEBUG - records.keywords == None
+2017-04-14 17:09:01,787 - DEBUG - record.id[35]
+2017-04-14 17:09:01,787 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:01,787 - DEBUG - records.citings == None
+2017-04-14 17:09:01,787 - DEBUG - record.id[35]
+2017-04-14 17:09:01,788 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:01,788 - DEBUG - records.citeds == None
+2017-04-14 17:09:01,788 - DEBUG - record.id[35]
+2017-04-14 17:09:01,788 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:01,788 - DEBUG - records.conference == None
+2017-04-14 17:09:01,788 - DEBUG - record.id[35]
+2017-04-14 17:09:01,789 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:01,789 - DEBUG - records.published == None
+2017-04-14 17:09:01,789 - DEBUG - record.id[35]
+2017-04-14 17:09:01,789 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/6392021], record[http://ieeexplore.ieee.org/document/6392021]
+2017-04-14 17:09:01,789 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:01,789 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/6392021], record[http://ieeexplore.ieee.org/document/6392021]
+2017-04-14 17:09:01,789 - DEBUG - record.id[35]
+2017-04-14 17:09:01,790 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:01,790 - DEBUG - records.path == None
+2017-04-14 17:09:01,790 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:01,794 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:01,795 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:01,797 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:01,804 - DEBUG - id[36] - previous_id[34] > 2. return 35
+2017-04-14 17:09:01,804 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:01,808 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:01,809 - DEBUG - merge[[35]] to self.id[35]
+2017-04-14 17:09:01,811 - DEBUG - id[35].records[1]
+2017-04-14 17:09:01,811 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:01,812 - DEBUG - from[40]to[35]
+2017-04-14 17:09:01,812 - DEBUG - survival_id[35], delete_id[35]
+2017-04-14 17:09:01,812 - DEBUG - end[35] is delete_id. start[40]
+2017-04-14 17:09:01,827 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,843 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,843 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,848 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,849 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,849 - DEBUG - delete(merge_record)
+2017-04-14 17:09:01,849 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:01,853 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:01,854 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:01,854 - DEBUG - 40 to 35
+2017-04-14 17:09:01,863 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==35).all()
+2017-04-14 17:09:01,863 - DEBUG - len(records)[0]
+2017-04-14 17:09:01,863 - DEBUG - new citation
+2017-04-14 17:09:01,863 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:01,875 - DEBUG - id[217] - previous_id[215] > 2. return 216
+2017-04-14 17:09:01,876 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:01,881 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:01,897 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,913 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:01,913 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:01,919 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:01,919 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:01,925 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338555/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338555", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,938 - DEBUG - Finished Request
+2017-04-14 17:09:01,938 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338546/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338546", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,951 - DEBUG - Finished Request
+2017-04-14 17:09:01,954 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338555/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338555", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,962 - DEBUG - Finished Request
+2017-04-14 17:09:01,962 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338546/attribute/title {"name": "title", "id": ":wdc:1492157338546", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,974 - DEBUG - Finished Request
+2017-04-14 17:09:01,974 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338555/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338555", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:01,986 - DEBUG - Finished Request
+2017-04-14 17:09:01,987 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338565/text {"id": ":wdc:1492157338565", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,003 - DEBUG - Finished Request
+2017-04-14 17:09:02,004 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/5724827]
+2017-04-14 17:09:02,004 - DEBUG - citing_title[Virtual Machine Based Energy-Efficient Data Center Architecture for Cloud Computing: A Performance Perspective]
+2017-04-14 17:09:02,004 - DEBUG - citing_authors[Kejiang Ye, Dawei Huang, Xiaohong Jiang, Huajun Chen, Shuang Wu]
+2017-04-14 17:09:02,005 - DEBUG - {id: , title: Virtual Machine Based Energy-Efficient Data Center Architecture for Cloud Computing: A Performance Perspective, authors: Kejiang Ye, Dawei Huang, Xiaohong Jiang, Huajun Chen, Shuang Wu, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/5724827, timestamp: None, path: , }
+2017-04-14 17:09:02,015 - DEBUG - record.id[36]
+2017-04-14 17:09:02,016 - DEBUG - var[authors], self[Kejiang Ye, Dawei Huang, Xiaohong Jiang, Huajun Chen, Shuang Wu], record[Kejiang Ye, Dawei Huang, Xiaohong Jiang, Huajun Chen, Shuang Wu]
+2017-04-14 17:09:02,016 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:02,016 - DEBUG - ->var[authors], self[Kejiang Ye, Dawei Huang, Xiaohong Jiang, Huajun Chen, Shuang Wu], record[Kejiang Ye, Dawei Huang, Xiaohong Jiang, Huajun Chen, Shuang Wu]
+2017-04-14 17:09:02,016 - DEBUG - record.id[36]
+2017-04-14 17:09:02,017 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:02,017 - DEBUG - records.keywords == None
+2017-04-14 17:09:02,017 - DEBUG - record.id[36]
+2017-04-14 17:09:02,017 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:02,017 - DEBUG - records.citings == None
+2017-04-14 17:09:02,017 - DEBUG - record.id[36]
+2017-04-14 17:09:02,018 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:02,018 - DEBUG - records.citeds == None
+2017-04-14 17:09:02,018 - DEBUG - record.id[36]
+2017-04-14 17:09:02,018 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:02,018 - DEBUG - records.conference == None
+2017-04-14 17:09:02,018 - DEBUG - record.id[36]
+2017-04-14 17:09:02,019 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:02,019 - DEBUG - records.published == None
+2017-04-14 17:09:02,019 - DEBUG - record.id[36]
+2017-04-14 17:09:02,019 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/5724827], record[http://ieeexplore.ieee.org/document/5724827]
+2017-04-14 17:09:02,019 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:02,020 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/5724827], record[http://ieeexplore.ieee.org/document/5724827]
+2017-04-14 17:09:02,020 - DEBUG - record.id[36]
+2017-04-14 17:09:02,020 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:02,020 - DEBUG - records.path == None
+2017-04-14 17:09:02,020 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:02,025 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:02,025 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:02,028 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:02,035 - DEBUG - id[37] - previous_id[35] > 2. return 36
+2017-04-14 17:09:02,036 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:02,041 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:02,041 - DEBUG - merge[[36]] to self.id[36]
+2017-04-14 17:09:02,043 - DEBUG - id[36].records[1]
+2017-04-14 17:09:02,044 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:02,044 - DEBUG - from[40]to[36]
+2017-04-14 17:09:02,044 - DEBUG - survival_id[36], delete_id[36]
+2017-04-14 17:09:02,044 - DEBUG - end[36] is delete_id. start[40]
+2017-04-14 17:09:02,059 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,074 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,075 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:02,079 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:02,080 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:02,080 - DEBUG - delete(merge_record)
+2017-04-14 17:09:02,080 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:02,084 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:02,084 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:02,084 - DEBUG - 40 to 36
+2017-04-14 17:09:02,094 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==36).all()
+2017-04-14 17:09:02,094 - DEBUG - len(records)[0]
+2017-04-14 17:09:02,094 - DEBUG - new citation
+2017-04-14 17:09:02,094 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:02,106 - DEBUG - id[218] - previous_id[216] > 2. return 217
+2017-04-14 17:09:02,107 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:02,111 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:02,130 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,153 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,153 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:02,160 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:02,160 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:02,166 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338556/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338556", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,183 - DEBUG - Finished Request
+2017-04-14 17:09:02,184 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338547/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338547", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,196 - DEBUG - Finished Request
+2017-04-14 17:09:02,196 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338556/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338556", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,202 - DEBUG - Finished Request
+2017-04-14 17:09:02,203 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338547/attribute/title {"name": "title", "id": ":wdc:1492157338547", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,212 - DEBUG - Finished Request
+2017-04-14 17:09:02,213 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338556/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338556", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,223 - DEBUG - Finished Request
+2017-04-14 17:09:02,223 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338566/text {"id": ":wdc:1492157338566", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,239 - DEBUG - Finished Request
+2017-04-14 17:09:02,240 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/6009348]
+2017-04-14 17:09:02,240 - DEBUG - citing_title[SlapOS: A Multi-Purpose Distributed Cloud Operating System Based on an ERP Billing Model]
+2017-04-14 17:09:02,240 - DEBUG - citing_authors[Jean-Paul Smets-Solanes, Christophe C&#x0E9,rin, Romain Courteaud]
+2017-04-14 17:09:02,241 - DEBUG - {id: , title: SlapOS: A Multi-Purpose Distributed Cloud Operating System Based on an ERP Billing Model, authors: Jean-Paul Smets-Solanes, Christophe C&#x0E9,rin, Romain Courteaud, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/6009348, timestamp: None, path: , }
+2017-04-14 17:09:02,250 - DEBUG - record.id[37]
+2017-04-14 17:09:02,250 - DEBUG - var[authors], self[Jean-Paul Smets-Solanes, Christophe C&#x0E9,rin, Romain Courteaud], record[Jean-Paul Smets-Solanes, Christophe C&#x0E9,rin, Romain Courteaud]
+2017-04-14 17:09:02,250 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:02,251 - DEBUG - ->var[authors], self[Jean-Paul Smets-Solanes, Christophe C&#x0E9,rin, Romain Courteaud], record[Jean-Paul Smets-Solanes, Christophe C&#x0E9,rin, Romain Courteaud]
+2017-04-14 17:09:02,251 - DEBUG - record.id[37]
+2017-04-14 17:09:02,251 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:02,251 - DEBUG - records.keywords == None
+2017-04-14 17:09:02,252 - DEBUG - record.id[37]
+2017-04-14 17:09:02,252 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:02,252 - DEBUG - records.citings == None
+2017-04-14 17:09:02,252 - DEBUG - record.id[37]
+2017-04-14 17:09:02,253 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:02,253 - DEBUG - records.citeds == None
+2017-04-14 17:09:02,253 - DEBUG - record.id[37]
+2017-04-14 17:09:02,253 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:02,253 - DEBUG - records.conference == None
+2017-04-14 17:09:02,253 - DEBUG - record.id[37]
+2017-04-14 17:09:02,253 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:02,254 - DEBUG - records.published == None
+2017-04-14 17:09:02,254 - DEBUG - record.id[37]
+2017-04-14 17:09:02,254 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/6009348], record[http://ieeexplore.ieee.org/document/6009348]
+2017-04-14 17:09:02,254 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:02,254 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/6009348], record[http://ieeexplore.ieee.org/document/6009348]
+2017-04-14 17:09:02,254 - DEBUG - record.id[37]
+2017-04-14 17:09:02,255 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:02,255 - DEBUG - records.path == None
+2017-04-14 17:09:02,255 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:02,259 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:02,259 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:02,261 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:02,268 - DEBUG - id[38] - previous_id[36] > 2. return 37
+2017-04-14 17:09:02,269 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:02,273 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:02,274 - DEBUG - merge[[37]] to self.id[37]
+2017-04-14 17:09:02,276 - DEBUG - id[37].records[1]
+2017-04-14 17:09:02,276 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:02,277 - DEBUG - from[40]to[37]
+2017-04-14 17:09:02,277 - DEBUG - survival_id[37], delete_id[37]
+2017-04-14 17:09:02,277 - DEBUG - end[37] is delete_id. start[40]
+2017-04-14 17:09:02,295 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,312 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,312 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:02,318 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:02,319 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:02,319 - DEBUG - delete(merge_record)
+2017-04-14 17:09:02,319 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:02,324 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:02,324 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:02,324 - DEBUG - 40 to 37
+2017-04-14 17:09:02,331 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==37).all()
+2017-04-14 17:09:02,332 - DEBUG - len(records)[0]
+2017-04-14 17:09:02,332 - DEBUG - new citation
+2017-04-14 17:09:02,332 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:02,345 - DEBUG - id[219] - previous_id[217] > 2. return 218
+2017-04-14 17:09:02,346 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:02,350 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:02,367 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,384 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,385 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:02,391 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:02,391 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:02,395 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338557/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338557", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,408 - DEBUG - Finished Request
+2017-04-14 17:09:02,408 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338548/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338548", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,420 - DEBUG - Finished Request
+2017-04-14 17:09:02,420 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338557/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338557", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,427 - DEBUG - Finished Request
+2017-04-14 17:09:02,427 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338548/attribute/title {"name": "title", "id": ":wdc:1492157338548", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,438 - DEBUG - Finished Request
+2017-04-14 17:09:02,438 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338557/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338557", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,448 - DEBUG - Finished Request
+2017-04-14 17:09:02,448 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338567/text {"id": ":wdc:1492157338567", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,465 - DEBUG - Finished Request
+2017-04-14 17:09:02,465 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/6038239]
+2017-04-14 17:09:02,465 - DEBUG - citing_title[Design and Research on Private Cloud Computing Architecture to Support Smart Grid]
+2017-04-14 17:09:02,465 - DEBUG - citing_authors[Ling Zheng, Yanxiang Hu, Chaoran Yang]
+2017-04-14 17:09:02,465 - DEBUG - {id: , title: Design and Research on Private Cloud Computing Architecture to Support Smart Grid, authors: Ling Zheng, Yanxiang Hu, Chaoran Yang, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/6038239, timestamp: None, path: , }
+2017-04-14 17:09:02,476 - DEBUG - record.id[38]
+2017-04-14 17:09:02,477 - DEBUG - var[authors], self[Ling Zheng, Yanxiang Hu, Chaoran Yang], record[Ling Zheng, Yanxiang Hu, Chaoran Yang]
+2017-04-14 17:09:02,477 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:02,477 - DEBUG - ->var[authors], self[Ling Zheng, Yanxiang Hu, Chaoran Yang], record[Ling Zheng, Yanxiang Hu, Chaoran Yang]
+2017-04-14 17:09:02,478 - DEBUG - record.id[38]
+2017-04-14 17:09:02,478 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:02,478 - DEBUG - records.keywords == None
+2017-04-14 17:09:02,478 - DEBUG - record.id[38]
+2017-04-14 17:09:02,478 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:02,479 - DEBUG - records.citings == None
+2017-04-14 17:09:02,479 - DEBUG - record.id[38]
+2017-04-14 17:09:02,479 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:02,479 - DEBUG - records.citeds == None
+2017-04-14 17:09:02,479 - DEBUG - record.id[38]
+2017-04-14 17:09:02,480 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:02,480 - DEBUG - records.conference == None
+2017-04-14 17:09:02,480 - DEBUG - record.id[38]
+2017-04-14 17:09:02,480 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:02,480 - DEBUG - records.published == None
+2017-04-14 17:09:02,480 - DEBUG - record.id[38]
+2017-04-14 17:09:02,480 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/6038239], record[http://ieeexplore.ieee.org/document/6038239]
+2017-04-14 17:09:02,481 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:02,481 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/6038239], record[http://ieeexplore.ieee.org/document/6038239]
+2017-04-14 17:09:02,481 - DEBUG - record.id[38]
+2017-04-14 17:09:02,481 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:02,481 - DEBUG - records.path == None
+2017-04-14 17:09:02,481 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:02,487 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:02,487 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:02,490 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:02,498 - DEBUG - id[39] - previous_id[37] > 2. return 38
+2017-04-14 17:09:02,498 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:02,503 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:02,504 - DEBUG - merge[[38]] to self.id[38]
+2017-04-14 17:09:02,506 - DEBUG - id[38].records[1]
+2017-04-14 17:09:02,507 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:02,507 - DEBUG - from[40]to[38]
+2017-04-14 17:09:02,507 - DEBUG - survival_id[38], delete_id[38]
+2017-04-14 17:09:02,507 - DEBUG - end[38] is delete_id. start[40]
+2017-04-14 17:09:02,523 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,539 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,539 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:02,544 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:02,545 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:02,545 - DEBUG - delete(merge_record)
+2017-04-14 17:09:02,545 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:02,550 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:02,550 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:02,550 - DEBUG - 40 to 38
+2017-04-14 17:09:02,564 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==38).all()
+2017-04-14 17:09:02,565 - DEBUG - len(records)[0]
+2017-04-14 17:09:02,565 - DEBUG - new citation
+2017-04-14 17:09:02,565 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:02,579 - DEBUG - id[220] - previous_id[218] > 2. return 219
+2017-04-14 17:09:02,580 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:02,585 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:02,604 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,622 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,622 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:02,628 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:02,629 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:02,633 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338558/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338558", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,643 - DEBUG - Finished Request
+2017-04-14 17:09:02,644 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338549/attribute/ng-href {"name": "ng-href", "id": ":wdc:1492157338549", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,654 - DEBUG - Finished Request
+2017-04-14 17:09:02,654 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338558/element {"using": "css selector", "value": "a", "id": ":wdc:1492157338558", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,660 - DEBUG - Finished Request
+2017-04-14 17:09:02,661 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338549/attribute/title {"name": "title", "id": ":wdc:1492157338549", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,670 - DEBUG - Finished Request
+2017-04-14 17:09:02,670 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338558/element {"using": "css selector", "value": "div[class=\"ng-binding\"]", "id": ":wdc:1492157338558", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,681 - DEBUG - Finished Request
+2017-04-14 17:09:02,681 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157338568/text {"id": ":wdc:1492157338568", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,694 - DEBUG - Finished Request
+2017-04-14 17:09:02,694 - DEBUG - citing_url[http://ieeexplore.ieee.org/document/5759334]
+2017-04-14 17:09:02,695 - DEBUG - citing_title[System Architecture Directions for Tangible Cloud Computing]
+2017-04-14 17:09:02,695 - DEBUG - citing_authors[Kevin Lee, Danny Hughes]
+2017-04-14 17:09:02,695 - DEBUG - {id: , title: System Architecture Directions for Tangible Cloud Computing, authors: Kevin Lee, Danny Hughes, keywords: , citings: , citeds: , conference: , published: None, url: http://ieeexplore.ieee.org/document/5759334, timestamp: None, path: , }
+2017-04-14 17:09:02,709 - DEBUG - record.id[39]
+2017-04-14 17:09:02,710 - DEBUG - var[authors], self[Kevin Lee, Danny Hughes], record[Kevin Lee, Danny Hughes]
+2017-04-14 17:09:02,710 - DEBUG - authors is not none. compare timestamps
+2017-04-14 17:09:02,710 - DEBUG - ->var[authors], self[Kevin Lee, Danny Hughes], record[Kevin Lee, Danny Hughes]
+2017-04-14 17:09:02,711 - DEBUG - record.id[39]
+2017-04-14 17:09:02,711 - DEBUG - var[keywords], self[], record[]
+2017-04-14 17:09:02,711 - DEBUG - records.keywords == None
+2017-04-14 17:09:02,711 - DEBUG - record.id[39]
+2017-04-14 17:09:02,712 - DEBUG - var[citings], self[], record[]
+2017-04-14 17:09:02,712 - DEBUG - records.citings == None
+2017-04-14 17:09:02,712 - DEBUG - record.id[39]
+2017-04-14 17:09:02,712 - DEBUG - var[citeds], self[], record[]
+2017-04-14 17:09:02,713 - DEBUG - records.citeds == None
+2017-04-14 17:09:02,713 - DEBUG - record.id[39]
+2017-04-14 17:09:02,713 - DEBUG - var[conference], self[], record[]
+2017-04-14 17:09:02,713 - DEBUG - records.conference == None
+2017-04-14 17:09:02,713 - DEBUG - record.id[39]
+2017-04-14 17:09:02,714 - DEBUG - var[published], self[None], record[None]
+2017-04-14 17:09:02,714 - DEBUG - records.published == None
+2017-04-14 17:09:02,714 - DEBUG - record.id[39]
+2017-04-14 17:09:02,715 - DEBUG - var[url], self[http://ieeexplore.ieee.org/document/5759334], record[http://ieeexplore.ieee.org/document/5759334]
+2017-04-14 17:09:02,715 - DEBUG - url is not none. compare timestamps
+2017-04-14 17:09:02,715 - DEBUG - ->var[url], self[http://ieeexplore.ieee.org/document/5759334], record[http://ieeexplore.ieee.org/document/5759334]
+2017-04-14 17:09:02,715 - DEBUG - record.id[39]
+2017-04-14 17:09:02,716 - DEBUG - var[path], self[], record[]
+2017-04-14 17:09:02,716 - DEBUG - records.path == None
+2017-04-14 17:09:02,716 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:02,721 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:02,722 - DEBUG - Table_papers.get_id start
+2017-04-14 17:09:02,725 - DEBUG - Table_papers._get_available_id start
+2017-04-14 17:09:02,734 - DEBUG - id[40] - previous_id[38] > 2. return 39
+2017-04-14 17:09:02,735 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:02,741 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:02,741 - DEBUG - merge[[39]] to self.id[39]
+2017-04-14 17:09:02,745 - DEBUG - id[39].records[1]
+2017-04-14 17:09:02,746 - DEBUG - Table_papers.merge_citations start
+2017-04-14 17:09:02,746 - DEBUG - from[40]to[39]
+2017-04-14 17:09:02,746 - DEBUG - survival_id[39], delete_id[39]
+2017-04-14 17:09:02,746 - DEBUG - end[39] is delete_id. start[40]
+2017-04-14 17:09:02,766 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,785 - DEBUG - return logger
+ logfile[../../var/log/log]
+ rotate_log_size[268435456]
+ id[140626804517016]
+2017-04-14 17:09:02,786 - DEBUG - Mysql_operator.establish_session start
+2017-04-14 17:09:02,792 - DEBUG - Mysql_operator.establish_session finished
+2017-04-14 17:09:02,792 - DEBUG - class Mysql_operator created.
+2017-04-14 17:09:02,793 - DEBUG - delete(merge_record)
+2017-04-14 17:09:02,793 - DEBUG - Mysql_operator.delete start
+2017-04-14 17:09:02,798 - DEBUG - Mysql_operator.delete finished
+2017-04-14 17:09:02,798 - DEBUG - Table_citations.renewal_insert start
+2017-04-14 17:09:02,798 - DEBUG - 40 to 39
+2017-04-14 17:09:02,808 - DEBUG - records = self.db.session.query(__class__).filter(__class__.start==40 and __class__.end==39).all()
+2017-04-14 17:09:02,808 - DEBUG - len(records)[0]
+2017-04-14 17:09:02,808 - DEBUG - new citation
+2017-04-14 17:09:02,808 - DEBUG - Mysql_operator.get_available_id start
+2017-04-14 17:09:02,821 - DEBUG - id[221] - previous_id[219] > 2. return 220
+2017-04-14 17:09:02,822 - DEBUG - Mysql_operator.insert start
+2017-04-14 17:09:02,827 - DEBUG - Mysql_operator.insert finished
+2017-04-14 17:09:02,829 - DEBUG - IEEEXplore.get_cited_papers start
+2017-04-14 17:09:02,830 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/url {"sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:02,835 - DEBUG - Finished Request
+2017-04-14 17:09:02,835 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/url {"url": "http://ieeexplore.ieee.org/document/7894538/citations?anchor=anchor-paper-citations-ieee&ctx=citations", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:05,854 - DEBUG - Finished Request
+2017-04-14 17:09:05,855 - DEBUG - IEEEXplore.save_current_page start
+2017-04-14 17:09:05,855 - DEBUG - path[./samples/sample_page_1055638_start], suffix[.html]
+2017-04-14 17:09:05,857 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/source {"sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:05,875 - DEBUG - Finished Request
+2017-04-14 17:09:06,024 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-14 17:09:06,025 - DEBUG - IEEEXplore.save_current_page start
+2017-04-14 17:09:06,025 - DEBUG - path[./samples/sample_page_1055638_start], suffix[.png]
+2017-04-14 17:09:06,025 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/screenshot {"sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:06,378 - DEBUG - Finished Request
+2017-04-14 17:09:06,384 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-14 17:09:06,384 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element {"using": "css selector", "value": "div > section[class=\"document-all-references ng-scope\"] > div[class=\"ng-scope\"] > div[class=\"strong\"]", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:06,396 - DEBUG - Finished Request
+2017-04-14 17:09:06,397 - DEBUG - GET http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element/:wdc:1492157346395/text {"id": ":wdc:1492157346395", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:06,410 - DEBUG - Finished Request
+2017-04-14 17:09:06,410 - DEBUG - this paper not cited. return []
+2017-04-14 17:09:06,410 - DEBUG - POST http://127.0.0.1:40751/wd/hub/session/9364e020-20e9-11e7-9ab9-716c5b4b5d3d/element {"using": "xpath", "value": "//div[@class=\"u-pb-1 stats-document-abstract-doi ng-scope\"]", "sessionId": "9364e020-20e9-11e7-9ab9-716c5b4b5d3d"}
+2017-04-14 17:09:06,975 - DEBUG - Finished Request

@@ -55,15 +55,19 @@ class IEEEXplore:
 		all_papers = []
 		all_citing_urls = []
 		all_cited_urls = []
-		"""
+		
+		from searchs import Searchs as s
+		search = s(limit=num_of_papers-len(urls))
+
 		for url in urls:
-			driver.get(url)
-			paper, citing_urls, cited_urls = self.get_attributes_and_download_pdf(driver)
+			search.node = url
+			paper, citing_urls, cited_urls = self.get_attributes_and_download_pdf(search, driver)
+			print("paper.title[" + paper.title + "]")
 			all_papers.append(paper)
 			all_citing_urls.append(citing_urls)
-			all_cited_urls = (cited_urls)
+			all_cited_urls.append(cited_urls)
 			self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		"""
+
 		return all_papers, all_cited_urls, all_citing_urls
 
 	def get_papers_of_target_conference(self, conference_name):
@@ -145,16 +149,14 @@ class IEEEXplore:
 		paper = table_papers.Table_papers()
 
 		self.log.debug("get attributes of this paper")
-		#paper.title = self.get_title(driver)
-		#paper.authors = self.get_authors(driver)
-		#paper.keywords = self.get_keywords(driver)
-		#citing_urls = []
+		paper.title = self.get_title(driver)
+		paper.authors = self.get_authors(driver)
+		paper.keywords = self.get_keywords(driver)
 		paper.citings, citing_papers, citing_urls = self.get_citing_papers(driver, timeout)
-		cited_urls = []
-		#paper.citeds, cited_papers, cited_urls = self.get_cited_papers(driver, timeout)
-		#paper.conference = self.get_conference(driver)
-		#paper.published = self.get_date_of_publication(driver)
-		#paper.url = target_paper_url
+		paper.citeds, cited_papers, cited_urls = self.get_cited_papers(driver, timeout)
+		paper.conference = self.get_conference(driver)
+		paper.published = self.get_date_of_publication(driver)
+		paper.url = target_paper_url
 		import time
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		##path
@@ -168,7 +170,13 @@ class IEEEXplore:
 		for citing_paper in citing_papers:
 			citation = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
 			citation.renewal_insert()
+			citation.close()
+		for cited_paper in cited_papers:
+			citation = table_citations.Table_citations(start=cited_paper, end=paper.id)
+			citation.renewal_insert()
+			citation.close()
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		self.log.debug("return paper[" + paper.title + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]")
 		return paper, citing_urls, cited_urls
 	
 	
