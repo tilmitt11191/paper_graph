@@ -30,17 +30,37 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info("test_show_options start")
 		self.xplore.show_options()
 	"""
+	"""
+	def test_get_papers_by_keywords_39hit(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		keywords = "deep learning classification graph"
+		self.xplore.get_papers_by_keywords(keywords)
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 	
-	
+	def test_get_papers_by_keywords_1549hit(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		keywords = "deep learning classification"
+		from IEEEXplore import Search_options as opt
+		opts = opt()
+		opts.PerPage = 10
+		self.xplore.get_papers_by_keywords(keywords, num_of_papers="all", search_options=opts)
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+
+	"""
 	def test_get_papers_by_keywords(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords = "\"edge computing\""
 		num_of_papers = 1
 		all_papers, all_cited_urls, all_citing_urls = self.xplore.get_papers_by_keywords(keywords, num_of_papers, timeout=30)
 		print("all_papers[" + str(len(all_papers)) + "]")
-		print("all_cited_urls[" + str(len(all_cited_urls)) + "]")
 		print("all_citing_urls[" + str(len(all_citing_urls)) + "]")
-	
+		self.log.debug("all_citing_urls:" + str(all_citing_urls))
+		print("all_cited_urls[" + str(len(all_cited_urls)) + "]")
+		self.log.debug("all_cited_urls:" + str(all_cited_urls))
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
