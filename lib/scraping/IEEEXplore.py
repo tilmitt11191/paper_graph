@@ -73,21 +73,21 @@ class IEEEXplore:
 		driver = webdriver.PhantomJS(phantomjs_path)
 		self.log.debug("driver.get(" + top_page + ")")
 		driver.get(top_page)
-		#import time
-		self.log.debug("Wait start.")
-		#time.sleep(30)
-		try:
-			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//li[@class="Media-articles-item"]'))
-		except TimeoutException:
-			m = "caught TimeoutException at load the iEEE top page."
-			print(m)
-			self.log.warning(m)
-		except NoSuchElementException:
-			m = "caught NoSuchElementException at load the iEEE top page."
-			print(m)
-			self.log.warning(m)
+		if top_page == self.conf.getconf("IEEE_top_page"):
+			self.log.debug("Wait start.")
+			#time.sleep(30)
+			try:
+				WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//li[@class="Media-articles-item"]'))
+			except TimeoutException:
+				m = "caught TimeoutException at load the iEEE top page."
+				print(m)
+				self.log.warning(m)
+			except NoSuchElementException:
+				m = "caught NoSuchElementException at load the iEEE top page."
+				print(m)
+				self.log.warning(m)
 
-		self.log.debug("Wait Finished.")
+			self.log.debug("Wait Finished.")
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return driver")
 		return driver
@@ -133,36 +133,38 @@ class IEEEXplore:
 
 	def set_options(self, driver, search_options, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-				
-		#self.save_current_page(driver, "./samples/before_set_options.png")
-		#self.save_current_page(driver, "./samples/before_set_options.html")
-		##show" : "All Resul
+		try:
+			#self.save_current_page(driver, "./samples/before_set_options.png")
+			#self.save_current_page(driver, "./samples/before_set_options.html")
+			##show" : "All Resul
 
-		##PerPage" : "25"
-		if search_options.PerPage != 25:
-			element = driver.find_element_by_css_selector('div[ng-model="vm.rowsPerPage"] > div > select')
-			
-			#print(len(element))
-			#print(element.text)
-			Select(element).select_by_visible_text(str(search_options.PerPage))
-			self.wait_search_results(driver, timeout)
-		#Select(element).select_by_value("object:75")
-		##SortBy" : "MostCit
-		##ContentType" : "No
-		##YearType" : "Range
-		##YearFrom" : "1996"
-		##YearTo" : "2017",
-		##Year" : "2017",
-		##Author" : "None",
-		##Affiliation" : "No
-		##PublicationTitle" 
-		##Publisher" : "None
-		##ConferenceLocation
-		
-		
-		
-		
-		
+			##PerPage" : "25"
+			if search_options.PerPage != 25:
+				element = driver.find_element_by_css_selector('div[ng-model="vm.rowsPerPage"] > div > select')
+				
+				#print(len(element))
+				#print(element.text)
+				Select(element).select_by_visible_text(str(search_options.PerPage))
+				self.wait_search_results(driver, timeout)
+			#Select(element).select_by_value("object:75")
+			##SortBy" : "MostCit
+			##ContentType" : "No
+			##YearType" : "Range
+			##YearFrom" : "1996"
+			##YearTo" : "2017",
+			##Year" : "2017",
+			##Author" : "None",
+			##Affiliation" : "No
+			##PublicationTitle" 
+			##Publisher" : "None
+			##ConferenceLocation
+		except NoSuchElementException:
+			m = "caught NoSuchElementException at get_citing_papers."
+			self.log.warning(m)
+			print(m)
+			self.save_current_page(driver, "./samples/aNoSuchElementException_in_set_options.png")
+			self.save_current_page(driver, "./samples/NoSuchElementException_in_set_options.html")
+
 		
 		
 		#self.save_current_page(driver, "./samples/after_set_options.png")
@@ -181,50 +183,52 @@ class IEEEXplore:
 			#element = driver.find_element_by_xpath('//span[@ng-if="vm.totalRecords &gt\; 1"]')
 			element = driver.find_element_by_css_selector('div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
 			num_of_papers = int(element.text.split(" ")[-1].replace(",",""))
-		print("num_of_papers[" + str(num_of_papers) + "]")
+		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 		
 		urls = []
-		self.save_current_page(driver, "./samples/before_click_next.png")
-		self.save_current_page(driver, "./samples/before_click_next.html")
-		buttons = driver.find_elements_by_xpath('//nav[@class="c-Pagination ng-isolate-scope ng-valid"]/ul/li/a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding" and @tabindex="0"]')
-		print("buttons[" + str(len(buttons)) + "]")
-		for button in buttons:
-			print("button.text[" + button.text +"]")
+		#self.save_current_page(driver, "./samples/before_click_next.png")
+		#self.save_current_page(driver, "./samples/before_click_next.html")
+
 		#button = driver.find_elements_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding" and @tabindex="0"]')
 		#for button in buttons:
-		next_button = 1
-		visited_button = []
+		next_button = driver.find_element_by_xpath('//nav[@class="c-Pagination ng-isolate-scope ng-valid"]/ul/li/a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding" and @tabindex="0"]')
+		visited_buttons = [next_button.text]
 		while True:
-			print(str(next_button))
-			print("get paper urls in current page")
+			self.log.debug("get paper urls in current page")
 			for i in range(PerPage):
 				paper_elements = driver.find_elements_by_xpath('//div[@class="js-displayer-content u-mt-1 stats-SearchResults_DocResult_ViewMore ng-scope hide"]')
-				print("len(paper_elements)[" + str(len(paper_elements)) + "]")
+				self.log.debug("len(paper_elements)[" + str(len(paper_elements)) + "]")
 				driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 				if len(paper_elements) == PerPage:
 					break
-			print("len(paper_elements)[" + str(len(paper_elements)) + "]")
-			self.save_current_page(driver, "./samples/after_click_"  + str(next_button.text) + "_footer_of_keyword.png")
-			self.save_current_page(driver, "./samples/after_click_"  + str(next_button.text) + "_footer_of_keyword.html")
+			self.log.debug("len(paper_elements)[" + str(len(paper_elements)) + "]")
+
 			for paper_element in paper_elements:
 				url = paper_element.find_element_by_css_selector('a').get_attribute("href")
-				print("url[" + url + "]")
+				self.log.debug("url[" + url + "]")
 				urls.append(url)
-			visited_button.append(next_button)
+				if len(urls) > num_of_papers:
+					self.log.debug("len(urls)[" + str(len(urls)) + "] > num_of_papers[" + str(num_of_papers) + "]. return urls.")
+					return urls
 
-			print("search button to next page")
+			self.log.debug("search button to next page")
 			buttons = driver.find_elements_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding" and @tabindex="0"]')
 			i = 0
 			for button in buttons:
-				if not int(button.text) in visited_button:
+				self.log.debug("i[" + str(i) + "], button.text[" + button.text + "], visited_buttons:" + str(visited_buttons))
+				if not button.text in visited_buttons:
 					next_button = button
+					self.log.debug("break")
 					break
 				i+=1
 			if i == len(buttons):
-				print("i = len(buttons). already visited all buttons. break")
+				self.log.debug("i = len(buttons). already visited all buttons. break")
 				break
-				
-			print("move to next page")
+
+			#self.save_current_page(driver, "./samples/after_click_"  + str(next_button.text) + "_footer_of_keyword.png")
+			#self.save_current_page(driver, "./samples/after_click_"  + str(next_button.text) + "_footer_of_keyword.html")
+			visited_buttons.append(next_button.text)
+			self.log.debug("move to next page[" + next_button.text + "]")
 			next_button.click()
 			self.wait_search_results(driver, timeout)
 						
@@ -232,7 +236,7 @@ class IEEEXplore:
 		return urls
 	
 	
-	def get_attributes_and_download_pdf(self, search, driver):
+	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/"):
 		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
@@ -529,13 +533,45 @@ class IEEEXplore:
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	
-	def download_a_paper(self, driver, path="../../data/tmp/"):
+	def download_a_paper(self, driver, path="../../data/tmp/", filename="default", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		initial_url = driver.current_url
-		button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf]')
+		button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
 		button.click()
-		#self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.html")
-		#self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.png")
+		self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.html")
+		self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.png")
+		#import time
+		#time.sleep(60)
+		self.log.debug("Wait start.")
+		try:
+			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//frameset[@rows="65,35%"]/frame'))
+		except TimeoutException:
+			m = "caught TimeoutException at load the iEEE pdf page."
+			print(m)
+			self.log.warning(m)
+		except NoSuchElementException:
+			m = "caught NoSuchElementException at load the iEEE pdf page."
+			print(m)
+			self.log.warning(m)
+		self.log.debug("Wait Finished.")
+		url = driver.find_elements_by_xpath('//frameset[@rows="65,35%"]/frame')[1].get_attribute("src")
+		print(url)
+		
+		if filename == "default":
+			filename = url[:url.index("?")].split("/")[-1]
+		print(filename)
+		#print("wget " + url + " -P " + path + " -O " + filename)
+		print("wget " + url + " -O " + path + filename)
+		import subprocess
+		#subprocess.check_output(["wget", url, "-P", path , "-O", filename])
+		try:
+			subprocess.check_output(["wget", url, "-O", path + filename, ">", "dev/null", "2>&1"])
+		except:
+			print("error at wget " + url + " -O " + path + filename)
+
+		#self.save_current_page(driver, "./samples/7898372.png")
+		#self.save_current_page(driver, "./samples/7898372.html")
+
 		driver.get(initial_url)
 		
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")

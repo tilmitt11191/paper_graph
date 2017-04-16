@@ -37,16 +37,16 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.get_papers_by_keywords(keywords)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	
+	"""
 	def test_get_papers_by_keywords_1549hit(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords = "deep learning classification"
 		from IEEEXplore import Search_options as opt
 		opts = opt()
-		opts.PerPage = 10
+		opts.PerPage = 100
 		self.xplore.get_papers_by_keywords(keywords, num_of_papers="all", search_options=opts)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 
 	"""
 	def test_get_papers_by_keywords(self):
@@ -61,17 +61,34 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.debug("all_cited_urls:" + str(all_cited_urls))
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	"""
+
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		url = "http://google.co.jp/"
-		#driver = self.xplore.create_driver("http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313")
+		#url = "http://google.co.jp/"
+		#url = "http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313"
+		#url = "http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7898372"
+		url = "http://ieeexplore.ieee.org/document/7898372/"
+		path="../../data/tmp/"
 		driver = self.xplore.create_driver(url)
-		#import urllib
-		#urllib.urlretrieve(url, 'test.pdf')
+		self.xplore.download_a_paper(driver, path)
+		
+		"""
+		if not os.path.exists(path):
+			print (folderName + "フォルダを作成しました")
+			os.mkdir(folderName)
+		src= urllib.request.urlopen(url).read() # decodeしない
+		query = pq.PyQuery(src)
+		
+		for img_tag in query('img'):
+			img_url = query(img_tag).attr('src')
+			print (os.path.basename(img_url)) # 確認用でターミナルに保存ファイル名を出力
+			with open (save_path + os.path.basename(img_url), 'wb') as f:
+				raw = requests.get(img_url).content
+				f.write(raw)
+		"""
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""	
+
 		
 	"""
 	def test_download_papers_by_keywords(self):

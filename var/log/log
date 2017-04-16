@@ -1,108 +1,55 @@
-2017-04-16 09:51:55,044 - DEBUG - return logger
+2017-04-16 21:28:40,415 - DEBUG - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140360264220800]
-2017-04-16 09:51:55,044 - INFO - 
+ id[140446375829400]
+2017-04-16 21:28:40,415 - INFO - 
 
 IEEEXplore_test.setUpClass finished.
 ---------- start ---------
-2017-04-16 09:51:55,528 - DEBUG - return logger
+2017-04-16 21:28:40,598 - DEBUG - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140360264220800]
-2017-04-16 09:51:55,548 - DEBUG - return logger
+ id[140446375829400]
+2017-04-16 21:28:40,614 - DEBUG - return logger
  logfile[../../var/log/log]
  rotate_log_size[268435456]
- id[140360264220800]
-2017-04-16 09:51:55,548 - DEBUG - class Search_options created.
-2017-04-16 09:51:55,548 - DEBUG - class IEEEXplore created.
-2017-04-16 09:51:55,556 - INFO - IEEEXplore_test.test_get_papers_by_keywords_1549hit start
-2017-04-16 09:51:55,579 - DEBUG - return logger
- logfile[../../var/log/log]
- rotate_log_size[268435456]
- id[140360264220800]
-2017-04-16 09:51:55,580 - DEBUG - class Search_options created.
-2017-04-16 09:51:55,580 - INFO - IEEEXplore.get_papers_by_keywords start
-2017-04-16 09:51:55,581 - INFO - keywords[deep learning classification], num_of_papers[all]
-2017-04-16 09:51:55,582 - DEBUG - IEEEXplore.create_driver start
-2017-04-16 09:51:56,639 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session {"desiredCapabilities": {"platform": "ANY", "browserName": "phantomjs", "version": "", "javascriptEnabled": true}, "capabilities": {"firstMatch": [], "browserName": "phantomjs", "platform": "ANY", "alwaysMatch": {}, "version": "", "javascriptEnabled": true}}
-2017-04-16 09:51:56,660 - DEBUG - Finished Request
-2017-04-16 09:51:56,660 - DEBUG - driver.get(http://ieeexplore.ieee.org/Xplore/home.jsp)
-2017-04-16 09:51:56,661 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/url {"url": "http://ieeexplore.ieee.org/Xplore/home.jsp", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c"}
-2017-04-16 09:52:46,030 - DEBUG - Finished Request
-2017-04-16 09:52:46,031 - DEBUG - Wait start.
-2017-04-16 09:52:46,032 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "xpath", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "//li[@class=\"Media-articles-item\"]"}
-2017-04-16 09:52:46,070 - DEBUG - Finished Request
-2017-04-16 09:52:46,070 - DEBUG - Wait Finished.
-2017-04-16 09:52:46,071 - DEBUG - IEEEXplore.create_driver finished. return driver
-2017-04-16 09:52:46,071 - DEBUG - IEEEXplore.search_by_keywords start
-2017-04-16 09:52:46,071 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "name", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "queryText"}
-2017-04-16 09:52:46,085 - DEBUG - Finished Request
-2017-04-16 09:52:46,085 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303966069/value {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": ["d", "e", "e", "p", " ", "l", "e", "a", "r", "n", "i", "n", "g", " ", "c", "l", "a", "s", "s", "i", "f", "i", "c", "a", "t", "i", "o", "n"], "id": ":wdc:1492303966069", "text": "deep learning classification"}
-2017-04-16 09:52:46,186 - DEBUG - Finished Request
-2017-04-16 09:52:46,187 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "class name", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "Search-submit"}
-2017-04-16 09:52:46,199 - DEBUG - Finished Request
-2017-04-16 09:52:46,199 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303966070/click {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303966070"}
-2017-04-16 09:52:48,396 - DEBUG - Finished Request
-2017-04-16 09:52:48,397 - DEBUG - IEEEXplore.wait_search_results start
-2017-04-16 09:52:48,397 - DEBUG - Wait start.
-2017-04-16 09:52:48,397 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "xpath", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "//input[@type=\"checkbox\" and @class=\"search-results-group\"]"}
-2017-04-16 09:52:48,792 - DEBUG - Finished Request
-2017-04-16 09:52:49,295 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "xpath", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "//input[@type=\"checkbox\" and @class=\"search-results-group\"]"}
-2017-04-16 09:52:49,650 - DEBUG - Finished Request
-2017-04-16 09:52:49,651 - DEBUG - Wait Finished.
-2017-04-16 09:52:49,651 - DEBUG - IEEEXplore.wait_search_results finished
-2017-04-16 09:52:49,651 - DEBUG - IEEEXplore.set_options start
-2017-04-16 09:52:49,652 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "css selector", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "div[ng-model=\"vm.rowsPerPage\"] > div > select"}
-2017-04-16 09:52:49,712 - DEBUG - Finished Request
-2017-04-16 09:52:49,712 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969650/name {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969650"}
-2017-04-16 09:52:49,800 - DEBUG - Finished Request
-2017-04-16 09:52:49,801 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969650/attribute/multiple {"name": "multiple", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969650"}
-2017-04-16 09:52:49,863 - DEBUG - Finished Request
-2017-04-16 09:52:49,863 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969650/elements {"using": "xpath", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": ".//option[normalize-space(.) = \"10\"]", "id": ":wdc:1492303969650"}
-2017-04-16 09:52:49,924 - DEBUG - Finished Request
-2017-04-16 09:52:49,924 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969651/selected {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969651"}
-2017-04-16 09:52:49,994 - DEBUG - Finished Request
-2017-04-16 09:52:49,994 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969651/click {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969651"}
-2017-04-16 09:52:50,260 - DEBUG - Finished Request
-2017-04-16 09:52:50,260 - DEBUG - IEEEXplore.wait_search_results start
-2017-04-16 09:52:50,261 - DEBUG - Wait start.
-2017-04-16 09:52:50,261 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "xpath", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "//input[@type=\"checkbox\" and @class=\"search-results-group\"]"}
-2017-04-16 09:52:50,626 - DEBUG - Finished Request
-2017-04-16 09:52:51,137 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "xpath", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "//input[@type=\"checkbox\" and @class=\"search-results-group\"]"}
-2017-04-16 09:52:51,787 - DEBUG - Finished Request
-2017-04-16 09:52:51,788 - DEBUG - Wait Finished.
-2017-04-16 09:52:51,788 - DEBUG - IEEEXplore.wait_search_results finished
-2017-04-16 09:52:51,788 - DEBUG - IEEEXplore.set_options finished
-2017-04-16 09:52:51,789 - DEBUG - IEEEXplore.search_by_keywords finished
-2017-04-16 09:52:51,789 - DEBUG - IEEEXplore.get_urls_of_papers_in_keywords_page start
-2017-04-16 09:52:51,789 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element {"using": "css selector", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "div[class=\"pure-u-1-1 Dashboard-header ng-scope\"] > span"}
-2017-04-16 09:52:51,852 - DEBUG - Finished Request
-2017-04-16 09:52:51,852 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969653/text {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969653"}
-2017-04-16 09:52:51,927 - DEBUG - Finished Request
-2017-04-16 09:52:51,927 - DEBUG - IEEEXplore.save_current_page start
-2017-04-16 09:52:51,927 - DEBUG - path[./samples/before_click_next], suffix[.png]
-2017-04-16 09:52:51,927 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/screenshot {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c"}
-2017-04-16 09:52:52,530 - DEBUG - Finished Request
-2017-04-16 09:52:52,546 - DEBUG - IEEEXplore.save_current_page finished
-2017-04-16 09:52:52,547 - DEBUG - IEEEXplore.save_current_page start
-2017-04-16 09:52:52,547 - DEBUG - path[./samples/before_click_next], suffix[.html]
-2017-04-16 09:52:52,554 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/source {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c"}
-2017-04-16 09:52:52,604 - DEBUG - Finished Request
-2017-04-16 09:52:52,608 - DEBUG - IEEEXplore.save_current_page finished
-2017-04-16 09:52:52,608 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/elements {"using": "xpath", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "//nav[@class=\"c-Pagination ng-isolate-scope ng-valid\"]/ul/li/a[@href=\"\" and @ng-click=\"selectPage(page.number)\" and @class=\"ng-binding\" and @tabindex=\"0\"]"}
-2017-04-16 09:52:52,668 - DEBUG - Finished Request
-2017-04-16 09:52:52,668 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969654/text {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969654"}
-2017-04-16 09:52:52,732 - DEBUG - Finished Request
-2017-04-16 09:52:52,733 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969655/text {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969655"}
-2017-04-16 09:52:52,796 - DEBUG - Finished Request
-2017-04-16 09:52:52,797 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969656/text {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969656"}
-2017-04-16 09:52:52,836 - DEBUG - Finished Request
-2017-04-16 09:52:52,837 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969657/text {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969657"}
-2017-04-16 09:52:52,857 - DEBUG - Finished Request
-2017-04-16 09:52:52,863 - DEBUG - GET http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/element/:wdc:1492303969658/text {"sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "id": ":wdc:1492303969658"}
-2017-04-16 09:52:52,888 - DEBUG - Finished Request
-2017-04-16 09:52:52,888 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/elements {"using": "xpath", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "value": "//div[@class=\"js-displayer-content u-mt-1 stats-SearchResults_DocResult_ViewMore ng-scope hide\"]"}
-2017-04-16 09:52:52,914 - DEBUG - Finished Request
-2017-04-16 09:52:52,915 - DEBUG - POST http://127.0.0.1:44402/wd/hub/session/e3fe73b0-223e-11e7-952f-afff5655712c/execute {"script": "window.scrollTo(0, document.body.scrollHeight);", "sessionId": "e3fe73b0-223e-11e7-952f-afff5655712c", "args": []}
-2017-04-16 09:52:52,935 - DEBUG - Finished Request
+ id[140446375829400]
+2017-04-16 21:28:40,614 - DEBUG - class Search_options created.
+2017-04-16 21:28:40,614 - DEBUG - class IEEEXplore created.
+2017-04-16 21:28:40,621 - INFO - IEEEXplore_test.test_download_a_paper start
+2017-04-16 21:28:40,621 - DEBUG - IEEEXplore.create_driver start
+2017-04-16 21:28:41,636 - DEBUG - POST http://127.0.0.1:49049/wd/hub/session {"desiredCapabilities": {"version": "", "platform": "ANY", "javascriptEnabled": true, "browserName": "phantomjs"}, "capabilities": {"alwaysMatch": {}, "platform": "ANY", "javascriptEnabled": true, "version": "", "firstMatch": [], "browserName": "phantomjs"}}
+2017-04-16 21:28:41,658 - DEBUG - Finished Request
+2017-04-16 21:28:41,658 - DEBUG - driver.get(http://ieeexplore.ieee.org/document/7898372/)
+2017-04-16 21:28:41,659 - DEBUG - POST http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/url {"url": "http://ieeexplore.ieee.org/document/7898372/", "sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839"}
+2017-04-16 21:29:32,133 - DEBUG - Finished Request
+2017-04-16 21:29:32,138 - DEBUG - IEEEXplore.create_driver finished. return driver
+2017-04-16 21:29:32,138 - DEBUG - IEEEXplore.download_a_paper start
+2017-04-16 21:29:32,138 - DEBUG - GET http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/url {"sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839"}
+2017-04-16 21:29:32,144 - DEBUG - Finished Request
+2017-04-16 21:29:32,145 - DEBUG - POST http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/element {"using": "css selector", "value": "i[class=\"icon doc-act-icon-pdf\"]", "sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839"}
+2017-04-16 21:29:32,155 - DEBUG - Finished Request
+2017-04-16 21:29:32,155 - DEBUG - POST http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/element/:wdc:1492345772154/click {"sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839", "id": ":wdc:1492345772154"}
+2017-04-16 21:29:33,608 - DEBUG - Finished Request
+2017-04-16 21:29:33,609 - DEBUG - IEEEXplore.save_current_page start
+2017-04-16 21:29:33,610 - DEBUG - path[./samples/sample_page_7849067_pdf_click], suffix[.html]
+2017-04-16 21:29:33,615 - DEBUG - GET http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/source {"sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839"}
+2017-04-16 21:29:33,621 - DEBUG - Finished Request
+2017-04-16 21:29:33,623 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-16 21:29:33,623 - DEBUG - IEEEXplore.save_current_page start
+2017-04-16 21:29:33,624 - DEBUG - path[./samples/sample_page_7849067_pdf_click], suffix[.png]
+2017-04-16 21:29:33,625 - DEBUG - GET http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/screenshot {"sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839"}
+2017-04-16 21:29:33,675 - DEBUG - Finished Request
+2017-04-16 21:29:33,696 - DEBUG - IEEEXplore.save_current_page finished
+2017-04-16 21:29:33,697 - DEBUG - Wait start.
+2017-04-16 21:29:33,698 - DEBUG - POST http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/element {"using": "xpath", "value": "//frameset[@rows=\"65,35%\"]/frame", "sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839"}
+2017-04-16 21:29:33,715 - DEBUG - Finished Request
+2017-04-16 21:29:33,716 - DEBUG - Wait Finished.
+2017-04-16 21:29:33,717 - DEBUG - POST http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/elements {"using": "xpath", "value": "//frameset[@rows=\"65,35%\"]/frame", "sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839"}
+2017-04-16 21:29:33,737 - DEBUG - Finished Request
+2017-04-16 21:29:33,742 - DEBUG - GET http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/element/:wdc:1492345773714/attribute/src {"sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839", "id": ":wdc:1492345773714", "name": "src"}
+2017-04-16 21:29:33,761 - DEBUG - Finished Request
+2017-04-16 21:29:51,014 - DEBUG - POST http://127.0.0.1:49049/wd/hub/session/39b64dd0-22a0-11e7-80ae-51f38eeb9839/url {"url": "http://ieeexplore.ieee.org/document/7898372/?reload=true", "sessionId": "39b64dd0-22a0-11e7-80ae-51f38eeb9839"}
+2017-04-16 21:29:54,087 - DEBUG - Finished Request
+2017-04-16 21:29:54,088 - DEBUG - IEEEXplore.download_a_paper finished
+2017-04-16 21:29:54,088 - INFO - IEEEXplore_test.test_download_a_paper finished
