@@ -61,7 +61,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.debug("all_cited_urls:" + str(all_cited_urls))
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-
+	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#url = "http://google.co.jp/"
@@ -72,23 +72,8 @@ class IEEEXplore_test(unittest.TestCase):
 		driver = self.xplore.create_driver(url)
 		self.xplore.download_a_paper(driver, path)
 		
-		"""
-		if not os.path.exists(path):
-			print (folderName + "フォルダを作成しました")
-			os.mkdir(folderName)
-		src= urllib.request.urlopen(url).read() # decodeしない
-		query = pq.PyQuery(src)
-		
-		for img_tag in query('img'):
-			img_url = query(img_tag).attr('src')
-			print (os.path.basename(img_url)) # 確認用でターミナルに保存ファイル名を出力
-			with open (save_path + os.path.basename(img_url), 'wb') as f:
-				raw = requests.get(img_url).content
-				f.write(raw)
-		"""
-
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 		
 	"""
 	def test_download_papers_by_keywords(self):
@@ -107,6 +92,18 @@ class IEEEXplore_test(unittest.TestCase):
 		driver = self.xplore.create_driver("http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic")
 		urls = self.xplore.get_urls_of_papers(driver, 1)
 		print(str(urls))
+		driver.close()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
+	def test_get_attributes_and_download_pdf_of_various(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/6517049" ##publish type error
+		driver = self.xplore.create_driver(url)
+		self.search.node = url
+		self.search.limit = 1
+		self.xplore.get_attributes_and_download_pdf(self.search, driver)
+		
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
@@ -195,14 +192,28 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info("test_get_papers_of_new_conferences start")
 		self.xplore.get_papers_of_new_conferences(10)
 	"""
-	"""
-	def test_get_papers_with_breadth_first_search(self):
+
+
+	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		root_url_of_paper = "http://ieeexplore.ieee.org/document/7874313/"
-		self.xplore.get_papers_with_breadth_first_search(root_url_of_paper)
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
-	
+		keywords="\"edge computing\""
+		num_of_papers = 1
+		path="../../data/tmp/"
+		filename = "tmp.pdf"
+		timeout=30
+		
+		all_citing_urls = ["http://ieeexplore.ieee.org/document/7833471/", "http://ieeexplore.ieee.org/document/7820341/"]
+		driver = self.xplore.create_driver()
+		
+		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
+		from searchs import Searchs
+		search = Searchs(que=all_citing_urls, limit=num_of_papers)
+		
+		Searchs.breadth_first_search_with_class(search, 1, self.xplore.get_attributes_and_download_pdf, driver, path, filename)
+		
+		driver.close()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+
 	
 if __name__ == '__main__':
 	unittest.main()

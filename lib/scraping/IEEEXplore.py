@@ -32,18 +32,13 @@ class IEEEXplore:
 		if search_options == "default":
 			search_options = Search_options()
 
-		#self.save_current_page(driver, "./samples/keyword_" + keywords.replace(" ","") + "_start.png")
-		#self.save_current_page(driver, "./samples/keyword_" + keywords.replace(" ","") + "_start.html")
 		self.search_by_keywords(driver, keywords, search_options=search_options, timeout=timeout)
-		#self.save_current_page(driver, "./samples/keyword_" + keywords.replace(" ","") + "_results.png")
-		#self.save_current_page(driver, "./samples/keyword_" + keywords.replace(" ","") + "_results.html")
 		
 		urls = self.get_urls_of_papers_in_keywords_page(driver, search_options.PerPage, num_of_papers, timeout)
 		print("urls.size[" + str(len(urls)) + "]")
 		all_papers = []
 		all_citing_urls = []
 		all_cited_urls = []
-		return all_papers, all_cited_urls, all_citing_urls
 
 		from searchs import Searchs as s
 		search = s(limit=num_of_papers-len(urls))
@@ -57,7 +52,7 @@ class IEEEXplore:
 			all_cited_urls.extend(cited_urls)
 			self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
-		return all_papers, all_cited_urls, all_citing_urls
+		return all_papers, all_citing_urls, all_cited_urls
 
 	def get_papers_of_target_conference(self, conference_name):
 		pass
@@ -75,7 +70,6 @@ class IEEEXplore:
 		driver.get(top_page)
 		if top_page == self.conf.getconf("IEEE_top_page"):
 			self.log.debug("Wait start.")
-			#time.sleep(30)
 			try:
 				WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//li[@class="Media-articles-item"]'))
 			except TimeoutException:
@@ -97,8 +91,6 @@ class IEEEXplore:
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		self.log.debug("Wait start.")
-		#import time
-		#time.sleep(10)
 		try:
 			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//input[@type="checkbox" and @class="search-results-group"]'))
 		except TimeoutException:
@@ -236,13 +228,14 @@ class IEEEXplore:
 		return urls
 	
 	
-	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/"):
+	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title"):
 		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 		timeout = 30
 		target_paper_url = search.node
+		search.times += 1
 		print("url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]")
 		self.log.info("url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]")
 		
@@ -265,10 +258,18 @@ class IEEEXplore:
 		import time
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		##path
+		if filename == "title":
+			filename = paper.title + ".pdf"
+		m = "downloading paper to " + path + ". title[" + paper.title + "]"
+		self.log.info(m)
+		print(m)
+		paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
+		time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
 		paper.id = paper.get_id()
-		#paper.renewal_insert()
-		self.log.debug(paper.get_vars())
 		
+		paper.renewal_insert()
+		self.log.debug(paper.get_vars())
+				
 		self.log.debug("insert citations of this paper to db")
 		import table_citations
 		
@@ -280,6 +281,13 @@ class IEEEXplore:
 			citation = table_citations.Table_citations(start=cited_paper, end=paper.id)
 			citation.renewal_insert()
 			citation.close()
+		
+		self.log.debug("check termination of searching loop")
+		if 0 < search.limit and search.times >= search.limit:
+			self.log.debug("search finished.")
+			search.que = [search.node]
+			return paper, [], []
+			
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		self.log.debug("return paper[" + paper.title + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]")
 		return paper, citing_urls, cited_urls
@@ -555,19 +563,20 @@ class IEEEXplore:
 			self.log.warning(m)
 		self.log.debug("Wait Finished.")
 		url = driver.find_elements_by_xpath('//frameset[@rows="65,35%"]/frame')[1].get_attribute("src")
-		print(url)
+		self.log.debug("url:" + url)
 		
 		if filename == "default":
 			filename = url[:url.index("?")].split("/")[-1]
-		print(filename)
-		#print("wget " + url + " -P " + path + " -O " + filename)
-		print("wget " + url + " -O " + path + filename)
-		import subprocess
-		#subprocess.check_output(["wget", url, "-P", path , "-O", filename])
+		self.log.debug("filename:" + filename)
+		command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" > /dev/null 2>&1"
+		self.log.debug(command)
 		try:
-			subprocess.check_output(["wget", url, "-O", path + filename, ">", "dev/null", "2>&1"])
+			os.system(command)
 		except:
-			print("error at wget " + url + " -O " + path + filename)
+			m = "error at " + command
+			self.log.warning(m)
+			print(m)
+			
 
 		#self.save_current_page(driver, "./samples/7898372.png")
 		#self.save_current_page(driver, "./samples/7898372.html")
@@ -575,6 +584,8 @@ class IEEEXplore:
 		driver.get(initial_url)
 		
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		self.log.debug("return[" + path + filename + "]")
+		return path + filename
 		
 		
 	def download_papers_by_keywords(self, driver, path, download_num=25):
@@ -641,9 +652,9 @@ class IEEEXplore:
 		return url.split("?")[0] + "citations?anchor=anchor-paper-citations-ieee&ctx=citations"
 		
 	
-	def parse_citing(self, str):
+	def parse_citing(self, strings):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.log.debug("src_srt["+str+"]")
+		self.log.debug("src_srt["+strings+"]")
 		#from
 		#Daniel Garant, Wei Lu, "Mining Botnet Behaviors on the Large-Scale Web Application Community", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013.
 		#to
@@ -651,35 +662,42 @@ class IEEEXplore:
 		#Mining Botnet Behaviors on the Large-Scale Web Application Community
 		#Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on
 		#pp. 185-190, 2013
-		array = str.split("\"")
+		array = strings.split("\"")
 		if len(array) < 3:
 			self.log.warning(__class__.__name__ + "." + sys._getframe().f_code.co_name + " warning")
-			self.log.warning("str[" + str + "]")
+			self.log.warning("strings[" + strings + "]")
 			self.log.warning("len(array)(" + str(len(array)) + ") < 3. return \"\", \"\", \"\", \"\"")
 			return "", "", "", ""
 
 		authors = array[0]
 		title = array[1]
 		new_array = array[2][1:].split(",")
+		self.log.debug("new_array:" + str(new_array))
 		self.log.debug(len(new_array))
 		if len(new_array) < 3:
 			self.log.warning(__class__.__name__ + "." + sys._getframe().f_code.co_name + " warning")
-			self.log.warning("str[" + str + "]")
+			self.log.warning("strings[" + strings + "]")
 			self.log.warning("len(new_array)(" + str(len(new_array)) + ") < 3. return authors, title, \"\", \"\"")
 			return authors, title, "", ""
 
 		elif len(new_array) == 3:
 			conference, page, year = new_array
 		elif len(new_array) == 4:
-			conference, vol, page, year = new_array	
+			conference, vol, page, year = new_array
 		elif len(new_array) == 5:
 			conference, vol, page, year, issn = new_array
 		else:
 			self.log.warning(__class__.__name__ + "." + sys._getframe().f_code.co_name + " warning")
-			self.log.warning("str[" + str + "]")
+			self.log.warning("strings[" + strings + "]")
 			self.log.warning("len(new_array)(" + str(len(new_array)) + ") > 5. return authors, title, \"\", \"\"")
 			return authors, title, "", ""
-
+		import re
+		#self.log.debug("re.match(\"\d*\", " + year + ")")
+		#year = re.match("*\d*",year).group() + "-01-01 00:00:00"
+		#year += "-01-01 00:00:00"
+		self.log.debug("citing year is none")
+		year = None
+		self.log.debug("authors[" + str(authors) + "], title[" + str(title) + "], conference[" + str(conference) + "], year[" + str(year) + "]")
 		return authors, title, conference, year
 		
 		

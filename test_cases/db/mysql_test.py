@@ -133,6 +133,17 @@ class MySQL_test(unittest.TestCase):
 		print("available_id[" + str(id) + "]")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	def test_compare_timestamps(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		import time
+		from table_papers import Table_papers
+		paper = Table_papers(title="Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks")
+		new = time.strftime('%Y-%m-%d %H:%M:%S')
+		old = "2017-04-17 11:51:24"
+		paper.compare_timestamps(new=new, old=old)
+		
+		
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	def test_renewal_insert1(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -150,6 +161,8 @@ class MySQL_test(unittest.TestCase):
 		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
 		paper.renewal_insert()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	
 	"""
 	def test_renewal_insert3(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -171,9 +184,15 @@ class MySQL_test(unittest.TestCase):
 		self.log.debug("paper.renewal_insert()")
 		paper.renewal_insert()
 		
-	
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 	
+	"""
+	def test_inheritanced_papers(self):
+		from table_papers_tests import Table_papers_test1
+		paper = Table_papers_test1(title="Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks")
+		paper.insert()
+	"""	
 	
 if __name__ == '__main__':
 	unittest.main()

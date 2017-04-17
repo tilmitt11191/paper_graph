@@ -96,14 +96,16 @@ class Table_papers(Base):
 					tmp_timestamp = record.timestamp
 				else:
 					self.log.debug(var + " is not none. compare timestamps")
-					if tmp_timestamp == None or record.timestamp == None or tmp_timestamp < record.timestamp:
+					## todo: check type(timestamp)
+					if tmp_timestamp == None or record.timestamp == None or self.compare_timestamps(old=tmp_timestamp, new=record.timestamp):
 						##if record.timestamp is newer
-						#tmp = eval("self." + var)
-						#tmp = eval("record." + var)
 						exec("self." + var + " = record." + var)
 						self.log.debug("->var[" + var + "], self[" + str(eval("self." + var)) + "], record[" + str(eval("record." + var)) + "]")
-						#eval("self." + var) = eval("record." + var)
 						tmp_timestamp = record.timestamp
+					#except:
+						#m = "caught exception at tmp_timestamp[" + str(tmp_timestamp) + "] < record.timestamp[" + str(record.timestamp) + "]"
+						#self.log.warning(m)
+						#print(m)
 		
 		for record in records:
 			self.db.delete(record)
@@ -156,6 +158,17 @@ class Table_papers(Base):
 			citation.renewal_insert()
 			citation.close()
 			
+	def compare_timestamps(self, old, new):
+		self.log.debug("compare old_timestamp[" + str(old) + "] < new[" + str(new) + "]?")
+		old_str = str(old)
+		new_str = str(new)
+		if old_str < new_str:
+			self.log.debug("return true")
+			return True
+		else:
+			self.log.debug("return false")
+			return False
+	
 	
 	def get_id(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")		

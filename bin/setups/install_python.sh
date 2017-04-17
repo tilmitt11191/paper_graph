@@ -21,6 +21,7 @@ sudo apt-get install -y python3-yaml
 pip install selenium
 pip install SQLAlchemy
 pip install PyMySQL
+pip install wget
 
 cd $PWD
 

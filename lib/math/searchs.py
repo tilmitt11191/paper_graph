@@ -5,12 +5,14 @@
 class Searchs():
 
 
-	def __init__(self, initial_node=0, limit=0):
+	def __init__(self, initial_node=0, limit=-1, que=[], visited=[], times=0):
 		self.node = initial_node
 		self.limit = limit
-		self.times = 0
-		self.visited = []
-
+		self.que = que
+		self.visited = visited
+		self.times = times
+		if len(self.que) == 0:
+			self.que = [self.node]
 
 	@classmethod
 	def breadth_first_search(cls, root, order_of_returns, get_nexts_func, *args):
@@ -36,13 +38,11 @@ class Searchs():
 		
 	@classmethod
 	def breadth_first_search_with_class(cls, search, order_of_returns, get_nexts_func, *args):
-		que = [search.node]
-		
-		while que != []:
-			search.node = que[0]
+		while search.que != []:
+			search.node = search.que[0]
 			returned_values = get_nexts_func(search, *args)
-			que += returned_values[order_of_returns]
-			que.pop(0)
+			search.que += returned_values[order_of_returns]
+			search.que.pop(0)
 		
 		return 0
 
