@@ -193,7 +193,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.get_papers_of_new_conferences(10)
 	"""
 
-
+	"""
 	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords="\"edge computing\""
@@ -213,7 +213,13 @@ class IEEEXplore_test(unittest.TestCase):
 		
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-
+	"""
+	
+	def test_mod(self):
+		for times in range(11):
+			print("times[" + str(times) + "]")
+			if times % 5 == 0:
+				print("mod == 0")
 	
 if __name__ == '__main__':
 	unittest.main()

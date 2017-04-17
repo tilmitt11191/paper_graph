@@ -40,8 +40,9 @@ class IEEEXplore:
 		all_citing_urls = []
 		all_cited_urls = []
 
-		from searchs import Searchs as s
-		search = s(limit=num_of_papers-len(urls))
+		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
+		from searchs import Searchs
+		search = Searchs(limit=num_of_papers-len(urls))
 
 		for url in urls:
 			search.node = url
@@ -52,7 +53,7 @@ class IEEEXplore:
 			all_cited_urls.extend(cited_urls)
 			self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
-		return all_papers, all_citing_urls, all_cited_urls
+		return all_papers, urls, all_citing_urls, all_cited_urls
 
 	def get_papers_of_target_conference(self, conference_name):
 		pass
@@ -239,7 +240,16 @@ class IEEEXplore:
 		print("url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]")
 		self.log.info("url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]")
 		
-		#if this paper already downloaded, this paper visited and skip.
+		if search.times % 5 == 0:
+			self.log.debug("driver reconnect")
+			driver.close()
+			self.create_driver()
+		
+		
+		##if this paper already downloaded, this paper visited and skip.
+		#if target_paper_url in search.visited:
+		
+		
 		
 		self.move_to_paper_initial_page(driver, target_paper_url)
 
@@ -546,8 +556,8 @@ class IEEEXplore:
 		initial_url = driver.current_url
 		button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
 		button.click()
-		self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.html")
-		self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.png")
+		#self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.html")
+		#self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.png")
 		#import time
 		#time.sleep(60)
 		self.log.debug("Wait start.")
@@ -568,7 +578,8 @@ class IEEEXplore:
 		if filename == "default":
 			filename = url[:url.index("?")].split("/")[-1]
 		self.log.debug("filename:" + filename)
-		command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" > /dev/null 2>&1"
+		#command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" > /dev/null 2>&1"
+		command = "wget -p \"" + url + "\" -O \"" + path + filename.replace(":", "\:") + "\""
 		self.log.debug(command)
 		try:
 			os.system(command)
