@@ -577,9 +577,10 @@ class IEEEXplore:
 		
 		if filename == "default":
 			filename = url[:url.index("?")].split("/")[-1]
+		filename = filename.replace(":", "")
 		self.log.debug("filename:" + filename)
 		#command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" > /dev/null 2>&1"
-		command = "wget -p \"" + url + "\" -O \"" + path + filename.replace(":", "\:") + "\""
+		command = "wget -p \"" + url + "\" -O \"" + path + filename + "\""
 		self.log.debug(command)
 		try:
 			os.system(command)
