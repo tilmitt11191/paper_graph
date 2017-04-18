@@ -8,6 +8,9 @@ from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 
+from http.client import RemoteDisconnected
+
+
 class IEEEXplore:
 	def __init__(self):
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../lib/utils")
@@ -72,7 +75,7 @@ class IEEEXplore:
 		if top_page == "":
 			top_page = self.conf.getconf("IEEE_top_page")
 		from selenium import webdriver
-		driver = webdriver.PhantomJS(phantomjs_path)
+		driver = webdriver.PhantomJS(phantomjs_path, service_args=["--webdriver-loglevel=ERROR"])
 		self.log.debug("driver.get(" + top_page + ")")
 		driver.get(top_page)
 		if top_page == self.conf.getconf("IEEE_top_page"):
@@ -562,12 +565,50 @@ class IEEEXplore:
 	def download_a_paper(self, driver, path="../../data/tmp/", filename="default", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		initial_url = driver.current_url
+
+		self.log.debug("Wait start.")
+		try:
+			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]'))
+		except TimeoutException:
+			m = "caught TimeoutException at waiting button which go to pdf page."
+			print(m)
+			self.log.warning(m)
+		except NoSuchElementException:
+			m = "caught NoSuchElementException at waiting button which go to pdf page."
+			print(m)
+			self.log.warning(m)
+		self.log.debug("Wait Finished.")
+		
+		#button = driver.find_element_by_css_selector('li[class="large doc-actions-item"]')
 		button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
-		button.click()
-		#self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.html")
-		#self.save_current_page(driver, "./samples/sample_page_7849067_pdf_click.png")
-		#import time
-		#time.sleep(60)
+		#self.save_current_page(driver, "./samples/get_button.html")
+		#self.save_current_page(driver, "./samples/get_button.png")
+		
+		retries = 10
+		while retries > 0:
+			try:
+				button.click()
+				self.log.debug("clicked button and no exception. break")
+				break
+			except RemoteDisconnected:
+				m = "caught RemoteDisconnected at click download pdf button. retries[" + str(retries) + "]"
+				print(m)
+				self.log.warning(m)
+				import time
+				time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+				retries -= 1
+			except NoSuchElementException:
+				m = "caught NoSuchElementException at click download pdf button. retries[" + str(retries) + "]"
+				print(m)
+				self.log.warning(m)
+				self.save_current_page(driver, "./samples/caught_NoSuchElementException_at_click_download_pdf_button.html")
+				self.save_current_page(driver, "./samples/caught_NoSuchElementException_at_click_download_pdf_button.png")
+				retries -= 1
+		if retries == 0:
+			self.log.error("button.click() error")
+			self.save_current_page(driver, "./samples/button_click_error.html")
+			self.save_current_page(driver, "./samples/button_click_error.png")
+
 		self.log.debug("Wait start.")
 		try:
 			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//frameset[@rows="65,35%"]/frame'))
@@ -588,10 +629,11 @@ class IEEEXplore:
 		filename = filename.replace(":", "")
 		self.log.debug("filename:" + filename)
 		#command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" > /dev/null 2>&1"
-		command = "wget -p \"" + url + "\" -O \"" + path + filename + "\""
+		command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" 1> /dev/null"
+		#command = "wget -p \"" + url + "\" -O \"" + path + filename + "\""
 		self.log.debug(command)
 		try:
-			os.system(command)
+			self.log.debug(os.system(command))
 		except:
 			m = "error at " + command
 			self.log.warning(m)
@@ -664,13 +706,29 @@ class IEEEXplore:
 		timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		return timestamp
 	
+	
 	def convert_paper_url_to_cited_url(self, url):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#from
 		#http://ieeexplore.ieee.org/document/4116687/?reload=true
 		#to
 		#http://ieeexplore.ieee.org/document/4116687/citations?anchor=anchor-paper-citations-ieee&ctx=citations
-		return url.split("?")[0] + "citations?anchor=anchor-paper-citations-ieee&ctx=citations"
+		self.log.debug("url[" + url + "]")
+		converted_url = url.split("?")[0] + "citations?anchor=anchor-paper-citations-ieee&ctx=citations"
+		self.log.debug("converted_url[" + converted_url + "]")
 		
+		return converted_url
+		
+	
+	def convert_paper_url_to_pdf_url(self, url):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		##from
+		##http://ieeexplore.ieee.org/document/6324382/
+		##to
+		##http://ieeexplore.ieee.org/ielx7/35/7901458/07901477.pdf?tp=&arnumber=7901477&isnumber=7901458
+		print("url[" + url + "]")
+	
+	
 	
 	def parse_citing(self, strings):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

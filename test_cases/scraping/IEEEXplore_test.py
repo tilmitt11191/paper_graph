@@ -209,7 +209,7 @@ class IEEEXplore_test(unittest.TestCase):
 	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords="\"edge computing\""
-		num_of_papers = 10
+		num_of_papers = 2
 		path="../../data/tmp/"
 		filename = "tmp.pdf"
 		timeout=30
