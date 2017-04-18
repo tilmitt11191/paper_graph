@@ -1,6 +1,7 @@
 
+/*
 $(function(){
-  document.write("Hello World!!");
+  //document.write("Hello World!!");
   connect_to_db();
 });
 
@@ -9,7 +10,7 @@ function connect_to_db(){
 	$list.append('<p>aaa</p>');
 	$list.fadeIn();
 }
-
+*/
 
 /*
 $(function(){

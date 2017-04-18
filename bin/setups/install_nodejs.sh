@@ -27,3 +27,4 @@ sudo npm install -g node-dev --save #-g needs sudo
 npm install react-social-sharebuttons --save --no-bin-links
 npm install pug-cli --save --no-bin-links
 npm install cytoscape --save --no-bin-links
+npm install mysqljs/mysql --save --no-bin-links

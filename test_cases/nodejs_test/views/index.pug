@@ -1,4 +1,21 @@
-extends layout
+//-
+	extends layout
+
+doctype html
+html(lang='jp')
+	head
+			meta(charset='utf-8')
+			title="aaa"
+	body
+		div#cy
+
+block additionalScripts
+	script(src="http://code.jquery.com/jquery-2.0.3.js")
+	script(src="lib/cytoscape.js")
+	script(src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js")
+	script(src="javascripts/arbor.js")
+	script(src="javascripts/script.js")
+	script(type='text/javascript', src="../public/javascripts/graphs.js")
 
 //-
 	doctype html
@@ -13,8 +30,9 @@ extends layout
 			//script.
 				//alerttest()
 
-
-block additionalScripts
+//-
+	block additionalScripts
+	script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
 	//script(src='http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js')
 	script(src='http://malsup.github.com/jquery.form.js')
 	script.
