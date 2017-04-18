@@ -240,15 +240,15 @@ class IEEEXplore:
 		print("url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]")
 		self.log.info("url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]")
 		
+		##reconnect because of http.client.RemoteDisconnected
 		if search.times % 5 == 0:
 			self.log.debug("driver reconnect")
 			driver.close()
-			self.create_driver()
+			driver = self.create_driver(timeout=timeout)
 		
 		
 		##if this paper already downloaded, this paper visited and skip.
 		#if target_paper_url in search.visited:
-		
 		
 		
 		self.move_to_paper_initial_page(driver, target_paper_url)
