@@ -38,6 +38,17 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	"""
+	def test_get_papers_by_keywords_333hit(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		keywords = "\"edge computing\""
+		from IEEEXplore import Search_options as opt
+		opts = opt()
+		opts.PerPage = 100
+
+		self.xplore.get_papers_by_keywords(keywords,search_options=opts)
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
 	def test_get_papers_by_keywords_1549hit(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords = "deep learning classification"
@@ -99,6 +110,8 @@ class IEEEXplore_test(unittest.TestCase):
 	def test_get_attributes_and_download_pdf_of_various(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/6517049" ##publish type error
+		url = "http://ieeexplore.ieee.org/document/7881332/" ##NoSuchWindowException
+		url = "http://ieeexplore.ieee.org/document/7312885/" ##Too long authors
 		driver = self.xplore.create_driver(url)
 		self.search.node = url
 		self.search.limit = 1
@@ -193,34 +206,34 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.get_papers_of_new_conferences(10)
 	"""
 
-	"""
 	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords="\"edge computing\""
-		num_of_papers = 1
+		num_of_papers = 10
 		path="../../data/tmp/"
 		filename = "tmp.pdf"
 		timeout=30
 		
-		all_citing_urls = ["http://ieeexplore.ieee.org/document/7833471/", "http://ieeexplore.ieee.org/document/7820341/"]
+		#all_citing_urls = ["http://ieeexplore.ieee.org/document/7833471/", "http://ieeexplore.ieee.org/document/7820341/"]
+		all_citing_urls = ["http://ieeexplore.ieee.org/document/6324382", "http://ieeexplore.ieee.org/document/7881332/"]
 		driver = self.xplore.create_driver()
 		
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 		from searchs import Searchs
-		search = Searchs(que=all_citing_urls, limit=num_of_papers)
+		search = Searchs(que=all_citing_urls, limit=num_of_papers, times=4)
 		
 		Searchs.breadth_first_search_with_class(search, 1, self.xplore.get_attributes_and_download_pdf, driver, path, filename)
 		
-		driver.close()
+		#driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+
 	"""
-	
 	def test_mod(self):
 		for times in range(11):
 			print("times[" + str(times) + "]")
 			if times % 5 == 0:
 				print("mod == 0")
-	
+	"""
 if __name__ == '__main__':
 	unittest.main()
 

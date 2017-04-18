@@ -4,7 +4,7 @@
 keywords = "\"edge computing\""
 num_of_papers = 1000
 path="../../data/" + keywords.replace(" ", "").replace("\"", "") + "/"
-filename = "tmp.pdf"
+filename = "title"
 timeout=30
 
 import sys,os
@@ -29,7 +29,7 @@ if num_of_papers <= 0:
 	self.log.warning("initial num_of_papers <= 0")
 	sys.exit("initial num_of_papers <= 0")
 
-all_papers, all_papers_urls, all_citing_urls, all_cited_urls = xplore.get_papers_by_keywords(keywords, num_of_papers, search_options=opts, timeout=timeout)
+all_papers, all_papers_urls, all_citing_urls, all_cited_urls = xplore.get_papers_by_keywords(keywords, num_of_papers, search_options=opts, path=path, filename=filename, timeout=timeout)
 
 if num_of_papers <= 0:
 	self.log.info("finished in the way of xplore.get_papers_by_keywords")

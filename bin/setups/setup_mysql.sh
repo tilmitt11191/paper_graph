@@ -22,7 +22,7 @@ grant ALL on paper_graph.* to 'alladmin'@'localhost';\
 create table paper_graph.papers (\
 id int, \
 title text, \
-authors tinytext, \
+authors text, \
 keywords text, \
 citings tinytext, \
 citeds tinytext, \
@@ -31,6 +31,7 @@ published DATETIME, \
 url tinytext, \
 timestamp DATETIME, \
 path tinytext);\
+alter table papers default character set "utf8";\
 flush privileges;"
 
 sudo mysql -p -e "\

@@ -14,7 +14,7 @@ class Table_papers(Base):
 
 	id = Column("id", INTEGER, primary_key=True)
 	title = Column("title", TEXT)
-	authors = Column("authors", TINYTEXT)
+	authors = Column("authors", TEXT)
 	keywords = Column("keywords", TEXT)
 	citings = Column("citings", TINYTEXT)
 	citeds = Column("citeds", TINYTEXT)
@@ -57,8 +57,10 @@ class Table_papers(Base):
 	
 	def insert(self):
 		if self.id == "":
-			self.id = self._get_available_id()
+			self.id = self.get_id()
+		self.title = self.title.encode('utf-8')
 		self.db.insert(self)
+		self.title = self.title.decode('utf-8')
 		self.db.session.expunge(self)
 		self.db.close()
 	
@@ -67,10 +69,11 @@ class Table_papers(Base):
 		db = mysql_operator.Mysql_operator()
 	
 	def renewal_insert(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+
 		#check duplication and insert
-		records = self.db.session.query(__class__).filter(__class__.title==self.title).all()
+		records = self.db.session.query(__class__).filter(__class__.title==self.title.encode('utf-8')).all()
 		if len(records) == 0: #new record
-			self._get_available_id()
 			self.insert()
 			return 0
 		
@@ -109,12 +112,10 @@ class Table_papers(Base):
 		
 		for record in records:
 			self.db.delete(record)
-		
-		import time
 		self.id = self.get_id()
+		import time
 		self.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-		self.db.insert(self)
-		self.db.session.expunge(self)
+		self.insert()
 		
 		##merge citations
 		self.log.debug("merge[" + str(merge_id_list) + "] to self.id[" + str(self.id) + "]")
@@ -175,7 +176,7 @@ class Table_papers(Base):
 		
 		##when the records which have same title exist,
 		##the id is smallest one of records.
-		records = self.db.session.query(__class__).filter(__class__.title==self.title).all()
+		records = self.db.session.query(__class__).filter(__class__.title==self.title.encode('utf-8')).all()
 		if len(records) == 0: #new record
 			return self._get_available_id()
 			

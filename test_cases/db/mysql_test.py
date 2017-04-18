@@ -133,6 +133,7 @@ class MySQL_test(unittest.TestCase):
 		print("available_id[" + str(id) + "]")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	"""
 	def test_compare_timestamps(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		import time
@@ -144,6 +145,7 @@ class MySQL_test(unittest.TestCase):
 		
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 	"""
 	def test_renewal_insert1(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -186,6 +188,13 @@ class MySQL_test(unittest.TestCase):
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	def test_renewal_insert_various(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		from table_papers import Table_papers
+		paper = Table_papers(title="Field Trial of Long-Reach and High-Splitting λあアｱ-Tunable TWDM-PON,")
+		#print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
+		paper.renewal_insert()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	
 	"""
 	def test_inheritanced_papers(self):

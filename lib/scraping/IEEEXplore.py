@@ -24,7 +24,7 @@ class IEEEXplore:
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + "(conference_num=" + str(conference_num) + ") start.")
 		
 		
-	def get_papers_by_keywords(self, keywords, num_of_papers="all", search_options="default", timeout=30):
+	def get_papers_by_keywords(self, keywords, num_of_papers="all", search_options="default", path="../../data/tmp/", filename="title", timeout=30):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info("keywords[" + keywords + "], num_of_papers[" + str(num_of_papers) +"]")
 		
@@ -33,6 +33,11 @@ class IEEEXplore:
 			search_options = Search_options()
 
 		self.search_by_keywords(driver, keywords, search_options=search_options, timeout=timeout)
+
+		if num_of_papers == "all":
+			element = driver.find_element_by_css_selector('div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
+			num_of_papers = int(element.text.split(" ")[-1].replace(",",""))
+		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 		
 		urls = self.get_urls_of_papers_in_keywords_page(driver, search_options.PerPage, num_of_papers, timeout)
 		print("urls.size[" + str(len(urls)) + "]")
@@ -42,11 +47,11 @@ class IEEEXplore:
 
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 		from searchs import Searchs
-		search = Searchs(limit=num_of_papers-len(urls))
+		search = Searchs(limit=num_of_papers)
 
 		for url in urls:
 			search.node = url
-			paper, citing_urls, cited_urls = self.get_attributes_and_download_pdf(search, driver)
+			paper, citing_urls, cited_urls = self.get_attributes_and_download_pdf(search, driver, path=path, filename=filename)
 			print("paper.title[" + paper.title + "]")
 			all_papers.append(paper)
 			all_citing_urls.extend(citing_urls)
@@ -61,6 +66,7 @@ class IEEEXplore:
 
 	def create_driver(self, top_page="", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.debug("url[" + top_page + "]")
 		
 		phantomjs_path = self.conf.getconf("phantomJS_pass")
 		if top_page == "":
@@ -232,7 +238,7 @@ class IEEEXplore:
 	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title"):
 		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-
+		driver = self.create_driver()
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 		timeout = 30
 		target_paper_url = search.node
@@ -241,15 +247,12 @@ class IEEEXplore:
 		self.log.info("url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]")
 		
 		##reconnect because of http.client.RemoteDisconnected
-		if search.times % 5 == 0:
-			self.log.debug("driver reconnect")
-			driver.close()
-			driver = self.create_driver(timeout=timeout)
-		
-		
+		#if search.times % 5 == 0:
+		#	driver = self.reconnect_driver(driver, driver.current_url)
+		#self.save_current_page(driver, "./samples/tmp.png")
+
 		##if this paper already downloaded, this paper visited and skip.
 		#if target_paper_url in search.visited:
-		
 		
 		self.move_to_paper_initial_page(driver, target_paper_url)
 
@@ -274,12 +277,14 @@ class IEEEXplore:
 		self.log.info(m)
 		print(m)
 		paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
+		self.log.debug("download finished. wait start.")
 		time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+		self.log.debug("wait finished.")
 		paper.id = paper.get_id()
 		
-		paper.renewal_insert()
 		self.log.debug(paper.get_vars())
-				
+		paper.renewal_insert()
+		
 		self.log.debug("insert citations of this paper to db")
 		import table_citations
 		
@@ -296,6 +301,9 @@ class IEEEXplore:
 		if 0 < search.limit and search.times >= search.limit:
 			self.log.debug("search finished.")
 			search.que = [search.node]
+			import signal
+			driver.service.process.send_signal(signal.SIGTERM) # kill the specific phantomjs child proc
+			driver.quit() # quit the node proc
 			return paper, [], []
 			
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
@@ -741,7 +749,13 @@ class IEEEXplore:
 		self.opt.show_options()
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
-		
+	def reconnect_driver(self, driver, url):
+			self.log.debug("driver reconnect")
+			import signal
+			driver.service.process.send_signal(signal.SIGTERM) # kill the specific phantomjs child proc
+			driver.quit() # quit the node proc
+			driver = self.create_driver(url)
+			return driver
 
 class Search_options:
 
