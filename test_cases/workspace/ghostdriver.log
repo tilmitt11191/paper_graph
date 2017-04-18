@@ -1,25 +1,28 @@
-[INFO  - 2017-04-18T06:10:04.794Z] GhostDriver - Main - running on port 45570
-[INFO  - 2017-04-18T06:10:05.729Z] Session [aacba3e0-23fd-11e7-9947-db8aaabf68ba] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2017-04-18T06:10:05.730Z] Session [aacba3e0-23fd-11e7-9947-db8aaabf68ba] - page.customHeaders:  - {}
-[INFO  - 2017-04-18T06:10:05.730Z] Session [aacba3e0-23fd-11e7-9947-db8aaabf68ba] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2017-04-18T06:10:05.730Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: aacba3e0-23fd-11e7-9947-db8aaabf68ba
-[ERROR - 2017-04-18T06:10:16.082Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1492495816064
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-04-18T06:10:22.203Z] Session [aacba3e0-23fd-11e7-9947-db8aaabf68ba] - page.onError - msg: Error: undefined is not an object (evaluating '$target.offset().top')
+[ERROR - 2017-04-18T10:24:59.869Z] Session [402ea950-2421-11e7-90dc-ebd7b389193e] - page.onError - msg: Error: undefined is not an object (evaluating '$target.offset().top')
 http://staticieeexplore.ieee.org/assets/dist/ng/xpl.js?cv=20170228_000000:4:29897
 http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:30:14288
 completeOutstandingRequest@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:27:1764
 http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:27:4798
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-04-18T06:10:22.203Z] Session [aacba3e0-23fd-11e7-9947-db8aaabf68ba] - page.onError - stack:
+[ERROR - 2017-04-18T10:24:59.870Z] Session [402ea950-2421-11e7-90dc-ebd7b389193e] - page.onError - stack:
   (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:29)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-04-18T06:10:22.477Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1492495822460
+[ERROR - 2017-04-18T10:25:00.531Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1492511100512
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-04-18T06:10:23.010Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1492495822992
+[ERROR - 2017-04-18T10:25:01.063Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1492511101045
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-04-18T10:25:09.708Z] Session [402ea950-2421-11e7-90dc-ebd7b389193e] - page.onError - msg: Error: undefined is not an object (evaluating '$target.offset().top')
+http://staticieeexplore.ieee.org/assets/dist/ng/xpl.js?cv=20170228_000000:4:29897
+http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:30:14288
+completeOutstandingRequest@http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:27:1764
+http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:27:4798
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-04-18T10:25:09.709Z] Session [402ea950-2421-11e7-90dc-ebd7b389193e] - page.onError - stack:
+  (anonymous function) (http://staticieeexplore.ieee.org/assets/dist/js/vendor.js?cv=20170228_000000:29)
 
   phantomjs://platform/console++.js:263 in error
