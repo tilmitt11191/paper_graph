@@ -1,6 +1,6 @@
 
 
-var cytoscape = require('cytoscape');
+//var cytoscape = require('cytoscape');
 var mysql      = require('mysql');
 
 var connection = mysql.createConnection({

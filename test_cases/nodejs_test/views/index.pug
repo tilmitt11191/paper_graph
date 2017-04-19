@@ -1,34 +1,32 @@
-//-
-	extends layout
+extends layout
 
-doctype html
-html(lang='jp')
+block content
 	head
-			meta(charset='utf-8')
-			title="aaa"
+		script(src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js")
+		script(src="http://code.jquery.com/jquery-2.0.3.js")
+
+	script.
+		$(function(){
+			loadCSS = function(href) {
+				console.log("Load file " + href);
+				var cssLink = $("<link rel='stylesheet' type='text/css' href='"+href+"'>");
+				$("head").append(cssLink);
+			};
+			var host = window.location.href;
+			loadCSS(host + 'stylesheets/style.css');
+		});
+
 	body
 		div#cy
+		script(src="javascripts/script.js")
 
-block additionalScripts
-	script(src="http://code.jquery.com/jquery-2.0.3.js")
-	script(src="lib/cytoscape.js")
-	script(src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js")
-	script(src="javascripts/arbor.js")
-	script(src="javascripts/script.js")
-	script(type='text/javascript', src="../public/javascripts/graphs.js")
 
-//-
-	doctype html
-	html
-		head
-			meta(charset='utf-8')
-			title= title
-		body
-			h1= title
-			p Welcome to #{title} .
-			//script(type='text/javascript', src="../public/javascripts/graphs.js")
-			//script.
-				//alerttest()
+
+	block additionalScripts
+	//script(src="lib/cytoscape.js")
+	//script(src="javascripts/arbor.js")
+	//script(type='text/javascript', src="../public/javascripts/graphs.js")
+
 
 //-
 	block additionalScripts

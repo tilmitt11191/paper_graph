@@ -1,0 +1,30 @@
+;============================================ 
+; Filename    : 
+; Description : SSH Auto login 
+; Author      : 
+; Created     : 
+; modified    : 
+;============================================ 
+;; ユーザ名／パスワード設定 
+HOSTADDR = '172.19.73.168'
+PORTNUM = '50022'
+USERNAME = 'alladmin'
+KEY_FILE = 'C:\Users\ozu\.ssh\id_rsa' 
+;============================================ 
+;; ①パスワード取得 
+;;getpassword PASSFILE USERNAME PASSWORD
+ 
+;; ②コマンド組立て 
+COMMAND = HOSTADDR
+strconcat COMMAND ':'
+strconcat COMMAND PORTNUM
+strconcat COMMAND ' /ssh /2 /auth=publickey /user='
+strconcat COMMAND USERNAME 
+strconcat COMMAND ' /keyfile=' 
+strconcat COMMAND KEY_FILE
+ 
+;; ③サーバへ接続 
+connect COMMAND
+ 
+;; ④マクロ終了 
+end
