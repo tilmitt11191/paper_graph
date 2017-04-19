@@ -612,6 +612,9 @@ class IEEEXplore:
 				self.log.warning(m)
 				import time
 				time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+				driver.get(initial_url)
+				self.wait_button_to_pdf_page(driver, timeout)
+				button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
 				retries -= 1
 			except ConnectionRefusedError:
 				m = "caught ConnectionRefusedError at click download pdf button. retries[" + str(retries) + "]"
