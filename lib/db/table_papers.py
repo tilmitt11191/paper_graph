@@ -59,8 +59,12 @@ class Table_papers(Base):
 		if self.id == "":
 			self.id = self.get_id()
 		self.title = self.title.encode('utf-8')
+		self.authors = self.authors.encode('utf-8')
+		self.keywords = self.keywords.encode('utf-8')
 		self.db.insert(self)
 		self.title = self.title.decode('utf-8')
+		self.authors = self.authors.decode('utf-8')
+		self.keywords = self.keywords.decode('utf-8')
 		self.db.session.expunge(self)
 		self.db.close()
 	

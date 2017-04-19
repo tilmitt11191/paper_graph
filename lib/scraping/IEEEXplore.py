@@ -5,8 +5,7 @@ import time
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotVisibleException
 
 from http.client import RemoteDisconnected
 
@@ -241,7 +240,7 @@ class IEEEXplore:
 	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title"):
 		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		driver = self.create_driver()
+		#driver = self.create_driver()
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 		timeout = 30
 		target_paper_url = search.node
@@ -271,14 +270,9 @@ class IEEEXplore:
 		paper.conference = self.get_conference(driver)
 		paper.published = self.get_date_of_publication(driver)
 		paper.url = target_paper_url
-		import time
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-		##path
 		if filename == "title":
 			filename = paper.title + ".pdf"
-		m = "downloading paper to " + path + ". title[" + paper.title + "]"
-		self.log.info(m)
-		print(m)
 		paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
 		self.log.debug("download finished. wait start.")
 		time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
@@ -468,37 +462,8 @@ class IEEEXplore:
 		#self.save_current_page(driver, "./samples/sample_page_1055638_cited.html")
 		#self.save_current_page(driver, "./samples/sample_page_1055638_cited.png")
 
-		elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
-		num_of_viewing = len(elements)
-		limit_of_view = self.conf.getconf("IEEE_citation_num_at_first_page")
-		self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
-
 		self.log.debug("continue pushing more view button")
-		##if not cited, load-more-button does not exist.
-		##but if cited, load-more-button always exists nevertheless no more paper,
-		##and the buttons are hidden.
-		while num_of_viewing > limit_of_view - 10:
-			limit_of_view += self.conf.getconf("IEEE_citation_num_per_more_view")
-			load_more_button = driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
-			load_more_button.click()
-			try:
-				WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')" and @aria-disabled="false"]'))
-			except TimeoutException:
-				m = "caught TimeoutException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]."
-				print(m)
-				self.log.warning(m)
-			except NoSuchElementException:
-				m = "caught NoSuchElementException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]."
-				print(m)
-				self.log.warning(m)
-			#elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div > div > b[class="ng-binding"]')
-			elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
-			#self.save_current_page(driver, "./samples/sample_page_1055638_cited_"+str(limit_of_view)+".html")
-			#self.save_current_page(driver, "./samples/sample_page_1055638_cited_"+str(limit_of_view)+".png")
-			num_of_viewing = len(elements)
-			self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
-		
-		self.log.debug("cited loop finished. num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+		elements = self.continuous_pushing_more_view_button(driver, timeout)
 		
 		self.log.debug("create arrays of paper and url")
 		
@@ -522,6 +487,46 @@ class IEEEXplore:
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return citeds_str, cited_papers, cited_urls
+		
+	
+	def continuous_pushing_more_view_button(self, driver, timeout=30):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		##if not cited, load-more-button does not exist.
+		##but if cited, load-more-button always exists nevertheless no more paper,
+		##and the buttons are hidden.
+		
+		elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+		num_of_viewing = len(elements)
+		limit_of_view = self.conf.getconf("IEEE_citation_num_at_first_page")
+		self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+		
+		while num_of_viewing > limit_of_view - 10:
+			limit_of_view += self.conf.getconf("IEEE_citation_num_per_more_view")
+			try:
+				load_more_button = driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
+				load_more_button.click()
+
+				WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')" and @aria-disabled="false"]'))
+			except TimeoutException:
+				m = "caught TimeoutException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]."
+				print(m)
+				self.log.warning(m)
+			except NoSuchElementException:
+				m = "caught NoSuchElementException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]."
+				print(m)
+				self.log.warning(m)
+			except ElementNotVisibleException:
+				m = "caught ElementNotVisibleException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]. break."
+				self.log.debug(m)
+				break
+				
+			elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitation"]')
+			num_of_viewing = len(elements)
+			self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
+		
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		return elements
+	
 	
 	def get_conference(self, driver):
 		try:
@@ -565,6 +570,10 @@ class IEEEXplore:
 	def download_a_paper(self, driver, path="../../data/tmp/", filename="default", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		initial_url = driver.current_url
+		
+		m = "downloading paper to " + path + ". title[" + filename + "]"
+		self.log.info(m)
+		print(m)
 
 		self.log.debug("Wait start.")
 		try:
@@ -628,8 +637,8 @@ class IEEEXplore:
 			filename = url[:url.index("?")].split("/")[-1]
 		filename = filename.replace(":", "")
 		self.log.debug("filename:" + filename)
-		#command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" > /dev/null 2>&1"
-		command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" 1> /dev/null"
+		command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" > /dev/null 2>&1"
+		#command = "wget -p \"" + url + "\" -O \"" + path + filename + "\" 1> /dev/null 2>&1"
 		#command = "wget -p \"" + url + "\" -O \"" + path + filename + "\""
 		self.log.debug(command)
 		try:
@@ -682,23 +691,6 @@ class IEEEXplore:
 				return 0
 		self.log.debug("len(link)<"+str(download_num)+"."+__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
 		return 0
-		
-	"""	
-	def get_papers_with_breadth_first_search(self, root_url_of_paper):
-		
-		import math
-		math.breadth_first_search(root_url_of_paper, get_citing_papers() )
-
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.log.debug("root_url_of_paper["+root_url_of_paper+"]")
-		
-		citing_urls, cited_urls = ***
-		
-		for url in citing_urls:
-			self.get_papers_with_breadth_first_search(url)
-
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
 	
 	def convert_to_datetime(self, str):
 		self.log.warning("!!!incomplete method[" + __class__.__name__ + "." + sys._getframe().f_code.co_name + "]!!!")
@@ -853,4 +845,4 @@ class Search_options:
 		#	print(key + "[" +value +"]")
 	def a(self):
 		pass
-	
+
