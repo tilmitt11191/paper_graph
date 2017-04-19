@@ -567,14 +567,8 @@ class IEEEXplore:
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	
-	def download_a_paper(self, driver, path="../../data/tmp/", filename="default", timeout=30):
+	def wait_button_to_pdf_page(self, driver, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		initial_url = driver.current_url
-		
-		m = "downloading paper to " + path + ". title[" + filename + "]"
-		self.log.info(m)
-		print(m)
-
 		self.log.debug("Wait start.")
 		try:
 			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]'))
@@ -587,6 +581,19 @@ class IEEEXplore:
 			print(m)
 			self.log.warning(m)
 		self.log.debug("Wait Finished.")
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		
+	
+	
+	def download_a_paper(self, driver, path="../../data/tmp/", filename="default", timeout=30):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		initial_url = driver.current_url
+		
+		m = "downloading paper to " + path + ". title[" + filename + "]"
+		self.log.info(m)
+		print(m)
+
+		self.wait_button_to_pdf_page(driver, timeout)
 		
 		#button = driver.find_element_by_css_selector('li[class="large doc-actions-item"]')
 		button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
@@ -605,6 +612,16 @@ class IEEEXplore:
 				self.log.warning(m)
 				import time
 				time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+				retries -= 1
+			except ConnectionRefusedError:
+				m = "caught ConnectionRefusedError at click download pdf button. retries[" + str(retries) + "]"
+				print(m)
+				self.log.warning(m)
+				import time
+				time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+				driver.get(initial_url)
+				self.wait_button_to_pdf_page(driver, timeout)
+				button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
 				retries -= 1
 			except NoSuchElementException:
 				m = "caught NoSuchElementException at click download pdf button. retries[" + str(retries) + "]"
