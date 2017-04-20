@@ -1,10 +1,19 @@
-//extends layout
+extends layout
 
 block content
 	head
-		script(src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js")
-		script(src="http://code.jquery.com/jquery-2.0.3.js")
+	script(src="http://code.jquery.com/jquery-2.0.3.js")
+	script(src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js")
 
+	body
+		div#cy
+
+
+
+block additionalScripts
+	//script(src="lib/cytoscape.js")
+	//script(src="javascripts/arbor.js")
+	//script(type='text/javascript', src="../public/javascripts/graphs.js")
 	script.
 		$(function(){
 			loadCSS = function(href) {
@@ -15,18 +24,7 @@ block content
 			var host = window.location.href;
 			loadCSS(host + 'stylesheets/style.css');
 		});
-
-	body
-		div#cy
-		script(src="javascripts/script.js")
-
-
-
-block additionalScripts
-	//script(src="lib/cytoscape.js")
-	//script(src="javascripts/arbor.js")
-	//script(type='text/javascript', src="../public/javascripts/graphs.js")
-
+	script(src="javascripts/script.js")
 
 //-
 	block additionalScripts
