@@ -11,6 +11,7 @@
   "dependencies": {
     "cytoscape": "^3.0.0",
     "express": "^4.15.2",
+    "js-yaml": "^3.8.3",
     "log4js": "^1.1.1",
     "mysql": "github:mysqljs/mysql",
     "node-dev": "^3.1.3",

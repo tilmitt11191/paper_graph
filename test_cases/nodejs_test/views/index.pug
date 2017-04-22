@@ -1,4 +1,4 @@
-extends layout
+//extends layout
 
 block content
 	head
@@ -6,8 +6,10 @@ block content
 	script(src="http://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js")
 
 	body
+		//button#renew(onclick="renew3()")
+		button#renew Renew
 		div#cy
-
+		div#graph
 
 
 block additionalScripts
@@ -24,7 +26,8 @@ block additionalScripts
 			var host = window.location.href;
 			loadCSS(host + 'stylesheets/style.css');
 		});
-	script(src="javascripts/script.js")
+	//script(src="javascripts/script.js")
+	script(src="javascripts/graphs.js")
 
 //-
 	block additionalScripts

@@ -1,0 +1,26 @@
+[2017-04-22 16:24:29.399] [INFO] [default] - logger test
+[2017-04-22 16:47:32.759] [DEBUG] [default] - return logger
+[2017-04-22 16:48:04.915] [DEBUG] [default] - return logger
+[2017-04-22 16:49:05.688] [DEBUG] [default] - return logger
+[2017-04-22 16:50:02.291] [DEBUG] [default] - return logger
+[2017-04-22 16:50:02.305] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 16:54:11.341] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 16:54:11.354] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 16:55:43.609] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 16:55:43.619] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 17:23:54.682] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 17:23:54.689] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 17:30:00.305] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 17:30:00.312] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 17:31:50.602] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 17:31:50.619] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 17:34:17.981] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 17:34:17.988] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 17:34:36.067] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 17:34:36.074] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 17:36:37.977] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 17:36:37.993] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 17:37:58.538] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 17:37:58.570] [DEBUG] [default] - routes_graph.js start
+[2017-04-22 17:40:54.087] [DEBUG] [default] - return logger. logfile[logs/console.log]
+[2017-04-22 17:40:54.105] [DEBUG] [default] - routes_graph.js start
