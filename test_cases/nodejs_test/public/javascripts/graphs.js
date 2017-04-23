@@ -34,9 +34,11 @@ $(function(){
 				{
 					selector: 'node',
 					style: {
-						'background-color': '#fff',
 						'label': 'data(id)',
-						"color" : '#000',
+						'background-color': '#fff',
+						"border-width": 1,
+						"border-style": "solid",
+						"border-color" : '#000',
 						"text-valign" : "center",
 						"text-halign" : "center"
 					}
