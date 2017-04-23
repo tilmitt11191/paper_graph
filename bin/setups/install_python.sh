@@ -23,6 +23,8 @@ pip install SQLAlchemy
 pip install PyMySQL
 pip install wget
 
+pip install matplotlib
+
 cd $PWD
 
 exit 0
