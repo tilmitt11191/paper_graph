@@ -1,6 +1,7 @@
 
 
 var router = require('express').Router();
+var async = require('async');
 var cytoscape = require('cytoscape');
 var mysql = require('mysql');
 var log = require('..//utils/utils').getLogger();
@@ -19,61 +20,108 @@ var connection = mysql.createConnection({
   database : 'paper_graph'
 });
 
+var graph = [];
 router.get('/test', function(req, res, next){
-		log.debug("routes_graphs.js router.post('/test', function(){ start")
-		log.debug("aaa")
-		returnSuccess(res, getGraphFromDB())
-	}
+	log.debug("routes_graphs.js router.post('/test', function(){ start");
+	graph = [];
+	async.waterfall([
+		function(callback){
+			connection.query('SELECT * from papers;', function (err, rows, fields) {
+				if (err) { console.log('err: ' + err); }
+				log.debug("node num: " + rows.length);
+				
+				rows.forEach( function(row) {
+					log.debug("row.id: " + row.id);
+					//node = '{"id": ' + row.id + ', "weight": ' + 1 + '}';
+					//data = '{"data": ' + node  + '}';
+					data = {
+						"data": {
+							"id": row.id,
+							"weight": 0.1,
+						}
+					}
+					//log.debug("graph.push(" + JSON.stringify(data,null,'\t') + ")")
+					//graph.push(JSON.stringify(data,null,'\t'));
+					graph.push(data);
+					//graph.push(JSON.parse(data));
+				});
+				log.debug("graph.length after add nodes: " + graph.length);
+				
+				callback(null);
+			});
+		},
+		function(callback){
+			connection.query('SELECT * from edges;', function (err, rows, fields) {
+				if (err) { console.log('err: ' + err); }
+				log.debug("edge num: " + rows.length);
+				log.debug("graph.length before add edges: " + graph.length);
+				rows.forEach( function(row) {
+					if(row.relevancy > 3){
+						//edge = '{"id": ' + row.id + ', "source": ' + row.start + ', "target": ' + row.end + '}';
+						//data = '{"data":' + edge + '}';
+						data = {
+							"data": {
+								"id": row.id,
+								"source": row.start,
+								"target": row.end
+							}
+						}
+						//graph.push(JSON.stringify(data,null,'\t'));
+						graph.push(data);
+					}
+				});
+				//log.debug("graph.length after add edges: " + graph.length);
+				callback(null);
+			});
+		},
+		function(callback){
+			log.debug("graph.length before return: " + graph.length);
+			graph.forEach( function(el){
+				log.debug("el: " + el);
+			});
+			returnSuccess(res, graph);
+			//returnSuccess(res, sampleGraph);
+		}
+	]);
+});
 
-)
 
-function getGraphFromDB() {
-	log.debug("getGraphFromDB start");
-	var graph = {
-		elements:[{data: { id: 'x' }}]
-	}
-	convertFromMySQLRecordsToCytoscape(graph);
-	//convertNodesFromRecordsToCytoscape(nodes, cy);
-	return graph;
-}
+
 
 function convertFromMySQLRecordsToCytoscape(graph) {
-	log.debug("convertFromMySQLRecordsToCytoscape(graph) start");	
-	log.debug("graph in starting method: " + graph)
-	//connection.query('SELECT * from papers;', function (err, rows, fields, graph) {
-	connection.query('SELECT * from papers;', function (err, results) {});
-	log.debug("results: " + results)
-/*		log.debug("graph in starting of connection: " + graph)
+	log.debug("convertFromMySQLRecordsToCytoscape() start");
+	connection.query('SELECT * from papers;', function (err, rows, fields, graph) {
 		if (err) { console.log('err: ' + err); }
-		log.debug("rows.length: " + rows.length);
-		log.debug("rows[0].id: " + rows[0].id);
-		log.debug("rows[0].title: " + rows[0].title);
-		log.debug("rows[1].id: " + rows[1].id);
-		log.debug("rows[1].title: " + rows[1].title);
-		log.debug("graph before forEach: " + graph)
-		rows.forEach( function(row, graph) {
-			node = '{"id": ' + row.id + '}';
-			data = '{"data":' + node + '}';
-			//graph.elements.push({data: node});
-			graph["elements"] = JSON.parse(data);
+		log.debug("node num: " + rows.length);
+		/*
+		rows.forEach( function(row) {
+			node = {"id": row.id};
+			data = {"data": node};
+			//log.debug("graph.push(" + JSON.stringify(data,null,'\t') + ")")
+			graph.push(data);
 		});
-		log.debug("graph in connection: " + graph)
-	});*/
-	log.debug("graph out of connection: " + graph)
-	connection.query('SELECT * from edges;', function (err, rows, fields, graph) {
-		if (err) { console.log('err: ' + err); }
-		rows.forEach( function(row, graph) {
-			edge = {id: row.id, source: row.start, target: row.end};
-			//graph.elements.push({data: edge});
-		});
+		log.debug("graph.length after add nodes: " + graph.length);
+		*/
 	});
+	
+	connection.query('SELECT * from edges;', function (err, rows, fields) {
+		if (err) { console.log('err: ' + err); }
+		log.debug("edge num: " + rows.length);
+		/*rows.forEach( function(row) {
+			if(row.relevancy > 1){
+				edge = '{"id": ' + row.id + ', "source": ' + row.start + ', "target": ' + row.end + '}';
+				data = '{"data":' + edge + '}';
+				graph.push(data);
+			}
+		});*/
+		//log.debug("graph.length after add edges: " + graph.length);
+	});
+
+	log.debug("graph.length method finished: " + graph.length);
+	return graph;
+	//return sampleGraph;
 }
 
-function convertNodesFromRecordsToCytoscape(nodes) {
-	for(node in nodes){
-		log.debug(node);
-	}
-}
 
 var sampleGraph = {
  elements: [ // list of graph elements to start with

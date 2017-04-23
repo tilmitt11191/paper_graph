@@ -20,49 +20,81 @@ $(function(){
 	}
 
 	function showGraph(graph) {
+		//console.log("showGraph(graph) graph:" + graph);
 		var cy = cytoscape({
 			container: document.getElementById('graph'), // container to render in
- 			elements: graph.elements,
-			style: graph.style,
-			layout: graph.layout
-		})
-	}
-
-/*
-		style: [ // the stylesheet for the graph
-			{
-				selector: 'node',
-				style: {
-					'background-color': '#666',
-					'label': 'data(id)'
-				}
-			},
-
-			{
-				selector: 'edge',
-				style: {
-					'width': 3,
+			//elements: graph,
+			//elements: {node: {data: {id: 1}}},
+			//elements: graph.data[0],
+			//elements: {"data": {"id": 241}},
+			//elements: JSON.stringify(graph,null,'\t'), 
+			//elements: graph.toString(),
+			//elements: JSON.parse(graph), 
+			style: [ // the stylesheet for the graph
+				{
+					selector: 'node',
+					style: {
+						'background-color': '#fff',
+						'label': 'data(id)',
+						"color" : '#000',
+						"text-valign" : "center",
+						"text-halign" : "center"
+					}
+				},
+				{
+					selector: 'edge',
+					style: {
+					'width': 0.5,
 					'line-color': '#ccc',
 					'target-arrow-color': '#ccc',
 					'target-arrow-shape': 'triangle'
+					}
+				},
+				{
+					"selector" : "node:selected",
+					"css" : {
+						"background-color" : "rgb(255,255,0)",
+						"color": "rgb(0,0,0)"
+					}
 				}
-			}
-		],
+			],
+			// initial viewport state:
+			zoom: 1,
+			pan: { x: 0, y: 0 },
+			// rendering options:
+			wheelSensitivity: 0.5,
+	})
+	//cy.add(graph);
+  //cy.add(JSON.stringify(graph,null,'\t'));
+  graph.forEach( function(data) {
+	  console.log("graph.length[" + graph.length + "], cy.add:" + data);
+	  //console.log("data.data:" + data.data);
+	  //cy.add(JSON.stringify(data,null,'\t'));
+	  cy.add( data );
+	  //cy.add(JSON.parse(data));
+	});
+	var layout = cy.layout({
+		//name: "null"
+		//name: "preset"
+		//name: "random"
+		//name: 'grid'
+		//name: "circle"
+		name: 'concentric'
+		//name: 'breadthfirst'
+ 	});
+	layout.run();
+	/*
+	cy.add( {"data": {"id": 11}} );
+	cy.add( {"data": {"id": 22}} );
+	cy.add( {"data": {"id": 10, "source": 11, "target": 22}} );
+	*/
+  console.log("showGraph finished");
+	}
 
-		layout: {
-			name: "preset", 
-			//name: 'grid',
-			//rows: 2
-			//name: 'random',
-			//name: 'concentric',
-			//name: 'breadthfirst',
-			//name: 'cose',
-		}
-*/
 		
 	loadGraph();
 });
-
+/*
 var cy = cytoscape({
   
   container: document.getElementById('cy'), // container to render in
@@ -112,7 +144,7 @@ console.log("container[" + cy.container + "]");
 cy.nodes().forEach(function( ele ){
   console.log( ele.id() );
 });
-
+*/
 var renewal = document.getElementById("renew");
 console.log(renewal);
 
