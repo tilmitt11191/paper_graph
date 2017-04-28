@@ -30,3 +30,4 @@ npm install cytoscape --save --no-bin-links
 npm install mysqljs/mysql --save --no-bin-links
 npm install js-yaml --save --no-bin-links
 npm install synchronize --save --no-bin-links
+npm install async --save --no-bin-links

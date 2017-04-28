@@ -1,11 +1,5 @@
 
 # -*- coding: utf-8 -*-
-"""
-import logging
-class myLogger(logging):
-	def __init__(self):
-		super()
-"""
 
 class Log:
 
@@ -22,8 +16,6 @@ class Log:
 		logger = logging.getLogger()
 		
 		if len(logger.handlers) < 1:
-			#fh = logging.FileHandler(filename="../../var/log/log2")
-			#logger.addHandler(fh)
 			rfh = logging.handlers.RotatingFileHandler(
 				filename=logfile,
 				maxBytes=rotate_log_size, 
@@ -32,8 +24,11 @@ class Log:
 			formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 			rfh.setFormatter(formatter)
 			logger.addHandler(rfh)
-
-		#logging.basicConfig(filename="../../var/log/log2")
+			
+			stream_handler = logging.StreamHandler()
+			stream_handler.setFormatter(formatter)
+			stream_handler.setLevel(Conf.getconf("loglevel_to_stdout", conffile=conffile))
+			logger.addHandler(stream_handler)
 
 		id_ = id(logger)
 		logger.setLevel(eval("logging."+loglevel))

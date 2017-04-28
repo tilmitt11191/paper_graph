@@ -1,11 +1,13 @@
 
 logdir: ../../var/log/
-#logfile: log
-logfile: edgecomputing
+logfile: log
+#logfile: edgecomputing
 node_logfile: node_log
+phantomjs_logfile: phantomjs_log
 loglevel: DEBUG
-rotate_log_size: 268435456 #1024*1024*256B
-#rotate_log_size: 1073741824 #1024*1024*1024B
+loglevel_to_stdout: WARNING
+#rotate_log_size: 268435456 #1024*1024*256B
+rotate_log_size: 1073741824 #1024*1024*1024B
 #rotate_log_size: 1048576 #1024*1024B
 #rotate_log_size: 1000 #1024*1024B
 rotate_log_lines: 100000

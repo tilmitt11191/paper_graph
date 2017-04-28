@@ -85,18 +85,7 @@ class IEEEXplore_test(unittest.TestCase):
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-		
-	"""
-	def test_download_papers_by_keywords(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		driver = self.xplore.create_driver("http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic")
-		self.xplore.download_papers_by_keywords(driver, "../../tmp/output", 1)
-		driver.close()
-		#http://ieeexplore.ieee.org/document/7874313/
-		#http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
-	
+			
 	"""
 	def test_get_urls_of_papers(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -106,7 +95,7 @@ class IEEEXplore_test(unittest.TestCase):
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	
+	"""
 	def test_get_attributes_and_download_pdf_of_various(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		urls = []
@@ -116,13 +105,12 @@ class IEEEXplore_test(unittest.TestCase):
 		for url in urls:
 			driver = self.xplore.create_driver(url)
 			self.search.node = url
+			self.search.limit = 1
 			self.xplore.get_attributes_and_download_pdf(self.search, driver)
 		
-			driver.close()
-			
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	
-	
+	"""
+	"""
 	def test_get_attributes_and_download_pdf_which_cited_by_25(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7130662/" ##ElementNotVisibleException
@@ -157,7 +145,7 @@ class IEEEXplore_test(unittest.TestCase):
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	
-	
+
 	def test_get_attributes_and_download_pdf_which_cited_by_many(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##New directions in cryptography
@@ -170,7 +158,7 @@ class IEEEXplore_test(unittest.TestCase):
 		
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	
+	"""	
 	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -182,6 +170,31 @@ class IEEEXplore_test(unittest.TestCase):
 		driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+
+	def get_date_of_publications(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		keywords="\"edge computing\""
+		num_of_papers = 1 #"all"
+		timeout = 60
+		from IEEEXplore import Search_options as opt
+		opts = opt()
+		opts.PerPage = 100
+		driver = self.xplore.create_driver()
+		self.xplore.search_by_keywords(driver, keywords, search_options=opts, timeout=timeout)
+		self.xplore.save_current_page(driver, "./samples/after_search_by_keywords.png")
+		self.xplore.save_current_page(driver, "./samples/after_search_by_keywords.html")
+		urls = self.xplore.get_urls_of_papers_in_keywords_page(driver, opts.PerPage, num_of_papers=num_of_papers, timeout=timeout)
+		for url in urls:
+			print(url)
+
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+	def test_convert_date_of_publication_to_datetime(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.get_date_of_publications()
+		#str: Date of Conference: 15-17 Dec. 2016
+		
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 	"""
 	def test_convert_path_to_url(self):
@@ -247,13 +260,6 @@ class IEEEXplore_test(unittest.TestCase):
 		
 		#driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-	"""
-	"""
-	def test_mod(self):
-		for times in range(11):
-			print("times[" + str(times) + "]")
-			if times % 5 == 0:
-				print("mod == 0")
 	"""
 if __name__ == '__main__':
 	unittest.main()
