@@ -1,7 +1,9 @@
 
 # -*- coding: utf-8 -*-
+
 import sys, os
 import time
+import re
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
@@ -72,7 +74,7 @@ class IEEEXplore:
 		
 		if url == "":
 			url = self.conf.getconf("IEEE_top_page")
-
+		"""
 		import logging, logging.handlers
 		selenium_logger = logging.getLogger('selenium.webdriver.remote.remote_connection')
 		selenium_logger.setLevel(logging.ERROR)
@@ -99,6 +101,11 @@ class IEEEXplore:
 				service_log_path=self.conf.getconf("logdir") + self.conf.getconf("phantomjs_logfile"), \
 				service_args=["--webdriver-loglevel=ERROR"]\
 				)
+		"""
+		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
+		from phantomjs_ import PhantomJS_
+		driver = PhantomJS_()
+		
 		self.log.debug("driver.get(" + url + ")")
 		driver.get(url)
 		if url == self.conf.getconf("IEEE_top_page"):
@@ -121,11 +128,17 @@ class IEEEXplore:
 
 		self.log.debug("Wait start.")
 		try:
-			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//input[@type="checkbox" and @class="search-results-group"]'))
+			tag = '//input[@type="checkbox" and @data-group="search-results-group" and @ng-checked="vm.allSelected()"]'
+			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath(tag))
 		except TimeoutException:
 			self.log.warning("caught TimeoutException at load the keywords results page.")
+			self.log.warning("at " + sys._getframe().f_code.co_name)
 			self.log.warning("url[" + driver.current_url + "]")
-			self.log.warning("tag[find_element_by_xpath(//input[@type=checkbox and @class=search-results-group])]")
+			self.log.warning("tag[find_element_by_xpath(" + tag + ")")
+			filename = "./samples/TimeoutExceptionatLoadtheKeywordsResultsPage." + re.sub(r"/|:|\?", "", driver.current_url)
+			self.save_current_page(driver, filename + ".png")
+			self.save_current_page(driver, filename + ".html")
+			
 			
 		except NoSuchElementException:
 			self.log.warning("caught NoSuchElementException at load the keywords results page.")
@@ -202,13 +215,13 @@ class IEEEXplore:
 		#self.save_current_page(driver, "./samples/before_click_next.png")
 		#self.save_current_page(driver, "./samples/before_click_next.html")
 
-		next_button = driver.find_element_by_xpath('//nav[@class="c-Pagination ng-isolate-scope ng-valid"]/ul/li/a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding" and @tabindex="0"]')
+		next_button = driver.find_element_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
 		visited_buttons = [next_button.text]
 		while True:
 			self.log.debug("get paper urls in current page")
 			for i in range(PerPage):
 				paper_elements = driver.find_elements_by_xpath('//div[@class="js-displayer-content u-mt-1 stats-SearchResults_DocResult_ViewMore ng-scope hide"]')
-				self.log.debug("len(paper_elements)[" + str(len(paper_elements)) + "]")
+				self.log.debug("i["+str(i)+"] len(paper_elements)[" + str(len(paper_elements)) + "]")
 				driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 				if len(paper_elements) == PerPage:
 					break
@@ -222,8 +235,8 @@ class IEEEXplore:
 					self.log.debug("len(urls)[" + str(len(urls)) + "] > num_of_papers[" + str(num_of_papers) + "]. return urls.")
 					return urls
 
-			self.log.debug("search button to next page")
-			buttons = driver.find_elements_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding" and @tabindex="0"]')
+			self.log.debug("search buttons to next page")
+			buttons = driver.find_elements_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
 			i = 0
 			for button in buttons:
 				self.log.debug("i[" + str(i) + "], button.text[" + button.text + "], visited_buttons:" + str(visited_buttons))
@@ -688,7 +701,6 @@ class IEEEXplore:
 			self.log.warning("strings[" + strings + "]")
 			self.log.warning("len(new_array)(" + str(len(new_array)) + ") > 5. return authors, title, \"\", \"\"")
 			return authors, title, "", ""
-		import re
 		#self.log.debug("re.match(\"\d*\", " + year + ")")
 		#year = re.match("*\d*",year).group() + "-01-01 00:00:00"
 		#year += "-01-01 00:00:00"
@@ -716,7 +728,10 @@ class IEEEXplore:
 		
 		
 	def save_current_page(self, driver, filename):
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.warning(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.warning("this method will be removed.")
+		self.log.warning("please use driver.save_current_page(filename)")
+		
 		path, suffix=os.path.splitext(filename)
 		self.log.debug("path["+path+"], suffix["+suffix+"]")
 		if suffix==".html":

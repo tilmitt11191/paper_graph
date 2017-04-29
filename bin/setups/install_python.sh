@@ -2,6 +2,13 @@
 PWD=`sudo pwd`
 cd `dirname $0`
 
+#git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+#pyenv install anaconda3-4.3.0
+#pyenv rehash
+#pyenv global anaconda3-4.3.0
+#conda update conda
+
+
 echo "conda create -n paper_graph python=3.5 anaconda"
 #conda create -n paper_graph python=3.5 anaconda
 echo "source ~/.pyenv/versions/anaconda3-4.3.0/envs/paper_graph/bin/activate paper_graph"
