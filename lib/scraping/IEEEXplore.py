@@ -578,6 +578,9 @@ class IEEEXplore:
 			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//frameset[@rows="65,35%"]/frame'))
 		except TimeoutException:
 			self.log.warning("caught TimeoutException at load the iEEE pdf page.")
+			self.log.warning("skip to download pdf. reuturn \"\"")
+			driver.get(initial_url)
+			return ""
 		except NoSuchElementException:
 			self.log.warning("caught NoSuchElementException at load the iEEE pdf page.")
 			self.log.warning("skip to download pdf. reuturn \"\"")
