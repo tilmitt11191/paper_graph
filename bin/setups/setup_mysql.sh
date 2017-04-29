@@ -27,10 +27,12 @@ keywords text, \
 citings tinytext, \
 citeds tinytext, \
 conference tinytext, \
-published DATETIME, \
+published DATE, \
 url tinytext, \
 timestamp DATETIME, \
-path tinytext);\
+path tinytext, \
+label tinytext, \
+color tinytext);\
 alter table papers default character set "utf8";\
 flush privileges;"
 

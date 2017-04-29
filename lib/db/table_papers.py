@@ -4,7 +4,7 @@
 import sys,os
 
 from sqlalchemy import create_engine, Column
-from sqlalchemy.dialects.mysql import INTEGER, TEXT, TINYTEXT, DATETIME
+from sqlalchemy.dialects.mysql import INTEGER, TEXT, TINYTEXT, DATETIME, DATE
 from sqlalchemy.dialects.mysql import BIGINT
 from sqlalchemy.ext.declarative import declarative_base
 
@@ -19,13 +19,15 @@ class Table_papers(Base):
 	citings = Column("citings", TINYTEXT)
 	citeds = Column("citeds", TINYTEXT)
 	conference = Column("conference", TINYTEXT)
-	published = Column("published", DATETIME)
+	published = Column("published", DATE)
 	url = Column("url", TINYTEXT)
 	timestamp = Column("timestamp", DATETIME)
 	path = Column("path", TINYTEXT)
+	label =  Column("label", TINYTEXT)
+	color =  Column("color", TINYTEXT)
 	
 
-	def __init__(self, id="", title="", authors="", keywords="", citings="", citeds="", conference = "", published = "", url = "", timestamp="", path=""):
+	def __init__(self, id="", title="", authors="", keywords="", citings="", citeds="", conference = "", published = "", url = "", timestamp="", path="", label="", color=""):
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../lib/utils")
 		from log import Log as l
 		self.log = l.getLogger()
@@ -50,6 +52,8 @@ class Table_papers(Base):
 		else:
 			self.timestamp = timestamp
 		self.path = path
+		self.label = label
+		self.color = color
 
 	def __repr__(self):
 		return 'Table_papers'
@@ -85,7 +89,7 @@ class Table_papers(Base):
 		for record in records:
 			merge_id_list.append(record.id)
 			
-		vars = ["authors", "keywords", "citings", "citeds", "conference", "published", "url", "path"]
+		vars = ["authors", "keywords", "citings", "citeds", "conference", "published", "url", "path", "label", "color"]
 		for var in vars:
 			for record in records:
 				self.log.debug("record.id[" + str(record.id) + "]")
@@ -214,4 +218,6 @@ class Table_papers(Base):
 			"url: " + self.url + ", " + 
 			"timestamp: " + str(self.timestamp) + ", " +
 			"path: " + self.path + ", " + 
+			"label: " + self.label + ", " + 
+			"color: " + self.color + ", " + 
 		"}")

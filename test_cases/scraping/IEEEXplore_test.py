@@ -85,32 +85,26 @@ class IEEEXplore_test(unittest.TestCase):
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-			
-
-	def test_get_urls_of_papers(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		driver = self.xplore.create_driver("http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning%20traffic")
-		urls = self.xplore.get_urls_of_papers(driver, 1)
-		print(str(urls))
-		driver.close()
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
-
+	"""
 	def test_get_attributes_and_download_pdf_of_various(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		urls = []
-		urls.append("http://ieeexplore.ieee.org/document/6517049") ##publish type error
-		urls.append("http://ieeexplore.ieee.org/document/7881332/") ##NoSuchWindowException
-		urls.append("http://ieeexplore.ieee.org/document/7312885/") ##Too long authors
+		#urls.append("http://ieeexplore.ieee.org/document/6517049") ##publish type error
+		#urls.append("http://ieeexplore.ieee.org/document/7881332/") ##NoSuchWindowException
+		#urls.append("http://ieeexplore.ieee.org/document/7312885/") ##Too long authors
+		urls.append("http://ieeexplore.ieee.org/document/7879258/") ##get paper page unfinised
 		for url in urls:
-			driver = self.xplore.create_driver(url)
+			#driver = self.xplore.create_driver(url)
+			sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
+			from phantomjs_ import PhantomJS_
+			driver = PhantomJS_()
 			self.search.node = url
 			self.search.limit = 1
 			self.xplore.get_attributes_and_download_pdf(self.search, driver)
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
-
+	"""
+	"""
 	def test_get_attributes_and_download_pdf_which_cited_by_25(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7130662/" ##ElementNotVisibleException
@@ -160,6 +154,23 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 	"""
+	"""
+	def test_get_date_of_publication(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		urls = []
+		urls.append("http://ieeexplore.ieee.org/document/7914660/") ##Date of Publication: 28 April 2017
+		for url in urls:
+			#driver = self.xplore.create_driver(url)
+			sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
+			from phantomjs_ import PhantomJS_
+			driver = PhantomJS_()
+			driver.get(url, tag_to_wait="", by="xpath", timeout=30)
+			print(self.xplore.get_date_of_publication(driver))
+		
+		
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7849067/"
@@ -172,41 +183,35 @@ class IEEEXplore_test(unittest.TestCase):
 	"""
 	
 	"""
-	def get_date_of_publications(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		keywords="\"edge computing\""
-		num_of_papers = "all"
-		timeout = 30
-		from IEEEXplore import Search_options as opt
-		opts = opt()
-		opts.PerPage = 100
+	def test_get_urls(self):
+		import codecs
+		with codecs.open('./samples/urls.txt', 'r', 'utf-8') as f:
+			urls = f.read().strip().split("\n")
 		driver = self.xplore.create_driver()
-		self.xplore.search_by_keywords(driver, keywords, search_options=opts, timeout=timeout)
-		urls = self.xplore.get_urls_of_papers_in_keywords_page(driver, opts.PerPage, num_of_papers=num_of_papers, timeout=timeout)
-		dates = []
 		for url in urls:
+			self.log.debug("driver.get( "+url+")")
 			driver.get(url)
-			self.xplore.move_to_paper_initial_page(driver, url, timeout=timeout)
-			dates.append(self.xplore.get_date_of_publication(driver))
-		with codecs.open('./samples/dates.txt', 'w', 'utf-8') as f:
-			for date in dates:
-				print(date)
-				f.write(date)
-		
-		return dates
-			
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""	
 
 	def test_convert_date_of_publication_to_datetime(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.get_date_of_publications()
-		for date in open('./samples/dates.txt', 'r'):
-			print(date)
-			self.xplore.convert_date_of_publication_to_datetime(date)
-			
+		#self.get_date_of_publications()
+		dates = open('./samples/dates.txt', 'r')
+		"""
+		dates = ["Date of Publication: 06 January 2016", \
+					"Date of Conference: 14-16 Nov. 2006", \
+					"Date of Conference: 27 June-2 July 2016",\
+					"Date of Publication: N/A 2016",\
+					"Date of Conference: 9-11 Jan. 2017",\
+					"Date of Conference: 4-8 Sept. 2016"]
+		"""
+		for date in dates:
+			print(date.strip())
+			print(str(self.xplore.convert_date_of_publication_to_datetime(date)))
+		#dates.close()
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+	
 
 	"""
 	def test_convert_path_to_url(self):
@@ -273,6 +278,45 @@ class IEEEXplore_test(unittest.TestCase):
 		#driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 	"""
+	
+
+
+	def get_date_of_publications(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		keywords="\"edge computing\""
+		num_of_papers = "all"
+		timeout = 10
+		from IEEEXplore import Search_options as opt
+		opts = opt()
+		opts.PerPage = 100
+		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
+		from phantomjs_ import PhantomJS_
+		driver = PhantomJS_(desired_capabilities={'phantomjs.page.settings.resourceTimeout': timeout})
+		driver.set_page_load_timeout(timeout)
+		import codecs
+		#self.xplore.search_by_keywords(driver, keywords, search_options=opts, timeout=timeout)
+		#urls = self.xplore.get_urls_of_papers_in_keywords_page(driver, opts.PerPage, num_of_papers=num_of_papers, timeout=timeout)
+		#with codecs.open('./samples/urls.txt', 'w', 'utf-8') as f:
+		#	for url in urls:
+		#		f.write(url + "\n")
+		with codecs.open('./samples/urls.txt', 'r', 'utf-8') as f:
+			urls = f.read().strip().split("\n")
+			
+		dates = []
+		for url in urls:
+			self.log.debug("driver.get( "+url+")")
+			driver.get(url, by="xpath", tag_to_wait='//div[@ng-repeat="article in vm.contextData.similar"]', timeout=timeout)
+			dates.append(self.xplore.get_date_of_publication(driver))
+		import codecs
+		with codecs.open('./samples/dates.txt', 'w', 'utf-8') as f:
+			for date in dates:
+				print(date)
+				f.write(str(date) +"\n")
+		
+		return dates
+			
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
 if __name__ == '__main__':
 	unittest.main()
 

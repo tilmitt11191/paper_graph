@@ -72,42 +72,17 @@ class IEEEXplore:
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.debug("url[" + url + "]")
 		
-		if url == "":
+		if url == "" or url == self.conf.getconf("IEEE_top_page"):
 			url = self.conf.getconf("IEEE_top_page")
-		"""
-		import logging, logging.handlers
-		selenium_logger = logging.getLogger('selenium.webdriver.remote.remote_connection')
-		selenium_logger.setLevel(logging.ERROR)
-		if len(selenium_logger.handlers) < 1:
-			rfh = logging.handlers.RotatingFileHandler(
-				filename=self.conf.getconf("logdir")+self.conf.getconf("logfile"),
-				maxBytes=self.conf.getconf("rotate_log_size"), 
-				backupCount=self.conf.getconf("backup_log_count")
-			)
-			formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-			rfh.setFormatter(formatter)
-			selenium_logger.addHandler(rfh)
-			
-			stream_handler = logging.StreamHandler()
-			stream_handler.setFormatter(formatter)
-			stream_handler.setLevel(self.conf.getconf("loglevel_to_stdout"))
-			selenium_logger.addHandler(stream_handler)
 
-		from selenium import webdriver
-		phantomjs_path = self.conf.getconf("phantomJS_pass")
-		driver = webdriver.PhantomJS(\
-				executable_path=phantomjs_path, \
-				#service_log_path=self.conf.getconf("logdir") + self.conf.getconf("logfile"), \
-				service_log_path=self.conf.getconf("logdir") + self.conf.getconf("phantomjs_logfile"), \
-				service_args=["--webdriver-loglevel=ERROR"]\
-				)
-		"""
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
 		from phantomjs_ import PhantomJS_
-		driver = PhantomJS_()
+		driver = PhantomJS_(desired_capabilities={'phantomjs.page.settings.resourceTimeout': timeout})
 		
 		self.log.debug("driver.get(" + url + ")")
-		driver.get(url)
+		driver.get(url, tag_to_wait='//li[@class="Media-articles-item"]', by="xpath", timeout=timeout)
+		self.log.debug("driver.get finished")
+		"""
 		if url == self.conf.getconf("IEEE_top_page"):
 			self.log.debug("Wait start.")
 			try:
@@ -118,7 +93,7 @@ class IEEEXplore:
 				self.log.warning("caught NoSuchElementException at load the iEEE top page.")
 
 			self.log.debug("Wait Finished.")
-
+		"""
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return driver")
 		return driver
 
@@ -146,11 +121,11 @@ class IEEEXplore:
 		self.log.debug("Wait Finished.")
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+		return 0
 
 	def search_by_keywords(self, driver, keywords, search_options="default", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		
+		driver.wait_appearance_of_tag(by="name", tag='queryText', timeout=timeout)
 		try:
 			driver.find_element_by_name('queryText').send_keys(keywords)
 			driver.find_element_by_class_name('Search-submit').click()
@@ -212,8 +187,6 @@ class IEEEXplore:
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 		
 		urls = []
-		#self.save_current_page(driver, "./samples/before_click_next.png")
-		#self.save_current_page(driver, "./samples/before_click_next.html")
 
 		next_button = driver.find_element_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
 		visited_buttons = [next_button.text]
@@ -249,8 +222,6 @@ class IEEEXplore:
 				self.log.debug("i = len(buttons). already visited all buttons. break")
 				break
 
-			#self.save_current_page(driver, "./samples/after_click_"  + str(next_button.text) + "_footer_of_keyword.png")
-			#self.save_current_page(driver, "./samples/after_click_"  + str(next_button.text) + "_footer_of_keyword.html")
 			visited_buttons.append(next_button.text)
 			self.log.debug("move to next page[" + next_button.text + "]")
 			next_button.click()
@@ -263,7 +234,7 @@ class IEEEXplore:
 	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title"):
 		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		#driver = self.create_driver()
+
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 		search.times += 1
 
@@ -342,7 +313,7 @@ class IEEEXplore:
 	def get_authors(self, driver):
 		authors_str = ""
 		elements = driver.find_elements_by_xpath('//span[@ng-bind-html="::author.name"]')
-		#print(str(len(elements))) #5
+
 		for el in elements:
 			authors_str += ","+el.text
 		return authors_str[1:]
@@ -515,13 +486,19 @@ class IEEEXplore:
 		
 	
 	def get_date_of_publication(self, driver):
-			#Date of Publication: 06 January 200 or Date of Conference 14-16 Nov. 2006
+		#Date of Publication: 06 January 200 or Date of Conference 14-16 Nov. 2006
 		try:
-			date = driver.find_element_by_xpath('//div[@ng-if="::vm.details.isConference == true"]').text
+			date = driver.find_element_by_xpath('//div[@ng-if="::vm.details.isJournal == true"]').text
 			return self.convert_date_of_publication_to_datetime(date)
 		except NoSuchElementException:
-			self.log.debug("catch NoSuchElementException. date = None") ##todo get from paper??
-			return None
+			try:
+				date = driver.find_element_by_xpath('//div[@ng-if="::vm.details.isConference == true"]').text
+				return self.convert_date_of_publication_to_datetime(date)
+			except NoSuchElementException:
+				self.log.debug("caught NoSuchElementException. date = None") ##todo get from paper??
+				driver.save_current_page("./samples/caughtNoSuchElementExceptionatdate_of_publication.png")
+				driver.save_current_page("./samples/caughtNoSuchElementExceptionatdate_of_publication.html")
+				return None
 	
 	
 	def move_to_paper_initial_page(self, driver, initial_url, timeout=30):
@@ -630,14 +607,81 @@ class IEEEXplore:
 		return path + filename
 		
 			
-	def convert_date_of_publication_to_datetime(self, str):
-		self.log.warning("!!!incomplete method[" + __class__.__name__ + "." + sys._getframe().f_code.co_name + "]!!!")
+	def convert_date_of_publication_to_datetime(self, string):
+		##from
+		##Date of Publication: 06 January 2016
+		##to
+		##2016-01-06
+		##from
+		##Date of Conference: 14-16 Nov. 2006
+		##to
+		##2006-11-14
+		##from
+		##Date of Conference: 27 June-2 July 2016
+		##to
+		##2016-06-27
+		##from
+		##Date of Publication: N/A 2016
+		##to
+		##2016-01-01
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.log.debug("str: " + str)
-		import time
-		timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+		self.log.debug("string: " + string)
+		date = ""
+		month = ""
+		year = ""
+		string = string.replace("\n", "")
+		tmp = string.split(":")
+		if len(tmp) != 2:
+			self.log.warning("len(tmp) != 2")
+			self.log.warning("string:" + string)
+			return None
+		date_month_year = tmp[1].lstrip()
+		self.log.debug("date_month_year[" + date_month_year + "]")
+		tmp2 = date_month_year.split("-")
+		if len(tmp2) >= 3:
+			self.log.warning("len(tmp2) >= 3")
+			self.log.warning("string:" + string)
+			return None
+		elif len(tmp2) == 2:
+			if re.match("^\d{1,2}$", tmp2[0]):
+				date = tmp2[0]
+			elif re.match("^\d{1,2}\s[a-zA-Z]", tmp2[0]):
+				tmp3 = tmp2[0].split(" ")
+				date = tmp3[0]
+				month = tmp3[1].replace(".", "")
+		tmp4 = date_month_year.split(" ")
+		if len(tmp4) < 3:
+			self.log.debug("only year")
+			self.log.debug("string:" + string)
+			date = "1"
+			month = "Jan"
+		if date == "":
+			date = tmp4[-3]
+		if month == "":
+			month = tmp4[-2].replace(".", "")
+		if year == "":
+			year = tmp4[-1]
+		
+		import datetime
+		try:
+			month = str(datetime.datetime.strptime(month, '%B').month)
+		except ValueError:
+			try:
+				month = str(datetime.datetime.strptime(month, '%b').month)
+			except ValueError:
+				if month == "Sept":
+					month = "9"
+				else:
+					self.log.warning("ValueError")
+					self.log.warning("string:" + string)
+					self.log.warning("month = 0")
+					month = "0"
+			
+		self.log.debug("year[" + year + "], month[" + month + "], date[" + date + "]")
+		
+		timestamp = datetime.date(int(year), int(month), int(date))
 		return timestamp
-	
+		
 	
 	def convert_paper_url_to_cited_url(self, url):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

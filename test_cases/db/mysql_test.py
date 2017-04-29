@@ -43,7 +43,7 @@ class MySQL_test(unittest.TestCase):
 		f.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return titles, authors
-		
+	"""	
 
 	def test_insert_a_title(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -66,7 +66,7 @@ class MySQL_test(unittest.TestCase):
 		self.assertEqual(initial_num + 1, self.db.session.query(table_papers.Table_papers).count())
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 	def test_insert_a_title2(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		title = "Behind the Game: Exploring the Twitch Streaming Platform"
