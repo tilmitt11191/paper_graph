@@ -355,7 +355,6 @@ class IEEEXplore:
 			citing_paper.url = self.conf.getconf("IEEE_website") + el.find_element_by_css_selector('a').get_attribute("ng-href")
 			citing_paper.title = el.find_element_by_css_selector('a').get_attribute("title")
 			citing_paper.authors = el.find_element_by_css_selector('div[class="ng-binding"]').text.replace(";", ",")
-			import time
 			timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 			self.log.debug("citing_url[" + citing_paper.url + "]")
 			self.log.debug("citing_title[" + citing_paper.title + "]")
@@ -419,7 +418,6 @@ class IEEEXplore:
 			cited_url = self.conf.getconf("IEEE_website") + el.find_element_by_css_selector('div[class="ref-links-container stats-citations-links-container"] > span > a').get_attribute("ng-href")
 			cited_urls.append(cited_url)
 			cited_authors, cited_title, cited_conference, cited_date = self.parse_citing(el.find_element_by_css_selector('div[ng-bind-html="::item.displayText"]').text)
-			import time
 			timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 			cited_paper = table_papers.Table_papers(title=cited_title, authors=cited_authors, conference=cited_conference, published=cited_date, url=cited_url, timestamp=timestamp)
 			self.log.debug(cited_paper.get_vars())
@@ -547,19 +545,11 @@ class IEEEXplore:
 				button.click()
 				self.log.debug("clicked button and no exception. break")
 				break
-			except RemoteDisconnected:
+			except (RemoteDisconnected, ConnectionRefusedError):
 				self.log.warning("caught RemoteDisconnected at click download pdf button. retries[" + str(retries) + "]")
-				import time
+				self.log.warning(traceback.format_exc())
 				time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
-				driver.get(initial_url)
-				self.wait_button_to_pdf_page(driver, timeout)
-				button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
-				retries -= 1
-			except ConnectionRefusedError:
-				self.log.warning("caught ConnectionRefusedError at click download pdf button. retries[" + str(retries) + "]")
-				import time
-				time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
-				driver.get(initial_url)
+				driver.reconnect(initial_url)
 				self.wait_button_to_pdf_page(driver, timeout)
 				button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
 				retries -= 1

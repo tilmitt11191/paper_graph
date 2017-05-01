@@ -111,10 +111,18 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.log.exception("%s", e)
 
 		self.log.debug("wait_appearance_of_tag Finished.")
-
-	
-
 		
+		
+	def reconnect(self, url=""):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		#session_id = self.session_id
+		#webdriver.Remote(command_executor=url,desired_capabilities={})
+		#self.session_id = session_id
+		self.__init__(executable_path=self.executable_path,\
+					port=self.port, desired_capabilities=self.PHANTOMJS,\
+					service_args=self.service_args, service_log_path=self.service_log_path)
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
 	def save_current_page(self, filename):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		path, suffix=os.path.splitext(filename)
