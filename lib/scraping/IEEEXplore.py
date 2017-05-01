@@ -10,6 +10,7 @@ from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotVisibleException
 
 from http.client import RemoteDisconnected
+from urllib.requests import URLError
 
 
 class IEEEXplore:
@@ -545,9 +546,9 @@ class IEEEXplore:
 				button.click()
 				self.log.debug("clicked button and no exception. break")
 				break
-			except (RemoteDisconnected, ConnectionRefusedError):
-				self.log.warning("caught RemoteDisconnected at click download pdf button. retries[" + str(retries) + "]")
-				self.log.warning(traceback.format_exc())
+			except (RemoteDisconnected, ConnectionRefusedError, URLError) as e:
+				self.log.warning("caught " + e.__class__.__name__ + " at click download pdf button. retries[" + str(retries) + "]")
+				self.log.warning(e, exc_info=True)
 				time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
 				driver.reconnect(initial_url)
 				self.wait_button_to_pdf_page(driver, timeout)
