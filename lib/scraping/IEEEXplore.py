@@ -10,7 +10,7 @@ from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotVisibleException
 
 from http.client import RemoteDisconnected
-from urllib.requests import URLError
+from urllib.request import URLError
 
 
 class IEEEXplore:

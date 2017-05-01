@@ -1,7 +1,14 @@
 
 # -*- coding: utf-8 -*-
+#python ../../lib/scraping/get_papers_at_frist_keywords_next_citings.py "\"edge computing\""
 
-keywords = "\"edge computing\""
+import sys
+args = sys.argv
+if len(args) < 2:
+	print("no keywords")
+keywords = args[1]
+print("keywords[" + keywords + "]")
+
 num_of_papers = 1000
 path="../../data/" + keywords.replace(" ", "").replace("\"", "") + "/"
 filename = "title"
