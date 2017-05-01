@@ -1,17 +1,18 @@
 
-
 var router = require('express').Router();
 var async = require('async');
 var cytoscape = require('cytoscape');
 var mysql = require('mysql');
-var log = require('..//utils/utils').getLogger();
+var log = require('../utils/utils').getLogger();
 
-function returnSuccess(res, data) {
-  res.send({
-    status: "success",
-    data: data
-  });
-}
+//var markovCluster = require('../lib/cytoscape.js-markov-cluster/cytoscape-markov-cluster.js');
+//markovCluster( cytoscape ); // register extension
+var regCose = require('cytoscape-cose-bilkent');
+regCose( cytoscape ); // register extension
+
+var start_node = 1;
+var end_node = 15050;
+var relevancy = 3
 
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -20,73 +21,185 @@ var connection = mysql.createConnection({
   database : 'paper_graph'
 });
 
-var graph = [];
+
+function returnSuccess(res, data) {
+  res.send({
+    status: "success",
+    data: data
+  });
+}
+
+
+var coseDefaultOptions = {
+	name: 'cose-bilkent',
+  // Called on `layoutready`
+  ready: function () {
+  },
+  // Called on `layoutstop`
+  stop: function () {
+  },
+  // number of ticks per frame; higher is faster but more jerky
+  refresh: 30, 
+  // Whether to fit the network view after when done
+  fit: true,
+  // Padding on fit
+  padding: 10,
+  // Padding for compounds
+  paddingCompound: 15,
+  // Whether to enable incremental mode
+  randomize: true,
+  // Node repulsion (non overlapping) multiplier
+  nodeRepulsion: 4500,
+  // Ideal edge (non nested) length
+  idealEdgeLength: 50,
+  // Divisor to compute edge forces
+  edgeElasticity: 0.45,
+  // Nesting factor (multiplier) to compute ideal edge length for nested edges
+  nestingFactor: 0.1,
+  // Gravity force (constant)
+  gravity: 0.25,
+  // Maximum number of iterations to perform
+  numIter: 2500,
+  // For enabling tiling
+  tile: true,
+  // Type of layout animation. The option set is {'during', 'end', false}
+  animate: 'end',
+  // Represents the amount of the vertical space to put between the zero degree members during the tiling operation(can also be a function)
+  tilingPaddingVertical: 10,
+  // Represents the amount of the horizontal space to put between the zero degree members during the tiling operation(can also be a function)
+  tilingPaddingHorizontal: 10,
+  // Gravity range (constant) for compounds
+  gravityRangeCompound: 1.5,
+  // Gravity force (constant) for compounds
+  gravityCompound: 1.0,
+  // Gravity range (constant)
+  gravityRange: 3.8
+};
+
 router.get('/test', function(req, res, next){
 	log.debug("routes_graphs.js router.post('/test', function(){ start");
-	graph = [];
+	var graph = [];
 	async.waterfall([
 		function(callback){
-			connection.query('SELECT * from papers;', function (err, rows, fields) {
-				if (err) { console.log('err: ' + err); }
-				log.debug("node num: " + rows.length);
-				
-				rows.forEach( function(row) {
-					log.debug("row.id: " + row.id);
-					//node = '{"id": ' + row.id + ', "weight": ' + 1 + '}';
-					//data = '{"data": ' + node  + '}';
-					data = {
-						"data": {
-							"id": row.id,
-							"weight": 0.1,
-						}
-					}
-					//log.debug("graph.push(" + JSON.stringify(data,null,'\t') + ")")
-					//graph.push(JSON.stringify(data,null,'\t'));
-					graph.push(data);
-					//graph.push(JSON.parse(data));
-				});
-				log.debug("graph.length after add nodes: " + graph.length);
-				
-				callback(null);
-			});
+			getPapersFromMysql(callback, graph);
 		},
 		function(callback){
-			connection.query('SELECT * from edges;', function (err, rows, fields) {
-				if (err) { console.log('err: ' + err); }
-				log.debug("edge num: " + rows.length);
-				log.debug("graph.length before add edges: " + graph.length);
-				rows.forEach( function(row) {
-					if(row.relevancy > 3){
-						//edge = '{"id": ' + row.id + ', "source": ' + row.start + ', "target": ' + row.end + '}';
-						//data = '{"data":' + edge + '}';
-						data = {
-							"data": {
-								"id": row.id,
-								"source": row.start,
-								"target": row.end
-							}
-						}
-						//graph.push(JSON.stringify(data,null,'\t'));
-						graph.push(data);
-					}
-				});
-				//log.debug("graph.length after add edges: " + graph.length);
-				callback(null);
-			});
+			getEdgesFromMysql(callback, graph);
 		},
+		/*function(callback){
+			createGraph(callback, graph);
+		},*/
+/*		function(callback){
+			var clusters = graph.elements().markovCluster({
+				expandFactor: 2,        // affects time of computation and cluster granularity to some extent: M * M
+				inflateFactor: 2,       // affects cluster granularity (the greater the value, the more clusters): M(i,j) / E(j)
+				multFactor: 1,          // optional self loops for each node. Use a neutral value to improve cluster computations.
+				maxIterations: 10,      // maximum number of iterations of the MCL algorithm in a single run
+				attributes: [           // attributes/features used to group nodes, ie. similarity values between nodes
+    			function(edge) {
+						return edge.data('weight');
+					}
+					// ... and so on
+				]
+			});
+			callback(null);
+		},*/
 		function(callback){
 			log.debug("graph.length before return: " + graph.length);
-			graph.forEach( function(el){
-				log.debug("el: " + el);
-			});
+			//graph.forEach( function(el){
+				//log.debug("el: " + el);
+			//});
 			returnSuccess(res, graph);
 			//returnSuccess(res, sampleGraph);
 		}
 	]);
 });
 
+function getPapersFromMysql(callback, graph) {
+	connection.query('SELECT * from papers;', function (err, rows, fields) {
+		if (err) { console.log('err: ' + err); }
+		log.debug("node num: " + rows.length);
+		
+		rows.forEach( function(row) {
+			log.debug("row.id: " + row.id);
+			//node = '{"id": ' + row.id + ', "weight": ' + 1 + '}';
+			//data = '{"data": ' + node  + '}';
+			data = {
+				"data": {
+					"id": row.id,
+					"weight": 0.1
+				},
+				"style": {
+					'width': '2px',
+					'height': '2px',
+					'background-width' : "100%",
+					'background-height' : "100%",
+					'backgroud-fit': 'contain'
+				}
+			}
+			//log.debug("graph.push(" + JSON.stringify(data,null,'\t') + ")")
+			//graph.push(JSON.stringify(data,null,'\t'));
+			graph.push(data);
+			//graph.push(JSON.parse(data));
+		});
+	log.debug("graph.length after add nodes: " + graph.length);
+	callback(null);
+	});
+}
 
+function getEdgesFromMysql(callback, graph) {
+	log.debug("getEdgesFromMysql(graph) start");
+	log.debug("graph.length: " + graph.length)
+	testComment = "this is test comment";
+	/*
+	query = 'SELECT * from edges;';
+	records = mysql.format(query);
+	log.debug("edge num: " + records.length);
+	callback(null);
+	*/
+	/*
+	var query = connection.query('SELECT * from edges;', function (err, rows, fields) {
+		if (err) { console.log('err: ' + err); }
+	});
+	log.debug("edge num: " + query.length);
+	*/
+	
+	connection.query('SELECT * from edges;', function (err, rows, fields) {
+		if (err) { console.log('err: ' + err); }
+		log.debug("edge num: " + rows.length);
+		log.debug("graph.length before add edges: " + graph.length);
+		log.debug("testComment: " + testComment);
+		rows.forEach( function(row) {
+			//if(row.relevancy < relevancy && start_node <= row.start && row.start < end_node && start_node < row.end && row.end < end_node ){
+			if(row.relevancy > relevancy){
+				//edge = '{"id": ' + row.id + ', "source": ' + row.start + ', "target": ' + row.end + '}';
+				//data = '{"data":' + edge + '}';
+				log.debug("edge = {id: " + row.id + ", source: " + row.start + ", target: " + row.end + "};")
+				data = {
+					"data": {
+						//"id": row.id,
+						"source": row.start,
+						"target": row.end
+					},
+					"style": {
+						'width': row.relevancy/6,
+						'line-color': '#ccc',
+						'target-arrow-color': '#ccc',
+						'target-arrow-shape': 'triangle'
+					}
+				}
+				//graph.push(JSON.stringify(data,null,'\t'));
+				graph.push(data);
+			}
+		});
+		//log.debug("graph.length after add edges: " + graph.length);
+		callback(null);	
+	});	
+}
 
+function createGraph(graph){
+
+}
 
 function convertFromMySQLRecordsToCytoscape(graph) {
 	log.debug("convertFromMySQLRecordsToCytoscape() start");
@@ -160,9 +273,9 @@ var sampleGraph = {
     //name: 'grid',
     //name: 'random',
     //name: 'concentric',
-    name: 'breadthfirst',
+    //name: 'breadthfirst',
     //name: 'cose',
-    rows: 1
+    //rows: 1
   }
 }
 

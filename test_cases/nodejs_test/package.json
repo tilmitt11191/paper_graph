@@ -11,6 +11,7 @@
   "dependencies": {
     "async": "^2.3.0",
     "cytoscape": "^3.0.0",
+    "cytoscape-cose-bilkent": "^1.6.5",
     "express": "^4.15.2",
     "js-yaml": "^3.8.3",
     "log4js": "^1.1.1",

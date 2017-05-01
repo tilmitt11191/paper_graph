@@ -31,3 +31,4 @@ npm install mysqljs/mysql --save --no-bin-links
 npm install js-yaml --save --no-bin-links
 npm install synchronize --save --no-bin-links
 npm install async --save --no-bin-links
+npm install cytoscape-cose-bilkent --save --no-bin-links
