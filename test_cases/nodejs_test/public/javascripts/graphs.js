@@ -55,13 +55,18 @@ $(function(){
 						"color": "rgb(0,0,0)"
 					}
 				}
-			],
-			// initial viewport state:
-			zoom: 0.1,
+			], 
+			zoom: 1,
 			pan: { x: 0, y: 0 },
-			// rendering options:
-			wheelSensitivity: 0.5,
-	})
+			minZoom: 1e-50,
+			maxZoom: 1e50,
+			zoomingEnabled: true,
+			userZoomingEnabled: true,
+			wheelSensitivity: 0.1
+  	})
+
+	cy.boxSelectionEnabled(true)
+	cy.container()
 	//cy.add(graph);
   //cy.add(JSON.stringify(graph,null,'\t'));
   graph.forEach( function(data) {
@@ -209,10 +214,17 @@ $(function(){
 	//cy.layout(options);
 	cy.layout(cosebOptions);
 	cy.viewport({
-		zoom: 10000000000000,
+		zoom: 0.01,
 		pan: { x: 1, y: 1 }
 	});
+	cy.animate({
+		pan: { x: 100, y: 100 },
+		zoom: 1e-50
+	}, {
+		duration: 1000
+	});
 	cy.boxSelectionEnabled( true );
+	console.log("layout.run() start")
 	layout.run();
 	/*
 	cy.add( {"data": {"id": 11}} );

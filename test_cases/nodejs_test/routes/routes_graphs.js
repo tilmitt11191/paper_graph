@@ -130,8 +130,8 @@ function getPapersFromMysql(callback, graph) {
 					"weight": 0.1
 				},
 				"style": {
-					'width': '2px',
-					'height': '2px',
+					'width': '5px',
+					'height': '5px',
 					'background-width' : "100%",
 					'background-height' : "100%",
 					'backgroud-fit': 'contain'
