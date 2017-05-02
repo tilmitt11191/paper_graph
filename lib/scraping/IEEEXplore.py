@@ -538,11 +538,10 @@ class IEEEXplore:
 
 		self.wait_button_to_pdf_page(driver, timeout)
 		
-		button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
-		
 		retries = 10
 		while retries > 0:
 			try:
+				button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
 				button.click()
 				self.log.debug("clicked button and no exception. break")
 				break
@@ -552,10 +551,10 @@ class IEEEXplore:
 				time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
 				driver.reconnect(initial_url)
 				self.wait_button_to_pdf_page(driver, timeout)
-				button = driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]')
 				retries -= 1
-			except NoSuchElementException:
-				self.log.warning("caught NoSuchElementException at click download pdf button. retries[" + str(retries) + "]")
+			except NoSuchElementException as e:
+				self.log.warning("caught " + e.__class__.__name__ + " at click download pdf button. retries[" + str(retries) + "]")
+				self.log.warning(e, exc_info=True)
 				self.save_current_page(driver, "./samples/caught_NoSuchElementException_at_click_download_pdf_button.html")
 				self.save_current_page(driver, "./samples/caught_NoSuchElementException_at_click_download_pdf_button.png")
 				retries -= 1

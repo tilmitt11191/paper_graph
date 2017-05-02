@@ -121,6 +121,7 @@ class PhantomJS_(webdriver.PhantomJS):
 		self.__init__(executable_path=self.executable_path,\
 					port=self.port, desired_capabilities=self.PHANTOMJS,\
 					service_args=self.service_args, service_log_path=self.service_log_path)
+		self.get(url)
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 	def save_current_page(self, filename):
