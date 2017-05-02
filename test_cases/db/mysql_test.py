@@ -188,6 +188,7 @@ class MySQL_test(unittest.TestCase):
 		paper.renewal_insert()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	"""
 	def test_renewal_insert3(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		import subprocess
@@ -209,7 +210,7 @@ class MySQL_test(unittest.TestCase):
 		paper.renewal_insert()
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 	"""
 	def test_renewal_insert_various(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -220,8 +221,9 @@ class MySQL_test(unittest.TestCase):
 	"""
 	def test_paper_has_already_downloaded(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		paper = Table_papers(title="Heterogeneity in Mobile Cloud Computing: Taxonomy and Open Challenges")
+		paper = Table_papers(title="Offloading in Mobile Edge Computing: Task Allocation and Computational Frequency Scaling - IEEE Xplore Document")
 		print(str(paper.has_already_downloaded()))
+		print(paper.get_vars())
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	def test_inheritanced_papers(self):

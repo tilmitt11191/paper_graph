@@ -21,5 +21,6 @@ IEEE_wait_time_per_download_paper: 60
 IEEE_citation_num_at_first_page: 30
 IEEE_citation_num_per_more_view: 100
 #30, 130, 230, 329, 429, 529, 629, 728, 828, 929
+IEEE_paper_download_period: 0 #day
 phantomJS_pass: "/usr/local/bin/phantomjs"
 myslq_url: "mysql+pymysql://alladmin:admin@localhost/paper_graph?charset=utf8"
