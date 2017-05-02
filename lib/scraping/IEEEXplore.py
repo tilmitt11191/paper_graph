@@ -320,6 +320,7 @@ class IEEEXplore:
 		return authors_str[1:]
 	
 	def get_keywords(self, driver):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##keywords
 		keywords_str = ""
 		elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
@@ -331,9 +332,11 @@ class IEEEXplore:
 				self.log.debug("keyword[" + keyword + "] is deplicated. not add.")
 			else:
 				keywords_str += ","+el.text
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return: " + keywords_str)
 		return keywords_str
 	
 	def get_citing_papers(self, driver, timeout=30):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##citing_papers
 		##citing_urls
 		import table_papers
@@ -366,6 +369,7 @@ class IEEEXplore:
 			citing_papers.append(citing_paper)
 			citing_urls.append(citing_paper.url)
 			
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return citings_str, citing_papers, citing_urls
 	
 	
