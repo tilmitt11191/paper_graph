@@ -196,15 +196,17 @@ class IEEEXplore_test(unittest.TestCase):
 	def test_convert_date_of_publication_to_datetime(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#self.get_date_of_publications()
-		dates = open('./samples/dates.txt', 'r')
-		"""
+		#dates = open('./samples/dates.txt', 'r')
+
 		dates = ["Date of Publication: 06 January 2016", \
 					"Date of Conference: 14-16 Nov. 2006", \
 					"Date of Conference: 27 June-2 July 2016",\
 					"Date of Publication: N/A 2016",\
 					"Date of Conference: 9-11 Jan. 2017",\
-					"Date of Conference: 4-8 Sept. 2016"]
-		"""
+					"Date of Conference: 4-8 Sept. 2016",\
+					"Date of Publication: "\
+					]
+
 		for date in dates:
 			print(date.strip())
 			print(str(self.xplore.convert_date_of_publication_to_datetime(date)))
@@ -273,7 +275,7 @@ class IEEEXplore_test(unittest.TestCase):
 		from searchs import Searchs
 		search = Searchs(que=all_citing_urls, limit=num_of_papers, times=4)
 		
-		Searchs.breadth_first_search_with_class(search, 1, self.xplore.get_attributes_and_download_pdf, driver, path, filename)
+		Searchs.breadth_first_search(search, 1, self.xplore.get_attributes_and_download_pdf, driver, path, filename)
 		
 		#driver.close()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

@@ -4,9 +4,9 @@
 
 #sudo apt-get -y install mysql-server
 
-sudo mysql -p -e "\
-drop user 'alladmin'@'localhost';\
-flush privileges;"
+#sudo mysql -p -e "\
+#drop user 'alladmin'@'localhost';\
+#flush privileges;"
 
 sudo mysql -p -e "\
 create user 'alladmin'@'localhost' identified by 'admin';\
@@ -14,11 +14,11 @@ flush privileges;"
 
 sudo mysql -p -e "\
 drop database paper_graph;\
+create database paper_graph;\
+grant ALL on paper_graph.* to 'alladmin'@'localhost';\
 flush privileges;"
 
 sudo mysql -p -e "\
-create database paper_graph;\
-grant ALL on paper_graph.* to 'alladmin'@'localhost';\
 create table paper_graph.papers (\
 id int, \
 title text, \
@@ -33,7 +33,7 @@ timestamp DATETIME, \
 path tinytext, \
 label tinytext, \
 color tinytext);\
-alter table papers default character set "utf8";\
+alter table paper_graph.papers default character set "utf8";\
 flush privileges;"
 
 sudo mysql -p -e "\

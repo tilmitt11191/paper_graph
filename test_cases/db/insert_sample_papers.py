@@ -32,5 +32,5 @@ f.close()
 
 for i in range(10):
 	paper = table_papers.Table_papers(title=titles[i], authors=authors[i])
-	paper.insert()
+	paper.renewal_insert()
 

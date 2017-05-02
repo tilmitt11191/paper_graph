@@ -9,7 +9,7 @@ if len(args) < 2:
 keywords = args[1]
 print("keywords[" + keywords + "]")
 
-num_of_papers = 1000
+num_of_papers = 10000
 path="../../data/" + keywords.replace(" ", "").replace("\"", "") + "/"
 filename = "title"
 timeout=30

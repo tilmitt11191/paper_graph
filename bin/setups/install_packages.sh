@@ -1,7 +1,7 @@
 
 ## package check
 log_info 'package check start.'
-PACKAGES=(tmux)
+PACKAGES=(tmux mysql-server)
 for package in ${PACKAGES[@]}; do
 	dpkg -l $package | grep -E "^i.+[ \t]+$package" > /dev/null
 	if [ $? -ne 0 ];then

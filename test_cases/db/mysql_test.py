@@ -4,6 +4,9 @@
 import unittest
 import sys,os
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
+from table_papers import Table_papers
+
 class MySQL_test(unittest.TestCase):
 
 	@classmethod
@@ -44,7 +47,7 @@ class MySQL_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return titles, authors
 	"""	
-
+	"""
 	def test_insert_a_title(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		title = "Behind the Game: Exploring the Twitch Streaming Platform"
@@ -67,6 +70,7 @@ class MySQL_test(unittest.TestCase):
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	"""
 	def test_insert_a_title2(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		title = "Behind the Game: Exploring the Twitch Streaming Platform"
@@ -88,8 +92,29 @@ class MySQL_test(unittest.TestCase):
 		
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
+	def test_insert_a_paper(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		paper = table_papers.Table_papers()
+		paper.title = "New directions in cryptography - IEEE Xplore Document"
+		paper.authors = "W. Diffie, M. Hellman"
+		paper.keywords = "Cryptography"
+		paper.citings = ""
+		paper.citeds = ""
+		paper.conference = "10.1109/TIT.1976.1055638"
+		paper.published = "1976-01-01"
+		paper.url = "http://ieeexplore.ieee.org/document/1055638/"
+		paper.timestamp = "2017-05-02 15:06:18"
+		paper.path = "../../data/Newdirectionsincryptography/N     ew directions in cryptography - IEEE Xplore Document.pdf"
+		paper.id = paper.get_id()
+		
+		self.log.debug(paper.get_vars())
+		
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 
-
+	"""
 	def test_delete_a_title(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		title = "Behind the Game: Exploring the Twitch Streaming Platform"
@@ -154,8 +179,7 @@ class MySQL_test(unittest.TestCase):
 		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
 		paper.renewal_insert()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
-	"""
+
 	def test_renewal_insert2(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		from table_papers import Table_papers
@@ -163,8 +187,6 @@ class MySQL_test(unittest.TestCase):
 		print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
 		paper.renewal_insert()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
-	
 	"""
 	def test_renewal_insert3(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -178,8 +200,8 @@ class MySQL_test(unittest.TestCase):
 		#	print(c)
 		#p.wait()
 		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_papers.py"])
-		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_papers.py"])
 		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_citations.py"])
+		subprocess.check_output(["python3", "../../test_cases/db/insert_sample_edges.py"])
 		from table_papers import Table_papers
 		paper = Table_papers(title="Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks")
 		self.log.debug("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
@@ -187,21 +209,30 @@ class MySQL_test(unittest.TestCase):
 		paper.renewal_insert()
 		
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
 	"""
 	def test_renewal_insert_various(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		from table_papers import Table_papers
 		paper = Table_papers(title="Field Trial of Long-Reach and High-Splitting λあアｱ-Tunable TWDM-PON,")
 		#print("paper.get_id()[" + str(paper.get_id()) + "] title[" + paper.title + "]")
 		paper.renewal_insert()
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	
+	"""
+	def test_paper_has_already_downloaded(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		paper = Table_papers(title="Heterogeneity in Mobile Cloud Computing: Taxonomy and Open Challenges")
+		print(str(paper.has_already_downloaded()))
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	def test_inheritanced_papers(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		from table_papers_tests import Table_papers_test1
 		paper = Table_papers_test1(title="Traffic Matrix Prediction and Estimation Based on Deep Learning for Data Center Networks")
 		paper.insert()
 	"""	
+	
+	
+	
 	
 if __name__ == '__main__':
 	unittest.main()

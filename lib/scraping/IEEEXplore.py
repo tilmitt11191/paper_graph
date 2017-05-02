@@ -245,19 +245,17 @@ class IEEEXplore:
 		m = "url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]"
 		print(m)
 		self.log.info(m)
-		
-		##reconnect because of http.client.RemoteDisconnected
-		#if search.times % 5 == 0:
-		#	driver = self.reconnect_driver(driver, driver.current_url)
-		#self.save_current_page(driver, "./samples/tmp.png")
 
-		##if this paper already downloaded, this paper visited and skip.
-		#if target_paper_url in search.visited:
-		
 		self.move_to_paper_initial_page(driver, target_paper_url)
 
 		import table_papers
 		paper = table_papers.Table_papers()
+		
+
+		##if this paper already downloaded recently, this paper had visited and skip.
+		if paper.has_already_downloaded:
+			return paper, [], []
+		
 
 		self.log.debug("get attributes of this paper")
 		paper.title = self.get_title(driver)
@@ -370,6 +368,7 @@ class IEEEXplore:
 			citing_urls.append(citing_paper.url)
 			
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		self.log.debug("return " + citing_str)
 		return citings_str, citing_papers, citing_urls
 	
 	
@@ -437,6 +436,7 @@ class IEEEXplore:
 
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		self.log.debug("return " + citeds_str)
 		return citeds_str, cited_papers, cited_urls
 		
 	
@@ -624,23 +624,32 @@ class IEEEXplore:
 		##Date of Publication: N/A 2016
 		##to
 		##2016-01-01
+		##Date of Publication: 
+		##to
+		##None
+		
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.log.debug("string: " + string)
+		self.log.debug("string[" + string + "]")
 		date = ""
 		month = ""
 		year = ""
 		string = string.replace("\n", "")
 		tmp = string.split(":")
 		if len(tmp) != 2:
-			self.log.warning("len(tmp) != 2")
-			self.log.warning("string:" + string)
+			self.log.warning("len(tmp) != 2. return None")
+			self.log.warning("string[" + string + "]")
 			return None
+		if tmp[1].replace(" ", "") == "":
+			self.log.debug("tmp[1] is null. return None")
+			self.log.debug("string[" + string + "]")
+			return None
+			
 		date_month_year = tmp[1].lstrip()
 		self.log.debug("date_month_year[" + date_month_year + "]")
 		tmp2 = date_month_year.split("-")
 		if len(tmp2) >= 3:
-			self.log.warning("len(tmp2) >= 3")
-			self.log.warning("string:" + string)
+			self.log.warning("len(tmp2) >= 3. return None")
+			self.log.warning("string[" + string + "]")
 			return None
 		elif len(tmp2) == 2:
 			if re.match("^\d{1,2}$", tmp2[0]):
@@ -649,10 +658,11 @@ class IEEEXplore:
 				tmp3 = tmp2[0].split(" ")
 				date = tmp3[0]
 				month = tmp3[1].replace(".", "")
+		
 		tmp4 = date_month_year.split(" ")
 		if len(tmp4) < 3:
 			self.log.debug("only year")
-			self.log.debug("string:" + string)
+			self.log.debug("string[" + string + "]")
 			date = "1"
 			month = "Jan"
 		if date == "":
@@ -753,15 +763,7 @@ class IEEEXplore:
 		self.log.debug("authors[" + str(authors) + "], title[" + str(title) + "], conference[" + str(conference) + "], year[" + str(year) + "]")
 		return authors, title, conference, year
 
-	def reconnect_driver(self, driver, url):
-			self.log.debug("driver reconnect")
-			import signal
-			driver.service.process.send_signal(signal.SIGTERM) # kill the specific phantomjs child proc
-			driver.quit() # quit the node proc
-			driver = self.create_driver(url)
-			return driver
-		
-		
+
 	## for debug
 	def print_h2_attributes(self, driver):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

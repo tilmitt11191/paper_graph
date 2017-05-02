@@ -72,10 +72,18 @@ class Table_papers(Base):
 		self.db.session.expunge(self)
 		self.db.close()
 	
-	def is_visited(self):
-		import mysql_operator
-		db = mysql_operator.Mysql_operator()
-	
+	def has_already_downloaded(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		records = self.db.session.query(__class__).filter(__class__.title==self.title.encode('utf-8')).all()
+		if len(records) == 0:
+			self.log.info("This paper doesnt exist in db. return false")
+			return false
+		
+		self.log.info("This paper exist in db. Number of records is [" + str(len(records)) + "]")
+		
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+		
 	def renewal_insert(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
