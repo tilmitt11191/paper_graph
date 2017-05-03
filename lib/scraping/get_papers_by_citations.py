@@ -53,5 +53,3 @@ Searchs.breadth_first_search(search, 1, xplore.get_attributes_and_download_pdf, 
 driver.close()
 
 print("Finished!!")
-
-
