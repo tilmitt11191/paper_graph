@@ -24,8 +24,8 @@ id int, \
 title text, \
 authors text, \
 keywords text, \
-citings tinytext, \
-citeds tinytext, \
+citings mediumtext, \
+citeds mediumtext, \
 conference tinytext, \
 published DATE, \
 url tinytext, \

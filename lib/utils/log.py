@@ -14,11 +14,11 @@ class Log:
 
 		import logging, logging.handlers
 		logger = logging.getLogger()
-		
+
 		if len(logger.handlers) < 1:
 			rfh = logging.handlers.RotatingFileHandler(
 				filename=logfile,
-				maxBytes=rotate_log_size, 
+				maxBytes=rotate_log_size,
 				backupCount=Conf.getconf("backup_log_count")
 			)
 			formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -34,16 +34,3 @@ class Log:
 		logger.setLevel(eval("logging."+loglevel))
 		logger.debug("return logger\n logfile[{logfile}]\n rotate_log_size[{rotate_log_size}]\n id[{id_}]".format(**locals()))
 		return logger
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -37,8 +37,13 @@ if num_of_papers <= 0:
 	sys.exit("initial num_of_papers <= 0")
 
 all_papers, all_papers_urls, all_citing_urls, all_cited_urls = xplore.get_papers_by_keywords(keywords, num_of_papers, search_options=opts, path=path, filename=filename, timeout=timeout)
+log.debug("all_papers[" + str(len(all_papers)) + "]")
+log.debug("all_papers_urls[" + str(len(all_papers_urls)) + "]")
+log.debug("all_citing_urls[" + str(len(all_citing_urls)) + "]")
+log.debug("all_cited_urls[" + str(len(all_cited_urls)) + "]")
 
-if num_of_papers <= 0:
+
+if num_of_papers <= len(all_papers):
 	log.info("finished in the way of xplore.get_papers_by_keywords")
 	sys.exit()
 
@@ -46,9 +51,9 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 from searchs import Searchs
 
 driver = xplore.create_driver(timeout=timeout)
-search = Searchs(que=all_citing_urls, times=len(all_papers), visited=all_papers_urls, limit=num_of_papers)
+search = Searchs(que=all_citing_urls.extend(all_cited_urls), times=len(all_papers), visited=all_papers_urls, limit=num_of_papers)
 
-Searchs.breadth_first_search(search, 1, xplore.get_attributes_and_download_pdf, driver, path, filename)
+Searchs.breadth_first_search(search, [1, 2], xplore.get_attributes_and_download_pdf, driver, path, filename)
 
 driver.close()
 

@@ -194,6 +194,26 @@ class IEEEXplore_test(unittest.TestCase):
 	"""
 	"""
 	def test_convert_date_of_publication_to_datetime(self):
+		##from
+		##Date of Publication: 06 January 2016
+		##to
+		##2016-01-06
+		##from
+		##Date of Conference: 14-16 Nov. 2006
+		##to
+		##2006-11-14
+		##from
+		##Date of Conference: 27 June-2 July 2016
+		##to
+		##2016-06-27
+		##from
+		##Date of Publication: N/A 2016
+		##to
+		##2016-01-01
+		##Date of Publication:
+		##to
+		##None
+
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#self.get_date_of_publications()
 		#dates = open('./samples/dates.txt', 'r')

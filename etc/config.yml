@@ -5,6 +5,7 @@ logfile: log
 node_logfile: node_log
 phantomjs_logfile: phantomjs_log
 loglevel: DEBUG
+#loglevel_to_stdout: WARNING
 loglevel_to_stdout: WARNING
 #rotate_log_size: 268435456 #1024*1024*256B
 rotate_log_size: 1073741824 #1024*1024*1024B
@@ -21,6 +22,6 @@ IEEE_wait_time_per_download_paper: 60
 IEEE_citation_num_at_first_page: 30
 IEEE_citation_num_per_more_view: 100
 #30, 130, 230, 329, 429, 529, 629, 728, 828, 929
-IEEE_paper_download_period: 0 #day
+IEEE_paper_download_period: 1 #day
 phantomJS_pass: "/usr/local/bin/phantomjs"
 myslq_url: "mysql+pymysql://alladmin:admin@localhost/paper_graph?charset=utf8"
