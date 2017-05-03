@@ -21,32 +21,32 @@ class PhantomJS_(webdriver.PhantomJS):
 		self.PHANTOMJS = desired_capabilities
 		self.service_args = service_args
 		self.service_log_path = service_log_path
-		
+
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../lib/utils")
 		from conf import Conf
 		self.conf = Conf()
 		from log import Log as l
 		self.log = l.getLogger()
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		
+
 		import logging, logging.handlers
 		selenium_logger = logging.getLogger('selenium.webdriver.remote.remote_connection')
 		selenium_logger.setLevel(logging.ERROR)
 		if len(selenium_logger.handlers) < 1:
 			rfh = logging.handlers.RotatingFileHandler(
 				filename=self.conf.getconf("logdir")+self.conf.getconf("logfile"),
-				maxBytes=self.conf.getconf("rotate_log_size"), 
+				maxBytes=self.conf.getconf("rotate_log_size"),
 				backupCount=self.conf.getconf("backup_log_count")
 			)
 			formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 			rfh.setFormatter(formatter)
 			selenium_logger.addHandler(rfh)
-			
+
 			stream_handler = logging.StreamHandler()
 			stream_handler.setFormatter(formatter)
 			stream_handler.setLevel(self.conf.getconf("loglevel_to_stdout"))
 			selenium_logger.addHandler(stream_handler)
-			
+
 
 		if self.executable_path == "":
 			self.executable_path = self.conf.getconf("phantomJS_pass")
@@ -59,7 +59,7 @@ class PhantomJS_(webdriver.PhantomJS):
 					port=self.port, desired_capabilities=self.PHANTOMJS, \
 					service_args=self.service_args, service_log_path=self.service_log_path)
 
-	
+
 	def get(self, url, tag_to_wait="", by="xpath", timeout=30):
 		retries = 10
 		while retries > 0:
@@ -79,12 +79,12 @@ class PhantomJS_(webdriver.PhantomJS):
 				self.log.warning("Caught TimeoutException at super().get(" + url + ") start")
 				self.log.warning("%s", e)
 				self.execute_script("window.stop();")
-				
+
 		if retries == 0:
 			self.log.error("PhantomJS caught ERROR RemoteDisconnected at get" + url)
 			self.save_current_page("./samples/get_error.html")
 			self.save_current_page("./samples/get_error.png")
-		
+
 		if tag_to_wait != "":
 			self.wait_appearance_of_tag(by="xpath", tag=tag_to_wait, timeout=timeout)
 
@@ -104,15 +104,15 @@ class PhantomJS_(webdriver.PhantomJS):
 		except TimeoutException as e:
 			self.log.warning("caught TimeoutException at " + self.current_url)
 			self.log.warning("by[" + by + "], tag[" + tag + "]")
-			self.log.exception("%s", e)
+			self.log.warning(e, exc_info=True)
 		except NoSuchElementException as e:
 			self.log.warning("caught NoSuchElementException at " + self.current_url)
 			self.log.warning("by[" + by + "], tag[" + tag + "]")
-			self.log.exception("%s", e)
+			self.log.warning(e, exc_info=True)
 
 		self.log.debug("wait_appearance_of_tag Finished.")
-		
-		
+
+
 	def reconnect(self, url=""):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#session_id = self.session_id
@@ -153,4 +153,4 @@ class Webdriver_(webdriver.Firefox, webdriver.Chrome, webdriver.Ie, webdriver.Ph
 			webdriver.PhantomJS.__init__(self)
 		else:
 			print("type error at Webdriver_.__init__")
-"""		
+"""

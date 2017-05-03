@@ -11,7 +11,8 @@ var regCose = require('cytoscape-cose-bilkent');
 regCose( cytoscape ); // register extension
 
 var start_node = 1;
-var end_node = 15050;
+var end_node = 150000;
+//var end_node = 1500000;
 var relevancy = 3
 
 var connection = mysql.createConnection({
@@ -29,54 +30,7 @@ function returnSuccess(res, data) {
   });
 }
 
-
-var coseDefaultOptions = {
-	name: 'cose-bilkent',
-  // Called on `layoutready`
-  ready: function () {
-  },
-  // Called on `layoutstop`
-  stop: function () {
-  },
-  // number of ticks per frame; higher is faster but more jerky
-  refresh: 30, 
-  // Whether to fit the network view after when done
-  fit: true,
-  // Padding on fit
-  padding: 10,
-  // Padding for compounds
-  paddingCompound: 15,
-  // Whether to enable incremental mode
-  randomize: true,
-  // Node repulsion (non overlapping) multiplier
-  nodeRepulsion: 4500,
-  // Ideal edge (non nested) length
-  idealEdgeLength: 50,
-  // Divisor to compute edge forces
-  edgeElasticity: 0.45,
-  // Nesting factor (multiplier) to compute ideal edge length for nested edges
-  nestingFactor: 0.1,
-  // Gravity force (constant)
-  gravity: 0.25,
-  // Maximum number of iterations to perform
-  numIter: 2500,
-  // For enabling tiling
-  tile: true,
-  // Type of layout animation. The option set is {'during', 'end', false}
-  animate: 'end',
-  // Represents the amount of the vertical space to put between the zero degree members during the tiling operation(can also be a function)
-  tilingPaddingVertical: 10,
-  // Represents the amount of the horizontal space to put between the zero degree members during the tiling operation(can also be a function)
-  tilingPaddingHorizontal: 10,
-  // Gravity range (constant) for compounds
-  gravityRangeCompound: 1.5,
-  // Gravity force (constant) for compounds
-  gravityCompound: 1.0,
-  // Gravity range (constant)
-  gravityRange: 3.8
-};
-
-router.get('/test', function(req, res, next){
+router.get('/data', function(req, res, next){
 	log.debug("routes_graphs.js router.post('/test', function(){ start");
 	var graph = [];
 	async.waterfall([
@@ -116,30 +70,30 @@ router.get('/test', function(req, res, next){
 });
 
 function getPapersFromMysql(callback, graph) {
-	connection.query('SELECT * from papers;', function (err, rows, fields) {
+	//connection.query('SELECT * from papers;', function (err, rows, fields) {
+	log.debug('SELECT * from papers where ' + start_node + '  < id and id < ' + end_node + ';')
+	connection.query('SELECT * from papers where ' + start_node + ' < id and id < ' + end_node + ';', function (err, rows, fields) {
 		if (err) { console.log('err: ' + err); }
 		log.debug("node num: " + rows.length);
 		
-		rows.forEach( function(row) {
+		//rows.forEach( function(row) {
+		rows.some( function(row) {
 			log.debug("row.id: " + row.id);
 			//node = '{"id": ' + row.id + ', "weight": ' + 1 + '}';
 			//data = '{"data": ' + node  + '}';
 			data = {
 				"data": {
-					"id": row.id,
-					"weight": 0.1
-				},
-				"style": {
-					'width': '5px',
-					'height': '5px',
-					'background-width' : "100%",
-					'background-height' : "100%",
-					'backgroud-fit': 'contain'
+					"id": row.id
 				}
 			}
 			//log.debug("graph.push(" + JSON.stringify(data,null,'\t') + ")")
 			//graph.push(JSON.stringify(data,null,'\t'));
 			graph.push(data);
+			log.debug(graph.length + " > " + (end_node - start_node));
+			if(graph.length > (end_node - start_node)){
+				log.debug("if")
+				return true;
+			}
 			//graph.push(JSON.parse(data));
 		});
 	log.debug("graph.length after add nodes: " + graph.length);
@@ -150,7 +104,6 @@ function getPapersFromMysql(callback, graph) {
 function getEdgesFromMysql(callback, graph) {
 	log.debug("getEdgesFromMysql(graph) start");
 	log.debug("graph.length: " + graph.length)
-	testComment = "this is test comment";
 	/*
 	query = 'SELECT * from edges;';
 	records = mysql.format(query);
@@ -163,12 +116,16 @@ function getEdgesFromMysql(callback, graph) {
 	});
 	log.debug("edge num: " + query.length);
 	*/
-	
-	connection.query('SELECT * from edges;', function (err, rows, fields) {
+	log.debug('SELECT * from edges where ' + 
+	start_node + '  < start and start < ' + end_node + ' and ' + 
+	start_node + '  < end and end < ' + end_node +';')
+	//connection.query('SELECT * from edges;', function (err, rows, fields) {
+	connection.query('SELECT * from edges where ' + 
+	start_node + '  < start and start < ' + end_node + ' and ' + 
+	start_node + '  < end and end < ' + end_node +';', function (err, rows, fields) {
 		if (err) { console.log('err: ' + err); }
 		log.debug("edge num: " + rows.length);
 		log.debug("graph.length before add edges: " + graph.length);
-		log.debug("testComment: " + testComment);
 		rows.forEach( function(row) {
 			//if(row.relevancy < relevancy && start_node <= row.start && row.start < end_node && start_node < row.end && row.end < end_node ){
 			if(row.relevancy > relevancy){

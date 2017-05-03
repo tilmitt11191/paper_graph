@@ -10,7 +10,7 @@ $(function(){
 
 
 	function loadGraph() {
-		var url = host + "graphs/test";
+		var url = host + "graphs/data";
 		console.log("loadGraph url:" + url);
 		$.get(url).done(function(response) {
 			console.log("$ get done");
@@ -25,37 +25,77 @@ $(function(){
 			container: document.getElementById('graph'), // container to render in
 			//elements: graph,
 			//elements: {node: {data: {id: 1}}},
-			//elements: graph.data[0],
+			//elements: graph.data,
 			//elements: {"data": {"id": 241}},
-			//elements: JSON.stringify(graph,null,'\t'), 
+			//elements: JSON.stringify(graph,null,'\t'),
 			//elements: graph.toString(),
-			//elements: JSON.parse(graph), 
+			//elements: JSON.parse(graph),
+			//elements: convertToStr(graph),
+			/*elements: {
+				nodes: [
+					{
+						"data": {id: 1}
+					},
+					{
+						"data": {id: 2}
+					}
+				],
+				edges: [
+					{
+						"data": {id: "12", source: 1, target: 2}
+					}
+				]
+			},*/
+			/*elements: [
+				{
+					group: "node",
+					"data": {id: 1}
+				},
+				{
+					"data": {id: 2}
+				},
+				{
+					"data": {id: "12", source: 1, target: 2}
+				}
+			],*/
 			style: [ // the stylesheet for the graph
 				{
 					selector: 'node',
 					style: {
-						"text-valign" : "center",
-						"text-halign" : "center"
-					}
-				},
-				{
+						'width': '0.01px',
+						'height': '0.01px',
+						"background-color" : "#e03434",
+						//"background-color" : "rgb(255,255,0)",
+						//'background-color': 'red',
+						//'color': '#000'
+						//"color" : "rgb(0,0,0)",
+						//"border" :  "rgb(255,255,255)",
+						//"background-color" : "rgb(100,100,100)",
+						//'background-width' : "100%",
+						//'background-height' : "100%",
+						//'backgroud-fit': 'contain',
+						//"text-valign" : "center",
+						//"text-halign" : "center"
+					},
 					selector: 'edge',
 					style: {
-					}/*,
+						"width": "1px"
+					},
 					css: {
 						'overlay-color': '#c0c0c0',
-						'overlay-padding': '50000px',
+						'overlay-padding': '50px',
 						'overlay-opacity': 100
-					}*/
+					}
 				},
 				{
 					"selector" : "node:selected",
 					"css" : {
-						"background-color" : "rgb(255,255,0)",
-						"color": "rgb(0,0,0)"
+						//"background-color" : "rgb(255,255,0)",
+						"background-color" : "rgb(255,0,255)",
+						//"color": "rgb(0,0,0)"
 					}
 				}
-			], 
+			],
 			zoom: 1,
 			pan: { x: 0, y: 0 },
 			minZoom: 1e-50,
@@ -63,19 +103,19 @@ $(function(){
 			zoomingEnabled: true,
 			userZoomingEnabled: true,
 			wheelSensitivity: 0.1
-  	})
+		})
+	graph.forEach( function(data) {
+		console.log("graph.length[" + graph.length + "], cy.add:" + data);
+		//console.log("data.data:" + data.data);
+		//cy.add(JSON.stringify(data,null,'\t'));
+		cy.add( data );
+		//cy.add(JSON.parse(data));
+	});
 
 	cy.boxSelectionEnabled(true)
-	cy.container()
+	//cy.container()
 	//cy.add(graph);
   //cy.add(JSON.stringify(graph,null,'\t'));
-  graph.forEach( function(data) {
-	  console.log("graph.length[" + graph.length + "], cy.add:" + data);
-	  //console.log("data.data:" + data.data);
-	  //cy.add(JSON.stringify(data,null,'\t'));
-	  cy.add( data );
-	  //cy.add(JSON.parse(data));
-	});
 	var layout = cy.layout({
 		//name: "null"
 		//name: "preset"
@@ -91,12 +131,14 @@ $(function(){
 		name: 'cose-bilkent',
 		// Called on `layoutready`
 		ready: function () {
+			console.log("layoutready")
 		},
 		// Called on `layoutstop`
 		stop: function () {
+			console.log("layoutstop")
 		},
 		// number of ticks per frame; higher is faster but more jerky
-		refresh: 30, 
+		refresh: 30,
 		// Whether to fit the network view after when done
 		fit: true,
 		// Padding on fit
@@ -104,9 +146,11 @@ $(function(){
 		// Padding for compounds
 		paddingCompound: 15,
 		// Whether to enable incremental mode
-		randomize: true,
+		//randomize: true,
+		randomize: false,
 		// Node repulsion (non overlapping) multiplier
 		nodeRepulsion: 4500,
+		//nodeRepulsion: 0,
 		// Ideal edge (non nested) length
 		idealEdgeLength: 50,
 		// Divisor to compute edge forces
@@ -116,11 +160,14 @@ $(function(){
 		// Gravity force (constant)
 		gravity: 0.25,
 		// Maximum number of iterations to perform
-		numIter: 2500,
+		numIter: 250000,
 		// For enabling tiling
-		tile: true,
+		//tile: true,
+		tile: false,
 		// Type of layout animation. The option set is {'during', 'end', false}
-		animate: 'end',
+		//animate: 'end',
+		//animate: 'during',
+		animate: false,
 		// Represents the amount of the vertical space to put between the zero degree members during the tiling operation(can also be a function)
 		tilingPaddingVertical: 10,
 		// Represents the amount of the horizontal space to put between the zero degree members during the tiling operation(can also be a function)
@@ -133,7 +180,8 @@ $(function(){
 		gravityRange: 3.8
 	};
 
-	var options = {
+
+/*	var options = {
 		name: 'cose',
 
 		// Called on `layoutready`
@@ -211,35 +259,36 @@ $(function(){
 		// Pass a reference to weaver to use threads for calculations
 		weaver: false
 	};
-	//cy.layout(options);
-	cy.layout(cosebOptions);
-	cy.viewport({
-		zoom: 0.01,
-		pan: { x: 1, y: 1 }
-	});
-	cy.animate({
+	cy.layout(options);*/
+	//cy.layout(cosebOptions);
+	//cy.viewport({
+		//zoom: 1,
+		//pan: { x: 1, y: 1 }
+	//});
+	/*cy.animate({
 		pan: { x: 100, y: 100 },
-		zoom: 1e-50
+		zoom: 1
 	}, {
 		duration: 1000
-	});
-	cy.boxSelectionEnabled( true );
+	});*/
 	console.log("layout.run() start")
 	layout.run();
-	/*
-	cy.add( {"data": {"id": 11}} );
-	cy.add( {"data": {"id": 22}} );
-	cy.add( {"data": {"id": 10, "source": 11, "target": 22}} );
-	*/
-	  console.log("showGraph finished");
+  console.log("showGraph finished");
 	}
 
-		
+
 	loadGraph();
 });
+
+function convertToStr(graph){
+	//return {node: {data: {id: 1}}, {data: {id: 2}}};
+	//return {node: {data: {id: 1}}, {data: {id: 2}}};
+	//return {node: {data: {id: 1}}};
+}
+
 /*
 var cy = cytoscape({
-  
+
   container: document.getElementById('cy'), // container to render in
   elements: [ // list of graph elements to start with
     { // node a
@@ -249,7 +298,7 @@ var cy = cytoscape({
       data: { id: 'b' }
     },
     { // edge ab
-      data: { id: 'ab', source: 'a', target: 'b' }
+			data: { id: 'ab', source: 'a', target: 'b' }
     }
   ],
 
@@ -274,7 +323,7 @@ var cy = cytoscape({
   ],
 
   layout: {
-		name: "preset", 
+		name: "preset",
     //name: 'grid',
     //rows: 2
     //name: 'random',
@@ -283,7 +332,7 @@ var cy = cytoscape({
     //name: 'cose',
   }
 });
-console.log("container[" + cy.container + "]");  
+console.log("container[" + cy.container + "]");
 cy.nodes().forEach(function( ele ){
   console.log( ele.id() );
 });
@@ -319,8 +368,7 @@ $(function(){
 
 	function alerttest(){
 		log.info("alerttest start");
-	
+
 	};
 });
 */
-

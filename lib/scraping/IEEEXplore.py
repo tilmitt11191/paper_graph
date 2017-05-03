@@ -20,19 +20,19 @@ class IEEEXplore:
 		self.conf = Conf()
 		from log import Log as l
 		self.log = l.getLogger()
-		
+
 		self.opt = Search_options()
 		self.log.debug("class " + __class__.__name__ + " created.")
 
-	
+
 	def get_papers_of_new_conferences(self, conference_num):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + "(conference_num=" + str(conference_num) + ") start.")
-		
-		
+
+
 	def get_papers_by_keywords(self, keywords, num_of_papers="all", search_options="default", path="../../data/tmp/", filename="title", timeout=30):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info("keywords[" + keywords + "], num_of_papers[" + str(num_of_papers) +"]")
-		
+
 		driver = self.create_driver(timeout=timeout)
 		if search_options == "default":
 			search_options = Search_options()
@@ -43,7 +43,7 @@ class IEEEXplore:
 			element = driver.find_element_by_css_selector('div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
 			num_of_papers = int(element.text.split(" ")[-1].replace(",",""))
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
-		
+
 		urls = self.get_urls_of_papers_in_keywords_page(driver, search_options.PerPage, num_of_papers, timeout)
 		print("urls.size[" + str(len(urls)) + "]")
 		all_papers = []
@@ -67,19 +67,19 @@ class IEEEXplore:
 
 	def get_papers_of_target_conference(self, conference_name):
 		pass
-	
+
 
 	def create_driver(self, url="", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.debug("url[" + url + "]")
-		
+
 		if url == "" or url == self.conf.getconf("IEEE_top_page"):
 			url = self.conf.getconf("IEEE_top_page")
 
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
 		from phantomjs_ import PhantomJS_
 		driver = PhantomJS_(desired_capabilities={'phantomjs.page.settings.resourceTimeout': timeout})
-		
+
 		self.log.debug("driver.get(" + url + ")")
 		driver.get(url, tag_to_wait='//li[@class="Media-articles-item"]', by="xpath", timeout=timeout)
 		self.log.debug("driver.get finished")
@@ -114,8 +114,8 @@ class IEEEXplore:
 			filename = "./samples/TimeoutExceptionatLoadtheKeywordsResultsPage." + re.sub(r"/|:|\?", "", driver.current_url)
 			self.save_current_page(driver, filename + ".png")
 			self.save_current_page(driver, filename + ".html")
-			
-			
+
+
 		except NoSuchElementException:
 			self.log.warning("caught NoSuchElementException at load the keywords results page.")
 
@@ -150,7 +150,7 @@ class IEEEXplore:
 			##PerPage" : "25"
 			if search_options.PerPage != 25:
 				element = driver.find_element_by_css_selector('div[ng-model="vm.rowsPerPage"] > div > select')
-				
+
 				#print(len(element))
 				#print(element.text)
 				Select(element).select_by_visible_text(str(search_options.PerPage))
@@ -164,29 +164,29 @@ class IEEEXplore:
 			##Year" : "2017",
 			##Author" : "None",
 			##Affiliation" : "No
-			##PublicationTitle" 
+			##PublicationTitle"
 			##Publisher" : "None
 			##ConferenceLocation
 		except NoSuchElementException:
 			print("caught NoSuchElementException at get_citing_papers.")
 			self.save_current_page(driver, "./samples/aNoSuchElementException_in_set_options.png")
 			self.save_current_page(driver, "./samples/NoSuchElementException_in_set_options.html")
-		
+
 		#self.save_current_page(driver, "./samples/after_set_options.png")
 		#self.save_current_page(driver, "./samples/after_set_options.html")
-		
+
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		
-		
-	
+
+
+
 	def get_urls_of_papers_in_keywords_page(self, driver, PerPage, num_of_papers="all", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		
+
 		if num_of_papers == "all":
 			element = driver.find_element_by_css_selector('div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
 			num_of_papers = int(element.text.split(" ")[-1].replace(",",""))
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
-		
+
 		urls = []
 
 		next_button = driver.find_element_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
@@ -227,11 +227,11 @@ class IEEEXplore:
 			self.log.debug("move to next page[" + next_button.text + "]")
 			next_button.click()
 			self.wait_search_results(driver, timeout)
-						
+
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return urls[" + str(len(urls)) + "]")
 		return urls
-	
-	
+
+
 	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title"):
 		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -250,12 +250,12 @@ class IEEEXplore:
 
 		import table_papers
 		paper = table_papers.Table_papers()
-		
+
 
 		##if this paper already downloaded recently, this paper had visited and skip.
 		if paper.has_already_downloaded:
 			return paper, [], []
-		
+
 
 		self.log.debug("get attributes of this paper")
 		paper.title = self.get_title(driver)
@@ -269,18 +269,18 @@ class IEEEXplore:
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		if filename == "title":
 			filename = paper.title + ".pdf"
-		paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
-		self.log.debug("download finished. wait start.")
-		time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
-		self.log.debug("wait finished.")
+		#aper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
+		#self.log.debug("download finished. wait start.")
+		#time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+		#self.log.debug("wait finished.")
 		paper.id = paper.get_id()
-		
+
 		self.log.debug(paper.get_vars())
 		paper.renewal_insert()
-		
+
 		self.log.debug("insert citations of this paper to db")
 		import table_citations
-		
+
 		for citing_paper in citing_papers:
 			citation = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
 			citation.renewal_insert()
@@ -289,7 +289,7 @@ class IEEEXplore:
 			citation = table_citations.Table_citations(start=cited_paper, end=paper.id)
 			citation.renewal_insert()
 			citation.close()
-		
+
 		self.log.debug("check termination of searching loop")
 		if 0 < search.limit and search.times >= search.limit:
 			self.log.debug("search finished.")
@@ -298,17 +298,17 @@ class IEEEXplore:
 			driver.service.process.send_signal(signal.SIGTERM) # kill the specific phantomjs child proc
 			driver.quit() # quit the node proc
 			return paper, [], []
-			
+
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		self.log.debug("return paper[" + paper.title + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]")
 		return paper, citing_urls, cited_urls
-	
-	
-	
+
+
+
 	def get_title(self, driver):
 		return driver.title
-		
-	
+
+
 	def get_authors(self, driver):
 		authors_str = ""
 		elements = driver.find_elements_by_xpath('//span[@ng-bind-html="::author.name"]')
@@ -316,7 +316,7 @@ class IEEEXplore:
 		for el in elements:
 			authors_str += ","+el.text
 		return authors_str[1:]
-	
+
 	def get_keywords(self, driver):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##keywords
@@ -332,7 +332,7 @@ class IEEEXplore:
 				keywords_str += ","+el.text
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return: " + keywords_str)
 		return keywords_str
-	
+
 	def get_citing_papers(self, driver, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##citing_papers
@@ -341,12 +341,12 @@ class IEEEXplore:
 		citings_str = ""
 		citing_papers = []
 		citing_urls = []
-		
+
 		try:
 			elements = driver.find_elements_by_css_selector('div[ng-repeat="article in vm.contextData.similar"]')
 		except NoSuchElementException:
 			self.log.warning("caught NoSuchElementException at get_citing_papers.")
-		
+
 		self.log.debug(str(len(elements)))
 		#self.save_current_page(driver, "./samples/sample_page_4116687_start.html")
 		#self.save_current_page(driver, "./samples/sample_page_4116687_start.png")
@@ -366,17 +366,17 @@ class IEEEXplore:
 			citing_paper.renewal_insert()
 			citing_papers.append(citing_paper)
 			citing_urls.append(citing_paper.url)
-			
+
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		self.log.debug("return " + citing_str)
 		return citings_str, citing_papers, citing_urls
-	
-	
+
+
 	def get_cited_papers(self, driver, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		import table_papers
-		
+
 		citeds_str = ""
 		cited_papers = []
 		cited_urls = []
@@ -385,7 +385,7 @@ class IEEEXplore:
 		driver.get(self.convert_paper_url_to_cited_url(initial_url))
 		#self.save_current_page(driver, "./samples/sample_page_1055638_start.html")
 		#self.save_current_page(driver, "./samples/sample_page_1055638_start.png")
-		
+
 		try:
 			div = driver.find_element_by_css_selector('div > section[class="document-all-references ng-scope"] > div[class="ng-scope"] > div[class="strong"]').text
 			if div == "Citations not available for this document.":
@@ -407,17 +407,17 @@ class IEEEXplore:
 			self.log.warning("caught NoSuchElementException at load the first cited page.")
 			self.move_to_paper_initial_page(driver, initial_url)
 			return citeds_str, cited_papers, cited_urls
-			
+
 		self.log.debug("Wait Finished.")
-		
+
 		#self.save_current_page(driver, "./samples/sample_page_1055638_cited.html")
 		#self.save_current_page(driver, "./samples/sample_page_1055638_cited.png")
 
 		self.log.debug("continue pushing more view button")
 		elements = self.continuous_pushing_more_view_button(driver, timeout)
-		
+
 		self.log.debug("create arrays of paper and url")
-		
+
 		for el in elements:
 			cited_url = self.conf.getconf("IEEE_website") + el.find_element_by_css_selector('div[class="ref-links-container stats-citations-links-container"] > span > a').get_attribute("ng-href")
 			cited_urls.append(cited_url)
@@ -426,10 +426,10 @@ class IEEEXplore:
 			cited_paper = table_papers.Table_papers(title=cited_title, authors=cited_authors, conference=cited_conference, published=cited_date, url=cited_url, timestamp=timestamp)
 			self.log.debug(cited_paper.get_vars())
 			cited_paper.renewal_insert()
-			
+
 		#self.save_current_page(driver, "./samples/sample_page_cited_view_more.html")
 		#self.save_current_page(driver, "./samples/sample_page_cited_view_more.png")
-			
+
 		self.move_to_paper_initial_page(driver, initial_url)
 		#self.save_current_page(driver, "./samples/sample_page_initial.html")
 		#self.save_current_page(driver, "./samples/sample_page_initial.png")
@@ -438,19 +438,19 @@ class IEEEXplore:
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		self.log.debug("return " + citeds_str)
 		return citeds_str, cited_papers, cited_urls
-		
-	
+
+
 	def continuous_pushing_more_view_button(self, driver, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##if not cited, load-more-button does not exist.
 		##but if cited, load-more-button always exists nevertheless no more paper,
 		##and the buttons are hidden.
-		
+
 		elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
 		num_of_viewing = len(elements)
 		limit_of_view = self.conf.getconf("IEEE_citation_num_at_first_page")
 		self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
-		
+
 		while num_of_viewing > limit_of_view - 10:
 			limit_of_view += self.conf.getconf("IEEE_citation_num_per_more_view")
 			try:
@@ -460,25 +460,23 @@ class IEEEXplore:
 				WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')" and @aria-disabled="false"]'))
 			except TimeoutException:
 				m = "caught TimeoutException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]."
-				print(m)
 				self.log.warning(m)
 			except NoSuchElementException:
 				m = "caught NoSuchElementException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]."
-				print(m)
 				self.log.warning(m)
 			except ElementNotVisibleException:
 				m = "caught ElementNotVisibleException at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "]. break."
 				self.log.debug(m)
 				break
-				
+
 			elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitation"]')
 			num_of_viewing = len(elements)
 			self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
-		
+
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return elements
-	
-	
+
+
 	def get_conference(self, driver):
 		try:
 			return driver.find_element_by_xpath('//div[@class="u-pb-1 stats-document-abstract-doi ng-scope"]')\
@@ -486,8 +484,8 @@ class IEEEXplore:
 		except NoSuchElementException:
 			return ""
 
-		
-	
+
+
 	def get_date_of_publication(self, driver):
 		#Date of Publication: 06 January 200 or Date of Conference 14-16 Nov. 2006
 		try:
@@ -502,8 +500,8 @@ class IEEEXplore:
 				driver.save_current_page("./samples/caughtNoSuchElementExceptionatdate_of_publication.png")
 				driver.save_current_page("./samples/caughtNoSuchElementExceptionatdate_of_publication.html")
 				return None
-	
-	
+
+
 	def move_to_paper_initial_page(self, driver, initial_url, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		driver.get(initial_url)
@@ -514,11 +512,11 @@ class IEEEXplore:
 			self.log.warning("caught TimeoutException at load the paper top page.")
 		except NoSuchElementException:
 			self.log.warning("caught NoSuchElementException at load the paper top page.")
-			
+
 		self.log.debug("Wait Finished.")
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	
+
 	def wait_button_to_pdf_page(self, driver, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.debug("Wait start.")
@@ -530,18 +528,18 @@ class IEEEXplore:
 			self.log.warning("caught NoSuchElementException at waiting button which go to pdf page.")
 		self.log.debug("Wait Finished.")
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		
-		
+
+
 	def download_a_paper(self, driver, path="../../data/tmp/", filename="default", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		initial_url = driver.current_url
-		
+
 		m = "downloading paper to " + path + ". title[" + filename + "]"
 		self.log.info(m)
 		print(m)
 
 		self.wait_button_to_pdf_page(driver, timeout)
-		
+
 		retries = 10
 		while retries > 0:
 			try:
@@ -583,7 +581,7 @@ class IEEEXplore:
 		self.log.debug("Wait Finished.")
 		url = driver.find_elements_by_xpath('//frameset[@rows="65,35%"]/frame')[1].get_attribute("src")
 		self.log.debug("url:" + url)
-		
+
 		if filename == "default":
 			filename = url[:url.index("?")].split("/")[-1]
 		filename = filename.replace(":", "")
@@ -596,17 +594,17 @@ class IEEEXplore:
 			self.log.debug(os.system(command))
 		except:
 			self.log.warning("error at " + command)
-			
+
 		#self.save_current_page(driver, "./samples/7898372.png")
 		#self.save_current_page(driver, "./samples/7898372.html")
 
 		driver.get(initial_url)
-		
+
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		self.log.debug("return[" + path + filename + "]")
 		return path + filename
-		
-			
+
+
 	def convert_date_of_publication_to_datetime(self, string):
 		##from
 		##Date of Publication: 06 January 2016
@@ -624,10 +622,10 @@ class IEEEXplore:
 		##Date of Publication: N/A 2016
 		##to
 		##2016-01-01
-		##Date of Publication: 
+		##Date of Publication:
 		##to
 		##None
-		
+
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.debug("string[" + string + "]")
 		date = ""
@@ -643,7 +641,7 @@ class IEEEXplore:
 			self.log.debug("tmp[1] is null. return None")
 			self.log.debug("string[" + string + "]")
 			return None
-			
+
 		date_month_year = tmp[1].lstrip()
 		self.log.debug("date_month_year[" + date_month_year + "]")
 		tmp2 = date_month_year.split("-")
@@ -658,7 +656,7 @@ class IEEEXplore:
 				tmp3 = tmp2[0].split(" ")
 				date = tmp3[0]
 				month = tmp3[1].replace(".", "")
-		
+
 		tmp4 = date_month_year.split(" ")
 		if len(tmp4) < 3:
 			self.log.debug("only year")
@@ -671,7 +669,7 @@ class IEEEXplore:
 			month = tmp4[-2].replace(".", "")
 		if year == "":
 			year = tmp4[-1]
-		
+
 		import datetime
 		try:
 			month = str(datetime.datetime.strptime(month, '%B').month)
@@ -686,13 +684,13 @@ class IEEEXplore:
 					self.log.warning("string:" + string)
 					self.log.warning("month = 0")
 					month = "0"
-			
+
 		self.log.debug("year[" + year + "], month[" + month + "], date[" + date + "]")
-		
+
 		timestamp = datetime.date(int(year), int(month), int(date))
 		return timestamp
-		
-	
+
+
 	def convert_paper_url_to_cited_url(self, url):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#from
@@ -702,10 +700,10 @@ class IEEEXplore:
 		self.log.debug("url[" + url + "]")
 		converted_url = url.split("?")[0] + "citations?anchor=anchor-paper-citations-ieee&ctx=citations"
 		self.log.debug("converted_url[" + converted_url + "]")
-		
+
 		return converted_url
-		
-	
+
+
 	def convert_paper_url_to_pdf_url(self, url):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##from
@@ -713,16 +711,16 @@ class IEEEXplore:
 		##to
 		##http://ieeexplore.ieee.org/ielx7/35/7901458/07901477.pdf?tp=&arnumber=7901477&isnumber=7901458
 		print("url[" + url + "]")
-	
-	
-	
+
+
+
 	def parse_citing(self, strings):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.debug("src_str["+strings+"]")
 		#from
 		#Daniel Garant, Wei Lu, "Mining Botnet Behaviors on the Large-Scale Web Application Community", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013.
 		#to
-		#Daniel Garant, Wei Lu, 
+		#Daniel Garant, Wei Lu,
 		#Mining Botnet Behaviors on the Large-Scale Web Application Community
 		#Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on
 		#pp. 185-190, 2013
@@ -771,13 +769,13 @@ class IEEEXplore:
 		for link in links:
 			print(link.text)
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		
-		
+
+
 	def save_current_page(self, driver, filename):
 		self.log.warning(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.warning("this method will be removed.")
 		self.log.warning("please use driver.save_current_page(filename)")
-		
+
 		path, suffix=os.path.splitext(filename)
 		self.log.debug("path["+path+"], suffix["+suffix+"]")
 		if suffix==".html":
@@ -789,7 +787,7 @@ class IEEEXplore:
 		else:
 			self.log.error("TYPEERROR suffix["+suffix+"]")
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		
+
 	def show_options(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.opt.show_options()
@@ -817,9 +815,9 @@ class Search_options:
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../lib/utils")
 		from log import Log as l
 		self.log = l.getLogger()
-		
+
 		self.log.debug("class " + __class__.__name__ + " created.")
-	
+
 	def show_options(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		import inspect
@@ -834,4 +832,3 @@ class Search_options:
 		#	print(key + "[" +value +"]")
 	def a(self):
 		pass
-
