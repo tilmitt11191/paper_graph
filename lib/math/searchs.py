@@ -36,14 +36,10 @@ class Searchs():
 
 	@classmethod
 	def breadth_first_search(cls, search, arrays_to_search, get_nexts_func, *args):
-		#for array_num in arrays_to_search:
-			#print("array_num: " + str(array_num))
 		while search.que != []:
 			search.node = search.que[0]
 			if search.node not in search.visited:
 				returned_values = get_nexts_func(search, *args)
-				print(str(returned_values))
-				#search.que += returned_values[arrays_to_search]
 				cls.renew_search_que(search.que, arrays_to_search, returned_values)
 			search.visited.append(search.node)
 			search.que.pop(0)
@@ -62,7 +58,7 @@ class Searchs():
 	@classmethod
 	def renew_search_que(cls, que, arrays_to_search, returned_values):
 		if isinstance(arrays_to_search, int):
-			que +=returned_values[arrays_to_search]
+			que += returned_values[arrays_to_search]
 		elif  isinstance(arrays_to_search, list):
 			for array in arrays_to_search:
 				que +=returned_values[array]

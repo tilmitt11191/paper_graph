@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 points_per_keyword = 2
-points_per_author = 2
+points_per_author = 4
 points_per_citing = 5
 points_per_cited = 5
 points_per_conference = 1

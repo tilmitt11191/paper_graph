@@ -27,12 +27,72 @@ class IEEEXplore:
 		from log import Log as l
 		self.log = l.getLogger()
 
-		self.opt = Search_options()
+		self.opts = Search_options()
 		self.log.debug("class " + __class__.__name__ + " created.")
 
+	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title", timeout=30):
+		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
-	def get_papers_of_new_conferences(self, conference_num):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + "(conference_num=" + str(conference_num) + ") start.")
+		search.times += 1
+		target_paper_url = search.node
+
+		m = "url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]"
+		print(m)
+		self.log.info(m)
+
+		self.move_to_paper_initial_page(driver, target_paper_url)
+
+		paper = Table_papers(title=self.get_title(driver))
+		##if this paper already downloaded recently, this paper had visited and skip.
+		if paper.has_already_downloaded():
+			self.log.debug("paper.has_already_downloaded. return paper, paper.url, " + str(paper.get_citings_array()) + ", " + str(paper.get_citeds_array()))
+			return paper, paper.url, paper.get_citings_array(), paper.get_citeds_array()
+
+
+		self.log.debug("get attributes of this paper")
+		paper.authors = self.get_authors(driver)
+		paper.keywords, urls_of_papers_with_same_keywords = self.get_urls_of_papers_with_same_keywords_from_target_paper(driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_keyword"), timeout=timeout)
+		paper.citings, citing_papers, citing_urls = self.get_citing_papers(driver, timeout)
+		paper.citeds, cited_papers, cited_urls = self.get_cited_papers(driver, timeout)
+		paper.conference = self.get_conference(driver)
+		paper.published = self.get_date_of_publication(driver)
+		paper.url = target_paper_url
+		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+		if filename == "title":
+			filename = paper.title + ".pdf"
+		#paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
+		#self.log.debug("download finished. wait start.")
+		#time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+		#self.log.debug("wait finished.")
+		paper.id = paper.get_id()
+
+		self.log.debug(paper.get_vars())
+		paper.renewal_insert()
+
+		self.log.debug("insert citations of this paper to db")
+		import table_citations
+
+		for citing_paper in citing_papers:
+			citation = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
+			citation.renewal_insert()
+			citation.close()
+		for cited_paper in cited_papers:
+			citation = table_citations.Table_citations(start=cited_paper, end=paper.id)
+			citation.renewal_insert()
+			citation.close()
+
+		self.log.debug("check termination of searching loop")
+		if 0 < search.limit and search.times >= search.limit:
+			self.log.debug("search finished. 0 < search.limit and search.times >= search.limit.")
+			self.log.debug("return paper, paper.url, [], []")
+			search.que = [search.node]
+			return paper, paper.url, [], []
+
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		self.log.debug("return paper[" + paper.title + "], paper_url[" + paper.url + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]")
+		return paper, paper.url, citing_urls, cited_urls
+
 
 
 	def get_papers_by_keywords(self, keywords, num_of_papers="all", search_options="default", path="../../data/tmp/", filename="title", timeout=30):
@@ -50,7 +110,7 @@ class IEEEXplore:
 			num_of_papers = int(element.text.split(" ")[-1].replace(",",""))
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 
-		urls = self.get_urls_of_papers_in_keywords_page(driver, search_options.PerPage, num_of_papers, timeout)
+		urls = self.get_urls_of_papers_in_keywords_page(driver, num_of_papers, timeout)
 		print("urls.size[" + str(len(urls)) + "]")
 		all_papers = []
 		all_citing_urls = []
@@ -63,7 +123,6 @@ class IEEEXplore:
 		for url in urls:
 			search.node = url
 			paper, paper_url, citing_urls, cited_urls = self.get_attributes_and_download_pdf(search, driver, path=path, filename=filename)
-			print("paper.title[" + paper.title + "]")
 			all_papers.append(paper)
 			all_citing_urls.extend(citing_urls)
 			all_cited_urls.extend(cited_urls)
@@ -74,7 +133,11 @@ class IEEEXplore:
 	def get_papers_of_target_conference(self, conference_name):
 		pass
 
+		
+	def get_papers_of_new_conferences(self, conference_num):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + "(conference_num=" + str(conference_num) + ") start.")
 
+		
 	def create_driver(self, url="", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.debug("url[" + url + "]")
@@ -172,13 +235,16 @@ class IEEEXplore:
 
 
 
-	def get_urls_of_papers_in_keywords_page(self, driver, PerPage, num_of_papers="all", timeout=30):
+	def get_urls_of_papers_in_keywords_page(self, driver, num_of_papers="all", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		if num_of_papers == "all":
 			element = driver.find_element_by_css_selector('div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
 			num_of_papers = int(element.text.split(" ")[-1].replace(",",""))
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
+		
+		self.opts.set_PerPage(num_of_papers)
+		self.set_options(driver, self.opts, timeout=timeout)
 
 		urls = []
 
@@ -186,11 +252,11 @@ class IEEEXplore:
 		visited_buttons = [next_button.text]
 		while True:
 			self.log.debug("get paper urls in current page")
-			for i in range(PerPage):
+			for i in range(self.opts.PerPage):
 				paper_elements = driver.find_elements_by_xpath('//div[@class="js-displayer-content u-mt-1 stats-SearchResults_DocResult_ViewMore ng-scope hide"]')
-				self.log.debug("i["+str(i)+"] len(paper_elements)[" + str(len(paper_elements)) + "]")
+				self.log.debug("scroll times["+str(i)+"] len(paper_elements)[" + str(len(paper_elements)) + "]")
 				driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-				if len(paper_elements) == PerPage:
+				if len(paper_elements) == self.opts.PerPage:
 					break
 			self.log.debug("len(paper_elements)[" + str(len(paper_elements)) + "]")
 
@@ -198,7 +264,7 @@ class IEEEXplore:
 				url = paper_element.find_element_by_css_selector('a').get_attribute("href")
 				self.log.debug("url[" + url + "]")
 				urls.append(url)
-				if len(urls) > num_of_papers:
+				if len(urls) >= num_of_papers:
 					self.log.debug("len(urls)[" + str(len(urls)) + "] > num_of_papers[" + str(num_of_papers) + "]. return urls.")
 					return urls
 
@@ -225,70 +291,6 @@ class IEEEXplore:
 		return urls
 
 
-	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title"):
-		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-
-		search.times += 1
-		timeout = 30
-		target_paper_url = search.node
-
-		m = "url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]"
-		print(m)
-		self.log.info(m)
-
-		self.move_to_paper_initial_page(driver, target_paper_url)
-
-		paper = Table_papers(title=self.get_title(driver))
-		##if this paper already downloaded recently, this paper had visited and skip.
-		if paper.has_already_downloaded():
-			self.log.debug("paper.has_already_downloaded. return paper, paper.url, " + str(paper.get_citings_array()) + ", " + str(paper.get_citeds_array()))
-			return paper, paper.url, paper.get_citings_array(), paper.get_citeds_array()
-
-
-		self.log.debug("get attributes of this paper")
-		paper.authors = self.get_authors(driver)
-		paper.keywords = self.get_keywords(driver)
-		paper.citings, citing_papers, citing_urls = self.get_citing_papers(driver, timeout)
-		paper.citeds, cited_papers, cited_urls = self.get_cited_papers(driver, timeout)
-		paper.conference = self.get_conference(driver)
-		paper.published = self.get_date_of_publication(driver)
-		paper.url = target_paper_url
-		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-		if filename == "title":
-			filename = paper.title + ".pdf"
-		#aper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
-		#self.log.debug("download finished. wait start.")
-		#time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
-		#self.log.debug("wait finished.")
-		paper.id = paper.get_id()
-
-		self.log.debug(paper.get_vars())
-		paper.renewal_insert()
-
-		self.log.debug("insert citations of this paper to db")
-		import table_citations
-
-		for citing_paper in citing_papers:
-			citation = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
-			citation.renewal_insert()
-			citation.close()
-		for cited_paper in cited_papers:
-			citation = table_citations.Table_citations(start=cited_paper, end=paper.id)
-			citation.renewal_insert()
-			citation.close()
-
-		self.log.debug("check termination of searching loop")
-		if 0 < search.limit and search.times >= search.limit:
-			self.log.debug("search finished. 0 < search.limit and search.times >= search.limit.")
-			self.log.debug("return paper, paper.url, [], []")
-			search.que = [search.node]
-			return paper, paper.url, [], []
-
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		self.log.debug("return paper[" + paper.title + "], paper_url[" + paper.url + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]")
-		return paper, paper.url, citing_urls, cited_urls
-
 
 
 	def get_title(self, driver):
@@ -303,22 +305,62 @@ class IEEEXplore:
 			authors_str += ","+el.text
 		return authors_str[1:]
 
+	def get_urls_of_papers_with_same_authors_from_target_paper(self, driver, num_of_papers="all", timeout=30):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		authors_str = ""
+		urls_of_papers_with_same_authors = []
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		return authors_str, urls_of_papers_with_same_authors
+		
+
 	def get_keywords(self, driver):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##keywords
 		keywords_str = ""
 		elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
-		#print(str(len(elements))) #21
 		for el in elements:
 			keyword = el.text
-			if keyword in keywords_str:
-				##todo internet concludes int
+			if "," + keyword in keywords_str:
 				self.log.debug("keyword[" + keyword + "] is deplicated. not add.")
 			else:
 				keywords_str += ","+el.text
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return: " + keywords_str)
 		return keywords_str
+	
+	def get_urls_of_papers_with_same_keywords_from_target_paper(self, driver, num_of_papers="all", timeout=30):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		driver.wait_appearance_of_tag(by="xpath", tag='//div[@ng-repeat=\"article in vm.contextData.similar\"]')
+		elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
+		self.log.debug("len(keywords)[" + str(len(elements)) + "]")
+		
+		keywords_str = ""
+		urls_of_keywords = []
+		urls_of_papers_with_same_keywords = []
+		
+		for el in elements:
+			keyword = el.text
+			self.log.debug("keyword[" + keyword + "]")
+			if "," + keyword in keywords_str:
+				self.log.debug("keyword[" + keyword + "] is deplicated. not add.")
+			else:
+				keywords_str += ","+keyword
+				link = el.get_attribute("href")
+				self.log.debug("link[" + link + "]")
+				urls_of_keywords.append(link)
+		keywords_str.lstrip(",")
+		for link in urls_of_keywords:
+			driver.get(link)
+			self.wait_search_results(driver, timeout)
+			urls_of_papers_with_same_keywords.extend(self.get_urls_of_papers_in_keywords_page(driver, num_of_papers, timeout))
+		## delete duplicated elements
+		urls_of_papers_with_same_keywords = list(set(urls_of_papers_with_same_keywords))
 
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		return keywords_str, urls_of_papers_with_same_keywords
+
+
+	
+		
 	def get_citing_papers(self, driver, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		citings_str = ""
@@ -346,7 +388,7 @@ class IEEEXplore:
 			self.log.debug("citing_authors[" + citing_paper.authors + "]")
 			self.log.debug(citing_paper.get_vars())
 
-			citing_paper.renewal_insert()
+			#citing_paper.renewal_insert()
 			citings_str += ","+citing_paper.url
 			citing_papers.append(citing_paper)
 			citing_urls.append(citing_paper.url)
@@ -393,8 +435,9 @@ class IEEEXplore:
 			cited_authors, cited_title, cited_conference, cited_date = self.parse_citing(el.find_element_by_css_selector('div[ng-bind-html="::item.displayText"]').text)
 			timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 			cited_paper = Table_papers(title=cited_title, authors=cited_authors, conference=cited_conference, published=cited_date, url=cited_url, timestamp=timestamp)
-			self.log.debug(cited_paper.get_vars())
-			cited_paper.renewal_insert()
+			cited_papers.append(cited_paper)
+			#self.log.debug(cited_paper.get_vars())
+			#cited_paper.renewal_insert()
 
 		self.move_to_paper_initial_page(driver, initial_url)
 
@@ -462,16 +505,7 @@ class IEEEXplore:
 	def move_to_paper_initial_page(self, driver, initial_url, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		driver.get(initial_url)
-		self.log.debug("WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//div[@ng-repeat=\"article in vm.contextData.similar\"]'))")
-		try:
-			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//div[@ng-repeat="article in vm.contextData.similar"]'))
-		except TimeoutException:
-			self.log.warning("caught TimeoutException at load the paper top page.")
-		except NoSuchElementException:
-			self.log.warning("caught NoSuchElementException at load the paper top page.")
-
-		self.log.debug("Wait Finished.")
-
+		driver.wait_appearance_of_tag(by="xpath", tag='//div[@ng-repeat=\"article in vm.contextData.similar\"]')
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 	def wait_button_to_pdf_page(self, driver, timeout=30):
@@ -729,7 +763,7 @@ class IEEEXplore:
 
 	def show_options(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.opt.show_options()
+		self.opts.show_options()
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 
@@ -756,6 +790,21 @@ class Search_options:
 		self.log = l.getLogger()
 
 		self.log.debug("class " + __class__.__name__ + " created.")
+	
+	def set_PerPage(self, int):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start. int[" + str(int) + "]")
+		##10, 25,50,75,100
+		if int <= 25:
+			self.PerPage = 25
+		elif int <= 50:
+			self.PerPage = 50
+		elif int <= 75:
+			self.PerPage = 75
+		else:
+			self.PerPage = 100
+		
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. PerPage[" + str(self.PerPage) + "]")
+		
 
 	def show_options(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -769,3 +818,4 @@ class Search_options:
 				print(var + "[" + str(eval("self."+var)) + "]")
 		#for key, value in self.opts.items():
 		#	print(key + "[" +value +"]")
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
