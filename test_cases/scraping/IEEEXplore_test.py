@@ -134,7 +134,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.get_papers_by_keywords(keywords, num_of_papers="all", search_options=opts)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-
+	"""
 	def test_get_authors_and_urls_of_papers_with_same_authors(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#url = "http://ieeexplore.ieee.org/document/4116687/"
@@ -151,7 +151,7 @@ class IEEEXplore_test(unittest.TestCase):
 
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 	"""
 	def test_get_keywords_and_urls_of_papers_with_same_keywords(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -385,7 +385,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.xplore.get_papers_of_new_conferences(10)
 	"""
-	"""
+	
 	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords="\"edge computing\""
@@ -404,11 +404,11 @@ class IEEEXplore_test(unittest.TestCase):
 		all_citing_urls.extend(all_cited_urls)
 		
 		driver = self.xplore.create_driver()
-		search = Searchs(que=all_citing_urls, limit=num_of_papers, times=4)
-		Searchs.breadth_first_search(search, 2, self.xplore.get_attributes_and_download_pdf, driver, path, filename)
+		search = Searchs(que=all_citing_urls, limit=num_of_papers, times=0)
+		Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], self.xplore.get_attributes_and_download_pdf, driver, path, filename)
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-	"""
+	
 	"""
 	def get_date_of_publications(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

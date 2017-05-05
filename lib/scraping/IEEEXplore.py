@@ -40,7 +40,7 @@ class IEEEXplore:
 		search.times += 1
 		target_paper_url = search.node
 
-		m = "url[" + target_paper_url + "], times[" + str(search.times) + "], limit[" + str(search.limit) + "]"
+		m = "url[" + target_paper_url + "]\ntimes[" + str(search.times) + "], len(que)[" + str(len(search.que)) + "], limit[" + str(search.limit) + "]"
 		print(m)
 		self.log.info(m)
 
@@ -54,20 +54,43 @@ class IEEEXplore:
 
 
 		self.log.debug("get attributes of this paper")
-		paper.authors, urls_of_papers_with_same_authors = self.get_authors_and_urls_of_papers_with_same_authors(driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_author"), timeout=timeout)
-		paper.keywords, urls_of_papers_with_same_keywords = self.get_keywords_and_urls_of_papers_with_same_keywords(driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_keyword"), timeout=timeout)
+		self.log.debug("get authors")
+		if search.times + len(search.que) <= search.limit:
+			paper.authors, urls_of_papers_with_same_authors = self.get_authors_and_urls_of_papers_with_same_authors(driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_author"), timeout=timeout)
+		else:
+			self.log.debug("no need to spread anymore")
+			paper.authors = self.get_authors(driver)
+			urls_of_papers_with_same_authors = []
+
+		self.log.debug("get keywords")
+		if search.times + len(search.que) <= search.limit:
+			paper.keywords, urls_of_papers_with_same_keywords = self.get_keywords_and_urls_of_papers_with_same_keywords(driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_keyword"), timeout=timeout)
+		else:
+			self.log.debug("no need to spread anymore")
+			paper.keywords = self.get_keywords(driver)
+			urls_of_papers_with_same_keywords = []
+
+		self.log.debug("get citing papers")
 		paper.citings, citing_papers, citing_urls = self.get_citing_papers(driver, timeout)
+
+		self.log.debug("get cited papers")
 		paper.citeds, cited_papers, cited_urls = self.get_cited_papers(driver, timeout)
-		paper.conference, urls_in_conference = self.get_conference_and_urls_of_papers_in_same_conference(driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_conference"), timeout=timeout)
+
+		self.log.debug("get conference")
+		if search.times + len(search.que) <= search.limit:
+			paper.conference, urls_in_conference = self.get_conference_and_urls_of_papers_in_same_conference(driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_conference"), timeout=timeout)
+		else:
+			paper.conference = get_conference(driver)
+			urls_in_conference = []
 		paper.published = self.get_date_of_publication(driver)
 		paper.url = target_paper_url
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		if filename == "title":
 			filename = paper.title + ".pdf"
-		paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
-		self.log.debug("download finished. wait start.")
-		time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
-		self.log.debug("wait finished.")
+		#paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
+		#self.log.debug("download finished. wait start.")
+		#time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+		#self.log.debug("wait finished.")
 		paper.id = paper.get_id()
 
 		self.log.debug(paper.get_vars())
@@ -94,11 +117,15 @@ class IEEEXplore:
 			self.log.debug("return paper, paper.url, [], [], [], [], []")
 			search.que = [search.node]
 			return paper, paper.url, [], [], [], [], []
-
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		self.log.debug("return paper[" + paper.title + "], paper_url[" + paper.url + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]")
-		return paper, paper.url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls, urls_in_conference
-
+		elif search.times + len(search.que) <= search.limit:
+			self.log.debug("search.times + len(search.que) < search.limit")
+			self.log.debug("return paper, paper.url, [], [], [], [], []")
+			search.que = [search.node]
+			return paper, paper.url, [], [], [], [], []
+		else:
+			self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+			self.log.debug("return paper[" + paper.title + "], paper_url[" + paper.url + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]")
+			return paper, paper.url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls, urls_in_conference
 
 
 	def get_papers_by_keywords(self, keywords, num_of_papers="all", search_options="default", path="../../data/tmp/", filename="title", timeout=30):
@@ -385,7 +412,7 @@ class IEEEXplore:
 			elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
 		except NoSuchElementException as e:
 			self.log.warning("caught " + e.__class__.__name__ + " at find keywords elements.")
-			self.log.warning("Does this page have no kewyord? please check url[" + driver.current_url + "]")
+			self.log.warning("Does this page have no keyword? please check url[" + driver.current_url + "]")
 		self.log.debug("len(keywords)[" + str(len(elements)) + "]")
 
 		keywords_str = ""
