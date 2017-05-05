@@ -83,7 +83,7 @@ class IEEEXplore:
 			citation.close()
 		for cited_paper in cited_papers:
 			cited_paper.renewal_insert()
-			citation = Table_citations(start=cited_paper, end=paper.id)
+			citation = Table_citations(start=cited_paper.id, end=paper.id)
 			citation.renewal_insert()
 			cited_paper.close()
 			citation.close()
