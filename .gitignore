@@ -1,6 +1,8 @@
 __pycache__/
 node_modules/*
-var/*
+var/log/*
+var/ss/*
+var/www/*
 data/*
 tmp/*
 !.gitkeep
