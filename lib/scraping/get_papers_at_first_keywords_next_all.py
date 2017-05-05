@@ -1,6 +1,8 @@
 
 # -*- coding: utf-8 -*-
 
+## python ../../lib/db/delete_all.py && :> ../../var/log/log && python ../../lib/scraping/get_papers_at_first_keywords_next_all.py "\"edge computing\"" 10000
+## python ../../lib/db/delete_all.py && :> ../../var/log/log && python ../../lib/scraping/get_papers_at_first_keywords_next_all.py "\"New directions in cryptography\"" 100000
 
 import sys
 args = sys.argv
