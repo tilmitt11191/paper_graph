@@ -23,7 +23,7 @@ IEEE_citation_num_per_more_view: 100
 #30, 130, 230, 329, 429, 529, 629, 728, 828, 929
 IEEE_paper_download_period: 1 #day
 IEEE_num_of_spreading_by_author: "all"
-IEEE_num_of_spreading_by_keyword: 3
+IEEE_num_of_spreading_by_keyword: 25
 IEEE_num_of_spreading_by_conference: "all"
 
 phantomJS_pass: "/usr/local/bin/phantomjs"
