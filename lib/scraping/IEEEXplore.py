@@ -117,7 +117,7 @@ class IEEEXplore:
 			self.log.debug("return paper, paper.url, [], [], [], [], []")
 			search.que = [search.node]
 			return paper, paper.url, [], [], [], [], []
-		elif search.times + len(search.que) <= search.limit:
+		elif search.times + len(search.que) > search.limit:
 			self.log.debug("search.times + len(search.que) < search.limit")
 			self.log.debug("return paper, paper.url, [], [], [], [], []")
 			search.que = [search.node]
