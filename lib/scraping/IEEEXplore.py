@@ -64,10 +64,10 @@ class IEEEXplore:
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		if filename == "title":
 			filename = paper.title + ".pdf"
-		#paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
-		#self.log.debug("download finished. wait start.")
-		#time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
-		#self.log.debug("wait finished.")
+		paper.path = self.download_a_paper(driver, path=path, filename=filename, timeout=timeout)
+		self.log.debug("download finished. wait start.")
+		time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+		self.log.debug("wait finished.")
 		paper.id = paper.get_id()
 
 		self.log.debug(paper.get_vars())
@@ -801,7 +801,7 @@ class IEEEXplore:
 		self.log.debug("src_str["+strings+"]")
 		## If you want examples of conversion, please read
 		##../../test_cases/scraping/IEEEXplore_test.py.test_parse_citing
-		print(strings)
+
 		array = strings.split("\"")
 		if len(array) < 3:
 			self.log.warning(__class__.__name__ + "." + sys._getframe().f_code.co_name + " warning")
