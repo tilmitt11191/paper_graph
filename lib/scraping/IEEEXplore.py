@@ -159,7 +159,7 @@ class IEEEXplore:
 
 		for url in urls:
 			search.node = url
-			paper, paper_url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls, urls_in_conference = self.get_attributes_and_download_pdf(search, driver, path=path, filename=filename)
+			[paper, paper_url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls, urls_in_conference] = self.get_attributes_and_download_pdf(search, driver, path=path, filename=filename)
 			all_papers.append(paper)
 			all_urls_of_papers_with_same_authors.extend(urls_of_papers_with_same_authors)
 			all_urls_of_papers_with_same_keywords.extend(urls_of_papers_with_same_keywords)
