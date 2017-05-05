@@ -64,3 +64,5 @@ class Searchs():
 				que +=returned_values[array]
 		else:
 			print("isinstance type error")
+		#delete duplicated elements
+		que = list(set(que))
