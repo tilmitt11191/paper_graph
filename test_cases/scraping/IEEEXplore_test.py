@@ -134,12 +134,13 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.get_papers_by_keywords(keywords, num_of_papers="all", search_options=opts)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	"""
+
 	def test_get_authors_and_urls_of_papers_with_same_authors(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#url = "http://ieeexplore.ieee.org/document/4116687/"
 		#url = "http://ieeexplore.ieee.org/document/1055638/"
-		url = "http://ieeexplore.ieee.org/document/7727082/"
+		#url = "http://ieeexplore.ieee.org/document/7727082/"
+		url = "http://ieeexplore.ieee.org/document/7914660/" # NoSuchElementException at authors loop, first author only one paper. and another error occurd in search by the author
 		num_of_spreading_by_author = self.conf.getconf("IEEE_num_of_spreading_by_author")
 		timeout=30
 		driver = self.xplore.create_driver(url)
@@ -150,7 +151,7 @@ class IEEEXplore_test(unittest.TestCase):
 
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+
 	"""
 	def test_get_keywords_and_urls_of_papers_with_same_keywords(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -233,7 +234,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 
-
+	"""
 	def test_get_conference_and_urls_of_papers_in_same_conference(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#url = "http://ieeexplore.ieee.org/document/7915547/" # has published in
@@ -249,7 +250,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.debug("len(urls_of_papers_in_same_conference)[" + str(len(urls_of_papers_in_same_conference)) + "]")
 		self.log.debug("urls_of_papers_in_same_conference: " + str(urls_of_papers_in_same_conference))
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 
 
 	"""

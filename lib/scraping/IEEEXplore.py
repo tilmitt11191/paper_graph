@@ -82,7 +82,7 @@ class IEEEXplore:
 			citing_paper.close()
 			citation.close()
 		for cited_paper in cited_papers:
-			cited_paper.renwal_insert()
+			cited_paper.renewal_insert()
 			citation = Table_citations(start=cited_paper, end=paper.id)
 			citation.renewal_insert()
 			cited_paper.close()
@@ -175,7 +175,15 @@ class IEEEXplore:
 
 		if num_of_papers == "all":
 			element = driver.find_element_by_css_selector('div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
-			num_of_papers = int(element.text.split(" ")[-1].replace(",",""))
+			results = element.text.split(" ")
+			self.log.debug("num of search result string[" + str(len(results)) + "]")
+			if results[3] == "1":
+				num_of_papers = 1
+			else:
+				#self.log.debug(results[-1])
+				#driver.save_current_page("../../var/ss/search_by_author_get_num_ok.png")
+				#driver.save_current_page("../../var/ss/search_by_author_get_num_ok.html")
+				num_of_papers = int(results[-1].replace(",",""))
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 		
 		self.opts.set_PerPage(num_of_papers)
@@ -315,12 +323,14 @@ class IEEEXplore:
 		try:
 			#elements = driver.find_elements_by_xpath('//span[@ng-bind-html="::author.name"]')
 			#elements = driver.find_elements_by_xpath('//a[@qtip-popover="" and @qtip-event-show="hover" and @qtip-event-hide="mouseleave"]')
-			elements = driver.find_elements_by_xpath('//span[@class="authors-info ng-binding ng-scope" and @ng-repeat="author in vm.authors"]/span/a')
+			elements = driver.find_elements_by_xpath('//span[@class="authors-info ng-binding ng-scope" and @ng-repeat="author in vm.authors"]/span[@ng-if="::author.affiliation" or @ng-if="::!author.affiliation"]/a')
 		except NoSuchElementException as e:
 			self.log.warning("caught " + e.__class__.__name__ + " at find authors elements.")
 			self.log.warning("Does this page have no author? please check url[" + driver.current_url + "]")
-		#driver.save_current_page("../../var/ss/cryptography.png")
-		#driver.save_current_page("../../var/ss/cryptography.html")
+		self.log.debug("len(authors_elements)[" + str(len(elements)) + "]")
+		#driver.save_current_page("../../var/ss/tmp.png")
+		#driver.save_current_page("../../var/ss/tmp.html")
+
 		authors_str = ""
 		urls_of_authors = []
 		urls_of_papers_with_same_authors = []
