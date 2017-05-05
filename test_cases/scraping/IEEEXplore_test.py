@@ -90,7 +90,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 	"""
-
+	"""
 	def test_get_attributes_and_download_pdf_which_cited_by_many(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		##New directions in cryptography
@@ -104,7 +104,7 @@ class IEEEXplore_test(unittest.TestCase):
 		driver.close()
 		print(paper.get_vars())
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 
 	"""
 	def test_get_papers_by_keywords_39hit(self):
@@ -232,13 +232,15 @@ class IEEEXplore_test(unittest.TestCase):
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	"""
+
 
 	def test_get_conference_and_urls_of_papers_in_same_conference(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#url = "http://ieeexplore.ieee.org/document/7915547/" # has published in
 		#url = "http://ieeexplore.ieee.org/document/1055638/" # has published in and decorated page
-		url = "http://ieeexplore.ieee.org/document/7919059/"
+		## IET Renewable Power Generation.
+		#url = "http://ieeexplore.ieee.org/document/7919059/"
+		url = "http://ieeexplore.ieee.org/document/7918696/" ## no next_button
 		driver = self.xplore.create_driver(url)
 		num_of_spreading_by_conference = self.conf.getconf("IEEE_num_of_spreading_by_conference")
 		timeout=30
@@ -247,7 +249,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.debug("len(urls_of_papers_in_same_conference)[" + str(len(urls_of_papers_in_same_conference)) + "]")
 		self.log.debug("urls_of_papers_in_same_conference: " + str(urls_of_papers_in_same_conference))
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+
 
 
 	"""

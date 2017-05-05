@@ -269,7 +269,14 @@ class IEEEXplore:
 					return urls
 
 			self.log.debug("search buttons to next page")
-			next_button = driver.find_element_by_xpath('//div[@class="pagination"]/a[@href="#" and @aria-label="Pagination Next Page" and @class="next ir"]')
+			try:
+				next_button = driver.find_element_by_xpath('//div[@class="pagination"]/a[@href="#" and @aria-label="Pagination Next Page" and @class="next ir"]')
+			except NoSuchElementException as e:
+				self.log.warning("caught " + e.__class__.__name__ + " at get_urls_of_papers_in_conference.")
+				self.log.warning("Does not this page have next button? please check url[" + driver.current_url + "]")
+				self.log.warning("break")
+				break
+
 			next_button_attribute = next_button.get_attribute("onclick")
 			if next_button_attribute in visited_buttons:
 				self.log.debug("visited all button. break")
