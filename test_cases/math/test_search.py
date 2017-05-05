@@ -54,7 +54,7 @@ class Search_test(unittest.TestCase):
 
 	def get_nexts_with_many_arrays(self, search):
 		print(str(search.node) + ".get_nexts")
-		print("times["+str(search.times)+"], limit["+str(search.limit)+"]")
+		print("times["+str(search.times)+"], que[" + str(len(search.que)) + "], limit["+str(search.limit)+"]")
 		print("visited: " + str(search.visited))
 		search.times += 1
 		if search.times >= search.limit:

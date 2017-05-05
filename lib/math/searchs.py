@@ -40,7 +40,8 @@ class Searchs():
 			search.node = search.que[0]
 			if search.node not in search.visited:
 				returned_values = get_nexts_func(search, *args)
-				cls.renew_search_que(search.que, arrays_to_search, returned_values)
+				cls.renew_search_que(search, arrays_to_search, returned_values)
+
 			search.visited.append(search.node)
 			search.que.pop(0)
 		return 0
@@ -56,13 +57,13 @@ class Searchs():
 		return 0
 
 	@classmethod
-	def renew_search_que(cls, que, arrays_to_search, returned_values):
+	def renew_search_que(cls, search, arrays_to_search, returned_values):
 		if isinstance(arrays_to_search, int):
-			que += returned_values[arrays_to_search]
+			search.que += returned_values[arrays_to_search]
 		elif  isinstance(arrays_to_search, list):
 			for array in arrays_to_search:
-				que +=returned_values[array]
+				search.que +=returned_values[array]
 		else:
 			print("isinstance type error")
 		#delete duplicated elements
-		que = list(set(que))
+		search.que = list(set(search.que))

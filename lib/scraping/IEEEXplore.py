@@ -50,7 +50,7 @@ class IEEEXplore:
 		##if this paper already downloaded recently, this paper had visited and skip.
 		if paper.has_already_downloaded():
 			self.log.debug("paper.has_already_downloaded. return paper, paper.url, [], [], " + str(paper.get_citings_array()) + ", " + str(paper.get_citeds_array()) + ", []")
-			return paper, paper.url, [], [], paper.get_citings_array(), paper.get_citeds_array(), []
+			return [paper, paper.url, [], [], paper.get_citings_array(), paper.get_citeds_array(), []]
 
 
 		self.log.debug("get attributes of this paper")
@@ -114,18 +114,18 @@ class IEEEXplore:
 		self.log.debug("check termination of searching loop")
 		if 0 < search.limit and search.times >= search.limit:
 			self.log.debug("search finished. 0 < search.limit and search.times >= search.limit.")
-			self.log.debug("return paper, paper.url, [], [], [], [], []")
+			self.log.debug("return [paper, paper.url, [], [], [], [], []]")
 			search.que = [search.node]
-			return paper, paper.url, [], [], [], [], []
+			return [paper, paper.url, [], [], [], [], []]
 		elif search.times + len(search.que) > search.limit:
 			self.log.debug("search.times + len(search.que) < search.limit")
-			self.log.debug("return paper, paper.url, [], [], [], [], []")
+			self.log.debug("return [paper, paper.url, [], [], [], [], []]")
 			search.que = [search.node]
-			return paper, paper.url, [], [], [], [], []
+			return [paper, paper.url, [], [], [], [], []]
 		else:
 			self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-			self.log.debug("return paper[" + paper.title + "], paper_url[" + paper.url + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]")
-			return paper, paper.url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls, urls_in_conference
+			self.log.debug("return [paper[" + paper.title + "], paper_url[" + paper.url + "] citing_urls[" + str(citing_urls) + "] cited_urls[" + str(cited_urls) + "]]")
+			return [paper, paper.url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls, urls_in_conference]
 
 
 	def get_papers_by_keywords(self, keywords, num_of_papers="all", search_options="default", path="../../data/tmp/", filename="title", timeout=30):
