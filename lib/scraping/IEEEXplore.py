@@ -16,6 +16,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scrapin
 from phantomjs_ import PhantomJS_
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 from table_papers import Table_papers
+from table_citations import Table_citations
 
 
 
@@ -29,6 +30,7 @@ class IEEEXplore:
 
 		self.opts = Search_options()
 		self.log.debug("class " + __class__.__name__ + " created.")
+
 
 	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title", timeout=30):
 		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -71,14 +73,13 @@ class IEEEXplore:
 		paper.renewal_insert()
 
 		self.log.debug("insert citations of this paper to db")
-		import table_citations
 
 		for citing_paper in citing_papers:
-			citation = table_citations.Table_citations(start=paper.id, end=citing_paper.id)
+			citation = Table_citations(start=paper.id, end=citing_paper.id)
 			citation.renewal_insert()
 			citation.close()
 		for cited_paper in cited_papers:
-			citation = table_citations.Table_citations(start=cited_paper, end=paper.id)
+			citation = Table_citations(start=cited_paper, end=paper.id)
 			citation.renewal_insert()
 			citation.close()
 
@@ -110,7 +111,7 @@ class IEEEXplore:
 			num_of_papers = int(element.text.split(" ")[-1].replace(",",""))
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 
-		urls = self.get_urls_of_papers_in_keywords_page(driver, num_of_papers, timeout)
+		urls = self.get_urls_of_papers_in_search_results(driver, num_of_papers, timeout)
 		print("urls.size[" + str(len(urls)) + "]")
 		all_papers = []
 		all_citing_urls = []
@@ -130,6 +131,7 @@ class IEEEXplore:
 
 		return all_papers, urls, all_citing_urls, all_cited_urls
 
+
 	def get_papers_of_target_conference(self, conference_name):
 		pass
 
@@ -138,52 +140,6 @@ class IEEEXplore:
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + "(conference_num=" + str(conference_num) + ") start.")
 
 		
-	def create_driver(self, url="", timeout=30):
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		self.log.debug("url[" + url + "]")
-
-		if url == "":
-			url = self.conf.getconf("IEEE_top_page")
-
-		driver = PhantomJS_(desired_capabilities={'phantomjs.page.settings.resourceTimeout': timeout})
-
-		if url == self.conf.getconf("IEEE_top_page"):
-			self.log.debug("driver.get IEEE_top_page (" + url + "). wait start")
-			driver.get(url, tag_to_wait='//li[@class="Media-articles-item"]', by="xpath", timeout=timeout)
-			self.log.debug("driver.get finished")
-		else:
-			self.log.debug("driver.get(" + url + ")")
-			driver.get(url)
-
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return driver")
-		return driver
-
-
-	def wait_search_results(self, driver, timeout=30):
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-
-		self.log.debug("Wait start.")
-		try:
-			tag = '//input[@type="checkbox" and @data-group="search-results-group" and @ng-checked="vm.allSelected()"]'
-			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath(tag))
-		except TimeoutException:
-			self.log.warning("caught TimeoutException at load the keywords results page.")
-			self.log.warning("at " + sys._getframe().f_code.co_name)
-			self.log.warning("url[" + driver.current_url + "]")
-			self.log.warning("tag[find_element_by_xpath(" + tag + ")")
-			filename = "./samples/TimeoutExceptionatLoadtheKeywordsResultsPage." + re.sub(r"/|:|\?", "", driver.current_url)
-			self.save_current_page(driver, filename + ".png")
-			self.save_current_page(driver, filename + ".html")
-
-
-		except NoSuchElementException:
-			self.log.warning("caught NoSuchElementException at load the keywords results page.")
-
-		self.log.debug("Wait Finished.")
-
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-		return 0
-
 	def search_by_keywords(self, driver, keywords, search_options="default", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		driver.wait_appearance_of_tag(by="name", tag='queryText', timeout=timeout)
@@ -200,42 +156,9 @@ class IEEEXplore:
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 		return 0
 
-	def set_options(self, driver, search_options, timeout=30):
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		##show" : "All Resul
-
-		##PerPage" : "25"
-		if search_options.PerPage != 25:
-			try:
-				element = driver.find_element_by_css_selector('div[ng-model="vm.rowsPerPage"] > div > select')
-				Select(element).select_by_visible_text(str(search_options.PerPage))
-				self.wait_search_results(driver, timeout)
-			except NoSuchElementException:
-				self.log.debug("caught NoSuchElementException at setting PerPage.")
-				self.log.debug("No PerPage button means only hit a few papers.")
-				self.log.debug("Nothing to do/")
-
-		#Select(element).select_by_value("object:75")
-		##SortBy" : "MostCit
-		##ContentType" : "No
-		##YearType" : "Range
-		##YearFrom" : "1996"
-		##YearTo" : "2017",
-		##Year" : "2017",
-		##Author" : "None",
-		##Affiliation" : "No
-		##PublicationTitle"
-		##Publisher" : "None
-		##ConferenceLocation
-
-		#self.save_current_page(driver, "./samples/after_set_options.png")
-		#self.save_current_page(driver, "./samples/after_set_options.html")
-
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 
-
-	def get_urls_of_papers_in_keywords_page(self, driver, num_of_papers="all", timeout=30):
+	def get_urls_of_papers_in_search_results(self, driver, num_of_papers="all", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		if num_of_papers == "all":
@@ -351,7 +274,7 @@ class IEEEXplore:
 		for link in urls_of_keywords:
 			driver.get(link)
 			self.wait_search_results(driver, timeout)
-			urls_of_papers_with_same_keywords.extend(self.get_urls_of_papers_in_keywords_page(driver, num_of_papers, timeout))
+			urls_of_papers_with_same_keywords.extend(self.get_urls_of_papers_in_search_results(driver, num_of_papers, timeout))
 		## delete duplicated elements
 		urls_of_papers_with_same_keywords = list(set(urls_of_papers_with_same_keywords))
 
@@ -371,6 +294,7 @@ class IEEEXplore:
 			elements = driver.find_elements_by_css_selector('div[ng-repeat="article in vm.contextData.similar"]')
 		except NoSuchElementException:
 			self.log.warning("caught NoSuchElementException at get_citing_papers.")
+
 
 		self.log.debug(str(len(elements)))
 		#self.save_current_page(driver, "./samples/sample_page_4116687_start.html")
@@ -408,18 +332,9 @@ class IEEEXplore:
 		initial_url = driver.current_url
 		driver.get(self.convert_paper_url_to_cited_url(initial_url))
 
-		try:
-			div = driver.find_element_by_css_selector('div > section[class="document-all-references ng-scope"] > div[class="ng-scope"] > div[class="strong"]').text
-			if div == "Citations not available for this document.":
-				self.log.debug("this paper not cited. return []")
-				return citeds_str, cited_papers, cited_urls
-			self.log.debug("div="+div+", this paper is cited")
-		except NoSuchElementException:
-			self.log.debug("this paper is cited")
-
-		self.log.debug("WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath('//b[@class=ng-binding]' start")
-
-		if driver.wait_appearance_of_tag(by="xpath", tag='//b[@class="ng-binding"]', timeout=timeout):
+		self.log.debug("wait appearance of cited papers button. wait_appearance_of_tag(by=\"xpath\", tag='//b[@class=\"ng-binding\"]', warning_messages=False) start")
+		if not driver.wait_appearance_of_tag(by="xpath", tag='//b[@class="ng-binding"]', warning_messages=False, timeout=timeout):
+			self.log.debug("button not appeared. this paper not cited. return []")
 			self.move_to_paper_initial_page(driver, initial_url)
 			return citeds_str, cited_papers, cited_urls
 
@@ -427,17 +342,21 @@ class IEEEXplore:
 		elements = self.continuous_pushing_more_view_button(driver, timeout)
 		self.log.debug("len(elements): " + str(len(elements)))
 
-		self.log.debug("create arrays of paper and url")
+		self.log.debug("create arrays of papers and urls")
 		for el in elements:
 			cited_url = self.conf.getconf("IEEE_website") + el.find_element_by_css_selector('div[class="ref-links-container stats-citations-links-container"] > span > a').get_attribute("ng-href")
 			citeds_str += "," + cited_url
 			cited_urls.append(cited_url)
-			cited_authors, cited_title, cited_conference, cited_date = self.parse_citing(el.find_element_by_css_selector('div[ng-bind-html="::item.displayText"]').text)
-			timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
-			cited_paper = Table_papers(title=cited_title, authors=cited_authors, conference=cited_conference, published=cited_date, url=cited_url, timestamp=timestamp)
+
+			cited_paper = Table_papers()
+
+			cited_paper.authors, cited_paper.title, cited_paper.conference, cited_date = self.parse_citing(el.find_element_by_css_selector('div[ng-bind-html="::item.displayText"]').text)
+			cited_paper.published = self.convert_date_of_publication_to_datetime(cited_date)
+			cited_paper.url = cited_url
+			cited_paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 			cited_papers.append(cited_paper)
-			#self.log.debug(cited_paper.get_vars())
-			#cited_paper.renewal_insert()
+			cited_paper.renewal_insert()
+			self.log.debug("cited_paper: " + cited_paper.get_vars())
 
 		self.move_to_paper_initial_page(driver, initial_url)
 
@@ -460,13 +379,17 @@ class IEEEXplore:
 				load_more_button = driver.find_element_by_xpath('//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
 				load_more_button.click()
 				driver.wait_appearance_of_tag(by="xpath", tag='//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]/span[@aria-hidden="false"]', timeout=num_of_viewing/2)
-			except (TimeoutException, NoSuchElementException, ElementNotVisibleException) as e:
-				self.log.warning("caught " + e.__class__.__name__ + "at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "].")
+			except ElementNotVisibleException as e:
+				self.log.debug("caught " + e.__class__.__name__ + " at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "].")
+				self.log.debug("there is no more paper. return current elements.")
+				elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+				return elements
+			except (TimeoutException, NoSuchElementException) as e:
+				self.log.warning("caught " + e.__class__.__name__ + " at loading more cited pages(" + str(limit_of_view) + ") paper[" + driver.current_url + "].")
 				driver.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", driver.current_url) + ".png")
 				driver.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", driver.current_url) + ".html")
-			elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
 
-			#elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitation"]')
+			elements = driver.find_elements_by_css_selector('div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
 			num_of_viewing = len(elements)
 			self.log.debug("num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
 
@@ -502,11 +425,59 @@ class IEEEXplore:
 				return None
 
 
+	def create_driver(self, url="", timeout=30):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.debug("url[" + url + "]")
+
+		if url == "":
+			url = self.conf.getconf("IEEE_top_page")
+
+		driver = PhantomJS_(desired_capabilities={'phantomjs.page.settings.resourceTimeout': timeout})
+
+		if url == self.conf.getconf("IEEE_top_page"):
+			self.log.debug("driver.get IEEE_top_page (" + url + "). wait start")
+			driver.get(url, tag_to_wait='//li[@class="Media-articles-item"]', by="xpath", timeout=timeout)
+			self.log.debug("driver.get finished")
+		else:
+			self.log.debug("driver.get(" + url + ")")
+			driver.get(url)
+
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return driver")
+		return driver
+
+
 	def move_to_paper_initial_page(self, driver, initial_url, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		driver.get(initial_url)
 		driver.wait_appearance_of_tag(by="xpath", tag='//div[@ng-repeat=\"article in vm.contextData.similar\"]')
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+
+	def wait_search_results(self, driver, timeout=30):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+
+		self.log.debug("Wait start.")
+		try:
+			tag = '//input[@type="checkbox" and @data-group="search-results-group" and @ng-checked="vm.allSelected()"]'
+			WebDriverWait(driver, timeout).until(lambda driver: driver.find_element_by_xpath(tag))
+		except TimeoutException:
+			self.log.warning("caught TimeoutException at load the keywords results page.")
+			self.log.warning("at " + sys._getframe().f_code.co_name)
+			self.log.warning("url[" + driver.current_url + "]")
+			self.log.warning("tag[find_element_by_xpath(" + tag + ")")
+			filename = "./samples/TimeoutExceptionatLoadtheKeywordsResultsPage." + re.sub(r"/|:|\?", "", driver.current_url)
+			self.save_current_page(driver, filename + ".png")
+			self.save_current_page(driver, filename + ".html")
+
+
+		except NoSuchElementException:
+			self.log.warning("caught NoSuchElementException at load the keywords results page.")
+
+		self.log.debug("Wait Finished.")
+
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+		return 0
+
 
 	def wait_button_to_pdf_page(self, driver, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -600,6 +571,10 @@ class IEEEXplore:
 		## If you want examples of conversion, please read
 		##../../test_cases/scraping/IEEEXplore_test.py.test_convert_date_of_publication_to_datetime
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		if string == None:
+			self.log.debug("string is None. return None")
+			return None
+			
 		self.log.debug("string[" + string + "]")
 		date = ""
 		month = ""
@@ -690,13 +665,9 @@ class IEEEXplore:
 	def parse_citing(self, strings):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.debug("src_str["+strings+"]")
-		#from
-		#Daniel Garant, Wei Lu, "Mining Botnet Behaviors on the Large-Scale Web Application Community", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013.
-		#to
-		#Daniel Garant, Wei Lu,
-		#Mining Botnet Behaviors on the Large-Scale Web Application Community
-		#Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on
-		#pp. 185-190, 2013
+		## If you want examples of conversion, please read
+		##../../test_cases/scraping/IEEEXplore_test.py.test_parse_citing
+		print(strings)
 		array = strings.split("\"")
 		if len(array) < 3:
 			self.log.warning(__class__.__name__ + "." + sys._getframe().f_code.co_name + " warning")
@@ -733,6 +704,40 @@ class IEEEXplore:
 		year = None
 		self.log.debug("authors[" + str(authors) + "], title[" + str(title) + "], conference[" + str(conference) + "], year[" + str(year) + "]")
 		return authors, title, conference, year
+
+
+	def set_options(self, driver, search_options, timeout=30):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		##show" : "All Resul
+
+		##PerPage" : "25"
+		if search_options.PerPage != 25:
+			try:
+				element = driver.find_element_by_css_selector('div[ng-model="vm.rowsPerPage"] > div > select')
+				Select(element).select_by_visible_text(str(search_options.PerPage))
+				self.wait_search_results(driver, timeout)
+			except NoSuchElementException:
+				self.log.debug("caught NoSuchElementException at setting PerPage.")
+				self.log.debug("No PerPage button means only hit a few papers.")
+				self.log.debug("Nothing to do/")
+
+		#Select(element).select_by_value("object:75")
+		##SortBy" : "MostCit
+		##ContentType" : "No
+		##YearType" : "Range
+		##YearFrom" : "1996"
+		##YearTo" : "2017",
+		##Year" : "2017",
+		##Author" : "None",
+		##Affiliation" : "No
+		##PublicationTitle"
+		##Publisher" : "None
+		##ConferenceLocation
+
+		#self.save_current_page(driver, "./samples/after_set_options.png")
+		#self.save_current_page(driver, "./samples/after_set_options.html")
+
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 
 	## for debug
@@ -782,6 +787,7 @@ class Search_options:
 	PublicationTitle = None
 	Publisher = None
 	ConferenceLocation = None
+
 
 	def __init__(self):
 		import sys,os

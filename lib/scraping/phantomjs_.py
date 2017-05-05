@@ -91,7 +91,7 @@ class PhantomJS_(webdriver.PhantomJS):
 		if tag_to_wait != "":
 			self.wait_appearance_of_tag(by="xpath", tag=tag_to_wait, timeout=timeout)
 
-	def wait_appearance_of_tag(self, by="xpath", tag="", timeout=30):
+	def wait_appearance_of_tag(self, by="xpath", tag="", warning_messages=True, timeout=30):
 		self.log.debug("wait_appearance_of_tag start. tag: " + tag)
 		try:
 			if by=="xpath":
@@ -105,16 +105,21 @@ class PhantomJS_(webdriver.PhantomJS):
 			else:
 				self.log.waring("type error by=" + by + ", tag: " + tag)
 		except (TimeoutException, NoSuchElementException) as e:
-			self.log.warning("caught " + e.__class__.__name__ + " at wait_appearance_of_tag. url[" + self.current_url + "]")
-			self.log.warning("by[" + by + "], tag[" + tag + "]")
-			self.log.warning("save_current_page to ../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html and png")
-			self.log.warning(e, exc_info=True)
-			self.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html")
-			self.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".png")
+			if warning_messages:
+				self.log.warning("caught " + e.__class__.__name__ + " at wait_appearance_of_tag. url[" + self.current_url + "]")
+				self.log.warning("by[" + by + "], tag[" + tag + "]")
+				self.log.warning("save_current_page to ../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html and png")
+				self.log.warning(e, exc_info=True)
+				self.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html")
+				self.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".png")
+			else:
+				self.log.debug("caught " + e.__class__.__name__ + " at wait_appearance_of_tag. url[" + self.current_url + "]")
+				self.log.debug("by[" + by + "], tag[" + tag + "]")
 			self.log.debug("return False")
 			return False
 
-		self.log.debug("tag appeared. wait_appearance_of_tag Finished.")
+		self.log.debug("tag appeared. wait_appearance_of_tag Finished.return True")
+		return True
 
 
 	def reconnect(self, url=""):

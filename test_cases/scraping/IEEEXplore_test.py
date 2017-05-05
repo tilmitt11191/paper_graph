@@ -89,6 +89,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.debug("all_cited_urls:" + str(all_cited_urls))
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	"""
 	def test_get_urls_of_papers_with_same_authors_from_target_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/4116687/"
@@ -102,7 +103,7 @@ class IEEEXplore_test(unittest.TestCase):
 
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 	"""
 	def test_get_urls_of_papers_with_same_keywords_from_target_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -116,6 +117,42 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.debug("urls_of_papers_with_same_keywords: " + str(urls_of_papers_with_same_keywords))
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	"""
+	def test_get_cited_papers_which_not_cited(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7849067/"
+		driver = self.xplore.create_driver(url)
+
+		citeds_str, cited_papers, cited_urls = self.xplore.get_cited_papers(driver)
+		self.log.debug("citeds_str[" + citeds_str +"]")
+		self.log.debug("len(cited_urls)[" + str(len(cited_urls)) + "]")
+		self.log.debug("cited_urls: " + str(cited_urls))
+
+		driver.close()
+
+		self.assertEqual(citeds_str, "")
+		self.assertEqual(len(cited_urls), 0)
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+
+	def test_get_cited_papers_which_cited_by_27(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7130662/"
+		driver = self.xplore.create_driver(url)
+
+		citeds_str, cited_papers, cited_urls = self.xplore.get_cited_papers(driver)
+		self.log.debug("citeds_str[" + citeds_str +"]")
+		self.log.debug("len(cited_urls)[" + str(len(cited_urls)) + "]")
+		self.log.debug("cited_urls: " + str(cited_urls))
+
+		driver.close()
+
+		self.assertEqual(citeds_str, "http://ieeexplore.ieee.org/document/7446253,http://ieeexplore.ieee.org/document/7564666,http://ieeexplore.ieee.org/document/7511367,http://ieeexplore.ieee.org/document/7247586,http://ieeexplore.ieee.org/document/7794956,http://ieeexplore.ieee.org/document/7842016,http://ieeexplore.ieee.org/document/7901477,http://ieeexplore.ieee.org/document/7794955,http://ieeexplore.ieee.org/document/7875428,http://ieeexplore.ieee.org/document/7841937,http://ieeexplore.ieee.org/document/7442079,http://ieeexplore.ieee.org/document/7517217,http://ieeexplore.ieee.org/document/7727082,http://ieeexplore.ieee.org/document/7536749,http://ieeexplore.ieee.org/document/7541539,http://ieeexplore.ieee.org/document/7792373,http://ieeexplore.ieee.org/document/7762913,http://ieeexplore.ieee.org/document/7542156,http://ieeexplore.ieee.org/document/7500395,http://ieeexplore.ieee.org/document/7727971,http://ieeexplore.ieee.org/document/7553459,http://ieeexplore.ieee.org/document/7555389,http://ieeexplore.ieee.org/document/7845499,http://ieeexplore.ieee.org/document/7572018,http://ieeexplore.ieee.org/document/7510809,http://ieeexplore.ieee.org/document/7552695")
+		self.assertEqual(len(cited_urls), 26)
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+
+
 	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -289,6 +326,14 @@ class IEEEXplore_test(unittest.TestCase):
 	"""
 	"""
 	def test_parse_citing(self):
+		#from
+		#Daniel Garant, Wei Lu, "Mining Botnet Behaviors on the Large-Scale Web Application Community", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013.
+		#to
+		#Daniel Garant, Wei Lu,
+		#Mining Botnet Behaviors on the Large-Scale Web Application Community
+		#Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on
+		#pp. 185-190, 2013
+
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		str = "Daniel Garant, Wei Lu, \"Mining Botnet Behaviors on the Large-Scale Web Application Community\", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013."
 		authors, cited_title, cited_conference, cited_date = self.xplore.parse_citing(str)
