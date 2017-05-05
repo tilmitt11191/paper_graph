@@ -243,6 +243,9 @@ class Table_papers(Base):
 			previous_id = q.id
 		self.log.debug("for loop ended. return " + str(previous_id + 1))
 		return previous_id + 1
+	
+	def close(self):
+		self.db.close()
 
 	def get_vars(self):
 		return("{"+

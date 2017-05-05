@@ -5,6 +5,9 @@
 import unittest
 import sys,os
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
+from phantomjs_ import PhantomJS_
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 from searchs import Searchs
 
@@ -46,6 +49,62 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.opts.set_PerPage(1000)
 		self.xplore.show_options()
 	"""
+	"""
+	def test_get_attributes_and_download_pdf_of_various(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		urls = []
+		driver = PhantomJS_()
+		#urls.append("http://ieeexplore.ieee.org/document/6517049") ##publish type error
+		#urls.append("http://ieeexplore.ieee.org/document/7881332/") ##NoSuchWindowException
+		#urls.append("http://ieeexplore.ieee.org/document/7312885/") ##Too long authors
+		urls.append("http://ieeexplore.ieee.org/document/7879258/") ##get paper page unfinised
+		for url in urls:
+			#driver = self.xplore.create_driver(url)
+			self.search.node = url
+			self.search.limit = 1
+			self.xplore.get_attributes_and_download_pdf(self.search, driver)
+
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
+
+	def test_get_attributes_and_download_pdf_which_not_cited(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7849067/"
+		driver = self.xplore.create_driver(url)
+		self.search.node = url
+
+		self.xplore.get_attributes_and_download_pdf(self.search, driver)
+
+		driver.close()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+	def test_get_attributes_and_download_pdf_which_cited_by_25(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7130662/" ##ElementNotVisibleException
+		driver = self.xplore.create_driver(url)
+		self.search.node = url
+		self.xplore.get_attributes_and_download_pdf(self.search, driver)
+
+		driver.close()
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+	"""
+
+	def test_get_attributes_and_download_pdf_which_cited_by_many(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		##New directions in cryptography
+		url = "http://ieeexplore.ieee.org/document/1055638/"
+
+		driver = self.xplore.create_driver(url)
+		self.search.node = url
+
+		paper, paper.url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls, urls_in_conference = self.xplore.get_attributes_and_download_pdf(self.search, driver)
+
+		driver.close()
+		print(paper.get_vars())
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
 
 	"""
 	def test_get_papers_by_keywords_39hit(self):
@@ -75,28 +134,16 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.get_papers_by_keywords(keywords, num_of_papers="all", search_options=opts)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-
 	"""
-	def test_get_papers_by_keywords(self):
+	def test_get_authors_and_urls_of_papers_with_same_authors(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		keywords = "\"edge computing\""
-		num_of_papers = 1
-		all_papers, all_cited_urls, all_citing_urls = self.xplore.get_papers_by_keywords(keywords, num_of_papers, timeout=30)
-		print("all_papers[" + str(len(all_papers)) + "]")
-		print("all_citing_urls[" + str(len(all_citing_urls)) + "]")
-		self.log.debug("all_citing_urls:" + str(all_citing_urls))
-		print("all_cited_urls[" + str(len(all_cited_urls)) + "]")
-		self.log.debug("all_cited_urls:" + str(all_cited_urls))
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
-	"""
-	def test_get_urls_of_papers_with_same_authors_from_target_paper(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		url = "http://ieeexplore.ieee.org/document/4116687/"
+		#url = "http://ieeexplore.ieee.org/document/4116687/"
+		#url = "http://ieeexplore.ieee.org/document/1055638/"
+		url = "http://ieeexplore.ieee.org/document/7727082/"
 		num_of_spreading_by_author = self.conf.getconf("IEEE_num_of_spreading_by_author")
 		timeout=30
 		driver = self.xplore.create_driver(url)
-		authors_str, urls_of_papers_with_same_authors = self.xplore.get_urls_of_papers_with_same_authors_from_target_paper(driver, num_of_spreading_by_author, timeout)
+		authors_str, urls_of_papers_with_same_authors = self.xplore.get_authors_and_urls_of_papers_with_same_authors(driver, num_of_spreading_by_author, timeout)
 		self.log.debug("authors_str[" + authors_str + "]")
 		self.log.debug("len(urls_of_papers_with_same_authors)[" + str(len(urls_of_papers_with_same_authors)) + "]")
 		self.log.debug("urls_of_papers_with_same_authors: " + str(urls_of_papers_with_same_authors))
@@ -105,16 +152,36 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	"""
-	def test_get_urls_of_papers_with_same_keywords_from_target_paper(self):
+	def test_get_keywords_and_urls_of_papers_with_same_keywords(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/4116687/"
 		num_of_spreading_by_keyword = self.conf.getconf("IEEE_num_of_spreading_by_keyword")
 		timeout=30
 		driver = self.xplore.create_driver(url)
-		keywords_str, urls_of_papers_with_same_keywords = self.xplore.get_urls_of_papers_with_same_keywords_from_target_paper(driver, num_of_spreading_by_keyword, timeout)
+		keywords_str, urls_of_papers_with_same_keywords = self.xplore.get_keywords_and_urls_of_papers_with_same_keywords(driver, num_of_spreading_by_keyword, timeout)
 		self.log.debug("keywords_str[" + keywords_str +"]")
 		self.log.debug("len(urls_of_papers_with_same_keywords)[" + str(len(urls_of_papers_with_same_keywords)) + "]")
 		self.log.debug("urls_of_papers_with_same_keywords: " + str(urls_of_papers_with_same_keywords))
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
+	def test_get_citing_papers(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7130662/"
+		driver = self.xplore.create_driver(url)
+		citings_str, citing_papers, citing_urls = self.xplore.get_citing_papers(driver)
+
+		self.log.debug("citings_str[" + citings_str +"]")
+		self.log.debug("len(citing_urls)[" + str(len(citing_urls)) + "]")
+		self.log.debug("citing_urls: " + str(citing_urls))
+
+		driver.close()
+
+		self.assertEqual(citings_str, "http://ieeexplore.ieee.org/document/6563280,http://ieeexplore.ieee.org/document/6616116,http://ieeexplore.ieee.org/document/6108303,http://ieeexplore.ieee.org/document/6923535,http://ieeexplore.ieee.org/document/6226796,http://ieeexplore.ieee.org/document/6678114,http://ieeexplore.ieee.org/document/6184361,http://ieeexplore.ieee.org/document/7064907,http://ieeexplore.ieee.org/document/6257509,http://ieeexplore.ieee.org/document/1589108")
+		self.assertEqual(len(citing_urls), 10)
+
+
+
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	"""
@@ -134,7 +201,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.assertEqual(len(cited_urls), 0)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-
+	"""
 	def test_get_cited_papers_which_cited_by_27(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7130662/"
@@ -150,8 +217,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.assertEqual(citeds_str, "http://ieeexplore.ieee.org/document/7446253,http://ieeexplore.ieee.org/document/7564666,http://ieeexplore.ieee.org/document/7511367,http://ieeexplore.ieee.org/document/7247586,http://ieeexplore.ieee.org/document/7794956,http://ieeexplore.ieee.org/document/7842016,http://ieeexplore.ieee.org/document/7901477,http://ieeexplore.ieee.org/document/7794955,http://ieeexplore.ieee.org/document/7875428,http://ieeexplore.ieee.org/document/7841937,http://ieeexplore.ieee.org/document/7442079,http://ieeexplore.ieee.org/document/7517217,http://ieeexplore.ieee.org/document/7727082,http://ieeexplore.ieee.org/document/7536749,http://ieeexplore.ieee.org/document/7541539,http://ieeexplore.ieee.org/document/7792373,http://ieeexplore.ieee.org/document/7762913,http://ieeexplore.ieee.org/document/7542156,http://ieeexplore.ieee.org/document/7500395,http://ieeexplore.ieee.org/document/7727971,http://ieeexplore.ieee.org/document/7553459,http://ieeexplore.ieee.org/document/7555389,http://ieeexplore.ieee.org/document/7845499,http://ieeexplore.ieee.org/document/7572018,http://ieeexplore.ieee.org/document/7510809,http://ieeexplore.ieee.org/document/7552695")
 		self.assertEqual(len(cited_urls), 26)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
-
+	"""
 
 	"""
 	def test_download_a_paper(self):
@@ -167,75 +233,23 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	"""
-	def test_get_attributes_and_download_pdf_of_various(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		urls = []
-		#urls.append("http://ieeexplore.ieee.org/document/6517049") ##publish type error
-		#urls.append("http://ieeexplore.ieee.org/document/7881332/") ##NoSuchWindowException
-		#urls.append("http://ieeexplore.ieee.org/document/7312885/") ##Too long authors
-		urls.append("http://ieeexplore.ieee.org/document/7879258/") ##get paper page unfinised
-		for url in urls:
-			#driver = self.xplore.create_driver(url)
-			sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
-			from phantomjs_ import PhantomJS_
-			driver = PhantomJS_()
-			self.search.node = url
-			self.search.limit = 1
-			self.xplore.get_attributes_and_download_pdf(self.search, driver)
 
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
-	"""
-	def test_get_attributes_and_download_pdf_which_cited_by_25(self):
+	def test_get_conference_and_urls_of_papers_in_same_conference(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		url = "http://ieeexplore.ieee.org/document/7130662/" ##ElementNotVisibleException
+		#url = "http://ieeexplore.ieee.org/document/7915547/" # has published in
+		#url = "http://ieeexplore.ieee.org/document/1055638/" # has published in and decorated page
+		url = "http://ieeexplore.ieee.org/document/7919059/"
 		driver = self.xplore.create_driver(url)
-		self.search.node = url
-		self.xplore.get_attributes_and_download_pdf(self.search, driver)
-
-		driver.close()
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
-
-	def test_get_attributes_and_download_pdf_which_not_cited(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		url = "http://ieeexplore.ieee.org/document/7849067/"
-		driver = self.xplore.create_driver(url)
-		self.search.node = url
-
-		self.xplore.get_attributes_and_download_pdf(self.search, driver)
-
-		driver.close()
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
-
-	def test_get_attributes_and_download_pdf_which_cited(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		url = "http://ieeexplore.ieee.org/document/4116687/"
-		driver = self.xplore.create_driver(url)
-		#driver = self.xplore.create_driver("./samples/paper_page.html")
-		self.search.node = url
-		self.xplore.get_attributes_and_download_pdf(self.search, driver)
-
-		driver.close()
+		num_of_spreading_by_conference = self.conf.getconf("IEEE_num_of_spreading_by_conference")
+		timeout=30
+		conference, urls_of_papers_in_same_conference = self.xplore.get_conference_and_urls_of_papers_in_same_conference(driver, num_of_spreading_by_conference, timeout)
+		self.log.debug("conference[" + conference +"]")
+		self.log.debug("len(urls_of_papers_in_same_conference)[" + str(len(urls_of_papers_in_same_conference)) + "]")
+		self.log.debug("urls_of_papers_in_same_conference: " + str(urls_of_papers_in_same_conference))
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	"""
-	def test_get_attributes_and_download_pdf_which_cited_by_many(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		##New directions in cryptography
-		url = "http://ieeexplore.ieee.org/document/1055638/"
 
-		driver = self.xplore.create_driver(url)
-		self.search.node = url
 
-		paper, citing_urls, cited_urls = self.xplore.get_attributes_and_download_pdf(self.search, driver)
-
-		driver.close()
-		print(paper.get_vars())
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
-		
 	"""
 	def test_get_date_of_publication(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
