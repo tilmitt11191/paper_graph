@@ -1,15 +1,16 @@
 
 # -*- coding: utf-8 -*-
-#python ../../lib/scraping/get_papers_at_frist_keywords_next_citings.py "\"edge computing\""
+
 
 import sys
 args = sys.argv
-if len(args) < 2:
-	print("no keywords")
+if len(args) < 3:
+	print("no keywords or num_of_papers")
 keywords = args[1]
 print("keywords[" + keywords + "]")
 
-num_of_papers = 10000
+num_of_papers = int(args[2])
+
 path="../../data/" + keywords.replace(" ", "").replace("\"", "") + "/"
 filename = "title"
 timeout=30
@@ -33,8 +34,8 @@ opts.PerPage = 100
 
 
 if num_of_papers <= 0:
-	log.warning("initial num_of_papers <= 0")
-	sys.exit("initial num_of_papers <= 0")
+    log.warning("initial num_of_papers <= 0")
+    sys.exit("initial num_of_papers <= 0")
 
 all_papers, all_papers_urls, all_urls_of_papers_with_same_authors, all_urls_of_papers_with_same_keywords, all_citing_urls, all_cited_urls, all_urls_in_conference = xplore.get_papers_by_keywords(keywords, num_of_papers, search_options=opts, path=path, filename=filename, timeout=timeout)
 log.debug("all_papers[" + str(len(all_papers)) + "]")
@@ -45,18 +46,25 @@ log.debug("all_citing_urls[" + str(len(all_citing_urls)) + "]")
 log.debug("all_cited_urls[" + str(len(all_cited_urls)) + "]")
 log.debug("all_urls_in_conference" + str(len(all_urls_in_conference)) + "]")
 
-
 if num_of_papers <= len(all_papers):
-	log.info("finished in the way of xplore.get_papers_by_keywords")
-	sys.exit()
+    log.info("finished in the way of xplore.get_papers_by_keywords")
+    sys.exit()
+
+que = []
+que.extend(all_urls_of_papers_with_same_authors)
+que.extend(all_urls_of_papers_with_same_keywords)
+que.extend(all_citing_urls)
+que.extend(all_cited_urls)
+que.extend(all_urls_in_conference)
+
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 from searchs import Searchs
 
 driver = xplore.create_driver(timeout=timeout)
-search = Searchs(que=all_citing_urls.extend(all_cited_urls), times=len(all_papers), visited=all_papers_urls, limit=num_of_papers)
+search = Searchs(que=que, times=len(all_papers), visited=all_papers_urls, limit=num_of_papers)
 
-Searchs.breadth_first_search(search, [4, 5], xplore.get_attributes_and_download_pdf, driver, path, filename)
+Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], xplore.get_attributes_and_download_pdf, driver, path, filename)
 
 driver.close()
 

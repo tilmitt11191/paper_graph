@@ -48,7 +48,7 @@ from searchs import Searchs
 driver = xplore.create_driver(timeout=timeout)
 search = Searchs(que=all_citing_urls, times=len(all_papers), visited=all_papers_urls, limit=num_of_papers)
 
-Searchs.breadth_first_search(search, 1, xplore.get_attributes_and_download_pdf, driver, path, filename)
+Searchs.breadth_first_search(search, [4, 5], xplore.get_attributes_and_download_pdf, driver, path, filename)
 
 driver.close()
 

@@ -118,9 +118,13 @@ class IEEEXplore:
 
 		urls = self.get_urls_of_papers_in_search_results(driver, num_of_papers, timeout)
 		print("urls.size[" + str(len(urls)) + "]")
+
 		all_papers = []
+		all_urls_of_papers_with_same_authors = []
+		all_urls_of_papers_with_same_keywords = []
 		all_citing_urls = []
 		all_cited_urls = []
+		all_urls_in_conference = []
 
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 		from searchs import Searchs
@@ -128,13 +132,16 @@ class IEEEXplore:
 
 		for url in urls:
 			search.node = url
-			paper, paper_url, citing_urls, cited_urls = self.get_attributes_and_download_pdf(search, driver, path=path, filename=filename)
+			paper, paper_url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls, urls_in_conference = self.get_attributes_and_download_pdf(search, driver, path=path, filename=filename)
 			all_papers.append(paper)
+			all_urls_of_papers_with_same_authors.extend(urls_of_papers_with_same_authors)
+			all_urls_of_papers_with_same_keywords.extend(urls_of_papers_with_same_keywords)
 			all_citing_urls.extend(citing_urls)
 			all_cited_urls.extend(cited_urls)
+			all_urls_in_conference.extend(urls_in_conference)
 			self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
-		return all_papers, urls, all_citing_urls, all_cited_urls
+		return all_papers, urls, all_urls_of_papers_with_same_authors, all_urls_of_papers_with_same_keywords, all_citing_urls, all_cited_urls, all_urls_in_conference
 
 
 	def get_papers_of_target_conference(self, conference_name):
@@ -224,7 +231,16 @@ class IEEEXplore:
 
 		if num_of_papers == "all":
 			elements = driver.find_elements_by_css_selector('div[class="results-display"] > b')
-			num_of_papers = int(elements[1].text)
+			if len(elements) == 2:
+				num_of_papers = int(elements[1].text)
+			else:
+				self.log.warning("at get_urls_of_papers_in_conference")
+				self.log.warning("num_of_papers == all and len(elements) != 2")
+				filename = "../../var/ss/get_urls_of_papers_in_conference_len_not_equal_2"
+				self.log.warning("save to " + filename)
+				driver.save_current_page(filename + ".png")
+				driver.save_current_page(filename + ".html")
+				num_of_papers=100000000000
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 
 		self.opts.set_PerPage(num_of_papers)

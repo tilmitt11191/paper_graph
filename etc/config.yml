@@ -11,7 +11,7 @@ rotate_log_size: 1073741824 #1024*1024*1024B
 #rotate_log_size: 1048576 #1024*1024B
 #rotate_log_size: 1000 #1024*1024B
 rotate_log_lines: 100000
-backup_log_count: 10
+backup_log_count: 100
 
 pdf_downloading_path: ../../data/tmp/
 
