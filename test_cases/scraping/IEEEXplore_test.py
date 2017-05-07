@@ -134,18 +134,18 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.get_papers_by_keywords(keywords, num_of_papers="all", search_options=opts)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-
+	"""
 	def test_get_urls_of_papers_in_search_results(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		#url = "http://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&queryText=%22Index%20Terms%22:.QT..QT.&newsearch=true" #"" invalid search
+		url = "http://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&queryText=%22Index%20Terms%22:.QT..QT.&newsearch=true" ## invalid search
 		#url = "http://ieeexplore.ieee.org/search/searchresult.jsp?pageNumber=5&searchWithin=%22Authors%22:.QT.Joerg%20Kliewer.QT.&newsearch=true" ## 109hit
-		url = "http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning&newsearch=true" ##4868hit
+		#url = "http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning&newsearch=true" ##4868hit
 		timeout=30
 		driver = self.xplore.create_driver(url)
 		self.xplore.get_urls_of_papers_in_search_results(driver, timeout=timeout)
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 
 	"""
 	def test_get_authors_and_urls_of_papers_with_same_authors(self):
@@ -460,5 +460,6 @@ class IEEEXplore_test(unittest.TestCase):
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+
 if __name__ == '__main__':
 	unittest.main()
