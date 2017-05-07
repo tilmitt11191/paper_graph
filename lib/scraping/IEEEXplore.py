@@ -199,8 +199,11 @@ class IEEEXplore:
 
 	def get_urls_of_papers_in_search_results(self, driver, num_of_papers="all", timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.wait_search_results(driver, timeout)
 
 		if num_of_papers == "all":
+			#driver.save_current_page("../../var/ss/NSEE.png")
+			#driver.save_current_page("../../var/ss/NSEE.html")
 			element = driver.find_element_by_css_selector('div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
 			results = element.text.split(" ")
 			self.log.debug("num of search result string[" + str(len(results)) + "]")
@@ -208,8 +211,6 @@ class IEEEXplore:
 				num_of_papers = 1
 			else:
 				#self.log.debug(results[-1])
-				#driver.save_current_page("../../var/ss/search_by_author_get_num_ok.png")
-				#driver.save_current_page("../../var/ss/search_by_author_get_num_ok.html")
 				num_of_papers = int(results[-1].replace(",",""))
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 		
@@ -217,9 +218,10 @@ class IEEEXplore:
 		self.set_options(driver, self.opts, timeout=timeout)
 
 		urls = []
+		visited_buttons = ["1"]
+		#next_button = driver.find_element_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
+		#visited_buttons = [next_button.text]
 
-		next_button = driver.find_element_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
-		visited_buttons = [next_button.text]
 		while True:
 			self.log.debug("get paper urls in current page")
 			for i in range(self.opts.PerPage):
@@ -240,6 +242,10 @@ class IEEEXplore:
 
 			self.log.debug("search buttons to next page")
 			buttons = driver.find_elements_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
+			if len(buttons) <= 1:
+				self.log.debug("len(buttons)[" + str(len(buttons)) + "] <= 1. search results in only this page. break")
+				break
+
 			i = 0
 			for button in buttons:
 				self.log.debug("i[" + str(i) + "], button.text[" + button.text + "], visited_buttons:" + str(visited_buttons))
@@ -619,7 +625,6 @@ class IEEEXplore:
 			url = self.conf.getconf("IEEE_top_page")
 
 		driver = PhantomJS_(desired_capabilities={'phantomjs.page.settings.resourceTimeout': timeout})
-
 		if url == self.conf.getconf("IEEE_top_page"):
 			self.log.debug("driver.get IEEE_top_page (" + url + "). wait start")
 			driver.get(url, tag_to_wait='//li[@class="Media-articles-item"]', by="xpath", timeout=timeout)
@@ -713,13 +718,13 @@ class IEEEXplore:
 			except NoSuchElementException as e:
 				self.log.warning("caught " + e.__class__.__name__ + " at click download pdf button. retries[" + str(retries) + "]")
 				self.log.warning(e, exc_info=True)
-				self.save_current_page(driver, "./samples/caught_NoSuchElementException_at_click_download_pdf_button.html")
-				self.save_current_page(driver, "./samples/caught_NoSuchElementException_at_click_download_pdf_button.png")
+				driver.save_current_page("../../var/ss/caught_NoSuchElementException_at_click_download_pdf_button.html")
+				driver.save_current_page("../..//var/ss/caught_NoSuchElementException_at_click_download_pdf_button.png")
 				retries -= 1
 		if retries == 0:
 			self.log.error("button.click() error")
-			self.save_current_page(driver, "./samples/button_click_error.html")
-			self.save_current_page(driver, "./samples/button_click_error.png")
+			driver.save_current_page("../../var/ss/button_click_error.html")
+			driver.save_current_page("../../var/ss/button_click_error.png")
 
 		self.log.debug("Wait start.")
 		try:
@@ -750,9 +755,6 @@ class IEEEXplore:
 			self.log.debug(os.system(command))
 		except:
 			self.log.warning("error at " + command)
-
-		#self.save_current_page(driver, "./samples/7898372.png")
-		#self.save_current_page(driver, "./samples/7898372.html")
 
 		driver.get(initial_url)
 
@@ -931,9 +933,6 @@ class IEEEXplore:
 		##PublicationTitle"
 		##Publisher" : "None
 		##ConferenceLocation
-
-		#self.save_current_page(driver, "./samples/after_set_options.png")
-		#self.save_current_page(driver, "./samples/after_set_options.html")
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 

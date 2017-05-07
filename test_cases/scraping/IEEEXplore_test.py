@@ -134,6 +134,19 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.get_papers_by_keywords(keywords, num_of_papers="all", search_options=opts)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+
+	def test_get_urls_of_papers_in_search_results(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		#url = "http://ieeexplore.ieee.org/search/searchresult.jsp?matchBoolean=true&queryText=%22Index%20Terms%22:.QT..QT.&newsearch=true" #"" invalid search
+		#url = "http://ieeexplore.ieee.org/search/searchresult.jsp?pageNumber=5&searchWithin=%22Authors%22:.QT.Joerg%20Kliewer.QT.&newsearch=true" ## 109hit
+		url = "http://ieeexplore.ieee.org/search/searchresult.jsp?queryText=deep%20learning&newsearch=true" ##4868hit
+		timeout=30
+		driver = self.xplore.create_driver(url)
+		self.xplore.get_urls_of_papers_in_search_results(driver, timeout=timeout)
+
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+
 	"""
 	def test_get_authors_and_urls_of_papers_with_same_authors(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -156,6 +169,7 @@ class IEEEXplore_test(unittest.TestCase):
 	def test_get_keywords_and_urls_of_papers_with_same_keywords(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/4116687/"
+		"http://ieeexplore.ieee.org/document/7920294/" ## no keyword
 		num_of_spreading_by_keyword = self.conf.getconf("IEEE_num_of_spreading_by_keyword")
 		timeout=30
 		driver = self.xplore.create_driver(url)
@@ -385,7 +399,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.xplore.get_papers_of_new_conferences(10)
 	"""
-	
+	"""
 	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords="\"edge computing\""
@@ -408,7 +422,7 @@ class IEEEXplore_test(unittest.TestCase):
 		Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], self.xplore.get_attributes_and_download_pdf, driver, path, filename)
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-	
+	"""
 	"""
 	def get_date_of_publications(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
