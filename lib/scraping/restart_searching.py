@@ -14,6 +14,9 @@ timeout=30
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 from searchs import Searchs
 
+from IEEEXplore import IEEEXplore
+xplore = IEEEXplore()
+
 search = Searchs.restore_status(saved_file)
 print("node: " + search.node)
 print("limit: " + str(search.limit))
