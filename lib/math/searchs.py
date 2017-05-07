@@ -65,7 +65,7 @@ class Searchs():
 	@classmethod
 	def save_current_status(cls, search):
 		status = {}
-		filename = "save_at_" + \
+		filename = "../../var/yaml/save_at_" + \
 			str(time.strftime('%Y-%m-%d-%H_%M_%S')) + ".yaml"
 
 		methods = []

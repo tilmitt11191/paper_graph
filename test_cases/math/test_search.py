@@ -61,12 +61,14 @@ class SearchTest(unittest.TestCase):
 			return [self.simple_graph[search.node]]
 
 	def get_nexts_with_many_arrays(self, search):
+		"""get_nexts_with_many_arrays."""
 		print(str(search.node) + ".get_nexts")
-		print("times[" + str(search.times) + "], que[" +
-			  str(len(search.que)) + "], limit[" + str(search.limit) + "]")
+		print(
+			"times[" + str(search.times) + "], que[" +
+			str(len(search.que)) + "], limit[" + str(search.limit) + "]")
 		print("visited: " + str(search.visited))
 		if search.times == 5:
-			1/0
+			1 / 0
 		search.times += 1
 		if search.times >= search.limit:
 			search.que = [search.node]
