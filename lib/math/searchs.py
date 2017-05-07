@@ -17,7 +17,7 @@ class Searchs():
 		if len(self.que) == 0:
 			self.que = [self.node]
 		elif self.que[0] != self.node:
-			self.que.insert(self.node)
+			self.que.insert(0, self.node)
 
 	@classmethod
 	def breadth_first_search(
