@@ -28,43 +28,27 @@ log = l.getLogger()
 log.info("get_papers_from_IEEE.py start.")
 log.info("num_of_papers["+str(num_of_papers)+"]")
 
-from IEEEXplore import IEEEXplore as X
-xplore = X()
-from IEEEXplore import Search_options as s
-opts = s()
+from IEEEXplore import IEEEXplore
+xplore = IEEEXplore()
+from IEEEXplore import Search_options
+opts = Search_options()
 opts.PerPage = 100
 
+timeout=30
 
 if num_of_papers <= 0:
-    log.warning("initial num_of_papers <= 0")
-    sys.exit("initial num_of_papers <= 0")
+	log.warning("initial num_of_papers <= 0")
+	sys.exit("initial num_of_papers <= 0")
 
-all_papers, all_papers_urls, all_urls_of_papers_with_same_authors, all_urls_of_papers_with_same_keywords, all_citing_urls, all_cited_urls, all_urls_in_conference = xplore.get_papers_by_keywords(keywords, num_of_papers, search_options=opts, path=path, filename=filename, timeout=timeout)
-log.debug("all_papers[" + str(len(all_papers)) + "]")
-log.debug("all_papers_urls[" + str(len(all_papers_urls)) + "]")
-log.debug("all_urls_of_papers_with_same_authors" + str(len(all_urls_of_papers_with_same_authors)) + "]")
-log.debug("all_urls_of_papers_with_same_keywords" + str(len(all_urls_of_papers_with_same_keywords)) + "]")
-log.debug("all_citing_urls[" + str(len(all_citing_urls)) + "]")
-log.debug("all_cited_urls[" + str(len(all_cited_urls)) + "]")
-log.debug("all_urls_in_conference" + str(len(all_urls_in_conference)) + "]")
-
-if num_of_papers <= len(all_papers):
-    log.info("finished in the way of xplore.get_papers_by_keywords")
-    sys.exit()
-
-que = []
-que.extend(all_urls_of_papers_with_same_authors)
-que.extend(all_urls_of_papers_with_same_keywords)
-que.extend(all_citing_urls)
-que.extend(all_cited_urls)
-que.extend(all_urls_in_conference)
-
-
+driver = xplore.create_driver()
+xplore.search_by_keywords(driver, keywords, search_options=opts, timeout=timeout)
+urls = xplore.get_urls_of_papers_in_search_results(driver, timeout=timeout)
+print("urls: " + str(urls))
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 from searchs import Searchs
 
 driver = xplore.create_driver(timeout=timeout)
-search = Searchs(que=que, times=len(all_papers), visited=all_papers_urls, limit=num_of_papers)
+search = Searchs(initial_node=urls[0], que=urls, times=1, visited=[], limit=num_of_papers)
 
 Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], xplore.get_attributes_and_download_pdf, driver, path, filename)
 

@@ -43,9 +43,13 @@ class IEEEXplore:
 
 		search.times += 1
 		target_paper_url = search.node
-
-		m = "url[" + target_paper_url + "]\ntimes[" + str(search.times) + "], len(que)[" + str(
-			len(search.que)) + "], limit[" + str(search.limit) + "]"
+		#print("aaa" + str(search.limit))
+		#m = "limit[" + str(search.limit) + "]"
+		m = "url[" + str(target_paper_url) + "]\n" + \
+		"times[" + str(search.times) + "], " + \
+		"len(que)[" + str(len(search.que)) + "], " + \
+		"limit[" + str(search.limit) + "]"
+		
 		print(m)
 		self.log.info(m)
 
@@ -98,11 +102,11 @@ class IEEEXplore:
 		paper.timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 		if filename == "title":
 			filename = paper.title + ".pdf"
-		paper.path = self.download_a_paper(
-			driver, path=path, filename=filename, timeout=timeout)
-		self.log.debug("download finished. wait start.")
-		time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
-		self.log.debug("wait finished.")
+		#paper.path = self.download_a_paper(
+		#	driver, path=path, filename=filename, timeout=timeout)
+		#self.log.debug("download finished. wait start.")
+		#time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+		#self.log.debug("wait finished.")
 		paper.id = paper.get_id()
 
 		self.log.debug(paper.get_vars())
