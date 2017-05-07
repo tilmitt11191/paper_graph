@@ -5,9 +5,12 @@ import sys
 import os
 args = sys.argv
 if len(args) < 2:
-	print("no saved file path")
+	print("no saved file path or pdf save path")
 saved_file = args[1]
 print("saved_file[" + saved_file + "]")
+path = args[2]
+print("path: " + path)
+filename = "title"
 
 timeout=30
 
@@ -23,6 +26,8 @@ print("limit: " + str(search.limit))
 print("que: " + str(search.que))
 print("visited: " + str(search.visited))
 print("times: " + str(search.times))
+
+driver = xplore.create_driver(search.node)
 
 Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], xplore.get_attributes_and_download_pdf, driver, path, filename)
 

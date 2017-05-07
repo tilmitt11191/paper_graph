@@ -25,8 +25,7 @@ from table_authors import Table_authors
 class IEEEXplore:
 
 	def __init__(self):
-		sys.path.append(os.path.dirname(
-			os.path.abspath(__file__)) + "/../lib/utils")
+		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
 		from conf import Conf
 		self.conf = Conf()
 		from log import Log as l

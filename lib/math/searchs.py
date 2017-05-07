@@ -96,5 +96,8 @@ class Searchs():
 			methods.append(method[0])
 		for var in search.__dir__():
 			if not var.startswith("_") and not var in methods:
-				exec("search."+ var + " = status[\"" + var + "\"]")
+				if var == "que" or var == "visited" or var == "times" or var == "limit":
+					exec("search."+ var + " = eval(status[\"" + var + "\"])")
+				else:
+					exec("search."+ var + " = status[\"" + var + "\"]")
 		return search
