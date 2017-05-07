@@ -15,11 +15,11 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 from searchs import Searchs
 
 search = Searchs.restore_status(saved_file)
-self.log.debug("node: " + search.node)
-self.log.debug("limit: " + str(search.limit))
-self.log.debug("que: " + str(search.que))
-self.log.debug("visited: " + str(search.visited))
-self.log.debug("times: " + str(search.times))
+print("node: " + search.node)
+print("limit: " + str(search.limit))
+print("que: " + str(search.que))
+print("visited: " + str(search.visited))
+print("times: " + str(search.times))
 
 Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], xplore.get_attributes_and_download_pdf, driver, path, filename)
 
