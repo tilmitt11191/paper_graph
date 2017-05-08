@@ -1,0 +1,25 @@
+;============================================ 
+; Filename    : 
+; Description : SSH Auto login 
+; Author      : 
+; Created     : 
+; modified    : 
+;============================================ 
+HOSTADDR = '172.19.73.168'
+PORTNUM = '50022'
+USERNAME = 'alladmin'
+KEY_FILE = 'C:\Users\ozu\.ssh\id_rsa' 
+;============================================ 
+;;getpassword PASSFILE USERNAME PASSWORD
+ 
+COMMAND = HOSTADDR
+strconcat COMMAND ':'
+strconcat COMMAND PORTNUM
+strconcat COMMAND ' /ssh /2 /auth=publickey /user='
+strconcat COMMAND USERNAME 
+strconcat COMMAND ' /keyfile=' 
+strconcat COMMAND KEY_FILE
+ 
+connect COMMAND
+ 
+end
