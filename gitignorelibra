@@ -1,7 +1,0 @@
-tmp/*
-data/*
-node_modules/*
-__pycache__/*
-\~\$*
-var/log/*
-!.gitignore
