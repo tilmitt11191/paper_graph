@@ -5,13 +5,14 @@
 import unittest
 import sys,os
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
+from log import Log
+
 class Utils_test(unittest.TestCase):
 
 	@classmethod
 	def setUpClass(cls):
-		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
-		from log import Log as l
-		cls.log = l().getLogger()
+		cls.log = Log().getLogger()
 
 		cls.log.info("\n\n"+__class__.__name__+ "."+sys._getframe().f_code.co_name+" finished.\n---------- start ---------")
 

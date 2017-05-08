@@ -5,6 +5,9 @@
 import unittest
 import sys,os
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
+from log import Log
+from conf import Conf
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
 from phantomjs_ import PhantomJS_
 
@@ -16,10 +19,7 @@ class IEEEXplore_test(unittest.TestCase):
 
 	@classmethod
 	def setUpClass(cls):
-		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
-		from log import Log as l
-		cls.log = l().getLogger()
-		from conf import Conf
+		cls.log = Log().getLogger()
 		cls.conf = Conf()
 
 		cls.log.info("\n\nIEEEXplore_test.setUpClass finished.\n---------- start ---------")
@@ -49,7 +49,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.opts.set_PerPage(1000)
 		self.xplore.show_options()
 	"""
-	"""
+
 	def test_get_attributes_and_download_pdf_of_various(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		urls = []
@@ -57,15 +57,16 @@ class IEEEXplore_test(unittest.TestCase):
 		#urls.append("http://ieeexplore.ieee.org/document/6517049") ##publish type error
 		#urls.append("http://ieeexplore.ieee.org/document/7881332/") ##NoSuchWindowException
 		#urls.append("http://ieeexplore.ieee.org/document/7312885/") ##Too long authors
-		urls.append("http://ieeexplore.ieee.org/document/7879258/") ##get paper page unfinised
+		#urls.append("http://ieeexplore.ieee.org/document/7879258/") ##get paper page unfinised
+		urls.append("http://ieeexplore.ieee.org/document/7888438/") ## open
 		for url in urls:
 			#driver = self.xplore.create_driver(url)
 			self.search.node = url
-			self.search.limit = 1
+			self.search.limit = len(urls)
 			self.xplore.get_attributes_and_download_pdf(self.search, driver)
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+
 	"""
 
 	def test_get_attributes_and_download_pdf_which_not_cited(self):

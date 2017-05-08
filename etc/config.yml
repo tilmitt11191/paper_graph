@@ -27,4 +27,5 @@ IEEE_num_of_spreading_by_keyword: 25
 IEEE_num_of_spreading_by_conference: "all"
 
 phantomJS_pass: "/usr/local/bin/phantomjs"
+phantomJS_load_timeout: 30
 myslq_url: "mysql+pymysql://alladmin:admin@localhost/paper_graph?charset=utf8"

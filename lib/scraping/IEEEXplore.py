@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 
 import sys
@@ -8,15 +7,23 @@ import re
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotVisibleException
+from selenium.common.exceptions import \
+	TimeoutException, \
+	NoSuchElementException, \
+	ElementNotVisibleException
 
 from http.client import RemoteDisconnected
 from urllib.request import URLError
 
-sys.path.append(os.path.dirname(
-	os.path.abspath(__file__)) + "/../../lib/scraping")
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
+from conf import Conf
+from log import Log
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
+	"/../../lib/scraping")
 from phantomjs_ import PhantomJS_
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
+	"/../../lib/db")
 from table_papers import Table_papers
 from table_citations import Table_citations
 from table_authors import Table_authors
@@ -25,12 +32,7 @@ from table_authors import Table_authors
 class IEEEXplore:
 
 	def __init__(self):
-		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
-		from conf import Conf
-		self.conf = Conf()
-		from log import Log as l
-		self.log = l.getLogger()
-
+		self.log = Log().getLogger()
 		self.opts = Search_options()
 		self.log.debug("class " + __class__.__name__ + " created.")
 
@@ -66,7 +68,7 @@ class IEEEXplore:
 		self.log.debug("get authors")
 		if search.times + len(search.que) <= search.limit:
 			paper.authors, urls_of_papers_with_same_authors = self.get_authors_and_urls_of_papers_with_same_authors(
-				driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_author"), timeout=timeout)
+				driver, num_of_papers=Conf().getconf("IEEE_num_of_spreading_by_author"), timeout=timeout)
 		else:
 			self.log.debug("no need to spread anymore")
 			paper.authors = self.get_authors(driver)
@@ -75,7 +77,7 @@ class IEEEXplore:
 		self.log.debug("get keywords")
 		if search.times + len(search.que) <= search.limit:
 			paper.keywords, urls_of_papers_with_same_keywords = self.get_keywords_and_urls_of_papers_with_same_keywords(
-				driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_keyword"), timeout=timeout)
+				driver, num_of_papers=Conf().getconf("IEEE_num_of_spreading_by_keyword"), timeout=timeout)
 		else:
 			self.log.debug("no need to spread anymore")
 			paper.keywords = self.get_keywords(driver)
@@ -92,9 +94,9 @@ class IEEEXplore:
 		self.log.debug("get conference")
 		if search.times + len(search.que) <= search.limit:
 			paper.conference, urls_in_conference = self.get_conference_and_urls_of_papers_in_same_conference(
-				driver, num_of_papers=self.conf.getconf("IEEE_num_of_spreading_by_conference"), timeout=timeout)
+				driver, num_of_papers=Conf().getconf("IEEE_num_of_spreading_by_conference"), timeout=timeout)
 		else:
-			paper.conference = get_conference(driver)
+			paper.conference = self.get_conference(driver)
 			urls_in_conference = []
 		paper.published = self.get_date_of_publication(driver)
 		paper.url = target_paper_url
@@ -104,7 +106,7 @@ class IEEEXplore:
 		paper.path = self.download_a_paper(
 			driver, path=path, filename=filename, timeout=timeout)
 		self.log.debug("download finished. wait start.")
-		time.sleep(self.conf.getconf("IEEE_wait_time_per_download_paper"))
+		time.sleep(Conf().getconf("IEEE_wait_time_per_download_paper"))
 		self.log.debug("wait finished.")
 		paper.id = paper.get_id()
 
@@ -443,7 +445,7 @@ class IEEEXplore:
 				authors_str += "," + author_name
 				author = Table_authors()
 				author.name = author_name
-				urls_of_authors.append(self.conf.getconf(
+				urls_of_authors.append(Conf().getconf(
 					"IEEE_website") + el.get_attribute("ng-href"))
 				belonging = el.get_attribute("qtip-text")
 				author.belonging = belonging
@@ -548,7 +550,7 @@ class IEEEXplore:
 		self.log.debug("create arrays of paper and url")
 		for el in elements:
 			citing_paper = Table_papers()
-			citing_paper.url = self.conf.getconf(
+			citing_paper.url = Conf().getconf(
 				"IEEE_website") + el.find_element_by_css_selector('a').get_attribute("ng-href")
 			citing_paper.title = el.find_element_by_css_selector(
 				'a').get_attribute("title")
@@ -592,7 +594,7 @@ class IEEEXplore:
 
 		self.log.debug("create arrays of papers and urls")
 		for el in elements:
-			cited_url = self.conf.getconf("IEEE_website") + el.find_element_by_css_selector(
+			cited_url = Conf().getconf("IEEE_website") + el.find_element_by_css_selector(
 				'div[class="ref-links-container stats-citations-links-container"] > span > a').get_attribute("ng-href")
 			citeds_str += "," + cited_url
 			cited_urls.append(cited_url)
@@ -623,12 +625,12 @@ class IEEEXplore:
 		elements = driver.find_elements_by_css_selector(
 			'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
 		num_of_viewing = len(elements)
-		limit_of_view = self.conf.getconf("IEEE_citation_num_at_first_page")
+		limit_of_view = Conf().getconf("IEEE_citation_num_at_first_page")
 		self.log.debug("num_of_viewing[" + str(num_of_viewing) +
 					   "], limit_of_view[" + str(limit_of_view) + "]")
 
 		while num_of_viewing > limit_of_view - 10:
-			limit_of_view += self.conf.getconf(
+			limit_of_view += Conf().getconf(
 				"IEEE_citation_num_per_more_view")
 			try:
 				load_more_button = driver.find_element_by_xpath(
@@ -741,11 +743,11 @@ class IEEEXplore:
 		self.log.debug("url[" + url + "]")
 
 		if url == "":
-			url = self.conf.getconf("IEEE_top_page")
+			url = Conf().getconf("IEEE_top_page")
 
 		driver = PhantomJS_(desired_capabilities={
 							'phantomjs.page.settings.resourceTimeout': timeout})
-		if url == self.conf.getconf("IEEE_top_page"):
+		if url == Conf().getconf("IEEE_top_page"):
 			self.log.debug(
 				"driver.get IEEE_top_page (" + url + "). wait start")
 			driver.get(
@@ -850,7 +852,7 @@ class IEEEXplore:
 				self.log.warning("caught " + e.__class__.__name__ +
 								 " at click download pdf button. retries[" + str(retries) + "]")
 				self.log.warning(e, exc_info=True)
-				time.sleep(self.conf.getconf(
+				time.sleep(Conf().getconf(
 					"IEEE_wait_time_per_download_paper"))
 				driver.reconnect(initial_url)
 				self.wait_button_to_pdf_page(driver, timeout)
