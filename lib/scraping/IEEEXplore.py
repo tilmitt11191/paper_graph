@@ -870,7 +870,8 @@ class IEEEXplore:
 					"_at_click_download_pdf_button.png")
 				retries -= 1
 		if retries == 0:
-			self.log.error("button.click() error")
+			self.log.error("button.click() error at download_a_paper")
+			self.log.error("retries == 0. please check url: " + driver.current_url)
 			driver.save_current_page("../../var/ss/button_click_error.html")
 			driver.save_current_page("../../var/ss/button_click_error.png")
 
