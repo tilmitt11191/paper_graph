@@ -10,6 +10,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotVisibleException
 from http.client import RemoteDisconnected
+from urllib.request import URLError
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../lib/utils")
 from conf import Conf
@@ -95,34 +96,51 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.wait_appearance_of_tag(by="xpath", tag=tag_to_wait, timeout=timeout)
 
 	def wait_appearance_of_tag(self, by="xpath", tag="", warning_messages=True, timeout=30):
-		self.log.debug("wait_appearance_of_tag start. tag: " + tag)
-		try:
-			if by=="xpath":
-				WebDriverWait(self, timeout).until(lambda self: self.find_element_by_xpath(tag))
-			elif by=="css_selector":
-				WebDriverWait(self, timeout).until(lambda self: self.find_element_by_css_selector(tag))
-			elif by=="name":
-				WebDriverWait(self, timeout).until(lambda self: self.find_element_by_name(tag))
-			elif by=="tag_name":
-				WebDriverWait(self, timeout).until(lambda self: self.find_element_by_tag_name(tag))
-			else:
-				self.log.waring("type error by=" + by + ", tag: " + tag)
-		except (TimeoutException, NoSuchElementException) as e:
-			if warning_messages:
-				self.log.warning("caught " + e.__class__.__name__ + " at wait_appearance_of_tag. url[" + self.current_url + "]")
-				self.log.warning("by[" + by + "], tag[" + tag + "]")
-				self.log.warning("save_current_page to ../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html and png")
-				self.log.warning(e, exc_info=True)
-				self.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html")
-				self.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".png")
-			else:
-				self.log.debug("caught " + e.__class__.__name__ + " at wait_appearance_of_tag. url[" + self.current_url + "]")
-				self.log.debug("by[" + by + "], tag[" + tag + "]")
-			self.log.debug("return False")
-			return False
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start. tag: " + tag)
+		retries = 10
+		while retries > 0:
+			try:
+				if by=="xpath":
+					WebDriverWait(self, timeout).until(lambda self: self.find_element_by_xpath(tag))
+				elif by=="css_selector":
+					WebDriverWait(self, timeout).until(lambda self: self.find_element_by_css_selector(tag))
+				elif by=="name":
+					WebDriverWait(self, timeout).until(lambda self: self.find_element_by_name(tag))
+				elif by=="tag_name":
+					WebDriverWait(self, timeout).until(lambda self: self.find_element_by_tag_name(tag))
+				else:
+					self.log.waring("type error by=" + by + ", tag: " + tag)
+				break
+			except (RemoteDisconnected, ConnectionRefusedError, URLError) as e:
+				self.save_error_messages_at(sys._getframe().f_code.co_name, by, tag, warning_messages, e)
+				self.reconnect(self.current_url)
+				retries -= 1
+				self.log.debug("retries -= 1. retries[" + str(retries) + "]")
+			except (TimeoutException, NoSuchElementException) as e:
+				self.save_error_messages_at(sys._getframe().f_code.co_name, by, tag, warning_messages, e)
+				return False
+		if retries == 0:
+			self.log.error("wait error at " + sys._getframe().f_code.co_name)
+			self.log.error("retries == 0. please check url: " + self.current_url)
+			filename = "../../var/ss/error_atwait_appearance_of_tag_"+ re.sub(r"/|:|\?|\.", "", self.current_url)
+			self.save_current_page(filename + ".html")
+			self.save_current_page(filename + ".png")
 
 		self.log.debug("tag appeared. wait_appearance_of_tag Finished.return True")
 		return True
+
+
+	def save_error_messages_at(self, method, by, tag, warning_messages, exception):
+		self.log.warning("caught " + exception.__class__.__name__ + " at wait_appearance_of_tag. url[" + self.current_url + "]")
+		self.log.warning("by[" + by + "], tag[" + tag + "]")
+		if warning_messages:
+			self.log.warning("save_current_page to ../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html and png")
+			self.log.warning(exception, exc_info=True)
+			filename = "../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url)
+			self.save_current_page(filename + ".html")
+			self.save_current_page(filename + ".png")
+			self.log.debug("return False")
+
 
 
 	def reconnect(self, url=""):

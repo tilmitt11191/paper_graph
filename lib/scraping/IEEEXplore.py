@@ -775,23 +775,7 @@ class IEEEXplore:
 					   sys._getframe().f_code.co_name + " start")
 
 		self.log.debug("Wait start.")
-		try:
-			tag = '//input[@type="checkbox" and @data-group="search-results-group" and @ng-checked="vm.allSelected()"]'
-			WebDriverWait(driver, timeout).until(
-				lambda driver: driver.find_element_by_xpath(tag))
-		except (TimeoutException, NoSuchElementException) as e:
-			self.log.warning("caught" + e.__class__.__name__ +
-							 " at loading the keywords results page.")
-			self.log.warning("at " + sys._getframe().f_code.co_name)
-			self.log.warning("url[" + driver.current_url + "]")
-			self.log.warning("tag[find_element_by_xpath(" + tag + ")")
-			filename = "../../var/ss/TimeoutExceptionatLoadtheKeywordsResultsPage." + \
-				re.sub(r"/|:|\?", "", driver.current_url)
-			driver.save_current_page(filename + ".png")
-			driver.save_current_page(filename + ".html")
-			self.log.warning(e, exc_info=True)
-			self.log.debug(__class__.__name__ + "." +
-						   sys._getframe().f_code.co_name + " finished. return False")
+		if driver.wait_appearance_of_tag(by="xpath", tag='//input[@type="checkbox" and @data-group="search-results-group" and @ng-checked="vm.allSelected()"]'):
 			return False
 		self.log.debug("Wait Finished.")
 		self.log.debug(__class__.__name__ + "." +
@@ -1087,7 +1071,7 @@ class IEEEXplore:
 					"caught NoSuchElementException at setting PerPage.")
 				self.log.debug(
 					"No PerPage button means only hit a few papers.")
-				self.log.debug("Nothing to do/")
+				self.log.debug("Nothing to do")
 
 		# Select(element).select_by_value("object:75")
 		# SortBy" : "MostCit
