@@ -267,7 +267,7 @@ class IEEEXplore:
 					'//div[@class="js-displayer-content u-mt-1 stats-SearchResults_DocResult_ViewMore ng-scope hide"]')
 				self.log.debug(
 					"scroll times[" + str(i) + "] len(paper_elements)[" + str(len(paper_elements)) + "]")
-				driver.execute_script(
+				driver.execute_script_with_handling_exceptions(
 					"window.scrollTo(0, document.body.scrollHeight);")
 				if len(paper_elements) == self.opts.PerPage:
 					break

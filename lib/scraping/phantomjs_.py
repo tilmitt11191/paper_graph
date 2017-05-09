@@ -112,12 +112,12 @@ class PhantomJS_(webdriver.PhantomJS):
 					self.log.waring("type error by=" + by + ", tag: " + tag)
 				break
 			except (RemoteDisconnected, ConnectionRefusedError, URLError) as e:
-				self.save_error_messages_at(sys._getframe().f_code.co_name, by, tag, warning_messages, e)
+				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e)
 				self.reconnect(self.current_url)
 				retries -= 1
 				self.log.debug("retries -= 1. retries[" + str(retries) + "]")
 			except (TimeoutException, NoSuchElementException) as e:
-				self.save_error_messages_at(sys._getframe().f_code.co_name, by, tag, warning_messages, e)
+				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e)
 				return False
 		if retries == 0:
 			self.log.error("wait error at " + sys._getframe().f_code.co_name)
@@ -130,9 +130,9 @@ class PhantomJS_(webdriver.PhantomJS):
 		return True
 
 
-	def save_error_messages_at(self, method, by, tag, warning_messages, exception):
+	def save_error_messages_at(self, method, command, warning_messages, exception):
 		self.log.warning("caught " + exception.__class__.__name__ + " at wait_appearance_of_tag. url[" + self.current_url + "]")
-		self.log.warning("by[" + by + "], tag[" + tag + "]")
+		self.log.warning("command: " + command)
 		if warning_messages:
 			self.log.warning("save_current_page to ../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html and png")
 			self.log.warning(exception, exc_info=True)
@@ -142,7 +142,6 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.log.debug("return False")
 
 
-
 	def reconnect(self, url=""):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.__init__(executable_path=self.executable_path,\
@@ -150,6 +149,23 @@ class PhantomJS_(webdriver.PhantomJS):
 					service_args=self.service_args, service_log_path=self.service_log_path)
 		self.get(url)
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+
+	def execute_script_with_handling_exceptions(self, script):
+		## script example
+		## "window.scrollTo(0, document.body.scrollHeight);"
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.debug("script: " + script)
+		try:
+			self.execute_script(script)
+		except (RemoteDisconnected, ConnectionRefusedError, URLError) as e:
+			self.save_error_messages_at(sys._getframe().f_code.co_name, script, warning_messages, e)
+
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+		
+
+
 
 	def save_current_page(self, filename):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

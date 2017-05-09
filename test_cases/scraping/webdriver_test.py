@@ -50,14 +50,22 @@ class webdriver_test(unittest.TestCase):
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	"""
 	def test_wait_appearance_of_tag(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/1055638/"
-		tag = '//div[@ng-repeat=\"article in vm.contextData.similar\"]'
-		#tag = '//div[@ng-repeat=\"article in vm.contextData.sim\"]' ## invalid tag
+		#tag = '//div[@ng-repeat=\"article in vm.contextData.similar\"]'
+		tag = '//div[@ng-repeat=\"article in vm.contextData.sim\"]' ## invalid tag
 		self.driver.get(url)
 		self.driver.wait_appearance_of_tag(by="xpath", tag=tag)
+	"""
 
+	def test_execute_script_with_handling_exceptions(self):
+		url = "http://ieeexplore.ieee.org/document/6740844/citations?anchor=anchor-paper-citations-ieee&ctx=citations"
+		tag = '//b[@class="ng-binding"]'
+		self.driver.get(url, tag_to_wait=tag, by="xpath")
+		#self.driver.save_current_page("../../var/ss/tmp.png")
+		self.driver.execute_script_with_handling_exceptions("window.scrollTo(0, document.body.scrollHeight);")
 
 if __name__ == '__main__':
 	unittest.main()
