@@ -99,7 +99,7 @@ class PhantomJS_(webdriver.PhantomJS):
 			try:
 				button.click()
 			except (NoSuchElementException, StaleElementReferenceException) as e:
-				save_error_messages_at(sys._getframe().f_code, "click(button)", True, e)
+				self.save_error_messages_at(sys._getframe().f_code, "click(button)", True, e)
 				return False
 			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
 				self.log.debug("caught " + e.__class__.__name__ + " at click(button). retries[" + str(retries) + "]")
