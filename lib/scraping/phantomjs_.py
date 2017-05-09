@@ -79,7 +79,7 @@ class PhantomJS_(webdriver.PhantomJS):
 						service_args=self.service_args, service_log_path=self.service_log_path)
 				retries -= 1
 			except TimeoutException as e:
-				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e, url=url)
+				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag_to_wait + "]", warning_messages, e, url=url)
 				self.execute_script("window.stop();")
 
 		if retries == 0:
