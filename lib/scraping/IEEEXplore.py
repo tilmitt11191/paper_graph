@@ -137,8 +137,8 @@ class IEEEXplore:
 			return [paper, paper.url, [], [], [], [], []]
 		elif search.times + len(search.que) > search.limit:
 			self.log.debug("search.times + len(search.que) < search.limit")
+			self.log.debug("no more spread")
 			self.log.debug("return [paper, paper.url, [], [], [], [], []]")
-			search.que = [search.node]
 			return [paper, paper.url, [], [], [], [], []]
 		else:
 			self.log.debug(__class__.__name__ + "." +
