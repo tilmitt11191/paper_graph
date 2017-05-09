@@ -19,7 +19,7 @@ class MySQL_test(unittest.TestCase):
 		cls.db = mysql_operator.Mysql_operator()
 
 		cls.log.info("\n\nMySQL_test.setUpClass finished.\n---------- start ---------")
-	
+	#http://ieeexplore.ieee.org/document/7402463/
 	def setUp(self):
 		pass
 		#import sqlalchemy

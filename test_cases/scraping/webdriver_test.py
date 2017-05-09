@@ -74,9 +74,11 @@ class webdriver_test(unittest.TestCase):
 		url = "http://ieeexplore.ieee.org/document/5395949/"
 		tag = 'i[class="icon doc-act-icon-pdf"]'
 		self.driver.get(url, tag_to_wait=tag, by="css_selector")
+		self.driver.save_current_page("../../var/after_get.png")
 
-		button = self.driver.find_element_by_css_selector(tag)
+		button = self.driver.find_element_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, url=url)
 		self.driver.click(button)
+		self.driver.save_current_page("../../var/after_click.png")
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 if __name__ == '__main__':
 	unittest.main()

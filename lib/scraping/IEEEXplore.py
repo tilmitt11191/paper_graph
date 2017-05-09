@@ -161,8 +161,10 @@ class IEEEXplore:
 			driver, keywords, search_options=search_options, timeout=timeout)
 
 		if num_of_papers == "all":
-			element = driver.find_element_by_css_selector(
-				'div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
+			#element = driver.find_element_by_css_selector(
+				#'div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
+			tag = 'div[class="pure-u-1-1 Dashboard-header ng-scope"] > span'
+			element = driver.find_element_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
 			num_of_papers = int(element.text.split(" ")[-1].replace(",", ""))
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 
@@ -212,8 +214,10 @@ class IEEEXplore:
 		driver.wait_appearance_of_tag(
 			by="name", tag='queryText', timeout=timeout)
 		try:
-			driver.find_element_by_name('queryText').send_keys(keywords)
-			submit_button = driver.find_element_by_class_name('Search-submit')
+			#driver.find_element_by_name('queryText').send_keys(keywords)
+			driver.find_element_with_handling_exceptions(by="NAME", tag='queryText', timeout=timeout).send_keys(keywords)
+			#submit_button = driver.find_element_by_class_name('Search-submit')
+			submit_button = driver.find_element_with_handling_exceptions(by="CLASS_NAME", tag='Search-submit', timeout=timeout)
 			driver.click(submit_button)
 		except(Exception) as e:
 			self.log.exception('[[EXCEPTON OCCURED]]: %s', e)
@@ -233,10 +237,10 @@ class IEEEXplore:
 		self.log.debug("url:" + driver.current_url)
 
 		if num_of_papers == "all":
-			# driver.save_current_page("../../var/ss/NSEE.png")
-			# driver.save_current_page("../../var/ss/NSEE.html")
-			element = driver.find_element_by_css_selector(
-				'div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
+			#element = driver.find_element_by_css_selector(
+				#'div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
+			tag = 'div[class="pure-u-1-1 Dashboard-header ng-scope"] > span'
+			element = driver.find_element_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
 			results = element.text.split(" ")
 			self.log.debug(
 				"num of search result string[" + str(len(results)) + "]")
@@ -258,8 +262,6 @@ class IEEEXplore:
 
 		urls = []
 		visited_buttons = ["1"]
-		#next_button = driver.find_element_by_xpath('//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
-		#visited_buttons = [next_button.text]
 
 		while True:
 			self.log.debug("get paper urls in current page")
@@ -368,8 +370,10 @@ class IEEEXplore:
 
 			self.log.debug("search buttons to next page")
 			try:
-				next_button = driver.find_element_by_xpath(
-					'//div[@class="pagination"]/a[@href="#" and @aria-label="Pagination Next Page" and @class="next ir"]')
+				#next_button = driver.find_element_by_xpath(
+					#'//div[@class="pagination"]/a[@href="#" and @aria-label="Pagination Next Page" and @class="next ir"]')
+				tag = '//div[@class="pagination"]/a[@href="#" and @aria-label="Pagination Next Page" and @class="next ir"]'
+				next_button = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout)
 			except NoSuchElementException as e:
 				self.log.warning("caught " + e.__class__.__name__ +
 								 " at get_urls_of_papers_in_conference.")
@@ -634,8 +638,10 @@ class IEEEXplore:
 			limit_of_view += Conf().getconf(
 				"IEEE_citation_num_per_more_view")
 			try:
-				load_more_button = driver.find_element_by_xpath(
-					'//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
+				#load_more_button = driver.find_element_by_xpath(
+					#'//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
+				tag = '//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]'
+				load_more_button = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout)
 				driver.click(load_more_button)
 				driver.wait_appearance_of_tag(
 					by="xpath", tag='//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]/span[@aria-hidden="false"]', timeout=num_of_viewing / 2)
@@ -669,8 +675,10 @@ class IEEEXplore:
 		self.log.debug(__class__.__name__ + "." +
 					   sys._getframe().f_code.co_name + " start")
 		try:
-			conference = driver.find_element_by_xpath('//div[@class="u-pb-1 stats-document-abstract-doi ng-scope"]')\
-				.find_element_by_tag_name('a').text
+			#conference = driver.find_element_by_xpath('//div[@class="u-pb-1 stats-document-abstract-doi ng-scope"]')\
+				#.find_element_by_tag_name('a').text
+			tag = '//div[@class="u-pb-1 stats-document-abstract-doi ng-scope"]'
+			conference = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag).find_element_by_tag_name('a').text
 			return conference
 			self.log.debug("return: " + conference)
 		except NoSuchElementException:
@@ -690,8 +698,8 @@ class IEEEXplore:
 						   sys._getframe().f_code.co_name + " finished. return \"\", []")
 			return "", []
 
-		element = driver.find_element_by_xpath(
-			'//div[@class="u-pb-1 stats-document-abstract-publishedIn ng-scope"]')
+		tag = '//div[@class="u-pb-1 stats-document-abstract-publishedIn ng-scope"]'
+		element = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout, url=initial_url)
 		conference = element.find_element_by_xpath("a").text
 		self.log.debug("conference: " + str(conference))
 		conference_url = element.find_element_by_xpath(
@@ -721,13 +729,17 @@ class IEEEXplore:
 		# Date of Publication: 06 January 200 or Date of Conference 14-16 Nov.
 		# 2006
 		try:
-			date = driver.find_element_by_xpath(
-				'//div[@ng-if="::vm.details.isJournal == true"]').text
+			#date = driver.find_element_by_xpath(
+				#'//div[@ng-if="::vm.details.isJournal == true"]').text
+			tag = '//div[@ng-if="::vm.details.isJournal == true"]'
+			date = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag).text
 			return self.convert_date_of_publication_to_datetime(date)
 		except NoSuchElementException:
 			try:
-				date = driver.find_element_by_xpath(
-					'//div[@ng-if="::vm.details.isConference == true"]').text
+				#date = driver.find_element_by_xpath(
+				#	'//div[@ng-if="::vm.details.isConference == true"]').text
+				tag = '//div[@ng-if="::vm.details.isConference == true"]'
+				date = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag).text
 				return self.convert_date_of_publication_to_datetime(date)
 			except NoSuchElementException:
 				# todo get from paper??
@@ -802,8 +814,8 @@ class IEEEXplore:
 					   sys._getframe().f_code.co_name + " start")
 		self.log.debug("Wait start.")
 		try:
-			WebDriverWait(driver, timeout).until(
-				lambda driver: driver.find_element_by_css_selector('i[class="icon doc-act-icon-pdf"]'))
+			tag = 'i[class="icon doc-act-icon-pdf"]'
+			driver.wait_appearance_of_tag(by="css_selector", tag=tag, timeout=timeout)
 		except TimeoutException:
 			self.log.warning(
 				"caught TimeoutException at waiting button which go to pdf page.")
@@ -828,8 +840,10 @@ class IEEEXplore:
 		retries = 10
 		while retries > 0:
 			try:
-				button = driver.find_element_by_css_selector(
-					'i[class="icon doc-act-icon-pdf"]')
+				#button = driver.find_element_by_css_selector(
+					#'i[class="icon doc-act-icon-pdf"]')
+				tag = 'i[class="icon doc-act-icon-pdf"]'
+				button = driver.find_element_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
 				driver.click(button)
 				self.log.debug("clicked button and no exception. break")
 				break
@@ -862,8 +876,8 @@ class IEEEXplore:
 
 		self.log.debug("Wait start.")
 		try:
-			WebDriverWait(driver, timeout).until(
-				lambda driver: driver.find_element_by_xpath('//frameset[@rows="65,35%"]/frame'))
+			tag = '//frameset[@rows="65,35%"]/frame'
+			driver.wait_appearance_of_tag(by="xpath", tag=tag, timeout=timeout)
 		except TimeoutException:
 			self.log.warning(
 				"caught TimeoutException at load the iEEE pdf page.")
@@ -1062,8 +1076,10 @@ class IEEEXplore:
 		# PerPage" : "25"
 		if search_options.PerPage != 25:
 			try:
-				element = driver.find_element_by_css_selector(
-					'div[ng-model="vm.rowsPerPage"] > div > select')
+				#element = driver.find_element_by_css_selector(
+					#'div[ng-model="vm.rowsPerPage"] > div > select')
+				tag = 'div[ng-model="vm.rowsPerPage"] > div > select'
+				element = driver.find_element_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
 				Select(element).select_by_visible_text(
 					str(search_options.PerPage))
 				self.wait_search_results(driver, timeout)
