@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotVisibleException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotVisibleException, StaleElementReferenceException
 from http.client import RemoteDisconnected
 from urllib.request import URLError
 
@@ -93,11 +93,23 @@ class PhantomJS_(webdriver.PhantomJS):
 
 	def click(self, button):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start.")
-		try:
-			button.click()
-		except (TimeoutException, NoSuchElementException) as e:
-			save_error_messages_at(sys._getframe().f_code, "click(button)", True, e)
+		url = self.current_url
+		retries = 10
+		while retries > 0:
+			try:
+				button.click()
+			except (NoSuchElementException, StaleElementReferenceException) as e:
+				save_error_messages_at(sys._getframe().f_code, "click(button)", True, e)
+				return False
+			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
+				self.log.debug("caught " + e.__class__.__name__ + " at click(button). retries[" + str(retries) + "]")
+				self.reconnect(url)
+				time.sleep(Conf().getconf(
+					"IEEE_wait_time_per_download_paper"))
+				retries -= 1
+
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
+		return True
 
 
 	def wait_appearance_of_tag(self, by="xpath", tag="", warning_messages=True, timeout=30):
