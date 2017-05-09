@@ -88,8 +88,8 @@ class PhantomJS_(webdriver.PhantomJS):
 
 		if retries == 0:
 			self.log.error("PhantomJS caught ERROR RemoteDisconnected at get" + url)
-			self.save_current_page("./samples/get_error.html")
-			self.save_current_page("./samples/get_error.png")
+			self.save_current_page("../../var/ss/get_error.html")
+			self.save_current_page("../../var/ss/get_error.png")
 
 		if tag_to_wait != "":
 			self.wait_appearance_of_tag(by="xpath", tag=tag_to_wait, timeout=timeout)

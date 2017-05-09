@@ -394,7 +394,7 @@ class IEEEXplore:
 		driver.get(initial_url)
 		self.wait_conference_page(driver, timeout)
 		self.log.debug(
-			"get_urls_of_papers_in_conference finished. return urls: " + str(urls))
+			"get_urls_of_papers_in_conference finished. return urls: " + str(len(urls)))
 		return urls
 
 	def get_title(self, driver):
@@ -732,9 +732,9 @@ class IEEEXplore:
 				# todo get from paper??
 				self.log.debug("caught NoSuchElementException. date = None")
 				driver.save_current_page(
-					"./samples/caughtNoSuchElementExceptionatdate_of_publication.png")
+					"../../var/ss/caughtNoSuchElementExceptionatdate_of_publication.png")
 				driver.save_current_page(
-					"./samples/caughtNoSuchElementExceptionatdate_of_publication.html")
+					"../../var/ss/caughtNoSuchElementExceptionatdate_of_publication.html")
 				return None
 
 	def create_driver(self, url="", timeout=30):
@@ -857,14 +857,17 @@ class IEEEXplore:
 				driver.reconnect(initial_url)
 				self.wait_button_to_pdf_page(driver, timeout)
 				retries -= 1
-			except NoSuchElementException as e:
-				self.log.warning("caught " + e.__class__.__name__ +
-								 " at click download pdf button. retries[" + str(retries) + "]")
+			except NoSuchElementException, TimeoutException as e:
+				self.log.warning(\
+					"caught " + e.__class__.__name__ + \
+					" at click download pdf button. retries[" + str(retries) + "]")
 				self.log.warning(e, exc_info=True)
+				driver.save_current_page(\
+					"../../var/ss/caught_" + e.__class__.__name__ + \
+					"_at_click_download_pdf_button.html")
 				driver.save_current_page(
-					"../../var/ss/caught_NoSuchElementException_at_click_download_pdf_button.html")
-				driver.save_current_page(
-					"../..//var/ss/caught_NoSuchElementException_at_click_download_pdf_button.png")
+					"../..//var/ss/caught_" + e.__class__.__name__ + \
+					"_at_click_download_pdf_button.png")
 				retries -= 1
 		if retries == 0:
 			self.log.error("button.click() error")

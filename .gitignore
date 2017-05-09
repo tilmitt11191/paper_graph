@@ -4,6 +4,7 @@ node_modules/
 var/log/
 var/ss/
 var/www/
+var/yaml/
 data/
 tmp/
 !.gitkeep
