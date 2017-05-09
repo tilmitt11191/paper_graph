@@ -32,7 +32,7 @@ from table_authors import Table_authors
 class IEEEXplore:
 
 	def __init__(self):
-		self.log = Log().getLogger()
+		self.log = Log.getLogger()
 		self.opts = Search_options()
 		self.log.debug("class " + __class__.__name__ + " created.")
 

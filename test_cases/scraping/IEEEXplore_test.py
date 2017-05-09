@@ -49,7 +49,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.opts.set_PerPage(1000)
 		self.xplore.show_options()
 	"""
-
+	"""
 	def test_get_attributes_and_download_pdf_of_various(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		urls = []
@@ -66,7 +66,7 @@ class IEEEXplore_test(unittest.TestCase):
 			self.xplore.get_attributes_and_download_pdf(self.search, driver)
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 	"""
 
 	def test_get_attributes_and_download_pdf_which_not_cited(self):
@@ -400,7 +400,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.xplore.get_papers_of_new_conferences(10)
 	"""
-	"""
+
 	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		keywords="\"edge computing\""
@@ -423,7 +423,7 @@ class IEEEXplore_test(unittest.TestCase):
 		Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], self.xplore.get_attributes_and_download_pdf, driver, path, filename)
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-	"""
+
 	"""
 	def get_date_of_publications(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

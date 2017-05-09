@@ -1,15 +1,22 @@
 
 # -*- coding: utf-8 -*-
+import os
 import sys
 import time
 import inspect
 import yaml
 import traceback
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
+from log import Log
+
 class Searchs():
 
-	def __init__(self, initial_node=0, limit=-1, que=[], visited=[], times=0):
-		self.node = initial_node
+	def __init__(self, initial_node="", limit=-1, que=[], visited=[], times=0):
+		if initial_node == "" and len(que) != 0:
+			self.node = que[0]
+		else:
+			self.node = initial_node
 		self.limit = limit
 		self.que = que
 		self.visited = visited
@@ -27,9 +34,12 @@ class Searchs():
 			if search.node not in search.visited:
 				try:
 					returned_values = get_nexts_func(search, *args)
-				except:
+				except Exception as e:
 					filename = cls.save_current_status(search)
-					traceback.print_exc()
+					#traceback.print_exc()
+					#log = Log.getLogger()
+					#log.exception("[[EXCEPTION OCCURED]] status saved to" + filename)
+					Log.getLogger().exception("[[EXCEPTION OCCURED]] status saved to" + filename)
 					sys.exit("[[EXCEPTION OCCURED]] status saved to" + filename)
 				cls.renew_search_que(search, arrays_to_search, returned_values)
 			search.visited.append(search.node)
