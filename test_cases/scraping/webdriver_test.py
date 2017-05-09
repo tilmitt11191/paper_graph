@@ -58,14 +58,25 @@ class webdriver_test(unittest.TestCase):
 		tag = '//div[@ng-repeat=\"article in vm.contextData.sim\"]' ## invalid tag
 		self.driver.get(url)
 		self.driver.wait_appearance_of_tag(by="xpath", tag=tag)
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")	"""
 	"""
-
 	def test_execute_script_with_handling_exceptions(self):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/6740844/citations?anchor=anchor-paper-citations-ieee&ctx=citations"
 		tag = '//b[@class="ng-binding"]'
 		self.driver.get(url, tag_to_wait=tag, by="xpath")
 		#self.driver.save_current_page("../../var/ss/tmp.png")
 		self.driver.execute_script_with_handling_exceptions("window.scrollTo(0, document.body.scrollHeight);")
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	def test_click(self):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/5395949/"
+		tag = 'i[class="icon doc-act-icon-pdf"]'
+		self.driver.get(url, tag_to_wait=tag, by="css_selector")
 
+		button = self.driver.find_element_by_css_selector(tag)
+		self.driver.click(button)
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 if __name__ == '__main__':
 	unittest.main()

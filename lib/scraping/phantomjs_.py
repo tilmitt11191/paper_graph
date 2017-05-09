@@ -63,7 +63,7 @@ class PhantomJS_(webdriver.PhantomJS):
 		self.set_page_load_timeout(Conf.getconf("phantomJS_load_timeout"))
 
 
-	def get(self, url, tag_to_wait="", by="xpath", timeout=30):
+	def get(self, url, tag_to_wait="", by="xpath", timeout=30, warning_messages=True):
 		retries = 10
 		while retries > 0:
 			try:
@@ -79,12 +79,7 @@ class PhantomJS_(webdriver.PhantomJS):
 						service_args=self.service_args, service_log_path=self.service_log_path)
 				retries -= 1
 			except TimeoutException as e:
-				self.log.warning("Caught TimeoutException at super().get(" + url + ")")
-				self.log.warning("save_current_page to ../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html and png")
-				self.log.warning(e, exc_info=True)
-				self.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html")
-				self.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".png")
-				self.log.warning("%s", e)
+				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e, url=url)
 				self.execute_script("window.stop();")
 
 		if retries == 0:
@@ -93,7 +88,17 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.save_current_page("../../var/ss/get_error.png")
 
 		if tag_to_wait != "":
-			self.wait_appearance_of_tag(by="xpath", tag=tag_to_wait, timeout=timeout)
+			self.wait_appearance_of_tag(by=by, tag=tag_to_wait, timeout=timeout)
+
+
+	def click(self, button):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start.")
+		try:
+			button.click()
+		except (TimeoutException, NoSuchElementException) as e:
+			save_error_messages_at(sys._getframe().f_code, "click(button)", True, e)
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
+
 
 	def wait_appearance_of_tag(self, by="xpath", tag="", warning_messages=True, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start. tag: " + tag)
@@ -131,12 +136,12 @@ class PhantomJS_(webdriver.PhantomJS):
 		return True
 
 
-	def save_error_messages_at(self, method, command, warning_messages, exception,  url=url):
+	def save_error_messages_at(self, method, command, warning_messages, exception,  url=""):
 		self.log.warning("caught " + exception.__class__.__name__ + " at " + method + ". url[" + url + "]")
 		self.log.warning("command: " + command)
 		if warning_messages:
 			filename = "../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", url)
-			self.log.warning("save_current_page to " filename + ".html and png")
+			self.log.warning("save_current_page to " + filename + ".html and png")
 			self.log.warning(exception, exc_info=True)
 			self.save_current_page(filename + ".html")
 			self.save_current_page(filename + ".png")

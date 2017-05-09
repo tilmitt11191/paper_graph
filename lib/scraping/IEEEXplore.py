@@ -213,7 +213,8 @@ class IEEEXplore:
 			by="name", tag='queryText', timeout=timeout)
 		try:
 			driver.find_element_by_name('queryText').send_keys(keywords)
-			driver.find_element_by_class_name('Search-submit').click()
+			submit_button = driver.find_element_by_class_name('Search-submit')
+			driver.click(submit_button)
 		except(Exception) as e:
 			self.log.exception('[[EXCEPTON OCCURED]]: %s', e)
 			sys.exit("[[EXCEPTON OCCURED]]please check logfile.")
@@ -308,7 +309,7 @@ class IEEEXplore:
 
 			visited_buttons.append(next_button.text)
 			self.log.debug("move to next page[" + next_button.text + "]")
-			next_button.click()
+			driver.click(next_button)
 			self.wait_search_results(driver, timeout)
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name +
@@ -384,7 +385,7 @@ class IEEEXplore:
 			visited_buttons.append(next_button_attribute)
 			self.log.debug("visited_buttons: " + str(visited_buttons))
 			self.log.debug("move to next page[" + next_button_attribute + "]")
-			next_button.click()
+			driver.click(next_button)
 			if not self.wait_conference_page(driver, timeout):
 				self.log.warning(
 					"cannot read conference next page: " + driver.current_url)
@@ -635,7 +636,7 @@ class IEEEXplore:
 			try:
 				load_more_button = driver.find_element_by_xpath(
 					'//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]')
-				load_more_button.click()
+				driver.click(load_more_button)
 				driver.wait_appearance_of_tag(
 					by="xpath", tag='//button[@class="load-more-button" and @ng-click="vm.loadMoreCitations(\'ieee\')"]/span[@aria-hidden="false"]', timeout=num_of_viewing / 2)
 			except ElementNotVisibleException as e:
@@ -829,7 +830,7 @@ class IEEEXplore:
 			try:
 				button = driver.find_element_by_css_selector(
 					'i[class="icon doc-act-icon-pdf"]')
-				button.click()
+				driver.click(button)
 				self.log.debug("clicked button and no exception. break")
 				break
 			except (RemoteDisconnected, ConnectionRefusedError, URLError) as e:
@@ -854,7 +855,7 @@ class IEEEXplore:
 					"_at_click_download_pdf_button.png")
 				retries -= 1
 		if retries == 0:
-			self.log.error("button.click() error at download_a_paper")
+			self.log.error("driver.click(button) error at download_a_paper")
 			self.log.error("retries == 0. please check url: " + driver.current_url)
 			driver.save_current_page("../../var/ss/button_click_error.html")
 			driver.save_current_page("../../var/ss/button_click_error.png")
