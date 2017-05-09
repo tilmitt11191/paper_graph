@@ -9,6 +9,8 @@ if len(args) < 2:
 saved_file = args[1]
 print("saved_file[" + saved_file + "]")
 path = args[2]
+if path[-1] != "/":
+	path = path + "/"
 print("path: " + path)
 filename = "title"
 
