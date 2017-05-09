@@ -70,10 +70,12 @@ class Table_papers(Base):
 		self.title = self.title.encode('utf-8')
 		self.authors = self.authors.encode('utf-8')
 		self.keywords = self.keywords.encode('utf-8')
+		self.path = self.path.encode('utf-8')
 		self.db.insert(self)
 		self.title = self.title.decode('utf-8')
 		self.authors = self.authors.decode('utf-8')
 		self.keywords = self.keywords.decode('utf-8')
+		self.path = self.path.decode('utf-8')
 		self.db.session.expunge(self)
 		self.db.close()
 
