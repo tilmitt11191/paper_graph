@@ -857,7 +857,7 @@ class IEEEXplore:
 				driver.reconnect(initial_url)
 				self.wait_button_to_pdf_page(driver, timeout)
 				retries -= 1
-			except NoSuchElementException, TimeoutException as e:
+			except (NoSuchElementException, TimeoutException) as e:
 				self.log.warning(\
 					"caught " + e.__class__.__name__ + \
 					" at click download pdf button. retries[" + str(retries) + "]")
