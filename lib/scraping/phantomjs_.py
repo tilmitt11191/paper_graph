@@ -100,6 +100,7 @@ class PhantomJS_(webdriver.PhantomJS):
 		retries = 10
 		while retries > 0:
 			try:
+				url = self.current_url
 				if by=="xpath":
 					WebDriverWait(self, timeout).until(lambda self: self.find_element_by_xpath(tag))
 				elif by=="css_selector":
@@ -112,12 +113,12 @@ class PhantomJS_(webdriver.PhantomJS):
 					self.log.waring("type error by=" + by + ", tag: " + tag)
 				break
 			except (RemoteDisconnected, ConnectionRefusedError, URLError) as e:
-				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e)
+				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e, url=url)
 				self.reconnect(self.current_url)
 				retries -= 1
 				self.log.debug("retries -= 1. retries[" + str(retries) + "]")
 			except (TimeoutException, NoSuchElementException) as e:
-				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e)
+				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e, url=url)
 				return False
 		if retries == 0:
 			self.log.error("wait error at " + sys._getframe().f_code.co_name)
@@ -130,13 +131,13 @@ class PhantomJS_(webdriver.PhantomJS):
 		return True
 
 
-	def save_error_messages_at(self, method, command, warning_messages, exception):
-		self.log.warning("caught " + exception.__class__.__name__ + " at wait_appearance_of_tag. url[" + self.current_url + "]")
+	def save_error_messages_at(self, method, command, warning_messages, exception,  url=url):
+		self.log.warning("caught " + exception.__class__.__name__ + " at " + method + ". url[" + url + "]")
 		self.log.warning("command: " + command)
 		if warning_messages:
-			self.log.warning("save_current_page to ../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url) + ".html and png")
+			filename = "../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", url)
+			self.log.warning("save_current_page to " filename + ".html and png")
 			self.log.warning(exception, exc_info=True)
-			filename = "../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", self.current_url)
 			self.save_current_page(filename + ".html")
 			self.save_current_page(filename + ".png")
 			self.log.debug("return False")
@@ -160,7 +161,6 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.execute_script(script)
 		except (RemoteDisconnected, ConnectionRefusedError, URLError) as e:
 			self.save_error_messages_at(sys._getframe().f_code.co_name, script, warning_messages, e)
-
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 		
