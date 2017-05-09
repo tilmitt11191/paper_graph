@@ -1,8 +1,10 @@
 
 # -*- coding: utf-8 -*-
 
-import sys,os
+import os
+import sys
 import re
+import time
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
