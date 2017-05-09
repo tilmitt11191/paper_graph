@@ -114,6 +114,7 @@ class PhantomJS_(webdriver.PhantomJS):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
 		return True
 
+
 	def find_element_with_handling_exceptions(self, by="XPATH", tag="", warning_messages=True, timeout=30, url=""):
 		##By: CLASS_NAME, CSS_SELECTOR, ID, LINK_TEXT
 		##, NAME, PARTIAL_LINK_TEXT,TAG_NAME, XPATH
@@ -139,6 +140,34 @@ class PhantomJS_(webdriver.PhantomJS):
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
 		return element
+
+
+	def find_elements_with_handling_exceptions(self, by="XPATH", tag="", warning_messages=True, timeout=30, url=""):
+		##By: CLASS_NAME, CSS_SELECTOR, ID, LINK_TEXT
+		##, NAME, PARTIAL_LINK_TEXT,TAG_NAME, XPATH
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start.")
+		self.log.debug("by: " + by + " , + tag: " + tag)
+		retries = 10
+		while retries > 0:
+			try:
+				elements = self.find_elements(eval("By." + by), tag)
+				break
+			except (NoSuchElementException, StaleElementReferenceException) as e:
+				self.save_error_messages_at(sys._getframe().f_code.co_name, "by: " + by + ", tag: " + tag, True, e)
+				raise e
+			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
+				self.log.debug("caught " + e.__class__.__name__ + " at click(button). retries[" + str(retries) + "]")
+				if url != "":
+					self.reconnect(url)
+				else:
+					self.reconnect(self.current_url)
+				time.sleep(Conf().getconf(
+					"IEEE_wait_time_per_download_paper"))
+				retries -= 1
+
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
+		return elements
+
 
 	def wait_appearance_of_tag(self, by="xpath", tag="", warning_messages=True, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start. tag: " + tag)

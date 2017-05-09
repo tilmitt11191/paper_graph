@@ -266,8 +266,10 @@ class IEEEXplore:
 		while True:
 			self.log.debug("get paper urls in current page")
 			for i in range(self.opts.PerPage):
-				paper_elements = driver.find_elements_by_xpath(
-					'//div[@class="js-displayer-content u-mt-1 stats-SearchResults_DocResult_ViewMore ng-scope hide"]')
+				#paper_elements = driver.find_elements_by_xpath(
+					#'//div[@class="js-displayer-content u-mt-1 stats-SearchResults_DocResult_ViewMore ng-scope hide"]')
+				tag = '//div[@class="js-displayer-content u-mt-1 stats-SearchResults_DocResult_ViewMore ng-scope hide"]'
+				paper_elements = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout)
 				self.log.debug(
 					"scroll times[" + str(i) + "] len(paper_elements)[" + str(len(paper_elements)) + "]")
 				driver.execute_script_with_handling_exceptions(
@@ -288,8 +290,10 @@ class IEEEXplore:
 					return urls
 
 			self.log.debug("search buttons to next page")
-			buttons = driver.find_elements_by_xpath(
-				'//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
+			#buttons = driver.find_elements_by_xpath(
+				#'//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]')
+			tag = '//a[@href="" and @ng-click="selectPage(page.number)" and @class="ng-binding"]'
+			buttons = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout)
 			if len(buttons) <= 1:
 				self.log.debug(
 					"len(buttons)[" + str(len(buttons)) + "] <= 1. search results in only this page. break")
@@ -324,8 +328,10 @@ class IEEEXplore:
 		initial_url = driver.current_url
 
 		if num_of_papers == "all":
-			elements = driver.find_elements_by_css_selector(
-				'div[class="results-display"] > b')
+			#elements = driver.find_elements_by_css_selector(
+				#'div[class="results-display"] > b')
+			tag = 'div[class="results-display"] > b'
+			elements = driver.find_elements_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout, url=initial_url)
 			if len(elements) == 2:
 				num_of_papers = int(elements[1].text)
 			else:
@@ -353,8 +359,9 @@ class IEEEXplore:
 		visited_buttons = []
 		while True:
 			self.log.debug("get paper urls in current page")
+			#paper_elements = driver.find_elements_by_xpath('//h3/a')
+			paper_elements = driver.find_elements_with_handling_exceptions(by="XPATH", tag='//h3/a', timeout=timeout)
 			#paper_elements = driver.find_elements_by_xpath('//input[@type="hidden" and @name="submitAbsUrl" and @id="submitAbsUrl" and @value="/xpl/articleDetails.jsp"]/h3/a')
-			paper_elements = driver.find_elements_by_xpath('//h3/a')
 			self.log.debug(
 				"len(paper_elements)[" + str(len(paper_elements)) + "]")
 			for el in paper_elements:
@@ -407,8 +414,10 @@ class IEEEXplore:
 
 	def get_authors(self, driver):
 		authors_str = ""
-		elements = driver.find_elements_by_xpath(
-			'//span[@ng-bind-html="::author.name"]')
+		#elements = driver.find_elements_by_xpath(
+			#'//span[@ng-bind-html="::author.name"]')
+		tag = '//span[@ng-bind-html="::author.name"]'
+		elements = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag)
 
 		for el in elements:
 			authors_str += "," + el.text
@@ -424,8 +433,10 @@ class IEEEXplore:
 		try:
 			#elements = driver.find_elements_by_xpath('//span[@ng-bind-html="::author.name"]')
 			#elements = driver.find_elements_by_xpath('//a[@qtip-popover="" and @qtip-event-show="hover" and @qtip-event-hide="mouseleave"]')
-			elements = driver.find_elements_by_xpath(
-				'//span[@class="authors-info ng-binding ng-scope" and @ng-repeat="author in vm.authors"]/span[@ng-if="::author.affiliation" or @ng-if="::!author.affiliation"]/a')
+			#elements = driver.find_elements_by_xpath(
+				#'//span[@class="authors-info ng-binding ng-scope" and @ng-repeat="author in vm.authors"]/span[@ng-if="::author.affiliation" or @ng-if="::!author.affiliation"]/a')
+			tag = '//span[@class="authors-info ng-binding ng-scope" and @ng-repeat="author in vm.authors"]/span[@ng-if="::author.affiliation" or @ng-if="::!author.affiliation"]/a'
+			elements = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout, url=initial_url)
 		except NoSuchElementException as e:
 			self.log.warning("caught " + e.__class__.__name__ +
 							 " at find authors elements.")
@@ -477,7 +488,9 @@ class IEEEXplore:
 					   sys._getframe().f_code.co_name + " start")
 		# keywords
 		keywords_str = ""
-		elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
+		#elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
+		tag = '//a[@ng-bind-html="::term"]'
+		elements = driver.find_elements_with_handling_exceptions(by="XPAHT", tag=tag)
 		for el in elements:
 			keyword = el.text
 			if "," + keyword in keywords_str:
@@ -496,8 +509,10 @@ class IEEEXplore:
 		driver.wait_appearance_of_tag(
 			by="xpath", tag='//div[@ng-repeat=\"article in vm.contextData.similar\"]')
 		try:
-			elements = driver.find_elements_by_xpath(
-				'//a[@ng-bind-html="::term"]')
+			#elements = driver.find_elements_by_xpath(
+				#'//a[@ng-bind-html="::term"]')
+			tag = '//a[@ng-bind-html="::term"]'
+			elements = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout, url=initial_url)
 		except NoSuchElementException as e:
 			self.log.warning("caught " + e.__class__.__name__ +
 							 " at find keywords elements.")
@@ -543,8 +558,10 @@ class IEEEXplore:
 		citing_urls = []
 
 		try:
-			elements = driver.find_elements_by_css_selector(
-				'div[ng-repeat="article in vm.contextData.similar"]')
+			#elements = driver.find_elements_by_css_selector(
+				#'div[ng-repeat="article in vm.contextData.similar"]')
+			tag='div[ng-repeat="article in vm.contextData.similar"]'
+			elements = driver.find_elements_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
 		except NoSuchElementException:
 			self.log.debug(
 				"caught NoSuchElementException at get_citing_papers.")
@@ -627,8 +644,10 @@ class IEEEXplore:
 		self.log.debug(__class__.__name__ + "." +
 					   sys._getframe().f_code.co_name + " start")
 
-		elements = driver.find_elements_by_css_selector(
-			'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+		#elements = driver.find_elements_by_css_selector(
+			#'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+		tag = 'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]'
+		elements = driver.find_elements_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
 		num_of_viewing = len(elements)
 		limit_of_view = Conf().getconf("IEEE_citation_num_at_first_page")
 		self.log.debug("num_of_viewing[" + str(num_of_viewing) +
@@ -650,8 +669,10 @@ class IEEEXplore:
 							   str(limit_of_view) + ") paper[" + driver.current_url + "].")
 				self.log.debug(
 					"there is no more paper. return current elements.")
-				elements = driver.find_elements_by_css_selector(
-					'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+				#elements = driver.find_elements_by_css_selector(
+					#'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+				tag = 'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]'
+				elements = driver.find_elements_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
 				return elements
 			except (TimeoutException, NoSuchElementException) as e:
 				self.log.warning("caught " + e.__class__.__name__ + " at loading more cited pages(" + str(
@@ -661,8 +682,10 @@ class IEEEXplore:
 				driver.save_current_page("../../var/ss/" + e.__class__.__name__ + re.sub(
 					r"/|:|\?|\.", "", driver.current_url) + ".html")
 
-			elements = driver.find_elements_by_css_selector(
-				'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+			#elements = driver.find_elements_by_css_selector(
+				#'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]')
+			tag = 'div[ng-repeat="item in vm.contextData.paperCitations.ieee"] > div[class="pure-g pushTop10"] > div[class="pure-u-23-24"]'
+			elements = driver.find_elements_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
 			num_of_viewing = len(elements)
 			self.log.debug(
 				"num_of_viewing[" + str(num_of_viewing) + "], limit_of_view[" + str(limit_of_view) + "]")
@@ -891,8 +914,10 @@ class IEEEXplore:
 			driver.get(initial_url)
 			return ""
 		self.log.debug("Wait Finished.")
-		url = driver.find_elements_by_xpath(
-			'//frameset[@rows="65,35%"]/frame')[1].get_attribute("src")
+		#url = driver.find_elements_by_xpath(
+			#'//frameset[@rows="65,35%"]/frame')[1].get_attribute("src")
+		tag='//frameset[@rows="65,35%"]/frame'
+		url = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout)[1].get_attribute("src")
 		self.log.debug("url:" + url)
 
 		if filename == "default":
