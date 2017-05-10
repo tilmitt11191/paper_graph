@@ -5,6 +5,7 @@ var/log/
 var/ss/
 var/www/
 var/yaml/
-data/*
+data/
+!data/mysqldumps/
 tmp/
 !.gitkeep
