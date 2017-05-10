@@ -6,6 +6,5 @@ var/ss/
 var/www/
 var/yaml/
 data/
-!data/mysqldumps/
 tmp/
 !.gitkeep
