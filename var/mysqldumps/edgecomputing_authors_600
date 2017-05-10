@@ -1,0 +1,51 @@
+-- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
+--
+-- Host: localhost    Database: paper_graph
+-- ------------------------------------------------------
+-- Server version	5.7.18-0ubuntu0.16.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `authors`
+--
+
+DROP TABLE IF EXISTS `authors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authors` (
+  `id` int(11) DEFAULT NULL,
+  `name` tinytext,
+  `belonging` tinytext
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authors`
+--
+
+LOCK TABLES `authors` WRITE;
+/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
+INSERT INTO `authors` VALUES (1,'Michael Schneider','Bosch Rexroth AG, Research &amp; Development, Lohr am Main, Germany'),(2,'Jason Rambach','German Research Center for Artificial Intelligence (DFKI), Augmented Vision Department, Kaiserslautern, Germany'),(3,'Didier Stricker','German Research Center for Artificial Intelligence (DFKI), Augmented Vision Department TU Kaiserslautern, Kaiserslautern, Germany'),(4,'Emanuel Trunzer','Institute of Automation and Information Systems, Technical University of Munich, Munich, Germany'),(5,'Iris Kirchen','Institute of Automation and Information Systems, Technical University of Munich, Munich, Germany'),(6,'Jens Folmer','Institute of Automation and Information Systems, Technical University of Munich, Munich, Germany'),(7,'Gennadiy Koltun','Institute of Automation and Information Systems, Technical University of Munich, Munich, Germany'),(8,'Birgit Vogel-Heuser','Institute of Automation and Information Systems, Technical University of Munich, Munich, Germany'),(9,'First A. Liu Gang','Electric Power Research Institute of State Grid Liaoning Electric Power Co., Ltd.'),(10,'Second B. Wang Zhong-hui','State Grid Liaoning Dispatching and Control Center'),(11,'Third C. Hao Xin','Electric Power Research Institute of State Grid Liaoning Electric Power Co., Ltd.'),(12,'Fourth D. Zeng Hui','Electric Power Research Institute of State Grid Liaoning Electric Power Co., Ltd.'),(13,'Fifth E. Gang Ruo-jia','Electric Power Research Institute of State Grid Liaoning Electric Power Co., Ltd.'),(14,'Sixth F. Zhou Hao','Electric Power Research Institute of State Grid Liaoning Electric Power Co., Ltd.'),(15,'Gong Benhui','School of Electrical Engineering, Xi\'an Jiaotong University, Xi\'an 710049, China'),(16,'Wang Xiuli','School of Electrical Engineering, Xi\'an Jiaotong University, Xi\'an 710049, China'),(17,'Dang Can','School of Electrical Engineering, Xi\'an Jiaotong University, Xi\'an 710049, China'),(18,'Liu Chang','School of Electrical Engineering, Xi\'an Jiaotong University, Xi\'an 710049, China'),(19,'Bai Huiyuan','School of Electrical Engineering, Xi\'an Jiaotong University, Xi\'an 710049, China'),(20,'Yang Gu','NRG Energy, Princeton'),(21,'Jordan Bakke','Midcontinent Independent System Operator Inc, St. Paul'),(22,'Zheng Zhou','Midcontinent Independent System Operator Inc., St. Paul'),(23,'Dale Osborn','Midcontinent Independent System Operator Inc., St. Paul'),(24,'Tao Guo','Energy Exemplar LLC, Roseville'),(25,'Rui Bo','Midcontinent Independent System Operator Inc., St. Paul'),(26,'L.E. Stetson','US Dept. of Agric., Lincoln, NE, USA'),(27,'Mei Jie','Jiangsu Provincial Key Laboratory of Smart Grid Technology &amp; Equipment, Southeast University, Xuanwu District, Nanjing 210096, China'),(28,'Gao Ciwei','Jiangsu Provincial Key Laboratory of Smart Grid Technology &amp; Equipment, Southeast University, Xuanwu District, Nanjing 210096, China'),(29,'Chen Xiao','Electric Power Research Institute of Jiangsu Province, Nanjing 210000, China'),(30,'Yi Yongxian','Electric Power Research Institute of Jiangsu Province, Nanjing 210000, China'),(31,'Chen Xiao-hong','Department of Geography, College of Geography, Harbin Normal University, China'),(32,'Lu Wan-he','Department of Geography, College of Geography, Harbin Normal University, China'),(33,'Tan Xue-lan','Department of Land Resource Management, College of Resources environment, Hunan Agricultural University, Changsha 410128, China'),(34,'Andrea Rodriguez-Calvo','Instituto de Investigaci&#x00F3;n Tecnol&#x00F3;gica, Escuela T&#x00E9;cnica Superior de Ingenier&#x00ED;a ICAI, Universidad Pontificia Comillas, Madrid, Spain'),(35,'Pablo Frías','Instituto de Investigaci&#x00F3;n Tecnol&#x00F3;gica, Escuela T&#x00E9;cnica Superior de Ingenier&#x00ED;a ICAI, Universidad Pontificia Comillas, Madrid, Spain'),(36,'Javier Reneses','Instituto de Investigaci&#x00F3;n Tecnol&#x00F3;gica, Escuela T&#x00E9;cnica Superior de Ingenier&#x00ED;a ICAI, Universidad Pontificia Comillas, Madrid, Spain'),(37,'Carlos Mateo','Instituto de Investigaci&#x00F3;n Tecnol&#x00F3;gica, Escuela T&#x00E9;cnica Superior de Ingenier&#x00ED;a ICAI, Universidad Pontificia Comillas, Madrid, Spain'),(38,'Gao Shan','College of Electrical Engineering, Southeast University, Nanjing 210096, China'),(39,'Ji Hangwei','College of Electrical Engineering, Southeast University, Nanjing 210096, China'),(40,'Han Haiteng','College of Electrical Engineering, Southeast University, Nanjing 210096, China'),(41,'P. Nowicki','ANDRITZ HYDRO GmbH, Germany'),(42,'M. Sallaberger','ANDRITZ HYDRO AG, Switzerland'),(43,'P. Bachmann','ANDRITZ HYDRO AG, Switzerland'),(44,'Zhou Jian','College of Urban Construction and Enviroment Engineering, Chongqing University, CQU, Key Laboratory of Three Gorges Reservoir Region\'s Eco-Environment, Ministry of Education, China'),(45,'Zhan Qin','College of Urban Construction and Enviroment Engineering, Chongqing University, CQU, Key Laboratory of Three Gorges Reservoir Region\'s Eco-Environment, Ministry of Education, China'),(46,'Qing Xiaoxia','College of Urban Construction and Enviroment Engineering, Chongqing University, CQU, Key Laboratory of Three Gorges Reservoir Region\'s Eco-Environment, Ministry of Education, China'),(47,'Liu Yi','College of Urban Construction and Enviroment Engineering, Chongqing University, CQU, Key Laboratory of Three Gorges Reservoir Region\'s Eco-Environment, Ministry of Education, China'),(48,'Qingzhi Yan','The Institute of Storage-Transportation &amp; Architectural Engineering, China University of Petroleum, Qingdao, China'),(49,'Yanhua Wang','The Institute of Storage-Transportation &amp; Architectural Engineering, China University of Petroleum, Qingdao, China'),(50,'Liqun Jiang','Chongqing Research &amp; Design Institute of Sino-Coal International Engineering Group, Chongqing, China'),(51,'G. K. Toh','Division of Power Engineering, School of Electrical and Electronic Engineering, Nanyang Technological University, Singapore'),(52,'H. B. Gooi','Division of Power Engineering, School of Electrical and Electronic Engineering, Nanyang Technological University, Singapore'),(53,'Liu Cui','Instructor Landscape Architecture School Beijing Forestry University, China'),(54,'Jin Zhang','Senior Interior Designer Deputy of Interior Design Studio Beijing Institute of Architectural Design, China');
+/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-05-10 17:05:47
