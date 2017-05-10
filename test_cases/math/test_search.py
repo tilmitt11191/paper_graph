@@ -11,11 +11,6 @@ sys.path.append(os.path.dirname(
 	os.path.abspath(__file__)) + "/../../lib/utils")
 from log import Log
 
-check = os.system("pwd")
-print(check)
-print("aaa")
-print(sys.version)
-
 
 class SearchTest(unittest.TestCase):
 	"""Search_test."""

@@ -96,20 +96,19 @@ class PhantomJS_(webdriver.PhantomJS):
 
 	def click(self, button):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start.")
-		url = self.current_url
-		retries = 10
-		while retries > 0:
-			try:
-				button.click()
-			except (NoSuchElementException, StaleElementReferenceException) as e:
-				self.save_error_messages_at(sys._getframe().f_code.co_name, "click(button)", True, e)
-				return False
-			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
-				self.log.debug("caught " + e.__class__.__name__ + " at click(button). retries[" + str(retries) + "]")
-				self.reconnect(url)
-				time.sleep(Conf().getconf(
-					"IEEE_wait_time_per_download_paper"))
-				retries -= 1
+		try:
+			url = self.current_url
+			button.click()
+		except (NoSuchElementException, StaleElementReferenceException) as e:
+			self.save_error_messages_at(sys._getframe().f_code.co_name, "click(button)", True, e)
+			return False
+		except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
+			self.log.debug("caught " + e.__class__.__name__ + " at click(button).")
+			self.log.debug("reconnect to " + url)
+			self.reconnect(url)
+			time.sleep(Conf().getconf(
+				"IEEE_wait_time_per_retry"))
+			return False
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
 		return True
@@ -129,13 +128,13 @@ class PhantomJS_(webdriver.PhantomJS):
 				self.save_error_messages_at(sys._getframe().f_code.co_name, "by: " + by + ", tag: " + tag, True, e)
 				raise e
 			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
-				self.log.debug("caught " + e.__class__.__name__ + " at click(button). retries[" + str(retries) + "]")
+				self.log.debug("caught " + e.__class__.__name__ + " at find_element. retries[" + str(retries) + "]")
 				if url != "":
 					self.reconnect(url)
 				else:
 					self.reconnect(self.current_url)
 				time.sleep(Conf().getconf(
-					"IEEE_wait_time_per_download_paper"))
+					"IEEE_wait_time_per_retry"))
 				retries -= 1
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
@@ -156,13 +155,13 @@ class PhantomJS_(webdriver.PhantomJS):
 				self.save_error_messages_at(sys._getframe().f_code.co_name, "by: " + by + ", tag: " + tag, True, e)
 				raise e
 			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
-				self.log.debug("caught " + e.__class__.__name__ + " at click(button). retries[" + str(retries) + "]")
+				self.log.debug("caught " + e.__class__.__name__ + " find_elements. retries[" + str(retries) + "]")
 				if url != "":
 					self.reconnect(url)
 				else:
 					self.reconnect(self.current_url)
 				time.sleep(Conf().getconf(
-					"IEEE_wait_time_per_download_paper"))
+					"IEEE_wait_time_per_retry"))
 				retries -= 1
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
