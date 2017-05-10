@@ -519,9 +519,11 @@ class IEEEXplore:
 			by="xpath", tag='//div[@ng-repeat=\"article in vm.contextData.similar\"]')
 		try:
 			tag = '//span[@class="authors-info ng-binding ng-scope" and ' +\
-				'@ng-repeat="author in vm.authors"]/span[@ng-if="::author.affiliation" or ' +\
+				'@ng-repeat="author in vm.authors"]' +\
+				'/span[@ng-if="::author.affiliation" or ' +\
 				'@ng-if="::!author.affiliation"]/a'
-			elements = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout, url=initial_url)
+			elements = driver.find_elements_with_handling_exceptions(
+				by="XPATH", tag=tag, timeout=timeout, url=initial_url)
 		except NoSuchElementException as e:
 			self.log.warning("caught " + e.__class__.__name__ +
 							 " at find authors elements.")
