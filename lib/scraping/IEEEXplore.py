@@ -491,7 +491,7 @@ class IEEEXplore:
 		keywords_str = ""
 		#elements = driver.find_elements_by_xpath('//a[@ng-bind-html="::term"]')
 		tag = '//a[@ng-bind-html="::term"]'
-		elements = driver.find_elements_with_handling_exceptions(by="XPAHT", tag=tag)
+		elements = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag)
 		for el in elements:
 			keyword = el.text
 			if "," + keyword in keywords_str:
