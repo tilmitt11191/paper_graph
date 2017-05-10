@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
+"""IEEEXplore.py."""
 
 import sys
 import os
 import time
 import re
 
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import \
 	TimeoutException, \
@@ -15,51 +15,59 @@ from selenium.common.exceptions import \
 from http.client import RemoteDisconnected
 from urllib.request import URLError
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
+sys.path.append(
+	os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
 from conf import Conf
 from log import Log
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
-	"/../../lib/scraping")
+sys.path.append(
+	os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
 from phantomjs_ import PhantomJS_
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)) +
-	"/../../lib/db")
+sys.path.append(
+	os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
+from searchs import Searchs
+
+sys.path.append(
+	os.path.dirname(os.path.abspath(__file__)) + "/../../lib/db")
 from table_papers import Table_papers
 from table_citations import Table_citations
 from table_authors import Table_authors
 
 
 class IEEEXplore:
+	"""class IEEEXplore."""
 
 	def __init__(self):
+		"""init."""
 		self.log = Log.getLogger()
 		self.opts = Search_options()
 		self.log.debug("class " + __class__.__name__ + " created.")
 
-	def get_attributes_and_download_pdf(self, search, driver, path="../../data/tmp/", filename="title", timeout=30):
-		print(__class__.__name__ + "." +
-			  sys._getframe().f_code.co_name + " start")
-		self.log.info(__class__.__name__ + "." +
-					  sys._getframe().f_code.co_name + " start")
+	def get_attributes_and_download_pdf(
+		self, search, driver, path="../../data/tmp/",
+		filename="title", timeout=30):
+		"""get_attributes_and_download_pdf."""
+		print(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 
 		search.times += 1
 		target_paper_url = search.node
-		#print("aaa" + str(search.limit))
-		#m = "limit[" + str(search.limit) + "]"
-		m = "url[" + str(target_paper_url) + "]\n" + \
-		"times[" + str(search.times) + "], " + \
-		"len(que)[" + str(len(search.que)) + "], " + \
-		"limit[" + str(search.limit) + "]"
-		
+		# print("aaa" + str(search.limit))
+		# m = "limit[" + str(search.limit) + "]"
+		m = "url[" + str(target_paper_url) + "]\n"\
+			+ "times[" + str(search.times) + "], "\
+			+ "len(que)[" + str(len(search.que)) + "], "\
+			+ "limit[" + str(search.limit) + "]"
+
 		print(m)
 		self.log.info(m)
 
 		self.move_to_paper_initial_page(driver, target_paper_url)
 
 		paper = Table_papers(title=self.get_title(driver))
-		# if this paper already downloaded recently, this paper had visited and
-		# skip.
+		# if this paper already downloaded recently, this paper had visited and skip.
 		if paper.has_already_downloaded():
 			self.log.debug("paper.has_already_downloaded. return paper, paper.url, [], [], " +
 						   str(paper.get_citings_array()) + ", " + str(paper.get_citeds_array()) + ", []")
@@ -165,8 +173,14 @@ class IEEEXplore:
 			#element = driver.find_element_by_css_selector(
 				#'div[class="pure-u-1-1 Dashboard-header ng-scope"] > span')
 			tag = 'div[class="pure-u-1-1 Dashboard-header ng-scope"] > span'
-			element = driver.find_element_with_handling_exceptions(by="CSS_SELECTOR", tag=tag, timeout=timeout)
-			num_of_papers = int(element.text.split(" ")[-1].replace(",", ""))
+			try:
+				element = driver.find_element_with_handling_exceptions(\
+					by="CSS_SELECTOR", tag=tag, timeout=timeout, warning_messages=False)
+				num_of_papers = int(element.text.split(" ")[-1].replace(",", ""))
+			except NoSuchElementException as e:
+				self.log.debug("caught " + e.__class__.__name__ + " at get num_of_papers. set 100000")
+				num_of_papers = 100000
+
 		self.log.debug("num_of_papers[" + str(num_of_papers) + "]")
 
 		urls = self.get_urls_of_papers_in_search_results(
@@ -180,15 +194,19 @@ class IEEEXplore:
 		all_cited_urls = []
 		all_urls_in_conference = []
 
-		sys.path.append(os.path.dirname(
-			os.path.abspath(__file__)) + "/../../lib/math")
-		from searchs import Searchs
 		search = Searchs(limit=num_of_papers)
 
 		for url in urls:
 			search.node = url
-			[paper, paper_url, urls_of_papers_with_same_authors, urls_of_papers_with_same_keywords, citing_urls, cited_urls,
-				urls_in_conference] = self.get_attributes_and_download_pdf(search, driver, path=path, filename=filename)
+			[\
+			paper, \
+			paper_url, \
+			urls_of_papers_with_same_authors, \
+			urls_of_papers_with_same_keywords, \
+			citing_urls, \
+			cited_urls, \
+			urls_in_conference\
+			] = self.get_attributes_and_download_pdf(search, driver, path=path, filename=filename)
 			all_papers.append(paper)
 			all_urls_of_papers_with_same_authors.extend(
 				urls_of_papers_with_same_authors)
@@ -197,8 +215,8 @@ class IEEEXplore:
 			all_citing_urls.extend(citing_urls)
 			all_cited_urls.extend(cited_urls)
 			all_urls_in_conference.extend(urls_in_conference)
-			self.log.info(__class__.__name__ + "." +
-						  sys._getframe().f_code.co_name + " finished")
+			self.log.info(\
+				__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 		return all_papers, urls, all_urls_of_papers_with_same_authors, all_urls_of_papers_with_same_keywords, all_citing_urls, all_cited_urls, all_urls_in_conference
 
@@ -756,14 +774,14 @@ class IEEEXplore:
 			#date = driver.find_element_by_xpath(
 				#'//div[@ng-if="::vm.details.isJournal == true"]').text
 			tag = '//div[@ng-if="::vm.details.isJournal == true"]'
-			date = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag).text
+			date = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag, warning_messages=False).text
 			return self.convert_date_of_publication_to_datetime(date)
 		except NoSuchElementException:
 			try:
 				#date = driver.find_element_by_xpath(
 				#	'//div[@ng-if="::vm.details.isConference == true"]').text
 				tag = '//div[@ng-if="::vm.details.isConference == true"]'
-				date = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag).text
+				date = driver.find_element_with_handling_exceptions(by="XPATH", tag=tag, warning_messages=False).text
 				return self.convert_date_of_publication_to_datetime(date)
 			except NoSuchElementException:
 				# todo get from paper??
@@ -903,12 +921,16 @@ class IEEEXplore:
 			tag = '//frameset[@rows="65,35%"]/frame'
 			driver.wait_appearance_of_tag(by="xpath", tag=tag, timeout=timeout)
 		except TimeoutException:
+			self.log.warning(__class__.__name__ + "." +
+					   sys._getframe().f_code.co_name)
 			self.log.warning(
 				"caught TimeoutException at load the iEEE pdf page.")
 			self.log.warning("skip to download pdf. reuturn \"\"")
 			driver.get(initial_url)
 			return ""
 		except NoSuchElementException:
+			self.log.warning(__class__.__name__ + "." +
+					   sys._getframe().f_code.co_name)
 			self.log.warning(
 				"caught NoSuchElementException at load the iEEE pdf page.")
 			self.log.warning("skip to download pdf. reuturn \"\"")
@@ -918,7 +940,15 @@ class IEEEXplore:
 		#url = driver.find_elements_by_xpath(
 			#'//frameset[@rows="65,35%"]/frame')[1].get_attribute("src")
 		tag='//frameset[@rows="65,35%"]/frame'
-		url = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout)[1].get_attribute("src")
+		try:
+			url = driver.find_elements_with_handling_exceptions(by="XPATH", tag=tag, timeout=timeout)[1].get_attribute("src")
+		except (NoSuchElementException, IndexError) as e:
+			self.log.warning(__class__.__name__ + "." +
+					   sys._getframe().f_code.co_name)
+			self.log.warning("cannot get pdf url.")
+			self.log.warning("paper url[" + initial_url + "]")
+			driver.get(initial_url)
+			return ""
 		self.log.debug("url:" + url)
 
 		if filename == "default":

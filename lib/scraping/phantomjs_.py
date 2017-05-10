@@ -164,7 +164,7 @@ class PhantomJS_(webdriver.PhantomJS):
 					"IEEE_wait_time_per_retry"))
 				retries -= 1
 
-		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished.")
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished. return elements[" + str(len(elements)) + "]")
 		return elements
 
 
