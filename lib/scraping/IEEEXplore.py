@@ -54,12 +54,10 @@ class IEEEXplore:
 
 		search.times += 1
 		target_paper_url = search.node
-		# print("aaa" + str(search.limit))
-		# m = "limit[" + str(search.limit) + "]"
-		m = "url[" + str(target_paper_url) + "]\n"\
-			+ "times[" + str(search.times) + "], "\
-			+ "len(que)[" + str(len(search.que)) + "], "\
-			+ "limit[" + str(search.limit) + "]"
+		m = "url[" + str(target_paper_url) + "]\n" + \
+			"times[" + str(search.times) + "], + "\
+			"len(que)[" + str(len(search.que)) + "], " + \
+			"limit[" + str(search.limit) + "]"
 
 		print(m)
 		self.log.info(m)
@@ -69,15 +67,21 @@ class IEEEXplore:
 		paper = Table_papers(title=self.get_title(driver))
 		# if this paper already downloaded recently, this paper had visited and skip.
 		if paper.has_already_downloaded():
-			self.log.debug("paper.has_already_downloaded. return paper, paper.url, [], [], " +
-						   str(paper.get_citings_array()) + ", " + str(paper.get_citeds_array()) + ", []")
-			return [paper, paper.url, [], [], paper.get_citings_array(), paper.get_citeds_array(), []]
+			self.log.debug(
+				"paper.has_already_downloaded. return paper, paper.url, [], [], " +
+				str(paper.get_citings_array()) + ", " +
+				str(paper.get_citeds_array()) + ", []")
+			return [
+				paper, paper.url, [], [],
+				paper.get_citings_array(), paper.get_citeds_array(), []]
 
 		self.log.debug("get attributes of this paper")
 		self.log.debug("get authors")
 		if search.times + len(search.que) <= search.limit:
-			paper.authors, urls_of_papers_with_same_authors = self.get_authors_and_urls_of_papers_with_same_authors(
-				driver, num_of_papers=Conf.getconf("IEEE_num_of_spreading_by_author"), timeout=timeout)
+			paper.authors, urls_of_papers_with_same_authors =\
+				self.get_authors_and_urls_of_papers_with_same_authors(
+					driver, num_of_papers=Conf.getconf("IEEE_num_of_spreading_by_author"),
+					timeout=timeout)
 		else:
 			self.log.debug("no need to spread anymore")
 			paper.authors = self.get_authors(driver)
@@ -85,8 +89,10 @@ class IEEEXplore:
 
 		self.log.debug("get keywords")
 		if search.times + len(search.que) <= search.limit:
-			paper.keywords, urls_of_papers_with_same_keywords = self.get_keywords_and_urls_of_papers_with_same_keywords(
-				driver, num_of_papers=Conf.getconf("IEEE_num_of_spreading_by_keyword"), timeout=timeout)
+			paper.keywords, urls_of_papers_with_same_keywords = \
+				self.get_keywords_and_urls_of_papers_with_same_keywords(
+					driver, num_of_papers=Conf.getconf("IEEE_num_of_spreading_by_keyword"),
+					timeout=timeout)
 		else:
 			self.log.debug("no need to spread anymore")
 			paper.keywords = self.get_keywords(driver)

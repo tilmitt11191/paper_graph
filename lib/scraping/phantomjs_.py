@@ -149,6 +149,8 @@ class PhantomJS_(webdriver.PhantomJS):
 		retries = 10
 		while retries > 0:
 			try:
+				if url == "":
+					url = self.current_url
 				elements = self.find_elements(eval("By." + by), tag)
 				break
 			except (NoSuchElementException, StaleElementReferenceException) as e:
@@ -156,10 +158,7 @@ class PhantomJS_(webdriver.PhantomJS):
 				raise e
 			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
 				self.log.debug("caught " + e.__class__.__name__ + " find_elements. retries[" + str(retries) + "]")
-				if url != "":
-					self.reconnect(url)
-				else:
-					self.reconnect(self.current_url)
+				self.reconnect(url)
 				time.sleep(Conf().getconf(
 					"IEEE_wait_time_per_retry"))
 				retries -= 1
