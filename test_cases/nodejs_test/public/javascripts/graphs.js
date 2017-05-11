@@ -123,9 +123,9 @@ $(function(){
 		//name: 'grid'
 		//name: "circle"
 		//name: 'concentric'
-		//name: 'breadthfirst'
+		name: 'breadthfirst'
 		//name: 'cose',
-		name: 'cose-bilkent'
+		//name: 'cose-bilkent'
  	});
 	var cosebOptions = {
 		name: 'cose-bilkent',
@@ -273,7 +273,7 @@ $(function(){
 	});*/
 	console.log("layout.run() start")
 	layout.run();
-  console.log("showGraph finished");
+	console.log("showGraph finished");
 	}
 
 

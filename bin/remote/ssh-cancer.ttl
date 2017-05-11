@@ -15,7 +15,7 @@ KEY_FILE = 'C:\Users\ozu\Documents\app\cygwin64\home\ozu\.ssh\id_rsa'
 COMMAND = HOSTADDR
 strconcat COMMAND ':'
 strconcat COMMAND PORTNUM
-strconcat COMMAND ' /ssh /2 /auth=publickey /user='
+strconcat COMMAND ' /autossh /2 /auth=publickey /user='
 strconcat COMMAND USERNAME 
 strconcat COMMAND ' /keyfile=' 
 strconcat COMMAND KEY_FILE

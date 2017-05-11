@@ -96,15 +96,10 @@ for start_paper in papers:
 		relevancy += check_published(start_paper, end_paper)
 		print("relevancy[" + str(relevancy) + "]")
 		
-		edge = Table_edges(start=start_paper.id, end=end_paper.id, relevancy=relevancy)
-		edges.append(edge)
-		edge.insert()
-		edge.db.close()
-
-
-
-
-
-
+		if relevancy != 0:
+			edge = Table_edges(start=start_paper.id, end=end_paper.id, relevancy=relevancy)
+			edges.append(edge)
+			edge.insert()
+			edge.db.close()
 
 

@@ -58,7 +58,6 @@ class IEEEXplore:
 			"times[" + str(search.times) + "], + "\
 			"len(que)[" + str(len(search.que)) + "], " + \
 			"limit[" + str(search.limit) + "]"
-
 		print(m)
 		self.log.info(m)
 
