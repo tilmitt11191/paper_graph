@@ -82,17 +82,17 @@ for start_paper in papers:
 			continue
 		relevancy = 0
 		print("start[" + str(start_paper.id) + "], end[" + str(end_paper.id) + "]")
-		print("relevancy[" + str(relevancy) + "]")
+		#print("relevancy[" + str(relevancy) + "]")
 		relevancy += shared_keyword_check(start_paper, end_paper)
-		print("relevancy[" + str(relevancy) + "]")
+		#print("relevancy[" + str(relevancy) + "]")
 		relevancy += shared_author_check(start_paper, end_paper)
-		print("relevancy[" + str(relevancy) + "]")
+		#print("relevancy[" + str(relevancy) + "]")
 		relevancy += citing_check(start_paper, end_paper)
-		print("relevancy[" + str(relevancy) + "]")
+		#print("relevancy[" + str(relevancy) + "]")
 		relevancy += cited_check(start_paper, end_paper)
-		print("relevancy[" + str(relevancy) + "]")
+		#print("relevancy[" + str(relevancy) + "]")
 		relevancy += check_conference(start_paper, end_paper)
-		print("relevancy[" + str(relevancy) + "]")
+		#print("relevancy[" + str(relevancy) + "]")
 		relevancy += check_published(start_paper, end_paper)
 		print("relevancy[" + str(relevancy) + "]")
 		
