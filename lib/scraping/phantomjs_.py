@@ -182,7 +182,7 @@ class PhantomJS_(webdriver.PhantomJS):
 				elif by=="tag_name":
 					WebDriverWait(self, timeout).until(lambda self: self.find_element_by_tag_name(tag))
 				else:
-					self.log.waring("type error by=" + by + ", tag: " + tag)
+					self.log.warning("type error by=" + by + ", tag: " + tag)
 				break
 			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
 				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e, url=url)

@@ -24,7 +24,7 @@ class Table_papers(Base):
 	published = Column("published", DATE)
 	url = Column("url", TINYTEXT)
 	timestamp = Column("timestamp", DATETIME)
-	path = Column("path", TINYTEXT)
+	path = Column("path", TEXT)
 	label =  Column("label", TINYTEXT)
 	color =  Column("color", TINYTEXT)
 

@@ -33,7 +33,7 @@ conference tinytext, \
 published DATE, \
 url tinytext, \
 timestamp DATETIME, \
-path tinytext, \
+path text, \
 label tinytext, \
 color tinytext);\
 alter table paper_graph.papers default character set "utf8";\
