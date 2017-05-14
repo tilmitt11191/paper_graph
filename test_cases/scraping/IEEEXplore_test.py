@@ -5,6 +5,7 @@
 import unittest
 import sys,os
 import datetime
+import re
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
 from log import Log
@@ -272,7 +273,9 @@ class IEEEXplore_test(unittest.TestCase):
 		#url = "http://ieeexplore.ieee.org/document/1055638/"
 		#url = "http://ieeexplore.ieee.org/document/7727082/"
 		url = "http://ieeexplore.ieee.org/document/7914660/" # NoSuchElementException at authors loop, first author only one paper. and another error occurd in search by the author
-		num_of_spreading_by_author = self.conf.getconf("IEEE_num_of_spreading_by_author")
+		num_of_spreading_by_author = 
+		#url = "http://ieeexplore.ieee.org/search/searchresult.jsp?searchWithin=%22Authors%22:.QT.Tamer%20Ba.AND..HSH.x015F;ar.QT.&newsearch=true"
+		self.conf.getconf("IEEE_num_of_spreading_by_author")
 		timeout=30
 		driver = self.xplore.create_driver(url)
 		authors_str, urls_of_papers_with_same_authors = self.xplore.get_authors_and_urls_of_papers_with_same_authors(driver, num_of_spreading_by_author, timeout)
@@ -334,7 +337,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 	#url = "http://ieeexplore.ieee.org/document/4544774/" # cited by one
-	
+
 	def test_get_cited_papers_which_cited_by_27(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7130662/"
@@ -492,7 +495,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.assertEqual("http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313", url)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-
+	"""
 	def test_parse_citing(self):
 		#from
 		#Daniel Garant, Wei Lu, "Mining Botnet Behaviors on the Large-Scale Web Application Community", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013.
@@ -530,6 +533,7 @@ class IEEEXplore_test(unittest.TestCase):
 		
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 	"""
 	def test_continuous_pushing_more_view_button(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -606,7 +610,7 @@ class IEEEXplore_test(unittest.TestCase):
 		search = Searchs(que=all_citing_urls, limit=num_of_papers, times=0)
 		Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], self.xplore.get_attributes_and_download_pdf, driver, path, filename)
 
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 	"""
 	def test_show_options(self):
@@ -623,6 +627,15 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.opts.set_PerPage(1000)
 		self.xplore.show_options()
 	"""
+	def test_encode(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		string = "Tamer Başar"
+		#string = re.sub(r'\b', "?", string)
+		string = string.encode("utf-8", "replace")
+		print(string)
+		string = string.decode("utf-8", "replace")
+		print(string)
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
 if __name__ == '__main__':
 	unittest.main()

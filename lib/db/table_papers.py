@@ -72,10 +72,10 @@ class Table_papers(Base):
 		vars_to_encode = [
 			"title", "authors", "keywords", "abstract_path", "pdf_path"]
 		for var in vars_to_encode:
-			exec("self." + var + " = self." + var + ".encode('utf-8')")
+			exec("self." + var + " = self." + var + ".encode('utf-8', 'replace')")
 		self.db.insert(self)
 		for var in vars_to_encode:
-			exec("self." + var + " = self." + var + ".decode('utf-8')")
+			exec("self." + var + " = self." + var + ".decode('utf-8', 'replace')")
 		self.db.session.expunge(self)
 		self.db.close()
 
@@ -85,7 +85,8 @@ class Table_papers(Base):
 		if self.conf.getconf("IEEE_paper_download_period") <= 0:
 			self.log.debug("IEEE_paper_download_period <= 0, return False")
 			return False
-		records = self.db.session.query(__class__).filter(__class__.title==self.title.encode('utf-8')).all()
+		records = self.db.session.query(__class__).filter(
+			__class__.title==self.title.encode('utf-8', 'replace')).all()
 		if len(records) == 0:
 			self.log.debug("This paper doesnt exist in db. return false")
 			return False
