@@ -14,19 +14,23 @@ rotate_log_lines: 100000
 backup_log_count: 100
 
 pdf_downloading_path: ../../data/tmp/
+max_filename_length: 200 # Byte
 
 IEEE_website: "http://ieeexplore.ieee.org"
 IEEE_top_page: "http://ieeexplore.ieee.org/Xplore/home.jsp"
-IEEE_wait_time_per_download_paper: 60
+IEEE_wait_time_per_download_paper: 30
 IEEE_wait_time_per_retry: 30
 IEEE_citation_num_at_first_page: 30
 IEEE_citation_num_per_more_view: 100
 #30, 130, 230, 329, 429, 529, 629, 728, 828, 929
 IEEE_paper_download_period: 1 #day
 IEEE_num_of_spreading_by_author: "all"
-IEEE_num_of_spreading_by_keyword: 25
+IEEE_num_of_spreading_by_keyword: 50
 IEEE_num_of_spreading_by_conference: "all"
 
 phantomJS_pass: "/usr/local/bin/phantomjs"
+phantomJS_wait_time_per_get: 15
 phantomJS_load_timeout: 30
+
+
 myslq_url: "mysql+pymysql://alladmin:admin@localhost/paper_graph?charset=utf8"

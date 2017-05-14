@@ -53,6 +53,7 @@ class webdriver_test(unittest.TestCase):
 	"""
 	def test_wait_appearance_of_tag(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		# url = "http://ieeexplore.ieee.org/search/searchresult.jsp?reload=true&matchBoolean=true&queryText=%22Index%20Terms%22:.QT.Al%2Fsub%200.3%2FGa%2Fsub%200.7%2FAs%2FIn%2Fsub%200.2%2FGa%2Fsub%200.8%2FAs-based%20structure.QT.&newsearch=true" # keyword of "http://ieeexplore.ieee.org/document/1033275/"
 		url = "http://ieeexplore.ieee.org/document/1055638/"
 		#tag = '//div[@ng-repeat=\"article in vm.contextData.similar\"]'
 		tag = '//div[@ng-repeat=\"article in vm.contextData.sim\"]' ## invalid tag
@@ -69,6 +70,8 @@ class webdriver_test(unittest.TestCase):
 		self.driver.execute_script_with_handling_exceptions("window.scrollTo(0, document.body.scrollHeight);")
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+
+	"""
 	def test_click(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/5395949/"
@@ -80,5 +83,18 @@ class webdriver_test(unittest.TestCase):
 		self.driver.click(button)
 		self.driver.save_current_page("../../var/after_click.png")
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+
+	def test_save_current_page(self):
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		filename = "../../var/ss/tmp.png"
+		self.driver.save_current_page(filename)
+		filename = "../../var/ss/TimeoutExceptionhttpieeexploreieeeorgsearchsearchresultjspreload=true&matchBoolean=true&queryText=%22Index%20Terms%22QTAl%2Fsub%2003%2FGa%2Fsub%2007%2FAs%2FIn%2Fsub%2002%2FGa%2Fsub%2008%2FAs-based%20structureQT&newsearch=true.html"
+		self.driver.save_current_page(filename)
+		
+		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+			
+
+
 if __name__ == '__main__':
 	unittest.main()

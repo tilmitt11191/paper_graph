@@ -29,10 +29,6 @@ print("len(que): " + str(len(search.que)))
 print("len(visited): " + str(len(search.visited)))
 print("times: " + str(search.times))
 
-driver = xplore.create_driver(search.node)
-
-Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], xplore.get_attributes_and_download_pdf, driver, path, filename)
-
-driver.close()
+Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], xplore.get_attributes_of_target_paper_for_bfs, path, filename, timeout)
 
 print("Finished!!")

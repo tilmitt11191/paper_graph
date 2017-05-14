@@ -23,13 +23,14 @@ class Table_papers(Base):
 	conference = Column("conference", TINYTEXT)
 	published = Column("published", DATE)
 	url = Column("url", TINYTEXT)
+	abstract_path = Column("abstract_path", TEXT)
+	pdf_path = Column("pdf_path", TEXT)
 	timestamp = Column("timestamp", DATETIME)
-	path = Column("path", TEXT)
 	label =  Column("label", TINYTEXT)
 	color =  Column("color", TINYTEXT)
 
 
-	def __init__(self, id="", title="", authors="", keywords="", citings="", citeds="", conference = "", published = "", url = "", timestamp="", path="", label="", color=""):
+	def __init__(self, id="", title="", authors="", keywords="", citings="", citeds="", conference = "", published = "", url = "", timestamp="", abstract_path="", pdf_path="", label="", color=""):
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../lib/utils")
 		from conf import Conf
 		self.conf = Conf()
@@ -56,7 +57,8 @@ class Table_papers(Base):
 			self.timestamp = None
 		else:
 			self.timestamp = timestamp
-		self.path = path
+		self.abstract_path = abstract_path
+		self.pdf_path = pdf_path
 		self.label = label
 		self.color = color
 
@@ -67,15 +69,13 @@ class Table_papers(Base):
 	def insert(self):
 		if self.id == "":
 			self.id = self.get_id()
-		self.title = self.title.encode('utf-8')
-		self.authors = self.authors.encode('utf-8')
-		self.keywords = self.keywords.encode('utf-8')
-		self.path = self.path.encode('utf-8')
+		vars_to_encode = [
+			"title", "authors", "keywords", "abstract_path", "pdf_path"]
+		for var in vars_to_encode:
+			exec("self." + var + " = self." + var + ".encode('utf-8')")
 		self.db.insert(self)
-		self.title = self.title.decode('utf-8')
-		self.authors = self.authors.decode('utf-8')
-		self.keywords = self.keywords.decode('utf-8')
-		self.path = self.path.decode('utf-8')
+		for var in vars_to_encode:
+			exec("self." + var + " = self." + var + ".decode('utf-8')")
 		self.db.session.expunge(self)
 		self.db.close()
 
@@ -94,10 +94,10 @@ class Table_papers(Base):
 			self.log.warning("title["+self.title+"], len(records)[" + str(len(records)) + "]")
 
 		self.log.debug("This paper exist in db. Number of records is [" + str(len(records)) + "]")
-		if records[0].path == "":
-			self.log.debug("but not downloaded. return False")
+		if records[0].abstract_path == "":
+			self.log.debug("but the abstract not downloaded. return False")
 			return False
-		self.log.debug("and already downloaded. compare timestamps")
+		self.log.debug("and the abstract already downloaded. compare timestamps")
 
 		limit = datetime.datetime.now() - timedelta(days=self.conf.getconf("IEEE_paper_download_period"))
 		self.log.debug("limit[" + str(limit) + "], records[" + str(records[0].timestamp) + "]")
@@ -106,13 +106,23 @@ class Table_papers(Base):
 			return False
 		else:
 			self.log.debug("recently downloaded. clone paper and return true")
-			clone_vars = ["authors", "keywords", "citings", "citeds", "conference", "published", "url", "timestamp", "path", "label", "color"]
+			clone_vars = ["authors",
+				"keywords",
+				"citings",
+				"citeds",
+				"conference",
+				"published",
+				"url",
+				"timestamp",
+				"abstract_path",
+				"pdf_path",
+				"label",
+				"color"]
 			for var in clone_vars:
 				exec("self." + var + "= records[0]." + var)
 			return True
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
 
 	def renewal_insert(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -127,7 +137,7 @@ class Table_papers(Base):
 		for record in records:
 			merge_id_list.append(record.id)
 
-		vars = ["authors", "keywords", "citings", "citeds", "conference", "published", "url", "path", "label", "color"]
+		vars = ["authors", "keywords", "citings", "citeds", "conference", "published", "url", "abstract_path", "pdf_path", "label", "color"]
 		for var in vars:
 			for record in records:
 				self.log.debug("record.id[" + str(record.id) + "]")
@@ -261,7 +271,8 @@ class Table_papers(Base):
 			"published: " + str(self.published) + ", " +
 			"url: " + self.url + ", " +
 			"timestamp: " + str(self.timestamp) + ", " +
-			"path: " + self.path + ", " +
+			"abstract_path: " + self.abstract_path + ", " +
+			"pdf_path: " + self.pdf_path + ", " +
 			"label: " + self.label + ", " +
 			"color: " + self.color + ", " +
 		"}")

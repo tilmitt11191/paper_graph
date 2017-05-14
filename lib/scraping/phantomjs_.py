@@ -89,7 +89,9 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.log.error("PhantomJS caught ERROR RemoteDisconnected at get" + url)
 			self.save_current_page("../../var/ss/get_error.html")
 			self.save_current_page("../../var/ss/get_error.png")
-
+		wait_time = Conf.getconf("phantomJS_wait_time_per_get")
+		self.log.debug("process finished. wait " + str(wait_time) + " seconds")
+		time.sleep(wait_time)
 		if tag_to_wait != "":
 			self.wait_appearance_of_tag(by=by, tag=tag_to_wait, timeout=timeout)
 
@@ -119,13 +121,19 @@ class PhantomJS_(webdriver.PhantomJS):
 		##, NAME, PARTIAL_LINK_TEXT,TAG_NAME, XPATH
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start.")
 		self.log.debug("by: " + by + " , + tag: " + tag)
+		if self.by_or_tag_is_invalid(by, tag):
+			self.log.warning(
+				"by_or_tag_is_invalid at " + sys._getframe().f_code.co_name)
+			self.log.warning("return None")
+			return None
+
 		retries = 10
 		while retries > 0:
 			try:
 				element = self.find_element(eval("By." + by), tag)
 				break
 			except (NoSuchElementException, StaleElementReferenceException) as e:
-				self.save_error_messages_at(sys._getframe().f_code.co_name, "by: " + by + ", tag: " + tag, True, e)
+				self.save_error_messages_at(sys._getframe().f_code.co_name, "by: " + by + ", tag: " + tag, warning_messages, e)
 				raise e
 			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
 				self.log.debug("caught " + e.__class__.__name__ + " at find_element. retries[" + str(retries) + "]")
@@ -146,6 +154,12 @@ class PhantomJS_(webdriver.PhantomJS):
 		##, NAME, PARTIAL_LINK_TEXT,TAG_NAME, XPATH
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start.")
 		self.log.debug("by: " + by + " , + tag: " + tag)
+		if self.by_or_tag_is_invalid(by, tag):
+			self.log.warning(
+				"by_or_tag_is_invalid at " + sys._getframe().f_code.co_name)
+			self.log.warning("return None")
+			return None
+
 		retries = 10
 		while retries > 0:
 			try:
@@ -167,8 +181,14 @@ class PhantomJS_(webdriver.PhantomJS):
 		return elements
 
 
-	def wait_appearance_of_tag(self, by="xpath", tag="", warning_messages=True, timeout=30):
+	def wait_appearance_of_tag(self, by="", tag="", warning_messages=True, retry=True, timeout=30):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start. tag: " + tag)
+		if self.by_or_tag_is_invalid(by, tag):
+			self.log.warning(
+				"by_or_tag_is_invalid at " + sys._getframe().f_code.co_name)
+			self.log.warning("return False")
+			return False
+
 		retries = 10
 		while retries > 0:
 			try:
@@ -185,10 +205,14 @@ class PhantomJS_(webdriver.PhantomJS):
 					self.log.warning("type error by=" + by + ", tag: " + tag)
 				break
 			except (TimeoutException, RemoteDisconnected, ConnectionRefusedError, URLError) as e:
-				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e, url=url)
-				self.reconnect(self.current_url)
-				retries -= 1
-				self.log.debug("retries -= 1. retries[" + str(retries) + "]")
+				if retry==False:
+					self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e, url=url)
+					return False
+				else:
+					self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", False, e, url=url)
+					self.reconnect(self.current_url)
+					retries -= 1
+					self.log.debug("retries -= 1. retries[" + str(retries) + "]")
 			except NoSuchElementException as e:
 				self.save_error_messages_at(sys._getframe().f_code.co_name, "by[" + by + "], tag[" + tag + "]", warning_messages, e, url=url)
 				return False
@@ -204,10 +228,12 @@ class PhantomJS_(webdriver.PhantomJS):
 
 
 	def save_error_messages_at(self, method, command, warning_messages, exception,  url=""):
-		self.log.warning("caught " + exception.__class__.__name__ + " at " + method + ". url[" + url + "]")
-		self.log.warning("command: " + command)
+		self.log.debug("caught " + exception.__class__.__name__ + " at " + method + ". url[" + url + "]")
+		self.log.debug("command: " + command)
 		if warning_messages:
 			filename = "../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", url)
+			self.log.warning("caught " + exception.__class__.__name__ + " at " + method + ". url[" + url + "]")
+			self.log.warning("command: " + command)
 			self.log.warning("save_current_page to " + filename + ".html and png")
 			self.log.warning(exception, exc_info=True)
 			self.save_current_page(filename + ".html")
@@ -223,7 +249,6 @@ class PhantomJS_(webdriver.PhantomJS):
 		self.get(url)
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
-
 	def execute_script_with_handling_exceptions(self, script):
 		## script example
 		## "window.scrollTo(0, document.body.scrollHeight);"
@@ -235,13 +260,15 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.save_error_messages_at(sys._getframe().f_code.co_name, script, warning_messages, e)
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 
-		
-
-
-
 	def save_current_page(self, filename):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		path, suffix=os.path.splitext(filename)
+		max_filename_length = Conf.getconf("max_filename_length")
+		if len(path) > max_filename_length:
+			self.log.debug("filename too long. convert from :" + filename)
+			filename = path[:max_filename_length] + suffix
+			self.log.debug("to :" + filename)
+			
 		self.log.debug("path["+path+"], suffix["+suffix+"]")
 		if suffix==".html":
 			f = open(filename, 'w')
@@ -251,5 +278,16 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.save_screenshot(filename)
 		else:
 			self.log.error(__class__.__name__ + "." + sys._getframe().f_code.co_name)
-			self.log.error("TYPEERROR suffix["+suffix+"]")
+			self.log.error("TYPEERROR suffix[" + suffix + "]")
+		self.log.debug("saved to " + filename)
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+	def by_or_tag_is_invalid(self, by, tag):
+		self.log.debug(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		self.log.debug("by[" + by + "], tag[" + tag + "]")
+		if by == "" or tag == "":
+			self.log.debug("by == \"\" or tag == \"\". return False")
+			return True
+		self.log.debug("valid. retur True")
+		return False

@@ -4,6 +4,7 @@
 
 import unittest
 import sys,os
+import datetime
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/utils")
 from log import Log
@@ -32,22 +33,127 @@ class IEEEXplore_test(unittest.TestCase):
 		sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/math")
 		from searchs import Searchs as s
 		self.search = s()
+	
+	
+	"""
+	def test_get_attributes_spreading_of_target_paper_which_not_cited(self):
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7921125/"
+		url = "http://ieeexplore.ieee.org/document/891000"
+		paper,\
+			paper.url,\
+			urls_of_papers_with_same_authors,\
+			urls_of_papers_with_same_keywords,\
+			citing_urls,\
+			cited_urls,\
+			urls_in_conference\
+			= self.xplore.get_attributes_of_target_paper(url)
+		self.assertEqual("Deep learning for texture classification via multi-wavelet fusion of scattering transforms", paper.title)
+		self.assertEqual("Scattering,Wavelet transforms,Convolution,Machine learning,Databases,Shape,computer vision,texture classification,deep learning,wavelet,data fusion,scattering transform", paper.keywords)
+		self.assertEqual("Amir Dadashnialehi,Alireza Bab-Hadiashar,Reza Hoseinnezhad", paper.authors)
+		self.assertEqual("http://ieeexplore.ieee.org/document/6619007,http://ieeexplore.ieee.org/document/1615314,http://ieeexplore.ieee.org/document/5995635,http://ieeexplore.ieee.org/document/4394653,http://ieeexplore.ieee.org/document/4401927,http://ieeexplore.ieee.org/document/632179,http://ieeexplore.ieee.org/document/6706406,http://ieeexplore.ieee.org/document/4078016,http://ieeexplore.ieee.org/document/4669758,http://ieeexplore.ieee.org/document/5478671", paper.citings)
+		self.assertEqual("", paper.citeds)
+		self.assertEqual("Mechatronics (ICM), 2017 IEEE International Conference on", paper.conference)
+		self.assertEqual(datetime.date(2017, 2, 13), paper.published)
+		self.assertEqual("http://ieeexplore.ieee.org/document/7921125/", paper.url)
+		self.assertEqual("../../data/tmp/Deeplearningfortextureclassificationviamulti-waveletfusionofscatteringtransforms.txt", paper.abstract_path)
+
+		self.assertEqual(url, paper.url)
+		print("urls_of_papers_with_same_authors: " + str(len(urls_of_papers_with_same_authors)))
+		print("urls_of_papers_with_same_keywords", str(len(urls_of_papers_with_same_keywords)))
+		print("citing_urls", str(len(citing_urls)))
+		print("cited_urls", str(len(cited_urls)))
+		print("urls_in_conference", str(len(urls_in_conference)))
+
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
+	def test_get_attributes_spreading_of_target_paper_which_cited_by_25(self):
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7130662/" 
+		paper,\
+			paper.url,\
+			urls_of_papers_with_same_authors,\
+			urls_of_papers_with_same_keywords,\
+			citing_urls,\
+			cited_urls,\
+			urls_in_conference\
+			= self.xplore.get_attributes_of_target_paper(url)
+		#self.assertEqual("Deep learning for texture classification via multi-wavelet fusion of scattering transforms", paper.title)
+		#self.assertEqual("Scattering,Wavelet transforms,Convolution,Machine learning,Databases,Shape,computer vision,texture classification,deep learning,wavelet,data fusion,scattering transform", paper.keywords)
+		#self.assertEqual("Amir Dadashnialehi,Alireza Bab-Hadiashar,Reza Hoseinnezhad", paper.authors)
+		#self.assertEqual("http://ieeexplore.ieee.org/document/6619007,http://ieeexplore.ieee.org/document/1615314,http://ieeexplore.ieee.org/document/5995635,http://ieeexplore.ieee.org/document/4394653,http://ieeexplore.ieee.org/document/4401927,http://ieeexplore.ieee.org/document/632179,http://ieeexplore.ieee.org/document/6706406,http://ieeexplore.ieee.org/document/4078016,http://ieeexplore.ieee.org/document/4669758,http://ieeexplore.ieee.org/document/5478671", paper.citings)
+		#self.assertEqual("", paper.citeds)
+		#self.assertEqual("Mechatronics (ICM), 2017 IEEE International Conference on", paper.conference)
+		#self.assertEqual(datetime.date(2017, 2, 13), paper.published)
+		#self.assertEqual("http://ieeexplore.ieee.org/document/7921125/", paper.url)
+		#self.assertEqual("../../data/tmp/Deeplearningfortextureclassificationviamulti-waveletfusionofscatteringtransforms.txt", paper.abstract_path)
+
+		self.assertEqual(url, paper.url)
+		print("urls_of_papers_with_same_authors: " + str(len(urls_of_papers_with_same_authors)))
+		print("urls_of_papers_with_same_keywords", str(len(urls_of_papers_with_same_keywords)))
+		print("citing_urls", str(len(citing_urls)))
+		print("cited_urls", str(len(cited_urls)))
+		print("urls_in_conference", str(len(urls_in_conference)))
+
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 
 
 	"""
-	def test_show_options(self):
-		self.log.info("test_show_options start")
-		print("default")
-		self.xplore.show_options()
-		print("35")
-		self.xplore.opts.set_PerPage(35)
-		self.xplore.show_options()
-		print("75")
-		self.xplore.opts.set_PerPage(75)
-		self.xplore.show_options()
-		print("1000")
-		self.xplore.opts.set_PerPage(1000)
-		self.xplore.show_options()
+	def test_get_attributes_not_spreading_of_target_paper_which_not_cited(self):
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7921125/"
+		paper,\
+			paper.url,\
+			urls_of_papers_with_same_authors,\
+			urls_of_papers_with_same_keywords,\
+			citing_urls,\
+			cited_urls,\
+			urls_in_conference\
+			= self.xplore.get_attributes_of_target_paper(url, spread_papers=False)
+		self.assertEqual("Deep learning for texture classification via multi-wavelet fusion of scattering transforms", paper.title)
+		self.assertEqual("Scattering,Wavelet transforms,Convolution,Machine learning,Databases,Shape,computer vision,texture classification,deep learning,wavelet,data fusion,scattering transform", paper.keywords)
+		self.assertEqual("Amir Dadashnialehi,Alireza Bab-Hadiashar,Reza Hoseinnezhad", paper.authors)
+		self.assertEqual("http://ieeexplore.ieee.org/document/6619007,http://ieeexplore.ieee.org/document/1615314,http://ieeexplore.ieee.org/document/5995635,http://ieeexplore.ieee.org/document/4394653,http://ieeexplore.ieee.org/document/4401927,http://ieeexplore.ieee.org/document/632179,http://ieeexplore.ieee.org/document/6706406,http://ieeexplore.ieee.org/document/4078016,http://ieeexplore.ieee.org/document/4669758,http://ieeexplore.ieee.org/document/5478671", paper.citings)
+		self.assertEqual("", paper.citeds)
+		self.assertEqual("Mechatronics (ICM), 2017 IEEE International Conference on", paper.conference)
+		self.assertEqual(datetime.date(2017, 2, 13), paper.published)
+		self.assertEqual("http://ieeexplore.ieee.org/document/7921125/", paper.url)
+		self.assertEqual("../../data/tmp/Deeplearningfortextureclassificationviamulti-waveletfusionofscatteringtransforms.txt", paper.abstract_path)
+
+		self.assertEqual(url, paper.url)
+		self.assertEqual(0, len(urls_of_papers_with_same_authors))
+		self.assertEqual(0, len(urls_of_papers_with_same_keywords))
+		self.assertEqual(10, len(citing_urls))
+		self.assertEqual(0, len(cited_urls))
+		self.assertEqual(0, len(urls_in_conference))
+
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
+	def test_get_attributes_of_target_paper_for_bfs(self):
+		# url = "http://ieeexplore.ieee.org/document/7130662/"
+		#url = "http://ieeexplore.ieee.org/document/1055638/" # New directions in cryptography
+		url = "http://ieeexplore.ieee.org/document/4773330"
+		path = "../../data/tmp/"
+		filename = "title"
+		timeout = 30
+		search = Searchs(initial_node=url, que=[url], times=1, visited=[], limit=100000)
+		results = self.xplore.get_attributes_of_target_paper_for_bfs(
+			search, path, filename, timeout)
+		print("results: " + str(len(results)))
+		print("2 authors: " + str(len(results[2])))
+		print("3 keywords: " + str(len(results[3])))
+		print("4 citings: " + str(len(results[4])))
+		print("5 citeds: " + str(len(results[5])))
+		print("6 conference: " + str(len(results[6])))
 	"""
 	"""
 	def test_get_attributes_and_download_pdf_of_various(self):
@@ -147,7 +253,18 @@ class IEEEXplore_test(unittest.TestCase):
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+	"""
+	def test_get_abstract(self):
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		url = "http://ieeexplore.ieee.org/document/7921125/"
+		url = "http://ieeexplore.ieee.org/document/1654301" # No abstract
+		self.xplore.driver.get(url)
+		print(self.xplore.get_abstract())
 
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 	"""
 	def test_get_authors_and_urls_of_papers_with_same_authors(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -200,41 +317,42 @@ class IEEEXplore_test(unittest.TestCase):
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
+
 	"""
 	def test_get_cited_papers_which_not_cited(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7849067/"
-		driver = self.xplore.create_driver(url)
+		self.xplore.move_to_paper_top_page(url)
 
-		citeds_str, cited_papers, cited_urls = self.xplore.get_cited_papers(driver)
+		citeds_str, cited_papers, cited_urls = self.xplore.get_cited_papers()
 		self.log.debug("citeds_str[" + citeds_str +"]")
 		self.log.debug("len(cited_urls)[" + str(len(cited_urls)) + "]")
 		self.log.debug("cited_urls: " + str(cited_urls))
-
-		driver.close()
 
 		self.assertEqual(citeds_str, "")
 		self.assertEqual(len(cited_urls), 0)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
-	"""
+
+	#url = "http://ieeexplore.ieee.org/document/4544774/" # cited by one
+	
 	def test_get_cited_papers_which_cited_by_27(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7130662/"
-		driver = self.xplore.create_driver(url)
+		self.xplore.move_to_paper_top_page(url)
 
-		citeds_str, cited_papers, cited_urls = self.xplore.get_cited_papers(driver)
-		self.log.debug("citeds_str[" + citeds_str +"]")
-		self.log.debug("len(cited_urls)[" + str(len(cited_urls)) + "]")
-		self.log.debug("cited_urls: " + str(cited_urls))
-
-		driver.close()
+		citeds_str, cited_papers, cited_urls = self.xplore.get_cited_papers()
+		#print("citeds_str[" + citeds_str +"]")
+		#print("len(cited_urls)[" + str(len(cited_urls)) + "]")
+		#print("cited_urls: " + str(cited_urls))
+		self.xplore.driver.save_current_page("../../var/ss/cited_button_not_found.png")
+		self.xplore.driver.save_current_page("../../var/ss/cited_button_not_found.html")
 
 		self.assertEqual(citeds_str, "http://ieeexplore.ieee.org/document/7446253,http://ieeexplore.ieee.org/document/7564666,http://ieeexplore.ieee.org/document/7511367,http://ieeexplore.ieee.org/document/7247586,http://ieeexplore.ieee.org/document/7794956,http://ieeexplore.ieee.org/document/7842016,http://ieeexplore.ieee.org/document/7901477,http://ieeexplore.ieee.org/document/7794955,http://ieeexplore.ieee.org/document/7875428,http://ieeexplore.ieee.org/document/7841937,http://ieeexplore.ieee.org/document/7442079,http://ieeexplore.ieee.org/document/7517217,http://ieeexplore.ieee.org/document/7727082,http://ieeexplore.ieee.org/document/7536749,http://ieeexplore.ieee.org/document/7541539,http://ieeexplore.ieee.org/document/7792373,http://ieeexplore.ieee.org/document/7762913,http://ieeexplore.ieee.org/document/7542156,http://ieeexplore.ieee.org/document/7500395,http://ieeexplore.ieee.org/document/7727971,http://ieeexplore.ieee.org/document/7553459,http://ieeexplore.ieee.org/document/7555389,http://ieeexplore.ieee.org/document/7845499,http://ieeexplore.ieee.org/document/7572018,http://ieeexplore.ieee.org/document/7510809,http://ieeexplore.ieee.org/document/7552695")
 		self.assertEqual(len(cited_urls), 26)
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
 
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+
+	"""
 	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -248,7 +366,19 @@ class IEEEXplore_test(unittest.TestCase):
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-
+	"""
+	def test_get_url_of_conference(self):
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		#url = "http://ieeexplore.ieee.org/document/7130662/" # IEEE Transactions on Signal and Information Processing over Networks ( Volume: 1, Issue: 2, June 2015 )
+		#url = "http://ieeexplore.ieee.org/document/1055638/" # IEEE Transactions on Information Theory ( Volume: 22, Issue: 6, Nov 1976 )
+		url = "http://ieeexplore.ieee.org/document/7921125/" # 2017 IEEE International Conference on Mechatronics (ICM) 
+		self.xplore.move_to_paper_top_page(url)
+		conference_url = self.xplore.get_url_of_conference()
+		print(conference_url)
+		self.log.info(
+			__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
 	"""
 	def test_get_conference_and_urls_of_papers_in_same_conference(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -256,30 +386,31 @@ class IEEEXplore_test(unittest.TestCase):
 		#url = "http://ieeexplore.ieee.org/document/1055638/" # has published in and decorated page
 		## IET Renewable Power Generation.
 		#url = "http://ieeexplore.ieee.org/document/7919059/"
-		url = "http://ieeexplore.ieee.org/document/7918696/" ## no next_button
-		driver = self.xplore.create_driver(url)
+		#url = "http://ieeexplore.ieee.org/document/7918696/" ## no next_button
+		url = "http://ieeexplore.ieee.org/document/7130662/" ## IEEE Transactions on Signal and Information Processing over Networks ( Volume: 1, Issue: 2, June 2015 )
+
 		num_of_spreading_by_conference = self.conf.getconf("IEEE_num_of_spreading_by_conference")
 		timeout=30
-		conference, urls_of_papers_in_same_conference = self.xplore.get_conference_and_urls_of_papers_in_same_conference(driver, num_of_spreading_by_conference, timeout)
+		self.xplore.move_to_paper_top_page(url)
+
+		conference, urls_of_papers_in_same_conference = self.xplore.get_conference_and_urls_of_papers_in_same_conference(num_of_spreading_by_conference, timeout)
 		self.log.debug("conference[" + conference +"]")
 		self.log.debug("len(urls_of_papers_in_same_conference)[" + str(len(urls_of_papers_in_same_conference)) + "]")
 		self.log.debug("urls_of_papers_in_same_conference: " + str(urls_of_papers_in_same_conference))
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 
-
 	"""
 	def test_get_date_of_publication(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		urls = []
 		urls.append("http://ieeexplore.ieee.org/document/7914660/") ##Date of Publication: 28 April 2017
+		urls.append("http://ieeexplore.ieee.org/document/4773330/")
+		urls.append("http://ieeexplore.ieee.org/document/891000")
+		
 		for url in urls:
-			#driver = self.xplore.create_driver(url)
-			sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../../lib/scraping")
-			from phantomjs_ import PhantomJS_
-			driver = PhantomJS_()
-			driver.get(url, tag_to_wait="", by="xpath", timeout=30)
-			print(self.xplore.get_date_of_publication(driver))
+			self.xplore.move_to_paper_top_page(url)
+			print(self.xplore.get_date_of_publication())
 
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
@@ -327,6 +458,11 @@ class IEEEXplore_test(unittest.TestCase):
 		##Date of Publication:
 		##to
 		##None
+		# from
+		# ""
+		# to
+		# None
+
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		#self.get_date_of_publications()
@@ -356,7 +492,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.assertEqual("http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7874313", url)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	"""
+
 	def test_parse_citing(self):
 		#from
 		#Daniel Garant, Wei Lu, "Mining Botnet Behaviors on the Large-Scale Web Application Community", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013.
@@ -365,24 +501,35 @@ class IEEEXplore_test(unittest.TestCase):
 		#Mining Botnet Behaviors on the Large-Scale Web Application Community
 		#Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on
 		#pp. 185-190, 2013
-
+		
+		# from
+		# IEEE Std 1363.2-2008, pp. 1-127, 2009
+		# to
+		# "", "", "", ""
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		str = "Daniel Garant, Wei Lu, \"Mining Botnet Behaviors on the Large-Scale Web Application Community\", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013."
-		authors, cited_title, cited_conference, cited_date = self.xplore.parse_citing(str)
-		print(authors)
-		print(cited_title)
-		print(cited_conference)
-		print(cited_date)
+		text = "Daniel Garant, Wei Lu, \"Mining Botnet Behaviors on the Large-Scale Web Application Community\", Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on, pp. 185-190, 2013."
+		authors, cited_title, cited_conference, cited_date = self.xplore.parse_citing(text)
+		self.assertEqual("Daniel Garant, Wei Lu, ", authors)
+		self.assertEqual("Mining Botnet Behaviors on the Large-Scale Web Application Community", cited_title)
+		self.assertEqual(" Advanced Information Networking and Applications Workshops (WAINA) 2013 27th International Conference on", cited_conference)
+		#self.assertEqual("2013-01-01", cited_date)
 
-		str = "Jianliang Zheng, M.J. Lee, M. Anshel, \"Toward Secure Low Rate Wireless Personal Area Networks\", Mobile Computing IEEE Transactions on, vol. 5, pp. 1361-1373, 2006, ISSN 1536-1233."
-		authors, cited_title, cited_conference, cited_date = self.xplore.parse_citing(str)
+		text = "Jianliang Zheng, M.J. Lee, M. Anshel, \"Toward Secure Low Rate Wireless Personal Area Networks\", Mobile Computing IEEE Transactions on, vol. 5, pp. 1361-1373, 2006, ISSN 1536-1233."
+		authors, cited_title, cited_conference, cited_date = self.xplore.parse_citing(text)
+		self.assertEqual("Jianliang Zheng, M.J. Lee, M. Anshel, ", authors)
+		self.assertEqual("Toward Secure Low Rate Wireless Personal Area Networks", cited_title)
+		self.assertEqual(" Mobile Computing IEEE Transactions on", cited_conference)
+		#self.assertEqual("2006-01-01", cited_date)
+
+		text = "IEEE Std 1363.2-2008, pp. 1-127, 2009"
+		authors, cited_title, cited_conference, cited_date = self.xplore.parse_citing(text)
 		print(authors)
 		print(cited_title)
 		print(cited_conference)
-		print(cited_date)
+		print(str(cited_date))
+		
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
 	"""
 	def test_continuous_pushing_more_view_button(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -400,30 +547,6 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.xplore.get_papers_of_new_conferences(10)
 	"""
-
-	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-		keywords="\"edge computing\""
-		num_of_papers = 10
-		path="../../data/tmp/"
-		filename = "tmp.pdf"
-		timeout=30
-
-		all_citing_urls = ["http://ieeexplore.ieee.org/document/6324382", "http://ieeexplore.ieee.org/document/7881332/"]
-		all_cited_urls = ["http://ieeexplore.ieee.org/document/7814490/",
-		"http://ieeexplore.ieee.org/document/7780942/"]
-		
-		self.log.debug("all_citing_urls[" + str(len(all_citing_urls)) + "]")
-		self.log.debug("all_cited_urls[" + str(len(all_cited_urls)) + "]")
-
-		all_citing_urls.extend(all_cited_urls)
-		
-		driver = self.xplore.create_driver()
-		search = Searchs(que=all_citing_urls, limit=num_of_papers, times=0)
-		Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], self.xplore.get_attributes_and_download_pdf, driver, path, filename)
-
-		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
-
 	"""
 	def get_date_of_publications(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -460,6 +583,45 @@ class IEEEXplore_test(unittest.TestCase):
 		return dates
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+	"""
+	"""
+	def test_breadth_first_search_by_get_attributes_and_download_pdf(self):
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+		keywords="\"edge computing\""
+		num_of_papers = 10
+		path="../../data/tmp/"
+		filename = "tmp.pdf"
+		timeout=30
+
+		all_citing_urls = ["http://ieeexplore.ieee.org/document/6324382", "http://ieeexplore.ieee.org/document/7881332/"]
+		all_cited_urls = ["http://ieeexplore.ieee.org/document/7814490/",
+		"http://ieeexplore.ieee.org/document/7780942/"]
+		
+		self.log.debug("all_citing_urls[" + str(len(all_citing_urls)) + "]")
+		self.log.debug("all_cited_urls[" + str(len(all_cited_urls)) + "]")
+
+		all_citing_urls.extend(all_cited_urls)
+		
+		driver = self.xplore.create_driver()
+		search = Searchs(que=all_citing_urls, limit=num_of_papers, times=0)
+		Searchs.breadth_first_search(search, [2, 3, 4, 5, 6], self.xplore.get_attributes_and_download_pdf, driver, path, filename)
+
+		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
+	"""
+	"""
+	def test_show_options(self):
+		self.log.info("test_show_options start")
+		print("default")
+		self.xplore.show_options()
+		print("35")
+		self.xplore.opts.set_PerPage(35)
+		self.xplore.show_options()
+		print("75")
+		self.xplore.opts.set_PerPage(75)
+		self.xplore.show_options()
+		print("1000")
+		self.xplore.opts.set_PerPage(1000)
+		self.xplore.show_options()
 	"""
 
 if __name__ == '__main__':
