@@ -78,7 +78,7 @@ class PhantomJS_(webdriver.PhantomJS):
 				self.log.debug("%s", e)
 				self.log.debug("retries[" + str(retries) + "]")
 				super().__init__(executable_path=self.executable_path, \
-						port=self.port, desired_capabilities=self.desired_capabilities, \
+						port=self.port, desired_capabilities=self.PHANTOMJS, \
 						service_args=self.service_args, service_log_path=self.service_log_path)
 				retries -= 1
 			except TimeoutException as e:
