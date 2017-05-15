@@ -1249,6 +1249,8 @@ class IEEEXplore:
 			except ValueError:
 				if month == "Sept":
 					month = "9"
+				elif month == "April":
+					month = "4"
 				else:
 					self.log.warning("ValueError")
 					self.log.warning("string:" + string)
