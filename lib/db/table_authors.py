@@ -49,9 +49,17 @@ class Table_authors(Base):
 		self.log.debug("self: " + self.get_vars())
 		#check duplication and insert
 		from sqlalchemy import and_
-		records = self.db.session.query(__class__).filter(
-			and_(__class__.name==self.name.encode('utf-8', 'replace')), 
-			(__class__.belonging==self.belonging.encode('utf-8', 'replace'))).all()
+		if self.name is not None and self.belonging is not None:
+			records = self.db.session.query(__class__).filter(
+				and_(__class__.name==self.name.encode('utf-8', 'replace')), 
+				(__class__.belonging==self.belonging.encode('utf-8', 'replace'))).all()
+		elif self.name is None:
+			records = []
+		elif self.belonging is None:
+			records = self.db.session.query(__class__).filter(
+				__class__.name==self.name.encode('utf-8', 'replace')).all()
+		else:
+			records = []
 		self.log.debug("records = self.db.session.query(__class__).filter(__class__.name==self.name).all()")
 		self.log.debug("len(records)[" + str(len(records)) + "]")
 		if len(records) == 0: #new record
