@@ -35,10 +35,12 @@ class Table_authors(Base):
 		vars_to_encode = [
 			"name", "belonging"]
 		for var in vars_to_encode:
-			exec("self." + var + " = self." + var + ".encode('utf-8', 'replace')")
+			if eval("self." + var) is not None:
+				exec("self." + var + " = self." + var + ".encode('utf-8', 'replace')")
 		self.db.insert(self)
 		for var in vars_to_encode:
-			exec("self." + var + " = self." + var + ".decode('utf-8', 'replace')")
+			if eval("self." + var) is not None:
+				exec("self." + var + " = self." + var + ".decode('utf-8', 'replace')")
 		self.db.session.expunge(self)
 		self.db.session.close()
 
