@@ -1241,21 +1241,28 @@ class IEEEXplore:
 		if year == "":
 			year = tmp4[-1]
 
-		try:
-			month = str(datetime.datetime.strptime(month, '%B').month)
-		except ValueError:
+		self.log.debug("year[" + year + "], month[" +
+					   month + "], date[" + date + "]")
+
+		self.log.debug("convert month[" + str(month) + "]")
+		if month == "Sept":
+			month = "9"
+		elif month == "April":
+			month = "4"
+		else:
 			try:
-				month = str(datetime.datetime.strptime(month, '%b').month)
+				month = str(datetime.datetime.strptime(month, '%B').month)
 			except ValueError:
-				if month == "Sept":
-					month = "9"
-				elif month == "April":
-					month = "4"
-				else:
+				try:
+					month = str(datetime.datetime.strptime(month, '%b').month)
+				except ValueError:
 					self.log.warning("ValueError")
 					self.log.warning("string:" + string)
-					self.log.warning("month = 0")
-					month = "0"
+					self.log.warning("month = 1")
+					month = "1"
+
+		if not re.match("^\d*$", date):
+			date = "1"
 
 		self.log.debug("year[" + year + "], month[" +
 					   month + "], date[" + date + "]")
