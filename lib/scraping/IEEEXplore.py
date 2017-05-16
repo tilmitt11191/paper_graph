@@ -615,11 +615,17 @@ class IEEEXplore:
 				__class__.__name__ + "." + sys._getframe().f_code.co_name)
 			self.log.warning("failed to load paper top page")
 			return False
+		
+		max_filename_length = Conf.getconf("max_filename_length")
 
 		if filename == "title":
 			filename = self.get_title()
-		filename = path + re.sub(r"\s|/|:|\?|\.", "", filename) + ".txt"
-
+		filename = path + re.sub(r"\s|/|:|\?|.|\"", "", filename) + ".txt"
+		if len(filename) > max_filename_length:
+			self.log.debug("filename too long. convert from :" + filename)
+			filename = filename[:max_filename_length] + suffix
+			self.log.debug("to :" + filename)
+		
 		tag = '//div[@class="pure-g"]/div/div/div[@class="abstract-text ng-binding"]'
 		try:
 			element = self.driver.find_element_with_handling_exceptions(

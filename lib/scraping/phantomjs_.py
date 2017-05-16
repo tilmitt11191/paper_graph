@@ -289,5 +289,5 @@ class PhantomJS_(webdriver.PhantomJS):
 		if by == "" or tag == "":
 			self.log.debug("by == \"\" or tag == \"\". return False")
 			return True
-		self.log.debug("valid. retur True")
+		self.log.debug("valid. return True")
 		return False
