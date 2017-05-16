@@ -602,8 +602,15 @@ class IEEEXplore:
 			'/div/div[@class="document-title-container ng-binding"]' +\
 			'/h1[@class="document-title"]' +\
 			'/span[@ng-bind-html="vm.displayDocTitle"]'
-		return self.driver.find_element_with_handling_exceptions(
-			by="XPATH", tag=tag).text
+		try:
+			element = self.driver.find_element_with_handling_exceptions(
+			by="XPATH", tag=tag)
+			return element.text
+		except NoSuchElementException as e:
+			self.log.warning("caught " + e.__class__.__name__ + " at get_title")
+			self.log.warning("url: " + self.driver.current_url)
+			self.log.warning("return \"\"")
+			return ""
 
 	def get_abstract(self, path="../../data/tmp/",
 		filename="title", timeout=30):
