@@ -1,8 +1,8 @@
 FROM ubuntu:latest
-RUN sudo apt-get update && sudo apt-get -y dist-upgrade
 
-RUN apt-get install -y passwd
 RUN apt-get install -y sudo
+RUN sudo apt-get update && sudo apt-get -y dist-upgrade
+RUN apt-get install -y passwd
 RUN useradd graph
 RUN mkdir -p /home/graph
 RUN chown graph:graph /home/graph
