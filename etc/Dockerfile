@@ -12,7 +12,7 @@ RUN echo "graph ALL=(ALL) ALL" >> /etc/sudoers.d/graph
 RUN sudo apt-get install -y build-essential chrpath libssl-dev libxft-dev
 RUN sudo apt-get install -y libfreetype6 libfreetype6-dev
 RUN sudo apt-get install -y libfontconfig1 libfontconfig1-dev
-RUN sudo apt-get install -y zsh vim git curl
+RUN sudo apt-get install -y zsh vim git curl tmux
 RUN sudo apt-get install -y default-jre default-jdk python3-yaml
 RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections && \
 echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections && \
