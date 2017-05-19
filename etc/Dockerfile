@@ -1,17 +1,39 @@
 FROM ubuntu:16.04
-RUN apt-get update && apt-get dist-upgrade
+ENV HOSTNAME tensorgraph
+
+RUN apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 RUN apt-get install -y sudo
 RUN sudo apt-get install -y passwd
 RUN useradd graph
 RUN mkdir -p /home/graph
 RUN chown graph:graph /home/graph
 RUN echo "graph ALL=(ALL) ALL" >> /etc/sudoers.d/graph
-
-RUN sudo apt-get install -y zsh vim git curl
-RUN sudo apt-get install -y default-jre default-jdk mysql-server python3-yaml
+## ohmyzsh, zshrc
 RUN sudo apt-get install -y build-essential chrpath libssl-dev libxft-dev
 RUN sudo apt-get install -y libfreetype6 libfreetype6-dev
 RUN sudo apt-get install -y libfontconfig1 libfontconfig1-dev
+RUN sudo apt-get install -y zsh vim git curl
+RUN sudo apt-get install -y default-jre default-jdk python3-yaml
+RUN echo "mysql-server mysql-server/root_password password root" | debconf-set-selections && \
+echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections && \
+sudo apt-get install -y mysql-server
+
+RUN mkdir /usr/local/lib/tensorflowonspark
+WORKDIR /usr/local/lib/tensorflowonspark
+RUN git clone --recurse-submodules https://github.com/yahoo/TensorFlowOnSpark.git
+WORKDIR ./TensorFlowOnSpark
+RUN git submodule init
+RUN git submodule update --force
+RUN git submodule foreach --recursive git clean -dfx
+RUN pushd src 
+RUN zip -r ../tfspark.zip *
+RUN popd
+
+RUN sh /usr/local/lib/tensorflowonspark/TensorFlowOnSpark/scripts/local-setup-spark.sh
+ENV SPARK_HOME=/usr/local/lib/tensorflowonspark/TensorFlowOnSpark/spark-1.6.0-bin-hadoop2.6
+ENV PATH=/usr/local/lib/tensorflowonspark/TensorFlowOnSpark/src:${PATH}
+ENV PATH=${SPARK_HOME}/bin:${PATH}
+ENV PYTHONPATH=/usr/local/lib/tensorflowonspark/TensorFlowOnSpark/src
 
 RUN git clone https://github.com/yyuu/pyenv.git /home/graph/.pyenv
 RUN export PYENV_ROOT="/home/graph/.pyenv"
@@ -24,13 +46,10 @@ RUN conda update conda
 RUN conda create -n python35 python=3.5 anaconda
 RUN export PATH="$PYENV_ROOT/versions/anaconda3-4.3.0/envs/python35/bin:$PATH"
 
-RUN mkir /tmp/tensorflowonspark
-RUN git clone --recurse-submodules https://github.com/yahoo/TensorFlowOnSpark.git /tmp/tensorflowonspark
-RUN cd TensorFlowOnSpark && git submodule init && git submodule update --force && git submodule foreach --recursive git clean -dfx
-RUN cd TensorFlowOnSpark && echo "export TFoS_HOME=$(pwd)" >> /etc/profile && source /etc/profile && pushd src && zip -r ../tfspark.zip * && popd
-
-#RUN mkdir /tmp/phantomjs
-#RUN wget -P /tmp/phantomjs/ https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.1.1-linux-x86_64.tar.bz2
-#RUN sudo tar xvjf /tmp/phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C /tmp/phantomjs/
-#RUN sudo mv /tmp/phantomjs/phantomjs-2.1.1-linux-x86_64 /usr/local/share
-#RUN sudo ln -sf /usr/local/share/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/
+RUN pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.0.1-cp35-cp35m-linux_x86_64.whl
+RUN pip install theano
+RUN pip install selenium
+RUN pip install SQLAlchemy
+RUN pip install PyMySQL
+RUN pip install wget
+RUN pip install matplotlib
