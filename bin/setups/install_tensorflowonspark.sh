@@ -15,3 +15,10 @@ sudo SPARK_HOME=/usr/local/lib/TensorFlowOnSpark/spark-1.6.0-bin-hadoop2.6
 sudo PATH=/usr/local/lib/TensorFlowOnSpark/src:${PATH}
 sudo PATH=${SPARK_HOME}/bin:${PATH}
 sudo PYTHONPATH=/usr/local/lib/TensorFlowOnSpark/src
+
+export LOG_DIRS=$HOME/program/test/tensorFlow_test/var/log/log
+export LOG_DIRS=$HOME/program/test/tensorFlow_test/var/log/
+export HADOOP_HOME=/usr/local/lib/hadoop/hadoop
+export PATH=$HADOOP_HOME/bin:$PATH
+export HADOOP_CONF_DIR=/usr/local/lib/hadoop/hadoop/etc/hadoop
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
