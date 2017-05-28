@@ -79,8 +79,9 @@ class Table_papers(Base):
 			if eval("self." + var) is not None:
 				exec("self." + var + " = self." + var + ".decode('utf-8', 'replace')")
 		self.db.session.expunge(self)
+		self.db.session.close()
 		self.db.close()
-
+		
 	def has_already_downloaded(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		self.log.debug("paper.title[" + self.title + "]")

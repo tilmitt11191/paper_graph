@@ -605,6 +605,9 @@ class IEEEXplore:
 		try:
 			element = self.driver.find_element_with_handling_exceptions(
 			by="XPATH", tag=tag)
+			self.log.debug(
+				__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
+			self.log.debug("return " + element.text)
 			return element.text
 		except NoSuchElementException as e:
 			self.log.warning("caught " + e.__class__.__name__ + " at get_title")
@@ -627,11 +630,12 @@ class IEEEXplore:
 
 		if filename == "title":
 			filename = self.get_title()
-		filename = path + re.sub(r"\s|/|:|\?|.|\"", "", filename) + ".txt"
+		filename = path + re.sub(r"\s|/|:|\?|\.|\"", "", filename) + ".txt"
 		if len(filename) > max_filename_length:
 			self.log.debug("filename too long. convert from :" + filename)
 			filename = filename[:max_filename_length] + suffix
 			self.log.debug("to :" + filename)
+		self.log.debug("converted filename: " + filename)
 		
 		tag = '//div[@class="pure-g"]/div/div/div[@class="abstract-text ng-binding"]'
 		try:
@@ -1427,6 +1431,7 @@ class IEEEXplore:
 		search.times += 1
 		wait_time = Conf.getconf("IEEE_wait_time_per_download_paper")
 		self.log.debug("process finished. wait " + str(wait_time) + " seconds")
+		search.save_current_status(search)
 		time.sleep(wait_time)
 		return results
 

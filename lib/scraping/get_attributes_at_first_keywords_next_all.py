@@ -44,7 +44,7 @@ if num_of_papers <= 0:
 
 xplore.search_by_keywords(keywords, search_options=opts, timeout=timeout)
 urls = xplore.get_urls_of_papers_in_search_results(timeout=timeout)
-print("urls: " + str(urls))
+print("num of urls searched by keywords: " + str(len(urls)))
 
 search = Searchs(initial_node=urls[0], que=urls, times=1, visited=[], limit=num_of_papers)
 

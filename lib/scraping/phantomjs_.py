@@ -90,7 +90,7 @@ class PhantomJS_(webdriver.PhantomJS):
 			self.save_current_page("../../var/ss/get_error.html")
 			self.save_current_page("../../var/ss/get_error.png")
 		wait_time = Conf.getconf("phantomJS_wait_time_per_get")
-		self.log.debug("process finished. wait " + str(wait_time) + " seconds")
+		self.log.debug("get finished. wait " + str(wait_time) + " seconds")
 		time.sleep(wait_time)
 		if tag_to_wait != "":
 			self.wait_appearance_of_tag(by=by, tag=tag_to_wait, timeout=timeout)
@@ -231,7 +231,7 @@ class PhantomJS_(webdriver.PhantomJS):
 		self.log.debug("caught " + exception.__class__.__name__ + " at " + method + ". url[" + url + "]")
 		self.log.debug("command: " + command)
 		if warning_messages:
-			filename = "../../var/ss/" + exception.__class__.__name__ + re.sub(r"/|:|\?|\.", "", url)
+			filename = "../../var/ss/" + exception.__class__.__name__ + re.sub(r"\s|/|:|\?|\.|\"", "", url)
 			self.log.warning("caught " + exception.__class__.__name__ + " at " + method + ". url[" + url + "]")
 			self.log.warning("command: " + command)
 			self.log.warning("save_current_page to " + filename + ".html and png")

@@ -36,9 +36,6 @@ class Searchs():
 					returned_values = get_nexts_func(search, *args)
 				except Exception as e:
 					filename = cls.save_current_status(search)
-					#traceback.print_exc()
-					#log = Log.getLogger()
-					#log.exception("[[EXCEPTION OCCURED]] status saved to" + filename)
 					Log.getLogger().exception("[[EXCEPTION OCCURED]] status saved to" + filename)
 					sys.exit("[[EXCEPTION OCCURED]] status saved to" + filename)
 				cls.renew_search_que(search, arrays_to_search, returned_values)

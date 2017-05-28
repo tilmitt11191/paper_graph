@@ -254,18 +254,18 @@ class IEEEXplore_test(unittest.TestCase):
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-	"""
+
 	def test_get_abstract(self):
 		self.log.info(
 			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		url = "http://ieeexplore.ieee.org/document/7921125/"
-		url = "http://ieeexplore.ieee.org/document/1654301" # No abstract
+		#url = "http://ieeexplore.ieee.org/document/1654301" # No abstract
 		self.xplore.driver.get(url)
 		print(self.xplore.get_abstract())
 
 		self.log.info(
 			__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+
 	"""
 	def test_get_authors_and_urls_of_papers_with_same_authors(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -627,6 +627,7 @@ class IEEEXplore_test(unittest.TestCase):
 		self.xplore.opts.set_PerPage(1000)
 		self.xplore.show_options()
 	"""
+	"""
 	def test_encode(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		string = "Tamer Başar"
@@ -636,6 +637,6 @@ class IEEEXplore_test(unittest.TestCase):
 		string = string.decode("utf-8", "replace")
 		print(string)
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 if __name__ == '__main__':
 	unittest.main()
