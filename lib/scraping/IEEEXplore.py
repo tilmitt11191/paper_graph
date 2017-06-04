@@ -630,7 +630,7 @@ class IEEEXplore:
 
 		if filename == "title":
 			filename = self.get_title()
-		filename = path + re.sub(r"\s|/|:|\?|\.|\"|\*", "", filename) + ".txt"
+		filename = path + re.sub(r"\s|/|:|\?|\.|\"|\>|\*", "", filename) + ".txt"
 		if len(filename) > max_filename_length:
 			self.log.debug("filename too long. convert from :" + filename)
 			filename = filename[:max_filename_length] + suffix
