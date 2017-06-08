@@ -3,9 +3,9 @@ logdir: ../../var/log/
 logfile: log
 node_logfile: node_log
 phantomjs_logfile: phantomjs_log
-loglevel: WARNING
+loglevel: ERROR
 #loglevel_to_stdout: WARNING
-loglevel_to_stdout: WARNING
+loglevel_to_stdout: ERROR
 #rotate_log_size: 268435456 #1024*1024*256B
 rotate_log_size: 1073741824 #1024*1024*1024B
 #rotate_log_size: 1048576 #1024*1024B
@@ -29,8 +29,8 @@ IEEE_num_of_spreading_by_keyword: 50
 IEEE_num_of_spreading_by_conference: "all"
 
 phantomJS_pass: "/usr/local/bin/phantomjs"
-phantomJS_wait_time_per_get: 5
-phantomJS_load_timeout: 10
+phantomJS_wait_time_per_get: 0
+phantomJS_load_timeout: 5
 
 
 myslq_url: "mysql+pymysql://alladmin:admin@localhost/paper_graph?charset=utf8"

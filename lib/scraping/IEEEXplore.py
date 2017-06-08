@@ -1283,8 +1283,16 @@ class IEEEXplore:
 
 		self.log.debug("year[" + year + "], month[" +
 					   month + "], date[" + date + "]")
-
-		timestamp = datetime.date(int(year), int(month), int(date))
+		try:
+			timestamp = datetime.date(int(year), int(month), int(date))
+		except ValueError as e:
+			self.log.warning(
+				"caught ValueError at " + __class__.__name__ + "." + sys._getframe().f_code.co_name)
+			self.log.warning("convert from: " + string)
+			self.log.warning(
+				"to:" + "year[" + year + "], month[" + month + "], date[" + date + "]")
+			self.log.warning("timestamp = None")
+			timestamp = None
 		return timestamp
 
 	def convert_paper_url_to_cited_url(self, url):

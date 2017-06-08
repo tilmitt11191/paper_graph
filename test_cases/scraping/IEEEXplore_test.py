@@ -254,7 +254,7 @@ class IEEEXplore_test(unittest.TestCase):
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
-
+	"""
 	def test_get_abstract(self):
 		self.log.info(
 			__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -265,7 +265,7 @@ class IEEEXplore_test(unittest.TestCase):
 
 		self.log.info(
 			__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-
+	"""
 	"""
 	def test_get_authors_and_urls_of_papers_with_same_authors(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -403,21 +403,23 @@ class IEEEXplore_test(unittest.TestCase):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
 	"""
 
-	"""
+
 	def test_get_date_of_publication(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
 		urls = []
-		urls.append("http://ieeexplore.ieee.org/document/7914660/") ##Date of Publication: 28 April 2017
-		urls.append("http://ieeexplore.ieee.org/document/4773330/")
-		urls.append("http://ieeexplore.ieee.org/document/891000")
-		
+		#urls.append("http://ieeexplore.ieee.org/document/7914660/") ##Date of Publication: 28 April 2017
+		#urls.append("http://ieeexplore.ieee.org/document/4773330/")
+		#urls.append("http://ieeexplore.ieee.org/document/891000")
+		urls.append("http://ieeexplore.ieee.org/document/117155") # 16-19 April 19906 ValueError: year is out of range
+
+
 		for url in urls:
 			self.xplore.move_to_paper_top_page(url)
 			print(self.xplore.get_date_of_publication())
 
 
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
-	"""
+
 	"""
 	def test_download_a_paper(self):
 		self.log.info(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
