@@ -78,9 +78,7 @@ class Table_papers(Base):
 		for var in vars_to_encode:
 			if eval("self." + var) is not None:
 				exec("self." + var + " = self." + var + ".decode('utf-8', 'replace')")
-		self.db.session.expunge(self)
-		self.db.session.close()
-		self.db.close()
+		self.close()
 		
 	def has_already_downloaded(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -124,6 +122,7 @@ class Table_papers(Base):
 				"color"]
 			for var in clone_vars:
 				exec("self." + var + "= records[0]." + var)
+			self.close()
 			return True
 
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
@@ -261,6 +260,8 @@ class Table_papers(Base):
 		return previous_id + 1
 	
 	def close(self):
+		self.db.session.expunge(self)
+		self.db.session.close()
 		self.db.close()
 
 	def get_vars(self):
