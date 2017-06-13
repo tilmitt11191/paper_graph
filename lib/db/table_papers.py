@@ -78,6 +78,8 @@ class Table_papers(Base):
 		for var in vars_to_encode:
 			if eval("self." + var) is not None:
 				exec("self." + var + " = self." + var + ".decode('utf-8', 'replace')")
+
+		self.db.session.expunge(self)
 		self.close()
 		
 	def has_already_downloaded(self):
@@ -260,7 +262,6 @@ class Table_papers(Base):
 		return previous_id + 1
 	
 	def close(self):
-		self.db.session.expunge(self)
 		self.db.session.close()
 		self.db.close()
 

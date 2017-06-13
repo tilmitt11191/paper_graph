@@ -36,6 +36,7 @@ class Table_citations(Base):
 		if self.id == "":
 			self.id = self.db.get_available_id(__class__)
 		self.db.insert(self)
+		self.db.session.expunge(self)
 		self.close()
 
 	def renewal_insert(self):
@@ -58,7 +59,6 @@ class Table_citations(Base):
 			self.close()
 	
 	def close(self):
-		self.db.session.expunge(self)
 		self.db.session.close()
 		self.db.close()
 	
