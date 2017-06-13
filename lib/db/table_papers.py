@@ -186,7 +186,7 @@ class Table_papers(Base):
 			for merge_record in merge_records:
 				self.merge_citations(merge_record, merge_id_list, survival_id=self.id, delete_id=merge_id)
 
-		self.db.close()
+		self.close()
 
 	def merge_citations(self, merge_record, merge_id_list, survival_id, delete_id):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")

@@ -36,8 +36,7 @@ class Table_citations(Base):
 		if self.id == "":
 			self.id = self.db.get_available_id(__class__)
 		self.db.insert(self)
-		self.db.session.expunge(self)
-		self.db.session.close()
+		self.close()
 
 	def renewal_insert(self):
 		self.log.debug(__class__.__name__ + "." + sys._getframe().f_code.co_name + " start")
@@ -53,10 +52,14 @@ class Table_citations(Base):
 			self.insert()
 		elif len(records) == 1:
 			self.log.debug("already registed")
+			self.close()
 		else:
 			self.log.debug("duplicated")
+			self.close()
 	
 	def close(self):
+		self.db.session.expunge(self)
+		self.db.session.close()
 		self.db.close()
 	
 	def get_vars(self):

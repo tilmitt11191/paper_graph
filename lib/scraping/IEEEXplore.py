@@ -131,14 +131,14 @@ class IEEEXplore:
 			citing_paper.renewal_insert()
 			citation = Table_citations(start=paper.id, end=citing_paper.id)
 			citation.renewal_insert()
-			citing_paper.close()
-			citation.close()
+			#citing_paper.close()
+			#citation.close()
 		for cited_paper in cited_papers:
 			cited_paper.renewal_insert()
 			citation = Table_citations(start=cited_paper.id, end=paper.id)
 			citation.renewal_insert()
-			cited_paper.close()
-			citation.close()
+			#cited_paper.close()
+			#citation.close()
 
 		self.log.debug(
 			__class__.__name__ + "." + sys._getframe().f_code.co_name + " finished")
