@@ -8,7 +8,7 @@
 HOSTADDR = '172.19.73.74'
 PORTNUM = '22'
 USERNAME = 'ozu'
-KEY_FILE = 'C:\Users\ozu\Documents\app\cygwin64\home\ozu\.ssh\id_rsa' 
+KEY_FILE = 'C:\Users\ozu\Documents\bin\cygwin64\home\ozu\.ssh\id_rsa' 
 ;============================================ 
 ;;getpassword PASSFILE USERNAME PASSWORD
  

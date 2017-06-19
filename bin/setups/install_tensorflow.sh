@@ -15,6 +15,7 @@ fi
 
 ##for windows with cygwin and anaconda
 pip install tensorflow-gpu
+pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/windows/gpu/tensorflow_gpu-1.1.0-cp35-cp35m-win_amd64.whl
 #pip install tensorflow #cpu
 pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.0.1-cp35-cp35m-linux_x86_64.whl #gpu
 pip install theano
